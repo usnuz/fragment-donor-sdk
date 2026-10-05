@@ -64,7 +64,7 @@ jobs:
     needs: validate
     if: inputs.package == 'python'
     runs-on: ubuntu-latest
-    environment: pypi
+    environment: pypi/python
     permissions:
       contents: read
       id-token: write
