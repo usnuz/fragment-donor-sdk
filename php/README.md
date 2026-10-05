@@ -37,10 +37,17 @@ $user = $client->getUserInfo('durov');
 $balance = $client->walletBalance(); // GET; walletBalance('POST') also supported
 echo $balance->ton(); // Decimal string, never convert a balance to float.
 
-// Each call below spends wallet funds. Execute only when you intend to purchase.
-$stars = $client->buyStars(new StarsRequest('durov', 50, 'usdt_ton'));
-$premium = $client->buyPremium(new PremiumRequest('durov', 3, 'ton'));
+// Purchase calls are intentionally commented: copying this snippet spends nothing.
+// For an intended purchase select exactly ONE gift with the guarded quickstart.
+// $stars = $client->buyStars(new StarsRequest('durov', 50, 'usdt_ton'));
+// $premium = $client->buyPremium(new PremiumRequest('durov', 3, 'ton'));
 ```
+
+The executable [quickstart](https://github.com/usnuz/fragment-donor-sdk/blob/main/php/examples/quickstart.php)
+is read-only by default. One intended gift requires **both**
+`FRAGMENT_ALLOW_PURCHASES=yes` and `FRAGMENT_PURCHASE_KIND=stars` **or** `premium`;
+the selected kind sends at most one purchase, not both. Keep these flags unset in
+CI and packaging/documentation tests. Never fund a wallet just to test an example.
 
 Stars: `50..1000000`. Premium: `3`, `6`, `12` months. Payment: `usdt_ton`
 (default) or `ton`. Wallet versions: `auto`, `v5r1`, `v4r2`, `v3r2`.
@@ -56,7 +63,8 @@ Purchase bodies are form-urlencoded. Response `raw` retains future fields.
 use FragmentDonor\{RateLimitError, ServiceUnavailableError, TransportTimeoutError,
     PurchaseOutcomeUnknownError, ValidationError, ApiError, MalformedResponseError};
 try {
-    $client->buyStars(new StarsRequest('durov', 50));
+    // Error-handling skeleton: no request or payment is initiated by copying it.
+    // Place this handling around ONE intentionally approved, opt-in guarded purchase.
 } catch (PurchaseOutcomeUnknownError $e) {
     // HTTP 400 + unconfirmed:true is NOT validation or proof of no payment.
     $txHash = $e->data['tx_hash'] ?? null; // safe-redacted reconciliation evidence

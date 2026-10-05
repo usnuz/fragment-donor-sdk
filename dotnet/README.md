@@ -38,10 +38,17 @@ var user = await client.GetUserInfoAsync("durov");
 var wallet = await client.WalletBalanceAsync(); // GET; usePost: true also supported
 Console.WriteLine(wallet.Ton); // Decimal string, never convert to double.
 
-// The following calls spend wallet funds. Run only for an intended purchase.
-var stars = await client.BuyStarsAsync(new StarsRequest("durov", 50, "usdt_ton"));
-var premium = await client.BuyPremiumAsync(new PremiumRequest("durov", 3, "ton"));
+// Purchase calls are intentionally commented: do not spend by copying this snippet.
+// For an intended purchase select exactly ONE gift with the guarded QuickStart.
+// var stars = await client.BuyStarsAsync(new StarsRequest("durov", 50, "usdt_ton"));
+// var premium = await client.BuyPremiumAsync(new PremiumRequest("durov", 3, "ton"));
 ```
+
+The executable [QuickStart](https://github.com/usnuz/fragment-donor-sdk/blob/main/dotnet/examples/QuickStart/Program.cs)
+is read-only by default. One intended gift requires **both**
+`FRAGMENT_ALLOW_PURCHASES=yes` and `FRAGMENT_PURCHASE_KIND=stars` **or** `premium`;
+the selected kind sends at most one purchase, not both. Keep these flags unset in
+CI and packaging/documentation tests. Never fund a wallet just to test an example.
 
 Stars: `50..1000000`. Premium: `3/6/12` months. Payment methods: `usdt_ton`
 (default), `ton`. Wallet versions: `auto/v5r1/v4r2/v3r2`. Username: optional `@`,
@@ -53,7 +60,9 @@ contains all server fields, including future fields; balance values stay strings
 ## Typed errors and flood wait
 
 ```csharp
-try { await client.BuyStarsAsync(new StarsRequest("durov", 50)); }
+// Error-handling skeleton only: no payment is initiated by copying it.
+// Place it around ONE intentionally approved, opt-in guarded purchase.
+try { /* No HTTP request by default. */ }
 catch (PurchaseOutcomeUnknownException e)
 {
     // HTTP400 + unconfirmed:true is not validation or proof of no payment.

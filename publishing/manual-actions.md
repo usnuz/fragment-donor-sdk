@@ -1,5 +1,21 @@
 # Manual actions requiring owner access
 
+## Restore the requested Chrome connection
+
+Earlier registry/Postman navigation was denied by a saved browser permission.
+After host permissions changed the previous browser connection was unavailable.
+Host full access does not itself confirm website permissions or registry login.
+In the desktop app open Settings > Computer Use, reconnect Chrome if needed,
+then use Chrome's Manage to remove the relevant blocked-site entries and allow
+only intended destinations. Mention @Chrome in this chat after connecting.
+Complete login and 2FA yourself; never paste passwords, seed words or tokens here.
+See [official OpenAI browser extension instructions](https://learn.chatgpt.com/docs/chrome-extension).
+
+First access batch: [PyPI](https://pypi.org/), [npm](https://www.npmjs.com/),
+[Packagist](https://packagist.org/), [NuGet](https://www.nuget.org/),
+[crates.io](https://crates.io/), [RubyGems](https://rubygems.org/),
+[Postman](https://web.postman.co/). No fallback-browser auth bypass was used.
+
 No credential, token, password, wallet seed, or cookie should be sent in chat.
 Complete account authentication/2FA in the normal platform UI or configure a
 scoped GitHub publishing secret/trusted publisher yourself.

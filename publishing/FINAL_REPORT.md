@@ -8,14 +8,14 @@ registry release, platform acceptance and search indexing are separate states.
 
 Seven SDKs and local artifacts, multilingual docs, guarded contract exports and
 tailored publication materials are prepared. Source commit
-[`77703896588540642b906233f957793d748fce41`](https://github.com/usnuz/fragment-donor-sdk/commit/77703896588540642b906233f957793d748fce41)
+[`841b3e67806df1bdf13ab3ab0994da0ad563e0f8`](https://github.com/usnuz/fragment-donor-sdk/commit/841b3e67806df1bdf13ab3ab0994da0ad563e0f8)
 was pushed to the independent public SDK repository.
 
-The new hardened [CI run 37341789648](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37341789648)
-has **no verified all-jobs success** at this snapshot. Its .NET tests and pack
-passed, but [PackageCheck job 111870399139](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37341789648/job/111870399139)
-failed. Diagnosis/fix and a complete green run remain release gates. Local
-results below do not replace remote verification.
+The hardened [CI run 37343465579](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37343465579)
+passed all **14 runtime jobs**. The earlier run 37341789648 correctly rejected
+an unsupported NuGet metadata filename; .NET 8 is now pinned and the exact
+known official metadata forms have ten positive/negative regressions. Subsequent
+PHP/.NET README safety edits and this report await their own pre-tag CI.
 
 Root `v0.1.0` is **not yet tagged/published**. Go `go/v0.1.0`, external
 module-fetch/pkg.go.dev observation and release attestation verification are
@@ -31,11 +31,11 @@ is complete.
 | Resource | Public location | Evidence boundary |
 | --- | --- | --- |
 | SDK-only source | [GitHub](https://github.com/usnuz/fragment-donor-sdk) | Source published; new commit linked above. No parent production history. |
-| Docs | [Root](https://usnuz.github.io/fragment-donor-sdk/), [EN](https://usnuz.github.io/fragment-donor-sdk/en/), [RU](https://usnuz.github.io/fragment-donor-sdk/ru/), [UZ](https://usnuz.github.io/fragment-donor-sdk/uz/) | Previous public baseline verified; newest deployment pending verification. |
-| OpenAPI | [openapi.json](https://usnuz.github.io/fragment-donor-sdk/openapi.json) | Previous HTTP 200 baseline verified; updated contract not yet independently reopened. |
-| Postman collection | [postman.json](https://usnuz.github.io/fragment-donor-sdk/postman.json) | Previous docs-hosted baseline verified; not a Postman API Network listing. |
-| Postman environment | `https://usnuz.github.io/fragment-donor-sdk/postman.environment.json` | Newly generated separate empty-secret file; public update pending verification. |
-| Synthetic demo | `https://usnuz.github.io/fragment-donor-sdk/demo/` | Locally generated CSS/radio fixture viewer; deployment pending verification. |
+| Docs | [Root](https://usnuz.github.io/fragment-donor-sdk/), [EN](https://usnuz.github.io/fragment-donor-sdk/en/), [RU](https://usnuz.github.io/fragment-donor-sdk/ru/), [UZ](https://usnuz.github.io/fragment-donor-sdk/uz/) | Pages run 37343596567 success; all 61 live pages independently verified. |
+| OpenAPI | [openapi.json](https://usnuz.github.io/fragment-donor-sdk/openapi.json) | Updated HTTP 200, four paths and explicit service no-auth verified. |
+| Postman collection | [postman.json](https://usnuz.github.io/fragment-donor-sdk/postman.json) | Updated guarded collection verified; not a Postman API Network listing. |
+| Postman environment | `https://usnuz.github.io/fragment-donor-sdk/postman.environment.json` | Public HTTP 200 and blank sensitive values independently verified. |
+| Synthetic demo | `https://usnuz.github.io/fragment-donor-sdk/demo/` | Public static demo/trust boundary plus PNG/MP4 HTTP 200 verified. |
 | Sitemap | [sitemap.xml](https://usnuz.github.io/fragment-donor-sdk/sitemap.xml) | Hosting is not webmaster submission/indexing. |
 
 Previous baseline source `3acfe4a47f4af86d33e2c6e1618e90f5821c34f9` had
@@ -70,7 +70,7 @@ minimum Node 22.14/npm 11.5.1 is separate from SDK Node 20 support.
 | Python | Python 3.12 | PASS: **27 tests**, warnings-as-errors, Ruff, strict mypy, wheel/sdist checks and installed smoke. |
 | Node/TypeScript | Node 24.18.0 | PASS: **26 tests**, strict build/declarations, format, tarball checks and installed smoke. |
 | PHP | PHP 8.2.34 | PASS: **13 groups**, syntax/PSR-12, Composer, exact standalone/root archives and fresh functional/redaction smoke. |
-| .NET | SDK 8.0.425 | PASS locally: **13 groups**, format, zero-warning build, package checks and installed smoke/example. Remote PackageCheck failed; not remote PASS. |
+| .NET | SDK 8.0.425 | PASS: **13 groups**, format/build/installed smoke/example and **10 package-security regressions**. Fixed remote gate passed.
 | Go | Go 1.26 | PASS: **67 tests/subcases** (11 top-level), test/vet/build/format and fresh source-archive consumer. Local race NOT_RUN without GCC; Linux CI race gate required. |
 | Rust | Rust 1.99 | PASS: **10 tests**, locked build/test, format, strict clippy, eight-file crate and extracted consumer. |
 | Ruby | Ruby 4.0.7 | PASS: **12 tests / 379 assertions**, syntax/format, four-file gem and installed consumer. |
@@ -81,7 +81,7 @@ behavior, not successful blockchain delivery or production wallet safety.
 
 Other local checks: 61 static pages, five demo tests, 24 content assets/123 link
 targets, 12 archive-security and 14 release-helper tests. Source review
-allowlisted 173 files, excluding caches, downloads, artifacts and production
+allowlisted 175 files, excluding caches, downloads, artifacts and production
 history. Known-pattern secret scans are defense in depth, not proof of absolute
 secrecy.
 
@@ -189,7 +189,7 @@ or transport/malformed replies may be unknown payment outcome. Preserve safe
 reconciliation details and examine wallet/recipient evidence before a new
 intentional dispatch; no backend idempotency or purchase-status endpoint exists.
 
-Next gates: fix remote PackageCheck, complete green hardened CI, verify actual
+Next gates: verify the PackageCheck fix in green hardened CI, verify actual
 GitHub release/nine signatures/Go fetch and updated docs, then execute only
 accessible eligible registry/platform actions. Update this snapshot and status
 JSON with verified URLs/timestamps and fresh registry installs as proof arrives.

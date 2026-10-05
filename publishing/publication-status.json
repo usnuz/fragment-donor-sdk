@@ -31,7 +31,8 @@
       "status": "PASS",
       "runtime": ".NET SDK 8.0.425",
       "test_groups": 13,
-      "notes": "13 native groups, format, zero-warning build, exact NuGet contents, fresh installed four-operation/unknown-outcome/decimal/redaction smoke and example passed."
+      "notes": "13 native groups, format, zero-warning build, exact NuGet contents, fresh installed four-operation/unknown-outcome/decimal/redaction smoke and example passed.",
+      "package_security_tests": 10
     },
     "go": {
       "status": "PASS",
@@ -57,15 +58,19 @@
       "status": "PASS",
       "pages": 61,
       "translated_pages": 60,
-      "notes": "61 static multilingual pages plus separate synthetic demo. Canonical/hreflang/sitemap/internal link checks and five demo tests passed; updated public deployment not yet verified."
+      "notes": "61 updated live multilingual pages + synthetic demo/media + OpenAPI/Postman/environment/sitemap/robots HTTP200 independently verified; static canonical/hreflang and no executableJS. CLI used configured system proxy after direct Node connection timeout."
     },
     "public_source_scan": {
       "status": "PASS",
-      "notes": "173 allowlisted files, including six hash-bound visually reviewed synthetic PNG/MP4 assets; no parent production history, caches, runtime downloads, package artifacts, or known credentials."
+      "notes": "175 allowlisted files including six hash-bound visually reviewed synthetic media assets; packages/caches/runtime downloads/parent history excluded."
     },
     "remote_ci": {
-      "status": "NOT_RUN",
-      "notes": "New hardened release source awaits remote CI; previous public baseline 3acfe4a47f4af86d33e2c6e1618e90f5821c34f9 had CI 37305949417 success. Local native checks reported separately."
+      "status": "PASS",
+      "validated_commit": "841b3e67806df1bdf13ab3ab0994da0ad563e0f8",
+      "url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37343465579",
+      "matrix_jobs": 14,
+      "observed_at": "2026-10-05T16:58:02Z",
+      "notes": "All 14 hardened jobs passed including Go race, .NET 8 exact package gates and 10 metadata regressions. Subsequent PHP/.NET README safety and report edits await their own CI."
     },
     "content": {
       "status": "PASS",
@@ -94,10 +99,11 @@
       "url": "https://github.com/usnuz/fragment-donor-sdk",
       "planned_url": "https://github.com/usnuz/fragment-donor-sdk",
       "version": "0.1.0",
-      "observed_at": "2026-10-05T11:51:13Z",
+      "observed_at": "2026-10-05T16:58:02Z",
       "evidence": [
         "Git push final SDK/docs source commit 0e444c9710c907a5ee0c0b9da812d4d1e9bb3783 to owned independent public repository succeeded.",
-        "Public GitHub CI run 37304917805 completed success; all 14 jobs independently verified."
+        "Public GitHub CI run 37304917805 completed success; all 14 jobs independently verified.",
+        "Hardened source 841b3e67806df1bdf13ab3ab0994da0ad563e0f8: all 14 CI jobs passed in run 37343465579; .NET pin/metadata fix verified."
       ],
       "notes": "Independent SDK-only source published; no production history or secrets included."
     },
@@ -108,13 +114,15 @@
       "url": "https://usnuz.github.io/fragment-donor-sdk/",
       "planned_url": "https://usnuz.github.io/fragment-donor-sdk/",
       "version": "0.1.0",
-      "observed_at": "2026-10-05T11:51:13Z",
+      "observed_at": "2026-10-05T16:58:02Z",
       "evidence": [
         "GitHub Pages run 37305009133 completed success for source commit 0e444c9710c907a5ee0c0b9da812d4d1e9bb3783, gated on successful SDK CI.",
         "Read-only live verification passed: 61 static pages plus sitemap/robots/OpenAPI/Postman returned HTTP 200 with expected languages, canonical/hreflang and no executable JavaScript.",
-        "Live Uzbek homepage layout and same-topic EN/RU language navigation verified in the browser."
+        "Live Uzbek homepage layout and same-topic EN/RU language navigation verified in the browser.",
+        "Pages run 37343596567 completed success for 841b3e67806df1bdf13ab3ab0994da0ad563e0f8; live synthetic demo independently returned HTTP200. Full updated live route verification in progress.",
+        "Updated external live check PASS:61staticpages+demo/media+contract files, reciprocalhreflang/canonical and empty sensitive environment."
       ],
-      "notes": "Previous public EN/RU/UZ docs verified; this update adds guarded Postman environment and synthetic demo/media. Updated deployment not yet verified; indexing NOT_RUN."
+      "notes": "Updated EN/RU/UZ docs, static demo, PNG/MP4 and guarded Postman/environment independently verified. No search indexing claim."
     },
     {
       "id": "gitlab",
@@ -640,8 +648,8 @@
     "python_wheel_sha256": "63602ACBC4F1EA206B4474AB9EA22EC0116312676F9D537ADE9514E32FED7E42",
     "python_sdist_sha256": "A3DB808940556161E94C556CF06C7132ACD494D5456870A35895CD76CBD80B28",
     "npm_tarball_sha256": "9B6A61139297A05BA391B2195DE38F7C0B0C7458AE50003F802D989DDD50FF3F",
-    "php_root_archive_sha256": "5854738CEA6846E609FEAF3185319314B8129B5DEB23C4CD5D8E7E77391BC305",
-    "nuget_sha256": "E6A1A26EBDC2DB95719E25DE010B1F787E152C193453FFE94BD81CFA34B2DB8F",
+    "php_root_archive_sha256": "F9D7A40581ED6066FBA54DB5FD8C8D6F42F9202CCB636C10920BE9F4A74DE4A7",
+    "nuget_sha256": "9F233674B49D4A334020DBDC6D0AA9D47EE1B13308185AB034B07580E1B2D979",
     "notes": "Local builds only; remote CI artifacts may differ in timestamps/runtime provenance. Six external registry publications BLOCKED_ACCESS.",
     "synthetic_video_sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7"
   },
@@ -654,6 +662,6 @@
   "browser_access": {
     "status": "BLOCKED_ACCESS",
     "requested_browser": "Chrome",
-    "notes": "Saved permission denied all six registry and Postman navigations. Owner promised re-enable; no completed login confirmation. No alternative browser/CLI auth bypass attempted."
+    "notes": "Earlier saved Chrome permission denied registry/Postman navigation; after host permissions changed the previous browser connection was unavailable. No completed login/publisher confirmation; no alternate-browser auth bypass. Restore Chrome via desktop Computer Use settings and @Chrome."
   }
 }
