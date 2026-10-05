@@ -153,6 +153,9 @@ type Error struct {
 	Code       string
 	Message    string
 	RetryAfter time.Duration
+	// Details retains every JSON error field, recursively redacting credentials.
+	// tx_hash/unconfirmed/transient remain available for manual reconciliation.
+	Details map[string]json.RawMessage
 }
 
 func (e *Error) Error() string {
@@ -418,14 +421,14 @@ func (c *Client) parse(resp *http.Response, raw []byte) (map[string]json.RawMess
 		}
 		message, code := "HTTP request failed", ""
 		if err == nil && data != nil {
-			for _, field := range []string{"error", "reason", "message"} {
+			for _, field := range []string{"error", "reason", "info", "message"} {
 				if json.Unmarshal(data[field], &message) == nil && message != "" {
 					break
 				}
 			}
 			_ = json.Unmarshal(data["error_code"], &code)
 		}
-		return nil, &Error{Kind: kind, StatusCode: status, Message: c.redact(message), Code: c.redact(code), RetryAfter: retryAfter(resp.Header.Get("Retry-After"), data, c.now())}
+		return nil, &Error{Kind: kind, StatusCode: status, Message: c.redact(message), Code: c.redact(code), RetryAfter: retryAfter(resp.Header.Get("Retry-After"), data, c.now()), Details: c.safeDetails(data)}
 	}
 	var ok bool
 	if err != nil || data == nil || json.Unmarshal(data["ok"], &ok) != nil {
@@ -433,12 +436,12 @@ func (c *Client) parse(resp *http.Response, raw []byte) (map[string]json.RawMess
 	}
 	if !ok {
 		message := "API reported failure"
-		for _, field := range []string{"error", "reason"} {
+		for _, field := range []string{"error", "reason", "info"} {
 			if json.Unmarshal(data[field], &message) == nil && message != "" {
 				break
 			}
 		}
-		return nil, &Error{Kind: APIError, StatusCode: status, Message: c.redact(message), RetryAfter: retryAfter(resp.Header.Get("Retry-After"), data, c.now())}
+		return nil, &Error{Kind: APIError, StatusCode: status, Message: c.redact(message), RetryAfter: retryAfter(resp.Header.Get("Retry-After"), data, c.now()), Details: c.safeDetails(data)}
 	}
 	return data, nil
 }
@@ -510,6 +513,60 @@ func (c *Client) redact(value string) string {
 	for _, secret := range variants {
 		if secret != "" {
 			value = strings.ReplaceAll(value, secret, "[REDACTED]")
+		}
+	}
+	return value
+}
+
+func sensitiveField(key string) bool {
+	key = strings.NewReplacer("-", "", "_", "").Replace(strings.ToLower(key))
+	switch key {
+	case "mnemonic", "seed", "cookie", "session", "stringsession", "password", "proxypassword", "proxy", "apikey", "providerkey", "authorization", "token":
+		return true
+	}
+	return false
+}
+
+func (c *Client) safeDetails(data map[string]json.RawMessage) map[string]json.RawMessage {
+	if data == nil {
+		return nil
+	}
+	result := make(map[string]json.RawMessage, len(data))
+	for key, raw := range data {
+		var value any
+		decoder := json.NewDecoder(strings.NewReader(string(raw)))
+		decoder.UseNumber()
+		if decoder.Decode(&value) != nil {
+			continue
+		}
+		if sensitiveField(key) {
+			value = "[REDACTED]"
+		} else {
+			value = c.safeValue(value)
+		}
+		cleaned, err := json.Marshal(value)
+		if err == nil {
+			result[key] = cleaned
+		}
+	}
+	return result
+}
+
+func (c *Client) safeValue(value any) any {
+	switch typed := value.(type) {
+	case string:
+		return c.redact(typed)
+	case map[string]any:
+		for key, item := range typed {
+			if sensitiveField(key) {
+				typed[key] = "[REDACTED]"
+			} else {
+				typed[key] = c.safeValue(item)
+			}
+		}
+	case []any:
+		for index, item := range typed {
+			typed[index] = c.safeValue(item)
 		}
 	}
 	return value

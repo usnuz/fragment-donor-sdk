@@ -26,7 +26,7 @@ const style = `:root{color-scheme:light dark;--bg:#f7f9fc;--fg:#16243b;--muted:#
 await mkdir(out,{recursive:true});
 await writeFile(join(out,'style.css'),style+'\n.layout main{grid-column:2;grid-row:1}.layout aside{grid-column:1;grid-row:1}');
 await writeFile(join(out,'.nojekyll'),'');
-const topicAlternates = slug => languages.map(lang=>`<link rel="alternate" hreflang="${lang}" href="${urlFor(lang,slug)}">`).join('\n')+`\n<link rel="alternate" hreflang="x-default" href="${urlFor('en',slug)}">`;
+const topicAlternates = slug => languages.map(lang=>`<link rel="alternate" hreflang="${lang}" href="${urlFor(lang,slug)}">`).join('\n')+`\n<link rel="alternate" hreflang="x-default" href="${slug?urlFor('en',slug):base}">`;
 const navGroups = ['reference','sdks','guides'];
 for (const lang of languages) for (const page of pages) {
   const t=ui[lang];

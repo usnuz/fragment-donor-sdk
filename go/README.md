@@ -74,6 +74,8 @@ from header seconds/HTTP date and JSON `retry_after`/`flood_wait`; 503 is
 `UnavailableError`. `Error.Kind` also distinguishes validation, API,
 timeout/network and malformed response failures. There are no raw transport
 errors or credential-bearing request dumps in SDK errors.
+`Error.Details` preserves recursively redacted JSON error fields, including
+`info`, `tx_hash`, `unconfirmed` and `transient`, for manual reconciliation.
 
 Default retries: zero. Set `ReadRetries: 2, AutomaticWait: true` to allow bounded
 read-only retries with waits of at most 60 seconds. Longer server waits return

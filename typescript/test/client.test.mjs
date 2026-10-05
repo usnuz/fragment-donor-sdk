@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { inspect } from "node:util";
 import test from "node:test";
@@ -19,6 +20,53 @@ const fixture = JSON.parse(
     "utf8",
   ),
 );
+test("example requires one explicit spending kind and never executes both gifts", () => {
+  const exampleUrl = new URL("../examples/all-endpoints.mjs", import.meta.url)
+    .href;
+  for (const kind of ["", "invalid", "stars", "premium"]) {
+    const script = `
+      const fixtures = ${JSON.stringify(fixture.responses)};
+      const calls = [];
+      globalThis.fetch = async (url) => {
+        const path = new URL(url).pathname;
+        calls.push(path);
+        const name = path === "/get-user-info/" ? "user_info"
+          : path === "/wallet-balance/" ? "wallet_balance" : "purchase";
+        return new Response(JSON.stringify(fixtures[name]), {status: 200});
+      };
+      let failed = false;
+      try { await import(${JSON.stringify(exampleUrl)}); } catch { failed = true; }
+      console.log("GUARD_RESULT=" + JSON.stringify({calls, failed}));
+    `;
+    const output = execFileSync(
+      process.execPath,
+      ["--input-type=module", "--eval", script],
+      {
+        encoding: "utf8",
+        env: {
+          ...process.env,
+          FRAGMENT_ALLOW_PURCHASES: "yes",
+          FRAGMENT_PURCHASE_KIND: kind,
+          FRAGMENT_MNEMONIC: fixture.credentials.mnemonic,
+          FRAGMENT_COOKIE: fixture.credentials.cookie,
+          TONCONSOLE_API_KEY: "SYNTHETIC_PROVIDER_KEY",
+        },
+      },
+    );
+    const result = JSON.parse(output.split("GUARD_RESULT=")[1].trim());
+    assert.equal(result.failed, !["stars", "premium"].includes(kind));
+    assert.equal(
+      result.calls.filter((path) => path === "/buy-stars/").length,
+      Number(kind === "stars"),
+    );
+    assert.equal(
+      result.calls.filter((path) => path === "/buy-premium/").length,
+      Number(kind === "premium"),
+    );
+    if (!["stars", "premium"].includes(kind))
+      assert.deepEqual(result.calls, []);
+  }
+});
 function credentials(overrides = {}) {
   return new WalletCredentials({
     mnemonic: fixture.credentials.mnemonic,

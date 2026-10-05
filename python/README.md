@@ -123,6 +123,10 @@ python -m pip install --no-deps dist/fragment_donor_sdk-0.1.0-py3-none-any.whl
 
 Tests use the shared `../contract/fixtures.json` and mocked transports; the only
 network test is an ephemeral loopback redirect server. No real purchase occurs.
+The executable example defaults to reads only. Spending requires BOTH
+`FRAGMENT_ALLOW_PURCHASES=yes` and `FRAGMENT_PURCHASE_KIND=stars` or `premium`;
+it executes only that one selected gift. Missing/invalid selection fails safely
+before dispatch; do not enable spending in CI or a demonstration.
 Build contents must contain only SDK source, typing marker, README/license and
 package metadata. Publish verified wheel/sdist with PyPI Trusted Publishing;
 the repository workflow performs release gates before publication.

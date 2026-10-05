@@ -1,0 +1,46 @@
+# Hacker News / Show HN — human-only source facts and demo gates
+
+Status: **NOT_ELIGIBLE for agent-written text**. No generated Show HN title,
+launch post or comment is provided. Checked 2026-10-05:
+[HN rules](https://news.ycombinator.com/newsguidelines.html),
+[Show HN requirements](https://news.ycombinator.com/showhn.html).
+
+HN prohibits AI-generated/AI-edited text and automated posting. An eligible human
+must independently write the post, not lightly rewrite or AI-edit an agent draft.
+A docs/landing page alone is not a Show HN product demo. No new-account bypass,
+vote solicitation, private outreach or invented user traction.
+
+## Facts a human can verify independently
+
+- Clean SDK-only public repository:
+  https://github.com/usnuz/fragment-donor-sdk. Production history is not included.
+- Seven ecosystems: Python, Node/TypeScript, PHP, .NET, Go, Rust, Ruby; version
+  0.1.0 readiness/release status must be verified separately per package.
+- Four endpoint operations; direct service has no account/service-key auth.
+  Wallet credentials are still needed; optional key is TonConsole provider only.
+- Purchases never auto-retry. The backend has no idempotency-key guarantee or
+  purchase-status endpoint; timeout can have unknown outcome.
+- Read-only retries/waits are opt-in, max two retries and 60 seconds per wait;
+  a larger server hint is surfaced, not shortened.
+- Decimal balance strings, retained unknown fields, sanitized diagnostics and
+  disabled redirect forwarding. Custom transports must preserve safeguards.
+- Inspected backend **stores submitted purchase credentials**. Client redaction
+  is not non-custodial or zero-retention service behavior.
+- Separate EN/RU/UZ static docs; no indexing/ranking guarantee.
+- All payment demonstrations use synthetic mocks. No actual payment result,
+  customer number, download count, uptime or independent security certification.
+
+## Demonstration required before human Show HN consideration
+
+1. Visitor obtains the source and runs deterministic tests without entering a
+   mnemonic, making a purchase or creating a service account.
+2. Show one mocked purchase timeout and a request count of exactly one. Let the
+   visitor inspect the injected transport and fixtures; label mocks prominently.
+3. Demonstrate a 429 longest-hint test, a decimal-preservation case and credential
+   echo redaction. No secret form on Pages or simulated live payment completion.
+4. Check that every stated runtime build/package install actually passed; show
+   NOT_RUN or failure openly. Verify public source/demo links before submission.
+5. Human independently judges whether this is substantial enough for Show HN;
+   if it remains only documentation or a wrapper landing page, do not submit.
+6. Human writes from verified evidence, observes current rules/account gates and
+   replies personally. This pack does not contain text for the public HN post.

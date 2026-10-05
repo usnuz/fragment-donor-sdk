@@ -134,6 +134,8 @@ pub struct Error {
     pub code: Option<String>,
     pub retry_after: Option<Duration>,
     pub message: String,
+    /// Recursively redacted JSON fields, including reconciliation/unknown fields.
+    pub details: Map<String, Value>,
 }
 impl Error {
     fn new(kind: ErrorKind, message: &str) -> Self {
@@ -143,6 +145,7 @@ impl Error {
             code: None,
             retry_after: None,
             message: message.into(),
+            details: Map::new(),
         }
     }
 }
@@ -540,7 +543,7 @@ impl Client {
             };
             let message = object
                 .and_then(|object| {
-                    ["error", "reason", "message"]
+                    ["error", "reason", "info", "message"]
                         .iter()
                         .find_map(|key| object.get(*key).and_then(Value::as_str))
                 })
@@ -555,6 +558,7 @@ impl Client {
                 code,
                 retry_after,
                 message: self.redact(message),
+                details: self.safe_details(object),
             });
         }
         match object
@@ -565,7 +569,7 @@ impl Client {
             Some(false) => {
                 let message = object
                     .and_then(|object| {
-                        ["error", "reason"]
+                        ["error", "reason", "info"]
                             .iter()
                             .find_map(|key| object.get(*key).and_then(Value::as_str))
                     })
@@ -576,6 +580,7 @@ impl Client {
                     code: None,
                     retry_after,
                     message: self.redact(message),
+                    details: self.safe_details(object),
                 })
             }
             None => Err(Error::new(
@@ -645,6 +650,54 @@ impl Client {
             .fold(message.to_owned(), |message, secret| {
                 message.replace(&secret, "[REDACTED]")
             })
+    }
+
+    fn safe_details(&self, object: Option<&Map<String, Value>>) -> Map<String, Value> {
+        object
+            .map(|object| {
+                object
+                    .iter()
+                    .map(|(key, value)| {
+                        let normalized = key.replace(['-', '_'], "").to_ascii_lowercase();
+                        let sensitive = matches!(
+                            normalized.as_str(),
+                            "mnemonic"
+                                | "seed"
+                                | "cookie"
+                                | "session"
+                                | "stringsession"
+                                | "password"
+                                | "proxypassword"
+                                | "proxy"
+                                | "apikey"
+                                | "providerkey"
+                                | "authorization"
+                                | "token"
+                        );
+                        let value = if sensitive {
+                            Value::String("[REDACTED]".into())
+                        } else {
+                            self.safe_value(value.clone())
+                        };
+                        (key.clone(), value)
+                    })
+                    .collect()
+            })
+            .unwrap_or_default()
+    }
+
+    fn safe_value(&self, value: Value) -> Value {
+        match value {
+            Value::String(value) => Value::String(self.redact(&value)),
+            Value::Object(object) => Value::Object(self.safe_details(Some(&object))),
+            Value::Array(array) => Value::Array(
+                array
+                    .into_iter()
+                    .map(|value| self.safe_value(value))
+                    .collect(),
+            ),
+            value => value,
+        }
     }
 }
 

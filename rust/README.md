@@ -64,6 +64,8 @@ Network and MalformedResponse. Errors expose safe `message`, HTTP `status`,
 `code` and `retry_after: Option<Duration>`. Retry hints support header seconds,
 HTTP date, JSON `retry_after`/`flood_wait`, choosing the longest valid hint.
 Raw transport errors/request objects are not included in Error/debug output.
+`Error.details` retains recursively redacted JSON error fields including
+`info`, `tx_hash`, `unconfirmed`, `transient` and future fields for reconciliation.
 
 Default retries: zero. `Config { read_retries: 2, automatic_wait: true, .. }`
 opts read-only requests into bounded retries. Maximum wait is 60 seconds;

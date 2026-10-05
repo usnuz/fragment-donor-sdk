@@ -181,4 +181,25 @@ class FragmentDonorClientTest < Minitest::Test
       assert_equal text, model.extra["future_field"] # explicit raw access remains available
     end
   end
+
+  def test_structured_errors_keep_reconciliation_details_and_redact
+    payload = { "ok" => false, "info" => "Transaction unconfirmed", "tx_hash" => "SYNTHETIC_TX_HASH", "unconfirmed" => true, "transient" => true,
+                "future_field" => { "balance" => "9007199254740993.01", "echo" => credentials.mnemonic, "cookie" => "ANOTHER_SYNTHETIC_SECRET", "array" => [credentials.provider_key] } }
+    sdk = client(->(_) { response(400, payload) })
+    error = assert_raises(FragmentDonor::ValidationError) { sdk.buy_stars("durov", 50) }
+    assert_equal "Transaction unconfirmed", error.message
+    assert_equal "SYNTHETIC_TX_HASH", error.details["tx_hash"]
+    assert_equal true, error.details["unconfirmed"]
+    assert_equal true, error.details["transient"]
+    assert_equal "9007199254740993.01", error.details["future_field"]["balance"]
+    [credentials.mnemonic, credentials.provider_key, "ANOTHER_SYNTHETIC_SECRET"].each { |secret| refute_includes error.details.to_json, secret }
+  end
+
+  def test_nan_infinity_and_non_numeric_timeouts_are_rejected
+    %i[connect_timeout request_timeout max_wait].each do |option|
+      [Float::INFINITY, Float::NAN, -Float::INFINITY, 0, "bad"].each do |value|
+        assert_raises(FragmentDonor::ValidationError) { FragmentDonor::Client.new(**{ option => value }) }
+      end
+    end
+  end
 end

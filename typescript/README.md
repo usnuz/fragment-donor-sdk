@@ -112,7 +112,11 @@ npm pack
 ```
 
 The shared `../contract/fixtures.json` drives mocked HTTP tests; no wallet funds
-are spent. Development TypeScript is pinned in package-lock.json. Inspect the
+are spent. Development TypeScript is pinned in package-lock.json.
+The executable example defaults to reads only. Spending requires both
+`FRAGMENT_ALLOW_PURCHASES=yes` and `FRAGMENT_PURCHASE_KIND=stars` or `premium`;
+only one selected gift executes. Missing/invalid selection fails before dispatch.
+Never enable spending in CI or a demonstration. Inspect the
 tarball for only dist, examples, README, changelog, license and package metadata.
 Test installation from the tarball before release. Publish using npm Trusted
 Publishing where available; the repository workflow gates releases.

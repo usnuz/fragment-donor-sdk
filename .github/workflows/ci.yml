@@ -18,6 +18,7 @@ jobs:
           node-version: '22'
       - run: node scripts/public-files.mjs && node scripts/status-check.mjs
       - run: node contract/build.mjs && node docs/build.mjs && node docs/test.mjs
+      - run: node publishing/content/validate-links.mjs
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: static-docs
@@ -43,6 +44,10 @@ jobs:
         working-directory: python
       - run: python python/tests/smoke_installed.py
       - run: python -m pip install --force-reinstall python/dist/*.tar.gz && python python/tests/smoke_installed.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: python-${{ matrix.python }}
+          path: python/dist/*
   typescript:
     runs-on: ubuntu-latest
     strategy:
@@ -57,6 +62,10 @@ jobs:
         working-directory: typescript
       - run: mkdir -p /tmp/sdk-smoke && cd /tmp/sdk-smoke && npm install "$GITHUB_WORKSPACE/typescript/fragment-donor-sdk-0.1.0.tgz" && node --input-type=module -e "import {FragmentDonorClient} from 'fragment-donor-sdk'; if (!FragmentDonorClient) process.exit(1)"
       - run: node typescript/test/install-smoke.mjs /tmp/sdk-smoke/node_modules/fragment-donor-sdk/dist/index.js
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: node-${{ matrix.node }}
+          path: typescript/fragment-donor-sdk-0.1.0.tgz
   php:
     runs-on: ubuntu-latest
     strategy:
@@ -74,6 +83,10 @@ jobs:
       - run: composer validate --strict && composer archive --format=zip --dir=php/dist --file=fragment-donor-sdk-0.1.0
       - run: mkdir -p /tmp/php-sdk-smoke && unzip php/dist/fragment-donor-sdk-0.1.0.zip -d /tmp/php-sdk-smoke && cd /tmp/php-sdk-smoke && composer install --no-dev --no-scripts --no-plugins --no-interaction
       - run: php php/tests/package-smoke.php /tmp/php-sdk-smoke
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: php-${{ matrix.php }}
+          path: php/dist/*.zip
   dotnet:
     runs-on: ubuntu-latest
     steps:
@@ -85,6 +98,10 @@ jobs:
       - run: dotnet pack dotnet/src/FragmentDonor.Sdk -c Release -o dotnet/dist
       - run: dotnet restore dotnet/tests/PackageSmoke --source "$PWD/dotnet/dist" --configfile dotnet/NuGet.Config && dotnet run --project dotnet/tests/PackageSmoke -c Release --no-restore
       - run: dotnet build dotnet/examples/QuickStart -c Release
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: dotnet-package
+          path: dotnet/dist/*.nupkg
   go:
     runs-on: ubuntu-latest
     steps:
@@ -102,6 +119,10 @@ jobs:
       - run: rustup update stable --no-self-update && rustup default stable
       - run: cargo test --locked && cargo clippy --locked --all-targets -- -D warnings && cargo package --locked --allow-dirty
         working-directory: rust
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: rust-package
+          path: rust/target/package/*.crate
   ruby:
     runs-on: ubuntu-latest
     strategy:
@@ -115,3 +136,7 @@ jobs:
       - run: ruby -Ilib test/client_test.rb && gem build fragment-donor-sdk.gemspec
         working-directory: ruby
       - run: gem install ruby/fragment-donor-sdk-0.1.0.gem --no-document && ruby -rfragment_donor_sdk -e 'abort unless FragmentDonor::Client'
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: ruby-${{ matrix.ruby }}
+          path: ruby/*.gem

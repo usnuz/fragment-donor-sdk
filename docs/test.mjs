@@ -17,7 +17,8 @@ for(const lang of languages) for(const page of pages){
   assert(!/<script(?![^>]*type="application\/ld\+json")/i.test(html),'Documentation cannot depend on executable JS');
   for(const alt of [...languages,'x-default']){
     const expected=`${alt==='x-default'?'en':alt}/${page.slug?`${page.slug}/`:''}`;
-    assert(html.includes(`hreflang="${alt}" href="${base}${expected}"`));
+    const alternateUrl=alt==='x-default'&&!page.slug?base:base+expected;
+    assert(html.includes(`hreflang="${alt}" href="${alternateUrl}"`));
   }
   assert(sitemap.includes(`<loc>${base}${path}</loc>`));
   const withoutScripts=html.replace(/<script[^>]*>[\s\S]*?<\/script>/g,'');

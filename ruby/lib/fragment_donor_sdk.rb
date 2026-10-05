@@ -10,11 +10,12 @@ module FragmentDonor
   DEFAULT_BASE_URL = "https://fragment.donor.uz"
 
   class Error < StandardError
-    attr_reader :status, :code, :retry_after
+    attr_reader :status, :code, :retry_after, :details
 
-    def initialize(message, status: nil, code: nil, retry_after: nil)
+    def initialize(message, status: nil, code: nil, retry_after: nil, details: nil)
       super(message)
       @status, @code, @retry_after = status, code, retry_after
+      @details = details
     end
   end
 
@@ -99,7 +100,8 @@ module FragmentDonor
       unless valid_scheme && @base.host && !@base.userinfo && !@base.query && !@base.fragment
         raise ValidationError, "HTTPS base URL without credentials/query is required"
       end
-      unless read_retries.is_a?(Integer) && (0..2).cover?(read_retries) && connect_timeout.positive? && request_timeout.positive? && max_wait.positive? && max_wait <= 60
+      valid_timeout = ->(value) { value.is_a?(Numeric) && value.respond_to?(:finite?) && value.finite? && value.respond_to?(:positive?) && value.positive? }
+      unless read_retries.is_a?(Integer) && (0..2).cover?(read_retries) && valid_timeout.call(connect_timeout) && valid_timeout.call(request_timeout) && valid_timeout.call(max_wait) && max_wait <= 60
         raise ValidationError, "Invalid retry/timeout configuration"
       end
       @credentials, @read_retries, @automatic_wait, @max_wait = credentials, read_retries, automatic_wait, max_wait
@@ -247,19 +249,19 @@ module FragmentDonor
                 when 503 then UnavailableError
                 else APIError
                 end
-        message = data && (data["error"] || data["reason"] || data["message"])
+        message = data && %w[error reason info message].filter_map { |key| data[key] if data[key].is_a?(String) && !data[key].empty? }.first
         message = "HTTP request failed" unless message.is_a?(String)
         code = data && data["error_code"]
         code = nil unless code.is_a?(String)
-        raise klass.new(redact(message), status: status, code: code && redact(code), retry_after: wait), cause: nil
+        raise klass.new(redact(message), status: status, code: code && redact(code), retry_after: wait, details: data && safe_details(data)), cause: nil
       end
       unless data && [true, false].include?(data["ok"])
         raise MalformedResponseError.new("Expected JSON object with boolean ok", status: status), cause: nil
       end
       if data["ok"] == false
-        message = data["error"] || data["reason"]
+        message = %w[error reason info].filter_map { |key| data[key] if data[key].is_a?(String) && !data[key].empty? }.first
         message = "API reported failure" unless message.is_a?(String)
-        raise APIError.new(redact(message), status: status, retry_after: wait), cause: nil
+        raise APIError.new(redact(message), status: status, retry_after: wait, details: safe_details(data)), cause: nil
       end
       data
     end
@@ -316,6 +318,20 @@ module FragmentDonor
         [value, URI::DEFAULT_PARSER.unescape(value), URI.encode_www_form_component(value)]
       end
       variants.reduce(message.to_s) { |text, secret| text.gsub(secret, "[REDACTED]") }
+    end
+
+    def safe_details(value)
+      case value
+      when Hash
+        sensitive = %w[mnemonic seed cookie session stringsession password proxypassword proxy apikey providerkey authorization token]
+        value.to_h do |key, item|
+          normalized = key.to_s.downcase.delete("-_")
+          [key, sensitive.include?(normalized) ? "[REDACTED]" : safe_details(item)]
+        end.freeze
+      when Array then value.map { |item| safe_details(item) }.freeze
+      when String then redact(value)
+      else value
+      end
     end
   end
 end

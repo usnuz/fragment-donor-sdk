@@ -367,3 +367,27 @@ fn normalized_partial_secrets_and_response_debug_are_safe() {
     assert!(!output.contains(&seed));
     assert_eq!(wallet.extra["future_field"], Value::String(text));
 }
+
+#[test]
+fn structured_errors_preserve_reconciliation_and_redact() {
+    let c = credentials();
+    let body = json!({"ok":false,"info":"Transaction unconfirmed","tx_hash":"SYNTHETIC_TX_HASH","unconfirmed":true,"transient":true,"future_field":{"balance":"9007199254740993.01","echo":c.mnemonic,"cookie":"ANOTHER_SYNTHETIC_SECRET","array":[c.provider_key]}});
+    let client = Client::new(config(move |_| Ok(response(400, body.clone())))).unwrap();
+    let error = client.buy_stars("durov", 50, None).unwrap_err();
+    assert_eq!(error.message, "Transaction unconfirmed");
+    assert_eq!(error.details["tx_hash"], "SYNTHETIC_TX_HASH");
+    assert_eq!(error.details["unconfirmed"], true);
+    assert_eq!(error.details["transient"], true);
+    assert_eq!(
+        error.details["future_field"]["balance"],
+        "9007199254740993.01"
+    );
+    let encoded = serde_json::to_string(&error.details).unwrap();
+    for secret in [
+        c.mnemonic.as_str(),
+        c.provider_key.as_str(),
+        "ANOTHER_SYNTHETIC_SECRET",
+    ] {
+        assert!(!encoded.contains(secret));
+    }
+}

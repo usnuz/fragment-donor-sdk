@@ -1,8 +1,11 @@
 import json
+import os
+import runpy
 import threading
 import unittest
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from unittest.mock import MagicMock, patch
 from urllib.parse import parse_qs, urlsplit
 
 from fragment_donor_sdk import (
@@ -60,6 +63,38 @@ class FakeTransport:
 
 
 class ClientTests(unittest.TestCase):
+    def test_example_spending_requires_one_explicit_kind(self):
+        example = Path(__file__).resolve().parents[1] / "examples" / "all_endpoints.py"
+        for kind in (None, "invalid", "stars", "premium"):
+            with self.subTest(kind=kind):
+                environment = {
+                    "FRAGMENT_ALLOW_PURCHASES": "yes",
+                    "FRAGMENT_MNEMONIC": FIXTURE["credentials"]["mnemonic"],
+                    "FRAGMENT_COOKIE": FIXTURE["credentials"]["cookie"],
+                }
+                if kind is not None:
+                    environment["FRAGMENT_PURCHASE_KIND"] = kind
+                fake = MagicMock()
+                with (
+                    patch.dict(os.environ, environment, clear=True),
+                    patch(
+                        "fragment_donor_sdk.FragmentDonorClient", return_value=fake
+                    ) as factory,
+                    patch("builtins.print"),
+                ):
+                    if kind not in {"stars", "premium"}:
+                        with self.assertRaises(SystemExit):
+                            runpy.run_path(str(example), run_name="__main__")
+                        factory.assert_not_called()
+                    else:
+                        runpy.run_path(str(example), run_name="__main__")
+                        self.assertEqual(
+                            fake.buy_stars.call_count, int(kind == "stars")
+                        )
+                        self.assertEqual(
+                            fake.buy_premium.call_count, int(kind == "premium")
+                        )
+
     def test_username_get_has_no_auth_or_wallet_headers(self):
         transport = FakeTransport(response())
         result = FragmentDonorClient(

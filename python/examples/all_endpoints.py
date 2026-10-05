@@ -1,4 +1,4 @@
-"""Server-side example; purchases require an explicit environment opt-in."""
+"""Server example; opt in and choose exactly one purchase kind explicitly."""
 
 import os
 
@@ -11,6 +11,12 @@ from fragment_donor_sdk import (
 
 
 def main():
+    allow_purchase = os.getenv("FRAGMENT_ALLOW_PURCHASES") == "yes"
+    purchase_kind = os.getenv("FRAGMENT_PURCHASE_KIND")
+    if allow_purchase and purchase_kind not in {"stars", "premium"}:
+        raise SystemExit(
+            "Set FRAGMENT_PURCHASE_KIND=stars or premium; no purchase sent"
+        )
     client = FragmentDonorClient()
     username = os.getenv("FRAGMENT_USERNAME", "durov")
     try:
@@ -25,9 +31,10 @@ def main():
         )
         balance = client.wallet_balance(credentials=credentials)
         print("TON:", balance.ton, "USDT:", balance.usdt_ton)
-        if os.getenv("FRAGMENT_ALLOW_PURCHASES") == "yes":
-            # Both calls spend real funds; do not retry if their outcome is unknown.
+        if allow_purchase and purchase_kind == "stars":
+            # One intentional call; do not retry if the outcome is unknown.
             client.buy_stars(username, 50, credentials=credentials)
+        elif allow_purchase and purchase_kind == "premium":
             client.buy_premium(username, 3, credentials=credentials)
     except FloodWaitError as error:
         print("FLOOD_WAIT seconds:", error.retry_after)

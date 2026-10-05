@@ -57,6 +57,9 @@ rescue FragmentDonor::ValidationError, FragmentDonor::APIError,
 end
 ```
 
+Error `details` retains recursively redacted JSON fields such as `info`,
+`tx_hash`, `unconfirmed`, `transient` and unknown fields for reconciliation.
+
 The shared per-IP limit is normally 30/minute. Retry hints understand HTTP
 seconds, HTTP date, JSON `retry_after` and `flood_wait`. Default retry count is
 zero. Opt-in `read_retries: 2, automatic_wait: true` allows read-only retries;

@@ -1,4 +1,4 @@
-// Trusted server example. Purchases require explicit environment opt-in.
+// Trusted server example. Opt in and choose exactly one purchase kind.
 import {
   ApiError,
   FloodWaitError,
@@ -6,6 +6,13 @@ import {
   WalletCredentials,
 } from "fragment-donor-sdk";
 
+const allowPurchase = process.env.FRAGMENT_ALLOW_PURCHASES === "yes";
+const purchaseKind = process.env.FRAGMENT_PURCHASE_KIND;
+if (allowPurchase && !["stars", "premium"].includes(purchaseKind)) {
+  throw new Error(
+    "Set FRAGMENT_PURCHASE_KIND=stars or premium; no purchase sent",
+  );
+}
 const client = new FragmentDonorClient();
 const username = process.env.FRAGMENT_USERNAME ?? "durov";
 try {
@@ -18,9 +25,10 @@ try {
     });
     const balance = await client.walletBalance({ credentials });
     console.log("TON:", balance.ton, "USDT:", balance.usdt_ton);
-    if (process.env.FRAGMENT_ALLOW_PURCHASES === "yes") {
-      // Both operations spend real funds and NEVER retry automatically.
+    if (allowPurchase && purchaseKind === "stars") {
+      // One intentional operation; NEVER retry automatically.
       await client.buyStars(username, 50, { credentials });
+    } else if (allowPurchase && purchaseKind === "premium") {
       await client.buyPremium(username, 3, { credentials });
     }
   }

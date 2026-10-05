@@ -21,6 +21,10 @@ never send `Authorization`, `X-Api-Key`, or invent a service token. The optional
 
 Username syntax: optional `@`, an ASCII letter, then 3–31 ASCII letters, digits,
 or underscores. Stars: integer 50–1,000,000. Premium: integer 3, 6, or 12 months.
+Lookup checks the upstream recipient resolution, not a universal Telegram user
+directory. A syntactically valid or publicly known username may still receive
+`ok: false, reason: "Not a user"` from the service. Handle this API error rather
+than assuming every sample username is gift-eligible.
 Payment: `usdt_ton` (default) or `ton`. Wallet versions: `auto`, `v5r1`, `v4r2`,
 `v3r2`. Mnemonics contain 12, 18, or 24 words. Client word-count checks are not
 proof of a valid funded wallet. Optional headers: `Wallet-Address`, `Proxy`,
@@ -43,7 +47,9 @@ are retained in the language-specific raw/extra response property.
 | Ruby 3.2+ | `gem install fragment-donor-sdk -v 0.1.0` | [Ruby](../ruby/README.md) |
 
 Use the backend language you already deploy. Python and Node.js examples have
-explicit environment opt-in before any purchase; do not enable it in CI. Node.js
+explicit environment opt-in (`FRAGMENT_ALLOW_PURCHASES=yes`) and a single
+`FRAGMENT_PURCHASE_KIND=stars` or `premium` before any purchase; do not enable
+these flags in CI. PHP/.NET executable examples use the same safeguards. Node.js
 is server-side, not a browser wallet: browser Cookie restrictions and mnemonic
 exposure make purchase code unsuitable for a frontend.
 
@@ -86,7 +92,8 @@ No real payment is needed for tests, packaging, documentation, or publication.
 
 Primary site: `https://usnuz.github.io/fragment-donor-sdk/`, separate `/en/`,
 `/ru/`, `/uz/` paths. Every topic is statically rendered with a self-canonical,
-reciprocal same-topic hreflang links, English x-default, and sitemap entry.
+reciprocal same-topic hreflang links and a sitemap entry. x-default points to the
+root language chooser for homepages and to the English version for topic pages.
 There are no automatic language redirects. Switching language preserves topic.
 Search Console/Bing submission requires account/property access; technical SEO
 checks do not guarantee indexing, rankings, or appearance in any language.

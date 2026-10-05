@@ -12,13 +12,13 @@
     "python": {
       "status": "PASS",
       "runtime": "Python 3.12",
-      "tests": 20,
+      "tests": 21,
       "notes": "Warnings-as-errors tests, Ruff, strict mypy, wheel/sdist contents and isolated package install smoke passed."
     },
     "typescript": {
       "status": "PASS",
       "runtime": "Node.js 24.18.0",
-      "tests": 21,
+      "tests": 22,
       "notes": "Native tests, strict TypeScript build/declarations, format, tarball contents and isolated package install smoke passed."
     },
     "php": {
@@ -36,22 +36,22 @@
     "go": {
       "status": "PASS",
       "runtime": "Go 1.26",
-      "top_level_tests": 9,
-      "tests_and_subcases": 37,
-      "notes": "Native test/vet/build and custom-default-transport regression passed."
+      "top_level_tests": 10,
+      "tests_and_subcases": 38,
+      "notes": "Native test/vet/build and custom-default-transport regression passed. Safe-redacted structured error Details and info fallback verified."
     },
     "ruby": {
       "status": "PASS",
       "runtime": "Ruby 4.0.7",
-      "tests": 9,
-      "assertions": 215,
-      "notes": "Tests, syntax, gem contents/build and isolated gem install/redaction smoke passed."
+      "tests": 11,
+      "assertions": 242,
+      "notes": "Tests, syntax, gem contents/build and isolated gem install/redaction smoke passed. Structured error details and finite timeout validation verified."
     },
     "rust": {
       "status": "PASS",
       "runtime": "Rust 1.99",
-      "tests": 8,
-      "notes": "Locked native tests/build, format, strict clippy, crate contents/verification and publish dry-run passed; no upload."
+      "tests": 9,
+      "notes": "Locked native tests/build, format, strict clippy, crate contents/verification and publish dry-run passed; no upload. Structured error details and info fallback verified."
     },
     "docs": {
       "status": "PASS",
@@ -64,32 +64,47 @@
       "notes": "Allowlisted UTF-8 public source scanned; runtime/caches/artifacts/environment/parent history excluded."
     },
     "remote_ci": {
-      "status": "NOT_RUN",
-      "notes": "Workflow source prepared; remote source upload pending."
+      "status": "PASS",
+      "validated_commit": "e3f43e0a5f5e01369b46dcf4901c73578ddc2746",
+      "url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37302423775",
+      "matrix_jobs": 14,
+      "notes": "All baseline runtime matrix jobs passed; final follow-up hardening source is locally verified and awaiting another remote run."
+    },
+    "content": {
+      "status": "PASS",
+      "markdown_assets": 23,
+      "verified_links": 104,
+      "notes": "Tailored EN/RU/UZ and channel-specific payloads prepared; no external posts or registrations."
     }
   },
   "channels": [
     {
       "id": "github",
       "name": "GitHub",
-      "status": "READY",
-      "url": null,
+      "status": "PUBLISHED",
+      "url": "https://github.com/usnuz/fragment-donor-sdk",
       "planned_url": "https://github.com/usnuz/fragment-donor-sdk",
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "Independent public repository created; reviewed SDK source upload pending."
+      "observed_at": "2026-10-05T11:36:00Z",
+      "evidence": [
+        "Git push initial commit e3f43e0 to owned independent public repository succeeded.",
+        "Public GitHub CI run 37302423775 completed success, 14 jobs."
+      ],
+      "notes": "Independent SDK-only source published; no production history or secrets included."
     },
     {
       "id": "github-pages",
       "name": "GitHub Pages",
-      "status": "READY",
-      "url": null,
+      "status": "PUBLISHED",
+      "url": "https://usnuz.github.io/fragment-donor-sdk/",
       "planned_url": "https://usnuz.github.io/fragment-donor-sdk/",
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "Static site built/tested; hosting source configured, deployment pending."
+      "observed_at": "2026-10-05T11:36:00Z",
+      "evidence": [
+        "GitHub Pages run 37302424016 completed success.",
+        "Live Uzbek homepage returned HTTP 200 and expected canonical/title; same-topic EN/RU language navigation verified."
+      ],
+      "notes": "Static EN/RU/UZ docs published; final follow-up hardening deployment validation pending."
     },
     {
       "id": "gitlab",
@@ -336,13 +351,13 @@
     {
       "id": "vc-ru",
       "name": "vc.ru",
-      "status": "NOT_RUN",
+      "status": "NOT_ELIGIBLE",
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "Generated/free promotional launch is not eligible under researched rules; no paid route authorized. See PLATFORM_MATRIX.md."
     },
     {
       "id": "ru-stackoverflow",
@@ -553,5 +568,23 @@
       "evidence": [],
       "notes": "Generated promotional text is not eligible under researched platform rules; see PLATFORM_MATRIX.md."
     }
-  ]
+  ],
+  "live_api_probe": {
+    "method": "GET",
+    "url": "https://fragment.donor.uz/get-user-info/?username=durov",
+    "http_status": 400,
+    "reason": "Not a user",
+    "credential_free": true,
+    "purchase_attempted": false,
+    "observed_at": "2026-10-05T11:36:00Z",
+    "notes": "Observed upstream recipient error; no claim of successful user resolution or production purchase."
+  },
+  "artifact_checksums": {
+    "python_wheel_sha256": "110293109B6103A38CF0AEA46B954E85610EA7675F66A6A95FA2689689DD31B8",
+    "python_sdist_sha256": "F4D80CB6B45E0560D2F60FDB8A7980B7B5D809EB0F89F48041569BEAF2E68F13",
+    "npm_tarball_sha256": "75B030C0D2575156771B79423E3CF5EA13C3999E616647D0FE1C480C33C578BD",
+    "php_root_archive_sha256": "3D50CBF6BB53A5E56D43FBDE12809B120E6A807FBBCB174A3F1654568AFB95F1",
+    "nuget_sha256": "D82B938629EC7AA0857A40B6D70593112E0205FDFC9D5037F431900B1C44A869",
+    "notes": "Local builds; CI artifacts may differ in build timestamps/runtime provenance. Registry publication NOT_RUN."
+  }
 }

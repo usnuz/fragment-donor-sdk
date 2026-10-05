@@ -373,3 +373,26 @@ func TestCustomGlobalDefaultTransportDoesNotPanic(t *testing.T) {
 		t.Fatal("expected owned fallback transport")
 	}
 }
+
+func TestStructuredErrorDetailsPreserveReconciliationAndRedact(t *testing.T) {
+	f := loadFixture(t)
+	body, _ := json.Marshal(map[string]any{"ok": false, "info": "Transaction unconfirmed", "tx_hash": "SYNTHETIC_TX_HASH", "unconfirmed": true, "transient": true, "future_field": map[string]any{"balance": "9007199254740993.01", "echo": f.Credentials.Mnemonic, "cookie": "ANOTHER_SYNTHETIC_SECRET", "array": []any{f.Credentials.ProviderKey}}})
+	c := newMock(t, f, func(*http.Request) (*http.Response, error) { return response(400, body, nil), nil }, nil)
+	_, err := c.BuyStars(context.Background(), "durov", 50, "")
+	var apiErr *Error
+	if !errors.As(err, &apiErr) || apiErr.Message != "Transaction unconfirmed" {
+		t.Fatalf("info fallback missing: %v", err)
+	}
+	if string(apiErr.Details["tx_hash"]) != `"SYNTHETIC_TX_HASH"` || string(apiErr.Details["unconfirmed"]) != "true" || string(apiErr.Details["transient"]) != "true" {
+		t.Fatal("reconciliation fields lost")
+	}
+	encoded, _ := json.Marshal(apiErr.Details)
+	for _, secret := range []string{f.Credentials.Mnemonic, f.Credentials.ProviderKey, "ANOTHER_SYNTHETIC_SECRET"} {
+		if strings.Contains(string(encoded), secret) {
+			t.Fatal("structured details leaked credential")
+		}
+	}
+	if !strings.Contains(string(encoded), "9007199254740993.01") {
+		t.Fatal("extra decimal lost")
+	}
+}

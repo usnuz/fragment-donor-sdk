@@ -1,0 +1,108 @@
+# YouTube: script, recording checklist and metadata
+
+Status: READY AI-assisted script; video recording, editing, upload and public
+verification **NOT_RUN**. A script is not a published video. Channel access not
+assumed. All purchase screens are mocks, labelled on screen and in narration.
+
+## Metadata — EN
+
+Title: **Telegram Stars API: safe Python and Node SDK integration, no real purchase**
+
+Description:
+
+> A server-side walkthrough of Fragment Donor's four endpoints, typed Python and
+> Node.js clients, exact balance strings, 429/Retry-After and why purchase POSTs
+> never automatically retry. Every purchase/error demonstration is mocked; no
+> real Stars/Premium order or wallet transfer is performed.
+>
+> Independent project, not an official Telegram, Fragment or TON product.
+> No service API key is required, but wallet operations need sensitive credentials.
+> The inspected backend stores submitted credentials; SDK log redaction does not
+> prevent server retention. Keep secrets on a trusted server, never in browser
+> code or localStorage. Script prepared with AI assistance; the uploader must
+> review actual narration, visuals and synthetic-media disclosures.
+>
+> Source: https://github.com/usnuz/fragment-donor-sdk
+> Docs: https://usnuz.github.io/fragment-donor-sdk/en/
+> Release state: https://github.com/usnuz/fragment-donor-sdk/blob/main/publishing/publication-status.json
+
+Suggested chapters (adjust to actual final edit, do not publish wrong timestamps):
+
+```text
+00:00 Independent project and mock-only demo
+00:40 No service auth versus wallet credentials
+01:30 Four endpoints and form-urlencoded contract
+02:20 Python username quick start
+03:10 Server-only Node.js and decimal balance strings
+04:10 429 Retry-After and bounded read retries
+05:20 One purchase POST after timeout: mock request counter
+06:30 Credential retention and safe server configuration
+07:30 Source, multilingual docs and release status
+```
+
+Tags: `Telegram Stars API`, `Python SDK`, `Node.js API`, `Retry-After`, `SDK testing`.
+Avoid tags implying official affiliation, guaranteed earnings or successful gift.
+
+## Shot-by-shot narration
+
+1. **Opening, docs page.** “This is Fragment Donor, an independent SDK project.
+   We will inspect source and mocked requests; no real purchase happens today.
+   The clients are tools, not a guarantee that a wallet operation is risk-free.”
+2. **Contract table.** “Service auth is absent: no account, Authorization or
+   X-Api-Key. But purchase headers still include your Fragment Cookie and wallet
+   Mnemonic. Api-Key, when present, configures TonConsole, not service login.”
+3. **Source request model.** “Username goes in the lookup query. Stars amount and
+   Premium duration go in a form-urlencoded POST, not JSON. Stars accept 50 to
+   one million; Premium durations are 3, 6 or 12 months. We'll never place a real
+   mnemonic in this terminal.”
+4. **Python mocked lookup test.** “The typed result preserves extra server fields.
+   This test uses a synthetic response. A real lookup would be read-only and
+   consume one request from the shared quota; it's not a payment preapproval.”
+5. **Node build/types and mock balance.** “Node 20+ native fetch is server-only.
+   Browser Cookie rules and mnemonic exposure rule out frontend purchase code.
+   Balances remain strings so a large decimal is not rounded by Number.”
+6. **429 test.** “The normal quota is shared across the four endpoints. Retry-After
+   can be seconds or an HTTP date; JSON wait hints also count. Longest valid hint
+   wins. Default retry and waiting are off. Reads can opt into at most two
+   retries and 60 seconds per wait; a longer hint is not shortened.”
+7. **Mock purchase timeout, request counter.** “Here the injected transport times
+   out after dispatch. The purchase counter remains one. Retrying could spend
+   twice: this backend has no idempotency guarantee or purchase-status endpoint.
+   Production code must reconcile wallet and recipient evidence first.”
+8. **Security guide.** “Client redaction and redirect refusal reduce accidental
+   leakage. They cannot change server retention: the inspected backend records
+   submitted credentials. Use a dedicated minimally funded wallet and evaluate
+   operator access. Do not put seeds in public Postman variables or screenshots.”
+9. **Closing, status JSON.** “Seven source packages and three documentation
+   languages are available in the project. A local build is not a registry
+   release; check the actual state before copying an install command. The source
+   tests can be run without funding any wallet.”
+
+## Recording and upload checklist
+
+- Use a clean browser profile and terminal with synthetic fixtures only. Turn off
+  password-manager popups, notification overlays, cloud sync and secret history.
+- Run local mock tests, not purchase commands or a funded wallet balance. Keep
+  `FRAGMENT_ALLOW_PURCHASES` unset. Do not expose environment dumps.
+- Show “MOCK — NO REAL PAYMENT” during every purchase/error clip. Avoid staged
+  success animations that could be mistaken for real blockchain completion.
+- Capture code/read-only docs at legible resolution. Inspect every frame/audio
+  cut for tokens, cookies, wallet addresses or unrelated private user data.
+- Actual uploader reviews the [altered/synthetic media rule](https://support.google.com/youtube/answer/14328491).
+  Realistic synthetic people/voices/scenes can require disclosure; do not hide
+  synthetic endorsement or claim a human testimonial.
+- Upload unlisted first with authorized channel access; check captions, chapters,
+  links, rights and visibility. Publish only after review. Record actual video URL.
+
+## RU / UZ localization
+
+RU title: **Telegram Stars API: Python/Node SDK без реальной покупки**.
+Opening: “Независимый проект, не официальный продукт Telegram/Fragment/TON.
+Все платежи на экране — mocks. Backend хранит переданные credentials; после
+таймаута покупку нельзя автоматически повторять.” Use the Russian docs link.
+
+UZ title: **Telegram Stars API: Python/Node SDK, haqiqiy xaridsiz misol**.
+Opening: “Mustaqil loyiha, Telegram/Fragment/TON rasmiy mahsuloti emas.
+Ekrandagi to‘lovlar mock. Backend credentiallarni saqlaydi; timeoutdan keyin
+xarid avtomatik takrorlanmaydi.” Use the Uzbek docs link. Translate narration
+accurately after technical review; do not claim these language tracks are recorded.
