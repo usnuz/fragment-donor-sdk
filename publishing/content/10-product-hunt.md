@@ -1,8 +1,11 @@
 # Product Hunt launch pack
 
-Status: READY AI-generated text, five local synthetic gallery frames, CSS-only
-fixture viewer and 50-second rendered video. **NOT_RUN** Product Hunt submission
-and approval; public deployment/upload not inferred from local files. Eligible
+Status: READY AI-generated launch text. Public documentation, CSS-only fixture
+demo and rendered media delivery have been verified; five synthetic gallery
+frames and the 50-second silent video remain explicitly rendered, not live
+payment evidence. One existing Uzbek-docs JPEG is LOCAL_REVIEWED baseline-only;
+its new public URL is NOT_YET_VERIFIED. **NOT_RUN** Product Hunt submission and
+approval. A verified public Pages URL does not establish a Product Hunt listing. Eligible
 publication is authorized, but account/onboarding and maker review remain.
 No invented customer quote, vote, download or payment.
 
@@ -30,7 +33,7 @@ Description:
 > This is not an official Telegram, Fragment or TON product. Direct API service
 > auth is not required, but wallet operations need sensitive credentials; the
 > inspected backend stores submitted credentials. SDK redaction does not remove
-> that retention. Version 0.1.0 source/builds are prepared; consult publication
+> that retention. Version 0.1.0 is available as a verified GitHub release; consult publication
 > status before using any registry install command. No real purchase is shown.
 
 ## Maker comment — copy after identity review
@@ -50,7 +53,7 @@ Description:
 Only use first-person maker text if the publishing account is genuinely the
 maintainer. Do not ask users to upvote or privately message voters.
 
-## Actual local gallery and demo assets
+## Actual gallery, baseline screenshot and demo assets
 
 | Asset | Actual content | Safety / state |
 | --- | --- | --- |
@@ -59,6 +62,7 @@ maintainer. Do not ask users to upvote or privately message voters.
 | [03-retry-errors.png](../media/03-retry-errors.png) | Synthetic 429/503, bounded read waits and no purchase replay | Not measured production telemetry |
 | [04-unknown-purchase.png](../media/04-unknown-purchase.png) | HTTP 400 `unconfirmed:true` and synthetic reconciliation fields | Not validation rejection or transaction confirmation |
 | [05-retention-evidence.png](../media/05-retention-evidence.png) | Backend credential-retention boundary | No zero-retention, official-affiliation or security-certification claim |
+| [docs-uz-baseline.jpg](../media/docs-uz-baseline.jpg) | Existing public Uzbek-docs browser screenshot, 1265×712 | Earlier baseline, predates new demo/footer; not newly captured current UI or payment proof; new public delivery pending |
 
 The five PNGs are 1920×1080; editable SVG companions and SHA-256/size records are
 in [assets.json](../media/assets.json). Inspect the current form's dimensions
@@ -67,11 +71,18 @@ before selecting/cropping. [walkthrough-en.mp4](../media/walkthrough-en.mp4) is 
 [SRT](../media/walkthrough-en.srt); it is not a screencast, live SDK execution,
 human narration or successful purchase. Local existence does not prove upload.
 
+The JPEG is a byte-for-byte copy of an already visually reviewed public-docs
+capture, not a generated mock image. Its [separate metadata](../media/docs-uz-baseline.json)
+and [probe/hash verification](../media/docs-uz-baseline.verification.json) bind
+the original 117,338 bytes. Exact capture time is unknown: the recorded
+2026-10-05T11:51:37Z value is only source-file modification time. Preserve its
+**earlier baseline — not current UI** caption when using it in a gallery.
+
 The local fixture viewer `site/demo/index.html` ([generator](../../demo/build.mjs)) switches pre-rendered
 responses for four operations using CSS/radio controls: no executable JavaScript,
-API request, secret input or invented dispatch counter. Intended public URL:
-`https://usnuz.github.io/fragment-donor-sdk/demo/`; reopen it after deployment
-before submitting as a live demo. Source tests, not this viewer, establish request
+API request, secret input or invented dispatch counter. Verified public demo:
+`https://usnuz.github.io/fragment-donor-sdk/demo/`; recheck it before submitting.
+Source tests, not this viewer, establish request
 counts. This is a mock-only product preview, not completed platform launch.
 
 ## Submission checklist

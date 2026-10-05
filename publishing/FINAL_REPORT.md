@@ -6,49 +6,60 @@ registry release, platform acceptance and search indexing are separate states.
 
 ## Current outcome and remote gate
 
-Seven SDKs and local artifacts, multilingual docs, guarded contract exports and
-tailored publication materials are prepared. Source commit
-[`841b3e67806df1bdf13ab3ab0994da0ad563e0f8`](https://github.com/usnuz/fragment-donor-sdk/commit/841b3e67806df1bdf13ab3ab0994da0ad563e0f8)
-was pushed to the independent public SDK repository.
+Seven SDKs, multilingual docs, guarded contract exports and tailored publication
+materials are implemented. The stable [v0.1.0 release](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.0)
+is public with nine downloadable assets from exact source commit
+[`9e8a9f8577936a37ed750f55f6604e475a545ad9`](https://github.com/usnuz/fragment-donor-sdk/commit/9e8a9f8577936a37ed750f55f6604e475a545ad9).
 
-The hardened [CI run 37343465579](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37343465579)
-passed all **14 runtime jobs**. The earlier run 37341789648 correctly rejected
-an unsupported NuGet metadata filename; .NET 8 is now pinned and the exact
-known official metadata forms have ten positive/negative regressions. Subsequent
-PHP/.NET README safety edits and this report await their own pre-tag CI.
+The exact release source's [CI run 37345045005](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345045005)
+passed all **14 runtime jobs**. [Release run 37345310643](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345310643)
+also succeeded: validate + 14 reusable CI jobs + publication. An earlier run
+correctly rejected an unsupported NuGet metadata filename; .NET 8 is pinned and
+the exact known official forms now have ten positive/negative regressions.
+Safe PHP/.NET README changes were included in the validated release source.
 
-Root `v0.1.0` is **not yet tagged/published**. Go `go/v0.1.0`, external
-module-fetch/pkg.go.dev observation and release attestation verification are
-pending. No registry, social, community, Product Hunt or YouTube publication is
-verified. No backend deployment or real Stars/Premium purchase was performed.
+Root `v0.1.0` and Go `go/v0.1.0` point to that exact commit. A clean public
+Go consumer fetched the version with no `replace`, verified standard sumdb
+checksums and passed mocked functional/security checks. The [exact pkg.go.dev version](https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0)
+returned HTTP 200 at **2026-10-05 17:20:07 UTC**. All nine release signatures
+were checked in the actual release job before publication; independently
+downloaded files then passed integrity, metadata and archive-content checks.
+
+The other **six package registries**, external Postman listing, social/community
+posts, Product Hunt and YouTube publication are **not verified/published**.
+No backend deployment or real Stars/Premium purchase was performed.
+Later evidence/media-only main-branch changes do not move the released tags.
 
 All eligible publication is authorized; access, publisher ownership and platform
 rules still limit execution. This report does not claim the whole original plan
 is complete.
 
-## Source/docs: verified baseline versus new update
+## Verified public source, docs and contract exports
 
 | Resource | Public location | Evidence boundary |
 | --- | --- | --- |
-| SDK-only source | [GitHub](https://github.com/usnuz/fragment-donor-sdk) | Source published; new commit linked above. No parent production history. |
-| Docs | [Root](https://usnuz.github.io/fragment-donor-sdk/), [EN](https://usnuz.github.io/fragment-donor-sdk/en/), [RU](https://usnuz.github.io/fragment-donor-sdk/ru/), [UZ](https://usnuz.github.io/fragment-donor-sdk/uz/) | Pages run 37343596567 success; all 61 live pages independently verified. |
+| SDK-only source | [GitHub](https://github.com/usnuz/fragment-donor-sdk) | Source/release published; exact source linked above. No parent production history. |
+| Docs | [Root](https://usnuz.github.io/fragment-donor-sdk/), [EN](https://usnuz.github.io/fragment-donor-sdk/en/), [RU](https://usnuz.github.io/fragment-donor-sdk/ru/), [UZ](https://usnuz.github.io/fragment-donor-sdk/uz/) | Pages run 37345175590 success at release commit; all 61 live pages independently verified again. |
 | OpenAPI | [openapi.json](https://usnuz.github.io/fragment-donor-sdk/openapi.json) | Updated HTTP 200, four paths and explicit service no-auth verified. |
 | Postman collection | [postman.json](https://usnuz.github.io/fragment-donor-sdk/postman.json) | Updated guarded collection verified; not a Postman API Network listing. |
-| Postman environment | `https://usnuz.github.io/fragment-donor-sdk/postman.environment.json` | Public HTTP 200 and blank sensitive values independently verified. |
-| Synthetic demo | `https://usnuz.github.io/fragment-donor-sdk/demo/` | Public static demo/trust boundary plus PNG/MP4 HTTP 200 verified. |
+| Postman environment | [Empty-secret environment](https://usnuz.github.io/fragment-donor-sdk/postman.environment.json) | Public HTTP 200 and blank sensitive values independently verified. |
+| Synthetic demo | [Fixture viewer](https://usnuz.github.io/fragment-donor-sdk/demo/) | Public static demo/trust boundary plus PNG/MP4 HTTP 200 verified. |
+| Actual video | [50-second MP4](https://usnuz.github.io/fragment-donor-sdk/demo/media/walkthrough-en.mp4) | Silent rendered synthetic walkthrough, not real payment footage or a YouTube upload. |
+| Go index | [pkg.go.dev 0.1.0](https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0) | Version and public install verified; unrelated to Google/Bing indexing. |
 | Sitemap | [sitemap.xml](https://usnuz.github.io/fragment-donor-sdk/sitemap.xml) | Hosting is not webmaster submission/indexing. |
 
-Previous baseline source `3acfe4a47f4af86d33e2c6e1618e90f5821c34f9` had
-[CI 37305949417 success](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37305949417).
-Earlier live docs verification covered 61 static pages plus existing
-OpenAPI/Postman/sitemap/robots files. That does not prove the new guarded
-environment/demo/media or hardened release pipeline have been deployed.
+The fresh live route check at **2026-10-05 17:19 UTC** covered all 61 static
+pages and the guarded environment/demo/media, contract exports, sitemap/robots,
+language/canonical/hreflang and absence of executable JavaScript. The browser
+layout screenshot was captured earlier and is not new UI proof. Live checks
+were read-only and used the configured system proxy; no login workaround.
 
 ## Packages and conditional install commands
 
-All versions: **0.1.0**. Run these commands **only after the exact registry
-version/tag is published and freshly installed**. Before that use reviewed source
-or local artifacts; package names are not reservations.
+All versions: **0.1.0**. The **Go command works now**. The other six registry
+commands remain conditional: use them only after the exact registry version is
+published and freshly installed. Reviewed [GitHub release archives](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.0)
+are available now and separately consumer-tested; names are not reservations.
 
 | Runtime | Package | After verified publication |
 | --- | --- | --- |
@@ -60,7 +71,9 @@ or local artifacts; package names are not reservations.
 | Rust 1.99+ | `fragment-donor-sdk` | `cargo add fragment-donor-sdk@0.1.0` |
 | Ruby 3.2+ | `fragment-donor-sdk` | `gem install fragment-donor-sdk -v 0.1.0` |
 
-Go requires **`go/v0.1.0`**, not only a root release tag. npm's publisher
+Go's required **`go/v0.1.0`** exists, not only a root tag. Its standard module
+checksum is `h1:IC7mNlqI7N7I4ZLGQJW6e2TU8liwOzMpvrCW+FFKHlY=`.
+npm's publisher
 minimum Node 22.14/npm 11.5.1 is separate from SDK Node 20 support.
 
 ## Local native checks
@@ -80,18 +93,37 @@ test count. Synthetic credentials and mocked/local transports establish client
 behavior, not successful blockchain delivery or production wallet safety.
 
 Other local checks: 61 static pages, five demo tests, 24 content assets/123 link
-targets, 12 archive-security and 14 release-helper tests. Source review
-allowlisted 175 files, excluding caches, downloads, artifacts and production
+targets (now 128 with screenshot material), 12 archive-security and 14 release-helper
+tests. Source review allowlisted 178 files, excluding caches, downloads, artifacts and production
 history. Known-pattern secret scans are defense in depth, not proof of absolute
 secrecy.
 
 Five native SVG/PNG 1920×1080 frames and an actual **50-second silent H.264
 synthetic video**, English captions/subtitles, are prepared. They are rendered
 diagrams, not screencast/live transaction footage/human narration or a YouTube
-upload. [Actual media pack](content/10-product-hunt.md). The CSS-only viewer makes
+upload. A separate, unchanged **1265×712 existing UZ docs screenshot** is included
+and hash-bound; it predates the current demo/footer, exact capture time is unknown,
+and it is not a newly captured current UI or payment proof.
+[Actual media pack](content/10-product-hunt.md). The CSS-only viewer makes
 no JavaScript/API request, accepts no secrets and invents no dispatch counter.
 
-## Prepared provenance/release gates
+## Fresh consumers of the actual public release
+
+Downloaded packages, not substituted local builds, were used in clean consumers.
+Python wheel (offline) and sdist (isolated public build dependencies), npm tarball
+(offline, scripts disabled), PHP ZIP (offline Composer), .NET NUPKG (local feed)
+and Ruby gem (isolated local gem home) passed their functional/security smoke.
+Go fetched the public version with no local replacement and verified sumdb.
+The actual Rust crate passed exact eight-file contents checks and a fresh offline
+Rust 1.99 consumer build with 121 cached dependencies, then four mocked operations,
+unknown-outcome, decimal/extras, redaction and no-duplicate checks. Initial local
+dlltool setup errors were resolved with existing LLVM flags, without installing
+a new toolchain. **All seven actual public release/module consumers passed**;
+the final four-language evidence was recorded at **2026-10-05 17:27:10 UTC**.
+Each smoke uses mocked transport, not paid production operations. This is
+post-download release verification, not proof of six-registry publication.
+
+## Executed provenance/release gates
 
 [release.yml](../.github/workflows/release.yml) uses commit-pinned actions and
 configured `actions/attest` v4 GitHub OIDC for nine exact assets: seven packages,
@@ -104,14 +136,24 @@ single-ecosystem selection and explicit confirmation. Its validation checks all
 nine files, hashes/metadata, successful release-run identity, matching root/Go
 tags and every signature before selected publication. Publisher ownership,
 OIDC/2FA and first-package setup remain owner tasks. A checksum or unsigned JSON
-is **not signed provenance**. No completed signing verification or SLSA Level 3
-claim is made. Exact account/environment fields: [runbook](PUBLISHING_RUNBOOK.md#owner-setup-fields).
+is **not signed provenance**. The [actual attestation](https://github.com/usnuz/fragment-donor-sdk/attestations/52907139)
+was generated and the release job verified each signature against the pinned
+workflow, release ref and exact source digest. Downloaded assets were separately
+verified against public release digests, `SHA256SUMS`, canonical provenance,
+successful owned Actions run and both tags. The signing evidence is the actual
+successful release-job step, not a newly invented local cryptographic verifier.
+No SLSA Level 3 or owner-immutable GitHub release-setting claim is made.
+Exact account/environment fields: [runbook](PUBLISHING_RUNBOOK.md#owner-setup-fields).
+
+Optional GitHub topic metadata update returned **HTTP 403**. Public topics are
+currently empty, despite the otherwise green release job. Owner metadata access
+is needed; source/release publication does not prove topics were set.
 
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**2 PUBLISHED, 7 BLOCKED_ACCESS, 7 NOT_ELIGIBLE, 29 NOT_RUN**. READY materials do
-not mean publication. GitHub/Pages baseline is published; new proof is pending.
+**3 PUBLISHED, 7 BLOCKED_ACCESS, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
+not mean publication. GitHub/Pages and Go module/index are verified.
 
 | # | Platform | Actual state |
 | --- | --- | --- |
@@ -124,7 +166,7 @@ not mean publication. GitHub/Pages baseline is published; new proof is pending.
 | 7 | npm | BLOCKED_ACCESS |
 | 8 | Packagist | BLOCKED_ACCESS |
 | 9 | NuGet | BLOCKED_ACCESS |
-| 10 | Go/pkg.go.dev | NOT_RUN |
+| 10 | Go/pkg.go.dev | PUBLISHED |
 | 11 | crates.io | BLOCKED_ACCESS |
 | 12 | RubyGems | BLOCKED_ACCESS |
 | 13 | Postman API Network | BLOCKED_ACCESS |
@@ -163,9 +205,12 @@ not mean publication. GitHub/Pages baseline is published; new proof is pending.
 
 ## Remaining work and non-negotiable boundaries
 
-Six registries plus Postman are **BLOCKED_ACCESS**: Chrome navigation was denied
-by saved browser permission; owner login/publisher setup is unverified. No
-alternate browser, extracted session or CLI authentication bypass was attempted.
+Six registries plus Postman are **BLOCKED_ACCESS**: after earlier saved-permission
+denials, Chrome now appears in browser inventory but cannot load its request-header
+policy. Inventory and one PyPI tab retry failed with
+`Unable to load browser request-header policy`. No login page was opened;
+owner login/publisher setup is unverified. No alternate browser, extracted session
+or CLI authentication bypass was attempted.
 Use normal login/2FA and [manual actions](manual-actions.md); never secrets in chat.
 
 NOT_ELIGIBLE concerns the current generated/free promotional format. HN, English
@@ -189,7 +234,8 @@ or transport/malformed replies may be unknown payment outcome. Preserve safe
 reconciliation details and examine wallet/recipient evidence before a new
 intentional dispatch; no backend idempotency or purchase-status endpoint exists.
 
-Next gates: verify the PackageCheck fix in green hardened CI, verify actual
-GitHub release/nine signatures/Go fetch and updated docs, then execute only
-accessible eligible registry/platform actions. Update this snapshot and status
-JSON with verified URLs/timestamps and fresh registry installs as proof arrives.
+Next gates: restore Chrome connection and complete human login/2FA, configure
+exact owner/publisher environments and topic metadata, then execute accessible
+eligible registry/platform actions. Reopen every actual registry version/post
+and perform fresh registry installs before updating PUBLISHED. Google/Bing/Yandex
+ownership and indexing remain independent owner tasks.

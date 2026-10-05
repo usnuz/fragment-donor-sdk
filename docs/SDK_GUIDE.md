@@ -6,6 +6,12 @@ TON product. Package names are not reservations; consult the
 commands. Source, installed artifact, registry release, and search indexing are
 separate states.
 
+Verified delivery: [GitHub v0.1.0 release](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.0)
+contains reviewed downloadable packages. The [Go 0.1.0 index](https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0)
+and `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.0` are verified public.
+PyPI, npm, Packagist, NuGet, crates.io and RubyGems publication remains blocked
+on owner access; a GitHub artifact install is not a registry install.
+
 ## Contract
 
 Base URL: `https://fragment.donor.uz`. There is **no service authentication**:

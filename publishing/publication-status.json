@@ -4,7 +4,7 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.0",
   "updated_on": "2026-10-05",
-  "scope": "All eligible SDK, registry and platform publication is authorized; execute available access only. Chrome access to six registries and Postman is currently blocked by saved permission. No production deploy or real payment.",
+  "scope": "All eligible SDK, registry and platform publication is authorized; execute available access only. GitHub release/docs and Go module/index are verified public. Chrome currently cannot load its browser request-header policy; six registry/Postman logins and publisher access remain unverified. No production deploy or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "backend_credential_retention": "Inspected backend persists submitted purchase credentials; SDK redaction does not prevent retention.",
@@ -62,20 +62,20 @@
     },
     "public_source_scan": {
       "status": "PASS",
-      "notes": "175 allowlisted files including six hash-bound visually reviewed synthetic media assets; packages/caches/runtime downloads/parent history excluded."
+      "notes": "178 allowlisted files including six hash-bound visually reviewed synthetic media binaries and one exact-hash existing docs baseline JPEG; packages/caches/runtime downloads/parent history excluded. Screenshot is not new current UI or payment proof."
     },
     "remote_ci": {
       "status": "PASS",
-      "validated_commit": "841b3e67806df1bdf13ab3ab0994da0ad563e0f8",
-      "url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37343465579",
+      "validated_commit": "9e8a9f8577936a37ed750f55f6604e475a545ad9",
+      "url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345045005",
       "matrix_jobs": 14,
-      "observed_at": "2026-10-05T16:58:02Z",
-      "notes": "All 14 hardened jobs passed including Go race, .NET 8 exact package gates and 10 metadata regressions. Subsequent PHP/.NET README safety and report edits await their own CI."
+      "observed_at": "2026-10-05T17:19:34Z",
+      "notes": "Exact release commit: all 14 hardened main CI jobs passed, including Go race, .NET 8 package gates/10 regressions and safe PHP/.NET README changes. Reusable release CI also passed all 14 jobs. Later publication-evidence/media-only changes are separate from the released SDK commit."
     },
     "content": {
       "status": "PASS",
       "markdown_assets": 24,
-      "verified_links": 123,
+      "verified_links": 128,
       "notes": "Tailored EN/RU/UZ and channel-specific payloads prepared; link targets checked locally. No external post/submission implied."
     },
     "release_helpers": {
@@ -88,7 +88,7 @@
       "status": "PASS",
       "png_frames": 5,
       "duration_seconds": 50,
-      "notes": "Actual rendered synthetic H.264 1920x1080 30fps silent MP4 with English subtitles; hashes, ffprobe and full decoding passed. Not a live transaction/screencast or YouTube upload."
+      "notes": "Actual rendered synthetic H.264 1920x1080 30fps silent MP4 with English subtitles; hashes, ffprobe and full decoding passed. Separate 1265x712 unchanged existing UZ docs baseline JPEG reviewed/probed and hash-bound. Not current UI/payment proof, live transaction/screencast or YouTube upload."
     }
   },
   "channels": [
@@ -99,13 +99,14 @@
       "url": "https://github.com/usnuz/fragment-donor-sdk",
       "planned_url": "https://github.com/usnuz/fragment-donor-sdk",
       "version": "0.1.0",
-      "observed_at": "2026-10-05T16:58:02Z",
+      "observed_at": "2026-10-05T17:19:34Z",
       "evidence": [
         "Git push final SDK/docs source commit 0e444c9710c907a5ee0c0b9da812d4d1e9bb3783 to owned independent public repository succeeded.",
         "Public GitHub CI run 37304917805 completed success; all 14 jobs independently verified.",
-        "Hardened source 841b3e67806df1bdf13ab3ab0994da0ad563e0f8: all 14 CI jobs passed in run 37343465579; .NET pin/metadata fix verified."
+        "Exact release source 9e8a9f8577936a37ed750f55f6604e475a545ad9: all 14 CI jobs passed in run 37345045005.",
+        "Public stable v0.1.0 release contains nine downloaded and SHA256/provenance-verified assets; release run 37345310643 succeeded and verified all nine cryptographic attestations."
       ],
-      "notes": "Independent SDK-only source published; no production history or secrets included."
+      "notes": "Independent SDK-only source/release published; production history excluded and known-pattern secret gates passed. Topics remain unset: optional release topic update returned HTTP403, not successful publication of metadata."
     },
     {
       "id": "github-pages",
@@ -114,13 +115,13 @@
       "url": "https://usnuz.github.io/fragment-donor-sdk/",
       "planned_url": "https://usnuz.github.io/fragment-donor-sdk/",
       "version": "0.1.0",
-      "observed_at": "2026-10-05T16:58:02Z",
+      "observed_at": "2026-10-05T17:19:34Z",
       "evidence": [
         "GitHub Pages run 37305009133 completed success for source commit 0e444c9710c907a5ee0c0b9da812d4d1e9bb3783, gated on successful SDK CI.",
         "Read-only live verification passed: 61 static pages plus sitemap/robots/OpenAPI/Postman returned HTTP 200 with expected languages, canonical/hreflang and no executable JavaScript.",
         "Live Uzbek homepage layout and same-topic EN/RU language navigation verified in the browser.",
-        "Pages run 37343596567 completed success for 841b3e67806df1bdf13ab3ab0994da0ad563e0f8; live synthetic demo independently returned HTTP200. Full updated live route verification in progress.",
-        "Updated external live check PASS:61staticpages+demo/media+contract files, reciprocalhreflang/canonical and empty sensitive environment."
+        "Pages run 37345175590 completed success for exact release commit 9e8a9f8577936a37ed750f55f6604e475a545ad9.",
+        "Fresh external live check PASS: 61 static pages plus demo/media and contract files; reciprocal hreflang/canonical and empty sensitive environment verified."
       ],
       "notes": "Updated EN/RU/UZ docs, static demo, PNG/MP4 and guarded Postman/environment independently verified. No search indexing claim."
     },
@@ -211,13 +212,18 @@
     {
       "id": "go-pkg-go-dev",
       "name": "Go/pkg.go.dev",
-      "status": "NOT_RUN",
-      "url": null,
-      "planned_url": null,
+      "status": "PUBLISHED",
+      "url": "https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0",
+      "planned_url": "https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0",
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "Versioned Go submodule release and external module-fetch verification pending; no registry login needed.",
+      "observed_at": "2026-10-05T17:20:07Z",
+      "evidence": [
+        "Public root v0.1.0 and go/v0.1.0 tags both resolve to exact release commit 9e8a9f8577936a37ed750f55f6604e475a545ad9.",
+        "Fresh Go 1.26.0 consumer fetched public v0.1.0 via proxy.golang.org and sum.golang.org with no replace; go mod verify and four mocked operations/security outcomes passed.",
+        "Module checksum h1:IC7mNlqI7N7I4ZLGQJW6e2TU8liwOzMpvrCW+FFKHlY= verified through standard sumdb.",
+        "Exact-version pkg.go.dev URL returned HTTP200 and displayed the package path/version; earlier transient HTTP404 no longer applies."
+      ],
+      "notes": "Public versioned module and package index verified. No registry account required, real API calls or wallet purchases performed.",
       "preparation_status": "READY"
     },
     {
@@ -645,23 +651,49 @@
     "notes": "Observed upstream recipient error; no claim of successful user resolution or production purchase."
   },
   "artifact_checksums": {
-    "python_wheel_sha256": "63602ACBC4F1EA206B4474AB9EA22EC0116312676F9D537ADE9514E32FED7E42",
-    "python_sdist_sha256": "A3DB808940556161E94C556CF06C7132ACD494D5456870A35895CD76CBD80B28",
-    "npm_tarball_sha256": "9B6A61139297A05BA391B2195DE38F7C0B0C7458AE50003F802D989DDD50FF3F",
-    "php_root_archive_sha256": "F9D7A40581ED6066FBA54DB5FD8C8D6F42F9202CCB636C10920BE9F4A74DE4A7",
-    "nuget_sha256": "9F233674B49D4A334020DBDC6D0AA9D47EE1B13308185AB034B07580E1B2D979",
-    "notes": "Local builds only; remote CI artifacts may differ in timestamps/runtime provenance. Six external registry publications BLOCKED_ACCESS.",
+    "python_wheel_sha256": "a8748a58f6d84786c465fea3a2e345d481f366d8c4d280085801a13fd7c08f98",
+    "python_sdist_sha256": "efde4b6db19b3df80e524050979dcdda6e46884cad59d1e15828cc891fc7cce0",
+    "npm_tarball_sha256": "9b6a61139297a05ba391b2195de38f7c0b0c7458ae50003f802d989ddd50ff3f",
+    "php_root_archive_sha256": "78459e174a04db2473952bd57789f3685a8ddcde23fc0d118e0d4ce7b15678d2",
+    "nuget_sha256": "fd3ce326cb3f423852fa4aad909a6b6110021c100398822f9c2c88835752e96c",
+    "rust_crate_sha256": "e10ba80b4a983e3f7e3d233d6975c7aac8469b0b1e710e742bf14e2c429d4229",
+    "ruby_gem_sha256": "023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea",
+    "provenance_sha256": "c47ace7f9ca721a929e66c17c86daaea9e90fbfb1b9aa8027e5ad12053ddad14",
+    "checksums_sha256": "0fba42121372aba009e6fcc30461a0b795918e6baad157274379f55555eaf2b4",
+    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. Six external registry publications remain BLOCKED_ACCESS.",
     "synthetic_video_sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7"
   },
   "release": {
-    "status": "READY",
+    "status": "PUBLISHED",
     "tag": "v0.1.0",
-    "url": null,
-    "notes": "Native builds ready; tag/release pipeline and nine signed-assets verification prepared but not yet run. Checksums alone are not cryptographic attestations."
+    "commit": "9e8a9f8577936a37ed750f55f6604e475a545ad9",
+    "url": "https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.0",
+    "published_at": "2026-10-05T17:03:22Z",
+    "observed_at": "2026-10-05T17:19:34Z",
+    "asset_count": 9,
+    "workflow_url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345310643",
+    "attestation_url": "https://github.com/usnuz/fragment-donor-sdk/attestations/52907139",
+    "signature_verification": "PASS: actual release-job gh attestation verify loop checked every exact asset against signer-workflow, refs/tags/v0.1.0 and source digest before publication.",
+    "download_verification": "PASS: exact nine files/hashes/canonical metadata, successful owned release workflow and matching root/Go tags independently verified after public download.",
+    "notes": "Stable public GitHub release, not six-registry publication. Checksums alone are not signatures; the successful signing/verification job is separate evidence. No SLSA Level3 or owner-immutable repository setting claim. Optional topics update failed HTTP403."
+  },
+  "public_release_consumers": {
+    "source_commit": "9e8a9f8577936a37ed750f55f6604e475a545ad9",
+    "python_wheel": "PASS: downloaded public wheel installed offline in fresh Python3.12.4 venv; mocked functional/security smoke.",
+    "python_sdist": "PASS: downloaded public sdist built with isolated public PyPI build requirements and installed in a separate fresh venv; mocked smoke.",
+    "typescript": "PASS: downloaded public npm tarball installed offline/ignore-scripts with Node24.18/npm11.16; mocked smoke.",
+    "php": "PASS: actual downloaded ten-member ZIP checked and installed offline with Composer/PHP8.2.34; four operations, decimals, unknown outcome and partial redaction.",
+    "dotnet": "PASS: actual downloaded eight-member NUPKG checked and restored from clean local feed with .NET8.0.425; functional/redaction smoke.",
+    "go": "PASS: public version fetched through standard Go proxy/sumdb without replace; go mod verify and four-operation/security smoke.",
+    "rust": "PASS: actual downloaded eight-file crate extracted and consumed by fresh offline Rust1.99.0 build (121 cached dependencies); four mocked operations, unknown outcome, exact decimals, future fields, redaction and no duplicate POST. Initial local dlltool setup failure resolved with existing LLVM flags, no toolchain installation.",
+    "ruby": "PASS: actual downloaded four-payload-file gem checked and installed into isolated local gem home with Ruby4.0.7; functional/security smoke.",
+    "observed_at": "2026-10-05T17:27:10Z",
+    "notes": "All seven public release/module consumers PASS. GitHub artifact consumer installs are not six-registry installs. All consumers use mocked transports; no real API/purchase requests."
   },
   "browser_access": {
     "status": "BLOCKED_ACCESS",
     "requested_browser": "Chrome",
-    "notes": "Earlier saved Chrome permission denied registry/Postman navigation; after host permissions changed the previous browser connection was unavailable. No completed login/publisher confirmation; no alternate-browser auth bypass. Restore Chrome via desktop Computer Use settings and @Chrome."
+    "observed_error": "Unable to load browser request-header policy. Retry the browser command.",
+    "notes": "Earlier saved Chrome permission denied registry/Postman navigation. After owner offered to re-enable access, Chrome became visible but inventory and one PyPI navigation retry could not load browser request-header policy. No login page opened or publisher setup confirmed; no alternate-browser/authentication bypass. Owner should review Computer Use > Chrome > Manage and restart/reconnect Chrome, then mention @Chrome."
   }
 }

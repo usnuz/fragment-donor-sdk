@@ -1,7 +1,8 @@
 # YouTube: script, recording checklist and metadata
 
-Status: READY AI-generated script and an actual local 50-second silent rendered
-synthetic video. Live screencast/narration, YouTube upload and public verification
+Status: READY AI-generated script and an actual 50-second silent rendered
+synthetic video with verified public Pages media delivery. YouTube upload and
+YouTube public-listing verification, live screencast and narration
 are **NOT_RUN**. Eligible publication is authorized; channel access and review
 are not assumed. Every purchase image is explicitly synthetic, not a real order.
 
@@ -14,6 +15,13 @@ labels; English subtitle track and [SRT](../media/walkthrough-en.srt) are provid
 describe these files, not a successful YouTube upload or live SDK execution.
 This is not a screen recording, human narration, customer testimonial or payment
 proof. The longer narration script below remains a separate unrecorded option.
+
+An existing [Uzbek-docs baseline JPEG](../media/docs-uz-baseline.jpg) is available
+as a separate reviewed still, with [its own metadata](../media/docs-uz-baseline.json).
+It predates the current demo/footer and is **not a new current-UI capture**,
+screen recording or payment proof. Exact capture time is unknown; its timestamp
+is only source-file modification time. Public delivery of this new JPEG remains
+NOT_YET_VERIFIED until its URL is checked after export.
 
 Use these exact chapters only for this 50-second file:
 

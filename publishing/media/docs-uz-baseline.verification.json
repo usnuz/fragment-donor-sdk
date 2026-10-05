@@ -1,0 +1,28 @@
+{
+  "kind": "existing public-documentation baseline screenshot; not a newly captured current UI",
+  "manifest": "docs-uz-baseline.json",
+  "checks": {
+    "exact_known_hash_and_size": "PASS",
+    "jpeg_magic_and_dimensions": "PASS",
+    "unchanged_existing_baseline": "PASS"
+  },
+  "current_ui_capture": false,
+  "payment_or_api_execution_proof": false,
+  "capture_time": "unknown; source-file modification time only",
+  "public_delivery": "NOT_YET_VERIFIED",
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "mjpeg",
+        "codec_type": "video",
+        "width": 1265,
+        "height": 712
+      }
+    ],
+    "format": {
+      "size": "117338"
+    }
+  }
+}

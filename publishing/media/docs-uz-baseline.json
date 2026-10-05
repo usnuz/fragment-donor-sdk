@@ -1,0 +1,27 @@
+{
+  "kind": "existing public-documentation baseline screenshot; not a newly captured current UI",
+  "file": "docs-uz-baseline.jpg",
+  "media_type": "image/jpeg",
+  "source_url": "https://usnuz.github.io/fragment-donor-sdk/uz/",
+  "intended_public_url": "https://usnuz.github.io/fragment-donor-sdk/demo/media/docs-uz-baseline.jpg",
+  "public_delivery": "NOT_YET_VERIFIED",
+  "width": 1265,
+  "height": 712,
+  "bytes": 117338,
+  "sha256": "c8e6dd90b653f8043ea83266dc2b7536327fb8b0c56b37400ae0b5261396133b",
+  "captured_at": null,
+  "observed_file_last_write_utc": "2026-10-05T11:51:37Z",
+  "timestamp_boundary": "The observed timestamp is only source-file modification time, not a trustworthy exact capture time.",
+  "visual_review": "Reviewed existing pixels: public Uzbek docs only; no browser chrome, account interface or visible credentials.",
+  "baseline_only": true,
+  "predates_current_demo_and_footer": true,
+  "new_current_ui_capture": false,
+  "payment_proof": false,
+  "api_request_evidence": false,
+  "image_modification": "none; original existing JPEG copied byte-for-byte",
+  "limitations": [
+    "Does not represent the latest demo/footer or newly captured current UI.",
+    "Does not demonstrate a purchase, payment confirmation or SDK API execution.",
+    "Local export readiness does not establish that the new JPEG URL is publicly served."
+  ]
+}
