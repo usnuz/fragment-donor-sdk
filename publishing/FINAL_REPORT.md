@@ -1,6 +1,6 @@
 # Fragment Donor SDK 0.1.0 — delivery and publication report
 
-Snapshot: **2026-10-05**. Owner: `usnuz`. Independent project, not an official
+Snapshot: **2026-10-06**. Owner: `usnuz`. Independent project, not an official
 Telegram, Fragment or TON product. Preparation, tests, source publication,
 registry release, platform acceptance and search indexing are separate states.
 
@@ -29,6 +29,14 @@ The other **six package registries**, external Postman listing, social/community
 posts, Product Hunt and YouTube publication are **not verified/published**.
 No backend deployment or real Stars/Premium purchase was performed.
 Later evidence/media-only main-branch changes do not move the released tags.
+
+PyPI access is now verified and a pending trusted publisher exists for
+`usnuz/fragment-donor-sdk`, `registry-publish.yml`, environment `pypi/python`.
+The owner-confirmed first publish run
+[37364162843](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37364162843)
+failed before validation: GitHub Actions did not acquire a hosted runner after
+multiple attempts during a reported service incident. The Python job was skipped,
+the public package remained absent, and no duplicate dispatch was sent.
 
 The [post-release delivery CI](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37348979185)
 also passed all 14 jobs at `e34ed219e453894b9a203b74418a6f5b05095fd2`;
@@ -168,7 +176,7 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**3 PUBLISHED, 7 BLOCKED_ACCESS, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
+**3 PUBLISHED, 6 BLOCKED_ACCESS, 1 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
 not mean publication. GitHub/Pages and Go module/index are verified.
 
 | # | Platform | Actual state |
@@ -178,7 +186,7 @@ not mean publication. GitHub/Pages and Go module/index are verified.
 | 3 | GitLab | NOT_RUN |
 | 4 | ReadTheDocs | NOT_RUN |
 | 5 | SourceForge | NOT_RUN |
-| 6 | PyPI | BLOCKED_ACCESS |
+| 6 | PyPI | READY |
 | 7 | npm | BLOCKED_ACCESS |
 | 8 | Packagist | BLOCKED_ACCESS |
 | 9 | NuGet | BLOCKED_ACCESS |
@@ -221,13 +229,11 @@ not mean publication. GitHub/Pages and Go module/index are verified.
 
 ## Remaining work and non-negotiable boundaries
 
-Six registries plus Postman are **BLOCKED_ACCESS**: after earlier saved-permission
-denials, Chrome now appears in browser inventory but cannot load its request-header
-policy. Inventory and one PyPI tab retry failed with
-`Unable to load browser request-header policy`. No login page was opened;
-owner login/publisher setup is unverified. No alternate browser, extracted session
-or CLI authentication bypass was attempted.
-Use normal login/2FA and [manual actions](manual-actions.md); never secrets in chat.
+PyPI is **READY**, not PUBLISHED: access and the pending publisher are verified,
+but the first run failed before execution because GitHub did not allocate a hosted
+runner. npm, Packagist, NuGet, crates.io, RubyGems and Postman remain
+**BLOCKED_ACCESS** pending their own login/ownership checks. Use normal login/2FA
+and [manual actions](manual-actions.md); never put secrets in chat.
 
 NOT_ELIGIBLE concerns the current generated/free promotional format. HN, English
 Stack Overflow, Habr, HackerNoon and restricted subreddits must not receive
@@ -250,8 +256,9 @@ or transport/malformed replies may be unknown payment outcome. Preserve safe
 reconciliation details and examine wallet/recipient evidence before a new
 intentional dispatch; no backend idempotency or purchase-status endpoint exists.
 
-Next gates: restore Chrome connection and complete human login/2FA, configure
-exact owner/publisher environments and topic metadata, then execute accessible
+Next gates: obtain action-time approval for a single replacement PyPI dispatch,
+complete human login/2FA for the other registries, configure their exact
+owner/publisher environments and topic metadata, then execute accessible
 eligible registry/platform actions. Reopen every actual registry version/post
 and perform fresh registry installs before updating PUBLISHED. Google/Bing/Yandex
 ownership and indexing remain independent owner tasks.

@@ -8,9 +8,10 @@ Independent project: no affiliation with Telegram, Fragment or TON.
 
 The owner authorized all **eligible** publication, not only GitHub/Pages.
 Authorization does not bypass a platform's rules, login, ownership, editorial
-review, or paid-plan approval. Browser access to PyPI, npm, Packagist, NuGet,
-crates.io, RubyGems and Postman is currently **BLOCKED_ACCESS** by the saved tool
-permission; no publication on those platforms has been verified. Do not treat a
+review, or paid-plan approval. PyPI access and its pending trusted publisher are
+verified, but run 37364162843 failed before execution when GitHub Actions could
+not assign a hosted runner; no PyPI publication occurred. Access to npm,
+Packagist, NuGet, crates.io, RubyGems and Postman remains unverified. Do not treat a
 prepared workflow or package as a completed registry release. Other channels
 remain NOT_RUN until their own access, eligibility and actual submission checks.
 See [manual actions](manual-actions.md) and the authoritative
@@ -31,7 +32,7 @@ permission by extracting a session cookie or credential.
    transactions, or a commercial SaaS frontend.
 4. Run the root GitHub CI workflow; inspect failed jobs rather than treating
    source generation as a test pass. Keep runtime and registry status separate.
-5. Re-check registry names immediately before first release. On 2026-10-05 all
+5. Re-check registry names immediately before first release. On 2026-10-06 all
    six queried package metadata endpoints returned HTTP 404. This is availability
    evidence at that instant, not a reservation or publisher authorization.
 6. Confirm publisher account ownership, 2FA, trusted-publisher settings, and
@@ -120,7 +121,7 @@ in this repository, an issue, a workflow input, or chat.
 
 | Workflow package | Registry/package | GitHub environment | First-release owner action |
 | --- | --- | --- | --- |
-| `python` | PyPI `fragment-donor-sdk` | `pypi` | In account publishing settings, create a pending GitHub publisher for the new project, or configure the existing owned project. |
+| `python` | PyPI `fragment-donor-sdk` | `pypi/python` | Pending publisher created and verified for `usnuz/fragment-donor-sdk` + `registry-publish.yml`. Run 37364162843 did not execute because GitHub failed to allocate a runner; owner confirmation is required before a new dispatch. |
 | `node` | npm `fragment-donor-sdk` | `npm` | Configure the package's GitHub Actions Trusted Publisher. If settings require an existing package, the owner must bootstrap its first release securely before that configuration is available. Do not assume the name is reserved. |
 | `dotnet` | NuGet `FragmentDonor.Sdk` | `nuget` | Add a trusted-publishing policy permitting this package/new version; set environment variable `NUGET_USER` to the actual NuGet profile name, not an email. |
 | `rust` | crates.io `fragment-donor-sdk` | `crates-io` | Inspect the current publisher UI. If no pending/new-crate publisher is supported, the owner must perform the first publication with securely configured Cargo credentials, then add the GitHub publisher for later versions. Do not republish the same immutable version. |

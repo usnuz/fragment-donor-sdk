@@ -9,8 +9,10 @@ separate states.
 Verified delivery: [GitHub v0.1.0 release](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.0)
 contains reviewed downloadable packages. The [Go 0.1.0 index](https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0)
 and `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.0` are verified public.
-PyPI, npm, Packagist, NuGet, crates.io and RubyGems publication remains blocked
-on owner access; a GitHub artifact install is not a registry install.
+PyPI has a verified pending trusted publisher, but its first publish run was not
+acquired by a GitHub-hosted runner during the 2026-10-06 Actions incident; no
+PyPI project/version exists yet. npm, Packagist, NuGet, crates.io and RubyGems
+still require owner-access setup. A GitHub artifact install is not a registry install.
 
 ## Contract
 
@@ -122,8 +124,9 @@ the origin-root property: project repository access alone cannot verify or edit
 
 ## Publication workflow and actual availability
 
-Eligible external publication is authorized, but registry/Postman browser access
-is currently blocked by saved permission. Prepared release workflows do not
+Eligible external publication is authorized. PyPI browser access and its pending
+publisher are verified; the first publish run failed before execution because a
+hosted runner was not acquired. Other registry/Postman access is unverified. Prepared release workflows do not
 prove publication: [release.yml](../.github/workflows/release.yml) builds tested
 GitHub assets and the Go submodule tag; [registry-publish.yml](../.github/workflows/registry-publish.yml)
 requires explicit manual confirmation for one configured publisher/environment

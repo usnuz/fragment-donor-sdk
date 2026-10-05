@@ -1,20 +1,14 @@
 # Manual actions requiring owner access
 
-## Restore the requested Chrome connection
+## Current owner decisions
 
-Earlier registry/Postman navigation was denied by a saved browser permission.
-After host permissions changed the previous browser connection was unavailable.
-The latest retry finds Chrome but fails with
-`Unable to load browser request-header policy`; no login page was opened.
-Host full access does not itself confirm website permissions or registry login.
-In the desktop app open Settings > Computer Use, reconnect Chrome if needed,
-then use Chrome's Manage to remove the relevant blocked-site entries and allow
-only intended destinations. Mention @Chrome in this chat after connecting.
-Restart Chrome and reopen its ChatGPT extension if the connection still fails,
-then recheck that the desktop browser entry shows Manage. These are official
-connection troubleshooting steps, not a guaranteed fix for this exact error.
-Complete login and 2FA yourself; never paste passwords, seed words or tokens here.
-See [official OpenAI browser extension instructions](https://learn.chatgpt.com/docs/chrome-extension).
+Chrome access is working. PyPI account `shohzodbek`, the untouched existing
+`django-open-bot` project, and the new pending publisher were verified. The
+owner-confirmed run [37364162843](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37364162843)
+failed before any validation or upload because GitHub Actions did not assign a
+hosted runner during a service incident. The Python publish job was skipped.
+Do not re-run or dispatch a replacement until the owner gives a new action-time
+confirmation; first confirm the incident is resolved and the PyPI URL remains 404.
 
 First access batch: [PyPI](https://pypi.org/), [npm](https://www.npmjs.com/),
 [Packagist](https://packagist.org/), [NuGet](https://www.nuget.org/),
@@ -27,9 +21,9 @@ scoped GitHub publishing secret/trusted publisher yourself.
 
 The owner now authorizes all eligible publication. The remaining limitation is
 access/policy/readiness, not an owner decision to defer every other platform.
-The unavailable browser policy currently prevents opening PyPI, npm, Packagist,
-NuGet, crates.io, RubyGems and Postman. No verified publication on those seven
-services is claimed. GitHub v0.1.0 and the public Go module/pkg.go.dev are verified.
+Login/ownership on npm, Packagist, NuGet, crates.io, RubyGems and Postman is still
+unverified. No publication on those six services is claimed. GitHub v0.1.0 and
+the public Go module/pkg.go.dev are verified; PyPI is READY but not published.
 
 GitHub topics remain unset because the optional release action received HTTP403.
 Using the genuine owner's repository UI, copy only the reviewed topic names from
@@ -41,7 +35,7 @@ optional launch metadata or extract stored credentials.
    intended, sign in to each actual owner account, complete email/required 2FA,
    and confirm package ownership. Configure GitHub owner `usnuz`, repository
    `fragment-donor-sdk`, filename `registry-publish.yml`; exact environments are
-   `pypi`, `npm`, `nuget`, `crates-io`, `rubygems`, `packagist`, `go-module`.
+   `pypi/python`, `npm`, `nuget`, `crates-io`, `rubygems`, `packagist`, `go-module`.
    [Owner setup fields](PUBLISHING_RUNBOOK.md#owner-setup-fields) lists pending
    publishers, `NUGET_USER`, Packagist initial submission and protected credentials.
    npm's publisher requires Node 22.14+/npm 11.5.1+, not the SDK runtime minimum.
