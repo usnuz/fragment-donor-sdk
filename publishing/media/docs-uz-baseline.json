@@ -4,7 +4,12 @@
   "media_type": "image/jpeg",
   "source_url": "https://usnuz.github.io/fragment-donor-sdk/uz/",
   "intended_public_url": "https://usnuz.github.io/fragment-donor-sdk/demo/media/docs-uz-baseline.jpg",
-  "public_delivery": "NOT_YET_VERIFIED",
+  "public_delivery": "PUBLISHED",
+  "public_verification": {
+    "observed_at": "2026-10-05T17:35:22Z",
+    "http_status": 200,
+    "exact_bytes_and_sha256": "PASS"
+  },
   "width": 1265,
   "height": 712,
   "bytes": 117338,
@@ -22,6 +27,6 @@
   "limitations": [
     "Does not represent the latest demo/footer or newly captured current UI.",
     "Does not demonstrate a purchase, payment confirmation or SDK API execution.",
-    "Local export readiness does not establish that the new JPEG URL is publicly served."
+    "Public delivery verifies the reviewed image bytes, not current UI or payment execution."
   ]
 }

@@ -64,6 +64,26 @@
       "status": "PASS",
       "notes": "178 allowlisted files including six hash-bound visually reviewed synthetic media binaries and one exact-hash existing docs baseline JPEG; packages/caches/runtime downloads/parent history excluded. Screenshot is not new current UI or payment proof."
     },
+    "public_history_scan": {
+      "status": "PASS",
+      "validated_commit": "e34ed219e453894b9a203b74418a6f5b05095fd2",
+      "observed_at": "2026-10-05T17:32:03Z",
+      "commits": 8,
+      "reachable_objects": 430,
+      "blobs": 298,
+      "distinct_paths": 178,
+      "scanned_bytes": 3845558,
+      "notes": "Five known credential patterns and production-history/symlink/gitlink/env/database/runtime/build/unapproved-root checks: zero findings. Single initial root contains one allowlisted file. Local reachable refs only; not proof of absence of arbitrary secrets or unreachable/external data."
+    },
+    "post_release_delivery_ci": {
+      "status": "PASS",
+      "validated_commit": "e34ed219e453894b9a203b74418a6f5b05095fd2",
+      "url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37348979185",
+      "matrix_jobs": 14,
+      "pages_url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37349102133",
+      "observed_at": "2026-10-05T17:35:22Z",
+      "notes": "All14 delivery CI jobs and same-commit Pages deployment succeeded. New baseline JPEG independently returned HTTP200 with exact117338bytes/SHA256; later metadata-only evidence updates do not move release tags or change screenshot bytes."
+    },
     "remote_ci": {
       "status": "PASS",
       "validated_commit": "9e8a9f8577936a37ed750f55f6604e475a545ad9",
@@ -75,8 +95,8 @@
     "content": {
       "status": "PASS",
       "markdown_assets": 24,
-      "verified_links": 128,
-      "notes": "Tailored EN/RU/UZ and channel-specific payloads prepared; link targets checked locally. No external post/submission implied."
+      "verified_links": 133,
+      "notes": "Tailored EN/RU/UZ and channel-specific payloads prepared; 133 local/generated-site targets checked. Six parser regressions cover directory pages/static assets, foreign/prefix/traversal rejection. No external post/submission implied."
     },
     "release_helpers": {
       "status": "PASS",
@@ -88,7 +108,7 @@
       "status": "PASS",
       "png_frames": 5,
       "duration_seconds": 50,
-      "notes": "Actual rendered synthetic H.264 1920x1080 30fps silent MP4 with English subtitles; hashes, ffprobe and full decoding passed. Separate 1265x712 unchanged existing UZ docs baseline JPEG reviewed/probed and hash-bound. Not current UI/payment proof, live transaction/screencast or YouTube upload."
+      "notes": "Actual rendered synthetic H.264 1920x1080 30fps silent MP4 with English subtitles; hashes, ffprobe and full decoding passed. Separate 1265x712 unchanged existing UZ docs baseline JPEG reviewed/probed and hash-bound; public HTTP200/exact bytes/hash verified. Not current UI/payment proof, live transaction/screencast or YouTube upload."
     }
   },
   "channels": [
@@ -99,7 +119,7 @@
       "url": "https://github.com/usnuz/fragment-donor-sdk",
       "planned_url": "https://github.com/usnuz/fragment-donor-sdk",
       "version": "0.1.0",
-      "observed_at": "2026-10-05T17:19:34Z",
+      "observed_at": "2026-10-05T17:35:22Z",
       "evidence": [
         "Git push final SDK/docs source commit 0e444c9710c907a5ee0c0b9da812d4d1e9bb3783 to owned independent public repository succeeded.",
         "Public GitHub CI run 37304917805 completed success; all 14 jobs independently verified.",
@@ -115,13 +135,14 @@
       "url": "https://usnuz.github.io/fragment-donor-sdk/",
       "planned_url": "https://usnuz.github.io/fragment-donor-sdk/",
       "version": "0.1.0",
-      "observed_at": "2026-10-05T17:19:34Z",
+      "observed_at": "2026-10-05T17:35:22Z",
       "evidence": [
         "GitHub Pages run 37305009133 completed success for source commit 0e444c9710c907a5ee0c0b9da812d4d1e9bb3783, gated on successful SDK CI.",
         "Read-only live verification passed: 61 static pages plus sitemap/robots/OpenAPI/Postman returned HTTP 200 with expected languages, canonical/hreflang and no executable JavaScript.",
         "Live Uzbek homepage layout and same-topic EN/RU language navigation verified in the browser.",
         "Pages run 37345175590 completed success for exact release commit 9e8a9f8577936a37ed750f55f6604e475a545ad9.",
-        "Fresh external live check PASS: 61 static pages plus demo/media and contract files; reciprocal hreflang/canonical and empty sensitive environment verified."
+        "Fresh external live check PASS: 61 static pages plus demo/media and contract files; reciprocal hreflang/canonical and empty sensitive environment verified.",
+        "Delivery source e34ed219e453894b9a203b74418a6f5b05095fd2 passed all14 CI jobs37348979185 and Pages37349102133; public baseline JPEG matched exact original bytes/SHA256."
       ],
       "notes": "Updated EN/RU/UZ docs, static demo, PNG/MP4 and guarded Postman/environment independently verified. No search indexing claim."
     },
@@ -661,7 +682,8 @@
     "provenance_sha256": "c47ace7f9ca721a929e66c17c86daaea9e90fbfb1b9aa8027e5ad12053ddad14",
     "checksums_sha256": "0fba42121372aba009e6fcc30461a0b795918e6baad157274379f55555eaf2b4",
     "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. Six external registry publications remain BLOCKED_ACCESS.",
-    "synthetic_video_sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7"
+    "synthetic_video_sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7",
+    "baseline_screenshot_sha256": "c8e6dd90b653f8043ea83266dc2b7536327fb8b0c56b37400ae0b5261396133b"
   },
   "release": {
     "status": "PUBLISHED",

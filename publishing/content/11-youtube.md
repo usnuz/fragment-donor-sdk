@@ -20,8 +20,9 @@ An existing [Uzbek-docs baseline JPEG](../media/docs-uz-baseline.jpg) is availab
 as a separate reviewed still, with [its own metadata](../media/docs-uz-baseline.json).
 It predates the current demo/footer and is **not a new current-UI capture**,
 screen recording or payment proof. Exact capture time is unknown; its timestamp
-is only source-file modification time. Public delivery of this new JPEG remains
-NOT_YET_VERIFIED until its URL is checked after export.
+is only source-file modification time. The [public JPEG](https://usnuz.github.io/fragment-donor-sdk/demo/media/docs-uz-baseline.jpg)
+returned HTTP200 with exact original bytes/hash verified at 2026-10-05 17:35 UTC;
+that does not establish a YouTube upload or newly captured current UI.
 
 Use these exact chapters only for this 50-second file:
 

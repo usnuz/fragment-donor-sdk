@@ -3,8 +3,8 @@
 Status: READY AI-generated launch text. Public documentation, CSS-only fixture
 demo and rendered media delivery have been verified; five synthetic gallery
 frames and the 50-second silent video remain explicitly rendered, not live
-payment evidence. One existing Uzbek-docs JPEG is LOCAL_REVIEWED baseline-only;
-its new public URL is NOT_YET_VERIFIED. **NOT_RUN** Product Hunt submission and
+payment evidence. One existing Uzbek-docs JPEG is reviewed baseline-only;
+its public URL returned HTTP200 with exact hash/bytes verified. **NOT_RUN** Product Hunt submission and
 approval. A verified public Pages URL does not establish a Product Hunt listing. Eligible
 publication is authorized, but account/onboarding and maker review remain.
 No invented customer quote, vote, download or payment.
@@ -62,7 +62,7 @@ maintainer. Do not ask users to upvote or privately message voters.
 | [03-retry-errors.png](../media/03-retry-errors.png) | Synthetic 429/503, bounded read waits and no purchase replay | Not measured production telemetry |
 | [04-unknown-purchase.png](../media/04-unknown-purchase.png) | HTTP 400 `unconfirmed:true` and synthetic reconciliation fields | Not validation rejection or transaction confirmation |
 | [05-retention-evidence.png](../media/05-retention-evidence.png) | Backend credential-retention boundary | No zero-retention, official-affiliation or security-certification claim |
-| [docs-uz-baseline.jpg](../media/docs-uz-baseline.jpg) | Existing public Uzbek-docs browser screenshot, 1265×712 | Earlier baseline, predates new demo/footer; not newly captured current UI or payment proof; new public delivery pending |
+| [docs-uz-baseline.jpg](../media/docs-uz-baseline.jpg) | Existing public Uzbek-docs browser screenshot, 1265×712 | Earlier baseline, predates new demo/footer; not newly captured current UI or payment proof; public image/hash verified |
 
 The five PNGs are 1920×1080; editable SVG companions and SHA-256/size records are
 in [assets.json](../media/assets.json). Inspect the current form's dimensions
@@ -77,6 +77,8 @@ and [probe/hash verification](../media/docs-uz-baseline.verification.json) bind
 the original 117,338 bytes. Exact capture time is unknown: the recorded
 2026-10-05T11:51:37Z value is only source-file modification time. Preserve its
 **earlier baseline — not current UI** caption when using it in a gallery.
+Public image: [verified baseline JPEG](https://usnuz.github.io/fragment-donor-sdk/demo/media/docs-uz-baseline.jpg).
+HTTP200 and exact original bytes/hash checked on 2026-10-05 at 17:35 UTC.
 
 The local fixture viewer `site/demo/index.html` ([generator](../../demo/build.mjs)) switches pre-rendered
 responses for four operations using CSS/radio controls: no executable JavaScript,

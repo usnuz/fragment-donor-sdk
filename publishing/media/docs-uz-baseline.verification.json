@@ -9,7 +9,7 @@
   "current_ui_capture": false,
   "payment_or_api_execution_proof": false,
   "capture_time": "unknown; source-file modification time only",
-  "public_delivery": "NOT_YET_VERIFIED",
+  "public_delivery": "PUBLISHED",
   "probe": {
     "programs": [],
     "stream_groups": [],

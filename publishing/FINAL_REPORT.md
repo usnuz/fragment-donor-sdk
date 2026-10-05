@@ -30,6 +30,13 @@ posts, Product Hunt and YouTube publication are **not verified/published**.
 No backend deployment or real Stars/Premium purchase was performed.
 Later evidence/media-only main-branch changes do not move the released tags.
 
+The [post-release delivery CI](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37348979185)
+also passed all 14 jobs at `e34ed219e453894b9a203b74418a6f5b05095fd2`;
+[Pages run 37349102133](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37349102133)
+succeeded at that same commit. Its reviewed baseline JPEG was independently
+fetched over HTTPS and matched all 117,338 original bytes/SHA256; metadata-only
+evidence updates afterward do not change SDKs, released tags or screenshot bytes.
+
 All eligible publication is authorized; access, publisher ownership and platform
 rules still limit execution. This report does not claim the whole original plan
 is complete.
@@ -45,6 +52,7 @@ is complete.
 | Postman environment | [Empty-secret environment](https://usnuz.github.io/fragment-donor-sdk/postman.environment.json) | Public HTTP 200 and blank sensitive values independently verified. |
 | Synthetic demo | [Fixture viewer](https://usnuz.github.io/fragment-donor-sdk/demo/) | Public static demo/trust boundary plus PNG/MP4 HTTP 200 verified. |
 | Actual video | [50-second MP4](https://usnuz.github.io/fragment-donor-sdk/demo/media/walkthrough-en.mp4) | Silent rendered synthetic walkthrough, not real payment footage or a YouTube upload. |
+| Actual screenshot | [Earlier UZ baseline JPEG](https://usnuz.github.io/fragment-donor-sdk/demo/media/docs-uz-baseline.jpg) | HTTP200 and exact original bytes/SHA256 verified; not newly captured current UI or payment evidence. |
 | Go index | [pkg.go.dev 0.1.0](https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0) | Version and public install verified; unrelated to Google/Bing indexing. |
 | Sitemap | [sitemap.xml](https://usnuz.github.io/fragment-donor-sdk/sitemap.xml) | Hosting is not webmaster submission/indexing. |
 
@@ -92,11 +100,19 @@ Groups, subcases and assertions are different suite metrics, not an aggregate
 test count. Synthetic credentials and mocked/local transports establish client
 behavior, not successful blockchain delivery or production wallet safety.
 
-Other local checks: 61 static pages, five demo tests, 24 content assets/123 link
-targets (now 128 with screenshot material), 12 archive-security and 14 release-helper
+Other local checks: 61 static pages, five demo tests, 24 content assets with
+133 local/generated-site links and six link-parser regressions, 12 archive-security and 14 release-helper
 tests. Source review allowlisted 178 files, excluding caches, downloads, artifacts and production
 history. Known-pattern secret scans are defense in depth, not proof of absolute
 secrecy.
+
+Reachable public history at `e34ed219e453894b9a203b74418a6f5b05095fd2`
+was separately scanned: **8 commits, 430 objects, 298 blobs, 178 distinct paths**,
+3,845,558 blob/commit/tag bytes. Five known credential patterns and historical
+symlink/gitlink, production `.env`/database/runtime/build/unapproved-root checks
+had zero findings. The single initial root contained only an allowlisted file;
+no parent-backend history was imported. This covers local reachable refs and
+known patterns, not arbitrary secrets, unreachable objects or external storage.
 
 Five native SVG/PNG 1920×1080 frames and an actual **50-second silent H.264
 synthetic video**, English captions/subtitles, are prepared. They are rendered
