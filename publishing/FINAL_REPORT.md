@@ -96,7 +96,7 @@ minimum Node 22.14/npm 11.5.1 is separate from SDK Node 20 support.
 
 | SDK | Native runtime | Local result |
 | --- | --- | --- |
-| Python | Python 3.12 | PASS: **27 tests**, warnings-as-errors, Ruff, strict mypy, wheel/sdist checks and installed smoke. |
+| Python | Python 3.12 | PASS: **27 tests**, warnings-as-errors, Ruff and strict mypy. Local `python -m build` was **NOT_RUN** in this audit because the `build` module was absent; the downloaded release wheel/sdist and their clean installed consumer smoke were verified separately. |
 | Node/TypeScript | Node 24.18.0 | PASS: **26 tests**, strict build/declarations, format, tarball checks and installed smoke. |
 | PHP | PHP 8.2.34 | PASS: **13 groups**, syntax/PSR-12, Composer, exact standalone/root archives and fresh functional/redaction smoke. |
 | .NET | SDK 8.0.425 | PASS: **13 groups**, format/build/installed smoke/example and **10 package-security regressions**. Fixed remote gate passed.
@@ -114,9 +114,9 @@ tests. Source review allowlisted 178 files, excluding caches, downloads, artifac
 history. Known-pattern secret scans are defense in depth, not proof of absolute
 secrecy.
 
-Reachable public history at `e34ed219e453894b9a203b74418a6f5b05095fd2`
-was separately scanned: **8 commits, 430 objects, 298 blobs, 178 distinct paths**,
-3,845,558 blob/commit/tag bytes. Five known credential patterns and historical
+Reachable public history at `5cb25b7edd5092f554742cd5f1e8ff20562f7cf7`
+was separately rescanned: **11 commits, 460 objects, 314 blobs, 218 distinct paths**,
+4,103,994 reachable object bytes. Five known credential patterns and historical
 symlink/gitlink, production `.env`/database/runtime/build/unapproved-root checks
 had zero findings. The single initial root contained only an allowlisted file;
 no parent-backend history was imported. This covers local reachable refs and
