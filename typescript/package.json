@@ -29,7 +29,9 @@
     "format:check": "prettier --check src test examples package.json tsconfig*.json",
     "lint": "npm run typecheck && npm run format:check",
     "test": "npm run build && npm run lint && node --test test/*.test.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "check:artifacts": "node test/check-artifacts.mjs",
+    "package:check": "npm run build && npm pack && npm run check:artifacts"
   },
   "license": "MIT",
   "author": "Fragment Donor contributors",

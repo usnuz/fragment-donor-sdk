@@ -3,7 +3,8 @@
 These are research/checklists, **not article drafts to paste or paraphrase with
 AI**. No editorial submission made. Verified 2026-10-05. Human authors must
 independently verify facts, write original analysis and satisfy current rules.
-The owner deferred these external publications.
+Eligible publication is authorized, but these generated articles remain
+ineligible under the checked policies; authorization does not waive those rules.
 This checklist itself is AI-generated; human factual/editorial review is pending.
 
 <a id="habr"></a>
@@ -55,7 +56,8 @@ Source: https://github.com/usnuz/fragment-donor-sdk. Independent service, not
 Telegram/Fragment/TON official. Seven source packages version0.1.0; consult actual
 native tests and publication state. Four paths; direct API no service auth;
 wallet credentials still required; optional provider key is not login. Purchases
-never auto-retry; no backend idempotency or status endpoint. All demonstrations
+never auto-retry; HTTP 400 `unconfirmed:true` is unknown outcome, not ordinary
+validation rejection; no backend idempotency or status endpoint. All demonstrations
 mocked, no real funds spent. Backend stores submitted purchase credentials, so
 redacted SDK errors are not a non-custodial/zero-retention guarantee.
 EN credential facts: https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/.

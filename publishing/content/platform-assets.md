@@ -1,8 +1,10 @@
 # Repository, documentation and API-directory payloads
 
 Prepared 2026-10-05 with AI assistance. READY payloads are not live listings.
-All non-GitHub/docs external submissions are deferred by the owner. Account
-access, paid plans, accepted review and registry releases are not assumed.
+All eligible external publication is authorized; account access, platform policy,
+editorial review, paid plans and registry acceptance are not assumed. Six
+registry sites and Postman have saved browser permission blocks; no publication
+on them is verified. Other unvisited channels remain NOT_RUN.
 Use the [matrix](../PLATFORM_MATRIX.md) and [runbook](../PUBLISHING_RUNBOOK.md).
 
 Shared links: source https://github.com/usnuz/fragment-donor-sdk;
@@ -120,12 +122,17 @@ Description (copy):
 > no idempotency guarantee. Docs: https://usnuz.github.io/fragment-donor-sdk/en/.
 
 Tags: `telegram-stars`, `telegram-premium`, `ton`, `sdk`, `api`.
-Import `site/postman.json` after building docs; review its actual source/path
-in the repo. Example metadata must label success/error data synthetic. Import the
-generated placeholder environment, inspect current and shared variable values,
+Run `node contract/build.mjs` then `node docs/build.mjs`. Import the separate
+`site/postman.json` collection and `site/postman.environment.json` environment;
+review their actual generated files. Saved responses label success/429/503 and
+purchase HTTP 400 `unconfirmed:true`/`tx_hash` as synthetic. That 400 means an
+unknown payment outcome, not ordinary rejected validation; preserve the safe
+reference and reconcile rather than retry. Keep wallet/provider values empty
+and `allow_real_purchases=false`; inspect collection/local/current/shared values,
 select `No Auth`, publish an authorized public workspace and reopen it logged out.
 Do not supply `Authorization`/`X-Api-Key` or enter real mnemonic/cookie values.
-Public collection publication is deferred, not submitted.
+Public collection publication is BLOCKED_ACCESS by saved browser permission,
+not submitted. A generated collection/environment is not a public Network listing.
 
 ## Swagger Studio
 

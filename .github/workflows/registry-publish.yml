@@ -1,0 +1,194 @@
+name: Authorized registry publication
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Exact tested stable GitHub release tag (e.g. v0.1.0)
+        required: true
+        type: string
+      package:
+        description: One authorized ecosystem per run
+        required: true
+        type: choice
+        options: [python, node, php, dotnet, go, rust, ruby]
+      confirm:
+        description: Publish immutable registry version using an owner-configured publisher
+        required: true
+        default: false
+        type: boolean
+permissions:
+  contents: read
+concurrency:
+  group: registry-${{ inputs.package }}-${{ inputs.tag }}
+  cancel-in-progress: false
+jobs:
+  validate:
+    if: inputs.confirm && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      attestations: read
+    outputs:
+      commit: ${{ steps.identity.outputs.commit }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ inputs.tag }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: node scripts/release-validate.mjs
+        id: identity
+        env:
+          SDK_RELEASE_TAG: ${{ inputs.tag }}
+      - name: Verify complete release assets, source identity and successful release run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SDK_RELEASE_TAG: ${{ inputs.tag }}
+          VALIDATED_COMMIT: ${{ steps.identity.outputs.commit }}
+        run: |
+          gh release view "$SDK_RELEASE_TAG" --json isDraft,isPrerelease --jq 'if .isDraft or .isPrerelease then error("Not a stable public release") else . end'
+          gh release download "$SDK_RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --dir verified-release
+          node scripts/verify-release-download.mjs verified-release
+          python scripts/check-artifacts.py verified-release/*.whl verified-release/*.tar.gz verified-release/*.tgz verified-release/*.zip verified-release/*.nupkg verified-release/*.crate verified-release/*.gem
+          for artifact in verified-release/*; do
+            gh attestation verify "$artifact" --repo "$GITHUB_REPOSITORY" --signer-workflow "$GITHUB_REPOSITORY/.github/workflows/release.yml" --source-ref "refs/tags/$SDK_RELEASE_TAG" --source-digest "$VALIDATED_COMMIT"
+          done
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: verified-release
+          path: verified-release
+  python:
+    needs: validate
+    if: inputs.package == 'python'
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: verified-release
+          path: reviewed-release
+      - run: mkdir python-dist && cp reviewed-release/*.whl reviewed-release/*.tar.gz python-dist/
+      - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33
+        with:
+          packages-dir: python-dist/
+  node:
+    needs: validate
+    if: inputs.package == 'node'
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: verified-release
+          path: reviewed-release
+      - run: npm install --global npm@11.16.0
+      - run: npm publish reviewed-release/*.tgz --access public --provenance
+  dotnet:
+    needs: validate
+    if: inputs.package == 'dotnet'
+    runs-on: ubuntu-latest
+    environment: nuget
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: verified-release
+          path: reviewed-release
+      - uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841
+        id: login
+        with:
+          user: ${{ vars.NUGET_USER }}
+      - name: Push exact reviewed package with short-lived credential
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+        run: dotnet nuget push reviewed-release/*.nupkg --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json
+  rust:
+    needs: validate
+    if: inputs.package == 'rust'
+    runs-on: ubuntu-latest
+    environment: crates-io
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: verified-release
+          path: reviewed-release
+      - run: rustup toolchain install 1.99.0 --profile minimal --no-self-update
+      - run: mkdir reviewed-crate && tar -xzf reviewed-release/*.crate -C reviewed-crate
+      - uses: rust-lang/crates-io-auth-action@c6f97d42243bad5fab37ca0427f495c86d5b1a18
+        id: auth
+      - name: Publish from checksum-verified built crate source
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
+        run: |
+          set -euo pipefail
+          cd reviewed-crate/fragment-donor-sdk-*
+          cargo +1.99.0 publish --locked
+  ruby:
+    needs: validate
+    if: inputs.package == 'ruby'
+    runs-on: ubuntu-latest
+    environment: rubygems
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8
+        with:
+          ruby-version: '3.4'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: verified-release
+          path: reviewed-release
+      - uses: rubygems/configure-rubygems-credentials@8674aee7f9f9055a8b771794d6f1e66b5fad36a9
+      - run: gem push reviewed-release/*.gem
+  php:
+    needs: validate
+    if: inputs.package == 'php'
+    runs-on: ubuntu-latest
+    environment: packagist
+    steps:
+      - name: Synchronize existing owner-submitted Packagist package
+        env:
+          PACKAGIST_USER: ${{ vars.PACKAGIST_USER }}
+          PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+        run: |
+          test -n "$PACKAGIST_USER" && test -n "$PACKAGIST_TOKEN"
+          curl --fail --silent --show-error --request POST --header 'Content-Type: application/json' --data '{"repository":{"url":"https://github.com/usnuz/fragment-donor-sdk"}}' "https://packagist.org/api/update-package?username=$PACKAGIST_USER&apiToken=$PACKAGIST_TOKEN" >/dev/null
+  go:
+    needs: validate
+    if: inputs.package == 'go'
+    runs-on: ubuntu-latest
+    environment: go-module
+    steps:
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
+        with:
+          go-version: '1.23.x'
+          cache: false
+      - name: Fetch actual versioned public Go submodule
+        env:
+          SDK_RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          mkdir consumer && cd consumer
+          go mod init sdk-release-consumer
+          go get "github.com/usnuz/fragment-donor-sdk/go@$SDK_RELEASE_TAG"
+          go list -m "github.com/usnuz/fragment-donor-sdk/go@$SDK_RELEASE_TAG"

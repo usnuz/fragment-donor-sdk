@@ -27,12 +27,22 @@ async function check(target){
 await Promise.all(Array.from({length:4},async()=>{
   while(next<targets.length){const target=targets[next++];await check(target);}
 }));
-for(const path of ['sitemap.xml','robots.txt','openapi.json','postman.json']){
+for(const path of ['sitemap.xml','robots.txt','openapi.json','postman.json','postman.environment.json']){
   const response=await fetch(base+path,{redirect:'manual',signal:AbortSignal.timeout(15000)});
   assert.equal(response.status,200,path);
   const body=await response.text();
   if(path==='sitemap.xml')assert.equal((body.match(/<loc>/g)||[]).length,targets.length);
   if(path==='openapi.json'){const spec=JSON.parse(body);assert.deepEqual(spec.security,[]);assert.equal(Object.keys(spec.paths).length,4);}
   if(path==='postman.json'){const spec=JSON.parse(body);assert.equal(spec.auth.type,'noauth');assert.equal(spec.variable.find(v=>v.key==='allow_real_purchases').value,'false');}
+  if(path==='postman.environment.json'){const env=JSON.parse(body);for(const key of ['mnemonic','fragment_cookie','tonconsole_key'])assert.equal(env.values.find(v=>v.key===key).value,'');}
 }
-console.log(`PASS: ${passed} live static pages + sitemap/robots/OpenAPI/Postman; HTTP 200, language/canonical/hreflang and no executable JS.`);
+const demoResponse=await fetch(base+'demo/',{redirect:'manual',signal:AbortSignal.timeout(15000)});
+assert.equal(demoResponse.status,200,'Demo must be public');
+const demo=await demoResponse.text();
+assert(demo.includes('STATIC MOCK · NO REAL PAYMENT')&&demo.includes("connect-src 'none'; form-action 'none'"),'Demo trust boundary');
+assert(!/<script\b/i.test(demo),'Demo must be static');
+for(const path of ['demo/media/01-overview.png','demo/media/walkthrough-en.mp4']){
+  const response=await fetch(base+path,{method:'HEAD',redirect:'manual',signal:AbortSignal.timeout(15000)});
+  assert.equal(response.status,200,path);
+}
+console.log(`PASS: ${passed} live static pages + synthetic demo/media + sitemap/robots/OpenAPI/Postman; HTTP 200, language/canonical/hreflang and no executable JS.`);

@@ -1,6 +1,7 @@
 # DEV.to publication payload
 
-Status: READY draft; external publishing deferred. Prepared with AI assistance.
+Status: READY AI-generated draft; eligible publication authorized, actual
+account/editorial checks and publication NOT_RUN.
 Title: **Why payment POSTs must not auto-retry: a seven-SDK contract test**.
 Tags: `api`, `python`, `typescript`, `security` (max four if editor requires).
 
@@ -39,7 +40,10 @@ The usual quota is shared 30/minute/IP across all four endpoints.
 
 Now test a timeout after dispatch with a mocked transport. The assertion should
 be “one POST was sent,” not merely “a TransportError was raised.” Repeat for reset,
-429, 503, 500 and malformed JSON. These tests exist in the public Python/Node
+429, 503, 500 and malformed JSON. Include HTTP 400 `unconfirmed:true`/`tx_hash`:
+this is an unknown payment outcome, not ordinary validation rejection. Preserve
+the safe transaction reference for reconciliation, never automatic retry.
+These tests exist in the public Python/Node
 source. The shared fixture contains synthetic credentials and no real payment.
 
 After an unknown purchase outcome, retain a reconciliation-required application

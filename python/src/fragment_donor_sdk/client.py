@@ -84,6 +84,10 @@ class TransportError(ApiError):
     """Timeout or network failure; original exception is deliberately hidden."""
 
 
+class PurchaseOutcomeUnknownError(ApiError):
+    """Backend reports an unconfirmed transfer; reconcile, never resend blindly."""
+
+
 class MalformedResponseError(ApiError):
     """Invalid JSON, schema, or oversized response."""
 
@@ -184,6 +188,8 @@ class TransportRequest:
     headers: Mapping[str, str] = field(repr=False)
     body: bytes | None = field(default=None, repr=False)
     timeout: float = 30
+    connect_timeout: float | None = None
+    socket_timeout: float | None = None
 
     def __repr__(self) -> str:
         return f"TransportRequest(method={self.method!r}, headers=[REDACTED])"
@@ -212,7 +218,33 @@ class _NoRedirects(HTTPRedirectHandler):
         return None
 
 
+def _remaining_timeout(deadline: float, phase_timeout: float) -> float:
+    remaining = deadline - time.monotonic()
+    if remaining <= 0:
+        raise TimeoutError("Request deadline exceeded")
+    return min(remaining, phase_timeout)
+
+
+def _set_socket_timeout(response: object, timeout: float) -> None:
+    """Best effort for urllib's HTTPResponse/HTTPError wrappers, not DNS."""
+    current = response
+    for _ in range(5):
+        socket = getattr(current, "_sock", None)
+        if socket is not None:
+            socket.settimeout(timeout)
+            return
+        wrapped = getattr(current, "raw", None)
+        if wrapped is None:
+            wrapped = getattr(current, "fp", None)
+        if wrapped is None:
+            return
+        current = wrapped
+
+
 def _urllib_transport(request: TransportRequest) -> TransportResponse:
+    # DNS resolution may exceed this best-effort deadline in stdlib urllib.
+    # Socket phases are bounded and the remaining budget is checked per chunk.
+    deadline = time.monotonic() + request.timeout
     opener = build_opener(_NoRedirects())
     req = Request(
         request.url,
@@ -221,11 +253,30 @@ def _urllib_transport(request: TransportRequest) -> TransportResponse:
         method=request.method,
     )
     try:
-        response = opener.open(req, timeout=request.timeout)
+        response = opener.open(
+            req,
+            timeout=_remaining_timeout(
+                deadline, request.connect_timeout or request.timeout
+            ),
+        )
     except HTTPError as error:
         response = error
     with response:
-        body = response.read(_RESPONSE_LIMIT + 1)
+        chunks: list[bytes] = []
+        size = 0
+        read = getattr(response, "read1", response.read)
+        while size <= _RESPONSE_LIMIT:
+            _set_socket_timeout(
+                response,
+                _remaining_timeout(deadline, request.socket_timeout or request.timeout),
+            )
+            chunk = read(min(65_536, _RESPONSE_LIMIT + 1 - size))
+            _remaining_timeout(deadline, request.socket_timeout or request.timeout)
+            if not chunk:
+                break
+            chunks.append(chunk)
+            size += len(chunk)
+        body = b"".join(chunks)
         return TransportResponse(response.code, dict(response.headers.items()), body)
 
 
@@ -300,6 +351,8 @@ class FragmentDonorClient:
         base_url: str = "https://fragment.donor.uz",
         credentials: WalletCredentials | None = None,
         timeout: float = 30,
+        connect_timeout: float | None = None,
+        socket_timeout: float | None = None,
         readonly_retries: int = 0,
         auto_wait: bool = False,
         max_wait_seconds: float = 60,
@@ -325,6 +378,14 @@ class FragmentDonorClient:
             or timeout <= 0
         ):
             raise ValidationError("Timeout must be positive and finite")
+        for value in (connect_timeout, socket_timeout):
+            if value is not None and (
+                isinstance(value, bool)
+                or not isinstance(value, (int, float))
+                or not math.isfinite(value)
+                or value <= 0
+            ):
+                raise ValidationError("Phase timeouts must be positive and finite")
         if type(readonly_retries) is not int or not 0 <= readonly_retries <= 2:
             raise ValidationError("readonly_retries must be an integer between 0 and 2")
         if (
@@ -336,6 +397,8 @@ class FragmentDonorClient:
         self.base_url = base_url.rstrip("/")
         self._credentials = credentials
         self.timeout = timeout
+        self.connect_timeout = connect_timeout
+        self.socket_timeout = socket_timeout
         self.readonly_retries = readonly_retries
         self.auto_wait = auto_wait
         self.max_wait_seconds = max_wait_seconds
@@ -477,7 +540,13 @@ class FragmentDonorClient:
             headers["Content-Type"] = "application/x-www-form-urlencoded"
             body = urlencode(form).encode("utf-8")
         request = TransportRequest(
-            method, self.base_url + path, MappingProxyType(headers), body, self.timeout
+            method,
+            self.base_url + path,
+            MappingProxyType(headers),
+            body,
+            self.timeout,
+            self.connect_timeout,
+            self.socket_timeout,
         )
         retries = 0 if purchase else self.readonly_retries
         for attempt in range(retries + 1):
@@ -537,11 +606,23 @@ class FragmentDonorClient:
             "retry_after": hint,
             "body": data,
             "purchase_outcome_unknown": purchase
-            and (malformed or response.status >= 500 or 300 <= response.status < 400),
+            and (
+                data.get("unconfirmed") is True
+                or malformed
+                or response.status >= 500
+                or 300 <= response.status < 400
+            ),
         }
         code = data.get("error_code")
         if isinstance(code, str):
             common["error_code"] = code
+        if purchase and data.get("unconfirmed") is True:
+            message = (
+                data.get("info")
+                or data.get("error")
+                or "Purchase outcome is unconfirmed; reconcile before another purchase"
+            )
+            return PurchaseOutcomeUnknownError(str(message), **common)
         if response.status == 429:
             return FloodWaitError("Rate limit exceeded; inspect retry_after", **common)
         if response.status == 503:

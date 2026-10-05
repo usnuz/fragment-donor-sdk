@@ -6,3 +6,5 @@
 - Exact decimal balances, preserved extra fields, safe errors and bounded read retries.
 - Purchases never retried; redirects disabled; synthetic contract tests.
 - Recursively redacted structured error details retain reconciliation fields.
+- Explicit unknown purchase outcomes, local versus remote error distinction.
+- Enforced formatting gates and isolated source-archive consumer smoke.

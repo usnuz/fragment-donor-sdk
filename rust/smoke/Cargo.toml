@@ -1,0 +1,8 @@
+[package]
+name = "fragment-donor-installed-consumer-smoke"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+fragment-donor-sdk = { path = "../package", version = "=0.1.0" }

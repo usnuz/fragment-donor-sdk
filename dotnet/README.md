@@ -4,6 +4,9 @@ Independent .NET 8+ server-side client, version `0.1.0`, with no external runtim
 packages. Not affiliated with Telegram, Fragment or TON. Package name remains
 provisional until registry availability and publisher access are verified.
 
+NuGet publication is deferred. The command below is for after an actual release;
+meanwhile use the reviewed source or locally built nupkg with a local package feed.
+
 ```sh
 dotnet add package FragmentDonor.Sdk --version 0.1.0
 ```
@@ -50,6 +53,12 @@ contains all server fields, including future fields; balance values stay strings
 
 ```csharp
 try { await client.BuyStarsAsync(new StarsRequest("durov", 50)); }
+catch (PurchaseOutcomeUnknownException e)
+{
+    // HTTP400 + unconfirmed:true is not validation or proof of no payment.
+    e.ResponseData.TryGetValue("tx_hash", out var txHash); // optional reconciliation evidence
+    // Persist a reconciliation-required state; do not dispatch another purchase.
+}
 catch (RateLimitException e) { Console.WriteLine($"Wait {e.RetryAfter} seconds."); }
 catch (ServiceUnavailableException e) { Console.WriteLine($"Unavailable; hint {e.RetryAfter}s."); }
 catch (TransportTimeoutException)
@@ -75,6 +84,14 @@ and cookie jars. Injected HttpMessageHandlers must not enable redirects, hidden
 retries or sensitive logging. Dispose the client when done; it owns its handler.
 Original transport exception messages and chains are discarded to prevent leaks.
 
+`SdkException.PurchaseOutcomeUnknown` is true for purchase `unconfirmed:true`
+responses (including HTTP400), transport timeout/network/malformed replies,
+redirects and 5xx. Known unconfirmed replies raise `PurchaseOutcomeUnknownException`,
+not `ValidationException`. `ResponseData` retains redacted `tx_hash`, `transient`
+and future fields. A false flag is not an exactly-once or no-charge guarantee.
+Caller cancellation after dispatch may also require reconciliation; cancellation
+still uses the standard `OperationCanceledException` contract.
+
 The inspected backend stores submitted wallet/session/provider/proxy credentials
 in its database. SDK redaction does not prevent backend retention. Use a dedicated
 minimally funded wallet and secret manager; do not claim non-custodial or
@@ -87,7 +104,10 @@ From `dotnet/`:
 ```sh
 dotnet build src/FragmentDonor.Sdk -c Release
 dotnet run --project tests/FragmentDonor.Sdk.Tests -c Release
+dotnet format whitespace src/FragmentDonor.Sdk --no-restore --verify-no-changes
+dotnet format whitespace tests/FragmentDonor.Sdk.Tests --no-restore --verify-no-changes
 dotnet pack src/FragmentDonor.Sdk -c Release -o dist
+dotnet run --project tests/PackageCheck -c Release -- dist/FragmentDonor.Sdk.0.1.0.nupkg
 dotnet restore tests/PackageSmoke --source dist --configfile NuGet.Config
 dotnet run --project tests/PackageSmoke -c Release --no-restore
 ```
@@ -98,3 +118,9 @@ code fails CI. The PackageSmoke executable installs the built local nupkg rather
 than referencing SDK source. Inspect nupkg contents before `dotnet nuget push`.
 Use repository NuGet trusted publishing where available
 or the registry credential stored as a protected CI secret; never put it in source.
+Apply the whitespace gate to PackageSmoke, PackageCheck and QuickStart too.
+PackageCheck verifies NuGet identity/version, an exact member allowlist and known
+token/private-key patterns in UTF-8 content and UTF-16 assembly strings. It never
+prints suspected content and is not proof against every arbitrary secret format.
+PackageSmoke exercises all four operations, exact decimal strings, HTTP400
+unknown-outcome classification and redaction from the installed nupkg with mocks.

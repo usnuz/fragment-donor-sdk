@@ -4,7 +4,7 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.0",
   "updated_on": "2026-10-05",
-  "scope": "Publish independent GitHub source and multilingual docs; registry and social submissions deferred by owner.",
+  "scope": "All eligible SDK, registry and platform publication is authorized; execute available access only. Chrome access to six registries and Postman is currently blocked by saved permission. No production deploy or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "backend_credential_retention": "Inspected backend persists submitted purchase credentials; SDK redaction does not prevent retention.",
@@ -12,70 +12,78 @@
     "python": {
       "status": "PASS",
       "runtime": "Python 3.12",
-      "tests": 21,
+      "tests": 27,
       "notes": "Warnings-as-errors tests, Ruff, strict mypy, wheel/sdist contents and isolated package install smoke passed."
     },
     "typescript": {
       "status": "PASS",
       "runtime": "Node.js 24.18.0",
-      "tests": 22,
+      "tests": 26,
       "notes": "Native tests, strict TypeScript build/declarations, format, tarball contents and isolated package install smoke passed."
     },
     "php": {
       "status": "PASS",
       "runtime": "PHP 8.2.34",
-      "test_groups": 11,
-      "notes": "Tests, syntax lint, Composer strict validation, root archive and isolated autoload/redaction smoke passed."
+      "test_groups": 13,
+      "notes": "13 native groups, syntax/PSR-12, strict Composer validation, exact standalone/root archive contents, fresh installed four-operation/unknown-outcome/decimal/redaction smoke passed."
     },
     "dotnet": {
       "status": "PASS",
       "runtime": ".NET SDK 8.0.425",
-      "test_groups": 11,
-      "notes": "Tests, zero-warning build, NuGet pack, installed nupkg smoke and example build passed."
+      "test_groups": 13,
+      "notes": "13 native groups, format, zero-warning build, exact NuGet contents, fresh installed four-operation/unknown-outcome/decimal/redaction smoke and example passed."
     },
     "go": {
       "status": "PASS",
       "runtime": "Go 1.26",
-      "top_level_tests": 10,
-      "tests_and_subcases": 38,
-      "notes": "Native test/vet/build and custom-default-transport regression passed. Safe-redacted structured error Details and info fallback verified."
+      "top_level_tests": 11,
+      "tests_and_subcases": 67,
+      "notes": "Native test/vet/build/format and fresh source-archive consumer passed; local race NOT_RUN because GCC unavailable, Linux CI race required."
     },
     "ruby": {
       "status": "PASS",
       "runtime": "Ruby 4.0.7",
-      "tests": 11,
-      "assertions": 242,
-      "notes": "Tests, syntax, gem contents/build and isolated gem install/redaction smoke passed. Structured error details and finite timeout validation verified."
+      "tests": 12,
+      "assertions": 379,
+      "notes": "Native syntax/format/tests, exact four-file gem contents and installed four-operation/redaction/unknown-outcome consumer passed."
     },
     "rust": {
       "status": "PASS",
       "runtime": "Rust 1.99",
-      "tests": 9,
-      "notes": "Locked native tests/build, format, strict clippy, crate contents/verification and publish dry-run passed; no upload. Structured error details and info fallback verified."
+      "tests": 10,
+      "notes": "Locked tests/build, format, strict clippy, exact eight-file crate package verification and extracted installed consumer passed. No registry upload."
     },
     "docs": {
       "status": "PASS",
       "pages": 61,
       "translated_pages": 60,
-      "notes": "Static content, canonical/reciprocal hreflang, sitemap and internal link tests passed; browser layout verified."
+      "notes": "61 static multilingual pages plus separate synthetic demo. Canonical/hreflang/sitemap/internal link checks and five demo tests passed; updated public deployment not yet verified."
     },
     "public_source_scan": {
       "status": "PASS",
-      "notes": "Allowlisted UTF-8 public source scanned; runtime/caches/artifacts/environment/parent history excluded."
+      "notes": "173 allowlisted files, including six hash-bound visually reviewed synthetic PNG/MP4 assets; no parent production history, caches, runtime downloads, package artifacts, or known credentials."
     },
     "remote_ci": {
-      "status": "PASS",
-      "validated_commit": "0e444c9710c907a5ee0c0b9da812d4d1e9bb3783",
-      "url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37304917805",
-      "matrix_jobs": 14,
-      "observed_at": "2026-10-05T11:51:13Z",
-      "notes": "All 14 runtime matrix jobs passed for the final SDK/docs source commit. The subsequent publication-evidence update changes this report only."
+      "status": "NOT_RUN",
+      "notes": "New hardened release source awaits remote CI; previous public baseline 3acfe4a47f4af86d33e2c6e1618e90f5821c34f9 had CI 37305949417 success. Local native checks reported separately."
     },
     "content": {
       "status": "PASS",
-      "markdown_assets": 23,
-      "verified_links": 107,
-      "notes": "Tailored EN/RU/UZ and channel-specific payloads prepared; no external posts or registrations."
+      "markdown_assets": 24,
+      "verified_links": 123,
+      "notes": "Tailored EN/RU/UZ and channel-specific payloads prepared; link targets checked locally. No external post/submission implied."
+    },
+    "release_helpers": {
+      "status": "PASS",
+      "archive_security_tests": 12,
+      "node_tests": 14,
+      "notes": "Offline negative tests reject linked/extra/missing/duplicate/unsafe files, tampered hashes/metadata, foreign or unsuccessful workflow runs and mismatched tags; seven real package archives scanned."
+    },
+    "media": {
+      "status": "PASS",
+      "png_frames": 5,
+      "duration_seconds": 50,
+      "notes": "Actual rendered synthetic H.264 1920x1080 30fps silent MP4 with English subtitles; hashes, ffprobe and full decoding passed. Not a live transaction/screencast or YouTube upload."
     }
   },
   "channels": [
@@ -106,7 +114,7 @@
         "Read-only live verification passed: 61 static pages plus sitemap/robots/OpenAPI/Postman returned HTTP 200 with expected languages, canonical/hreflang and no executable JavaScript.",
         "Live Uzbek homepage layout and same-topic EN/RU language navigation verified in the browser."
       ],
-      "notes": "Static EN/RU/UZ docs published and final hardening deployment verified. Search-engine indexing is not confirmed; registry and social publication remain deferred."
+      "notes": "Previous public EN/RU/UZ docs verified; this update adds guarded Postman environment and synthetic demo/media. Updated deployment not yet verified; indexing NOT_RUN."
     },
     {
       "id": "gitlab",
@@ -117,7 +125,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "readthedocs",
@@ -128,7 +137,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "sourceforge",
@@ -139,51 +149,56 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "pypi",
       "name": "PyPI",
-      "status": "NOT_RUN",
+      "status": "BLOCKED_ACCESS",
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
+      "preparation_status": "READY"
     },
     {
       "id": "npm",
       "name": "npm",
-      "status": "NOT_RUN",
+      "status": "BLOCKED_ACCESS",
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
+      "preparation_status": "READY"
     },
     {
       "id": "packagist",
       "name": "Packagist",
-      "status": "NOT_RUN",
+      "status": "BLOCKED_ACCESS",
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
+      "preparation_status": "READY"
     },
     {
       "id": "nuget",
       "name": "NuGet",
-      "status": "NOT_RUN",
+      "status": "BLOCKED_ACCESS",
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
+      "preparation_status": "READY"
     },
     {
       "id": "go-pkg-go-dev",
@@ -194,40 +209,44 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "Versioned Go submodule release and external module-fetch verification pending; no registry login needed.",
+      "preparation_status": "READY"
     },
     {
       "id": "crates-io",
       "name": "crates.io",
-      "status": "NOT_RUN",
+      "status": "BLOCKED_ACCESS",
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
+      "preparation_status": "READY"
     },
     {
       "id": "rubygems",
       "name": "RubyGems",
-      "status": "NOT_RUN",
+      "status": "BLOCKED_ACCESS",
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
+      "preparation_status": "READY"
     },
     {
       "id": "postman-api-network",
       "name": "Postman API Network",
-      "status": "NOT_RUN",
+      "status": "BLOCKED_ACCESS",
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
+      "preparation_status": "READY"
     },
     {
       "id": "swagger-studio",
@@ -238,7 +257,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "apis-guru",
@@ -249,7 +269,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "rapidapi",
@@ -260,7 +281,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "ton-app",
@@ -271,7 +293,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "dev-to",
@@ -282,7 +305,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "hashnode",
@@ -293,7 +317,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "medium",
@@ -304,7 +329,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "linkedin-articles",
@@ -315,7 +341,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "youtube",
@@ -326,7 +353,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "indiehackers",
@@ -337,7 +365,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "producthunt",
@@ -348,7 +377,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "vc-ru",
@@ -370,7 +400,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "r-sideproject",
@@ -381,7 +412,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "r-telegrambots",
@@ -392,7 +424,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "r-toncoin",
@@ -403,7 +436,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "r-python",
@@ -414,7 +448,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "r-node",
@@ -425,7 +460,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "r-django",
@@ -436,7 +472,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "ton-developer-en",
@@ -447,7 +484,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "ton-developer-ru",
@@ -458,7 +496,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "telegram-developer-communities",
@@ -469,7 +508,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "discord-developer-communities",
@@ -480,7 +520,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "google-search-console",
@@ -491,7 +532,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "bing-webmaster-tools",
@@ -502,7 +544,8 @@
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "preparation_status": "READY"
     },
     {
       "id": "hacker-news-show-hn",
@@ -569,6 +612,18 @@
       "observed_at": null,
       "evidence": [],
       "notes": "Generated promotional text is not eligible under researched platform rules; see PLATFORM_MATRIX.md."
+    },
+    {
+      "id": "yandex-webmaster",
+      "name": "Yandex Webmaster",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "preparation_status": "READY",
+      "notes": "Official ownership verification/sitemap instructions prepared. Owner verification/submission/indexing not run; project path cannot grant github.io origin-root/DNS ownership."
     }
   ],
   "live_api_probe": {
@@ -582,11 +637,23 @@
     "notes": "Observed upstream recipient error; no claim of successful user resolution or production purchase."
   },
   "artifact_checksums": {
-    "python_wheel_sha256": "110293109B6103A38CF0AEA46B954E85610EA7675F66A6A95FA2689689DD31B8",
-    "python_sdist_sha256": "F4D80CB6B45E0560D2F60FDB8A7980B7B5D809EB0F89F48041569BEAF2E68F13",
-    "npm_tarball_sha256": "75B030C0D2575156771B79423E3CF5EA13C3999E616647D0FE1C480C33C578BD",
-    "php_root_archive_sha256": "3D50CBF6BB53A5E56D43FBDE12809B120E6A807FBBCB174A3F1654568AFB95F1",
-    "nuget_sha256": "D82B938629EC7AA0857A40B6D70593112E0205FDFC9D5037F431900B1C44A869",
-    "notes": "Local builds; CI artifacts may differ in build timestamps/runtime provenance. Registry publication NOT_RUN."
+    "python_wheel_sha256": "63602ACBC4F1EA206B4474AB9EA22EC0116312676F9D537ADE9514E32FED7E42",
+    "python_sdist_sha256": "A3DB808940556161E94C556CF06C7132ACD494D5456870A35895CD76CBD80B28",
+    "npm_tarball_sha256": "9B6A61139297A05BA391B2195DE38F7C0B0C7458AE50003F802D989DDD50FF3F",
+    "php_root_archive_sha256": "5854738CEA6846E609FEAF3185319314B8129B5DEB23C4CD5D8E7E77391BC305",
+    "nuget_sha256": "E6A1A26EBDC2DB95719E25DE010B1F787E152C193453FFE94BD81CFA34B2DB8F",
+    "notes": "Local builds only; remote CI artifacts may differ in timestamps/runtime provenance. Six external registry publications BLOCKED_ACCESS.",
+    "synthetic_video_sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7"
+  },
+  "release": {
+    "status": "READY",
+    "tag": "v0.1.0",
+    "url": null,
+    "notes": "Native builds ready; tag/release pipeline and nine signed-assets verification prepared but not yet run. Checksums alone are not cryptographic attestations."
+  },
+  "browser_access": {
+    "status": "BLOCKED_ACCESS",
+    "requested_browser": "Chrome",
+    "notes": "Saved permission denied all six registry and Postman navigations. Owner promised re-enable; no completed login confirmation. No alternative browser/CLI auth bypass attempted."
   }
 }

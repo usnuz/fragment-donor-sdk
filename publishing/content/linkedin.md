@@ -1,7 +1,7 @@
 # LinkedIn Articles publication payload
 
 Status: AI-generated draft; human editorial review pending; publication NOT_RUN.
-External publication is deferred.
+Eligible publication is authorized; account/editorial gates remain.
 Title: **Payment integrations need an unknown-outcome state**.
 Audience: backend leads and engineering managers. Tags: API, Backend, SDK.
 
@@ -27,7 +27,9 @@ A better operational state is reconciliation-required. Preserve the approved
 recipient/amount and safe transaction reference if supplied, examine wallet and
 recipient evidence, and make any subsequent purchase an explicit decision. Keep
 credentials out of application state logs and incident attachments. Test the
-state machine with an injected timeout, asserting one outbound POST.
+state machine with an injected timeout, asserting one outbound POST. Include
+HTTP 400 `unconfirmed:true` with a transaction hash: that is unknown-outcome
+evidence, not an ordinary validation rejection or permission to resend.
 
 Two other review points deserve equal attention. First, “no service authentication”
 doesn't mean “no wallet credential”: the direct API has no service account/key,

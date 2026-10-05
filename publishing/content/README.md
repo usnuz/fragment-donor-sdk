@@ -2,8 +2,10 @@
 
 Prepared 2026-10-05, version 0.1.0. These are **AI-assisted/generated drafts**,
 not evidence of human editorial review, publication, video recording, payment
-success, registry availability, or search indexing. The owner selected source
-and primary docs publication; other channels are deferred. Read
+success, registry availability, or search indexing. All eligible publication is
+now authorized; access, editorial/policy gates and actual submission remain
+separate. Six registry sites and Postman currently have saved browser permission
+blocks, not verified publications. Read
 [the policy matrix](../PLATFORM_MATRIX.md) before using any asset.
 
 The body under each “Article”/“Copy” heading can be pasted after factual/editorial
@@ -23,8 +25,8 @@ human-only factual checklists instead, not forbidden post templates.
 | Seven SDK install/example comparison | [07](07-seven-sdks-en.md) |
 | Russian integration | [08](08-integration-ru.md) |
 | Uzbek integration | [09](09-integration-uz.md) |
-| Product Hunt text/gallery/demo plan | [10](10-product-hunt.md) |
-| Video script/recording/metadata/chapters | [11](11-youtube.md) |
+| Product Hunt text + local synthetic gallery/demo | [10](10-product-hunt.md) |
+| Actual silent synthetic video + unrecorded longer script | [11](11-youtube.md) |
 | Eight community-specific Reddit paths | [12](12-reddit.md) |
 | Actual-question Q&A gates | [13](13-qa-human-checklist.md) |
 | Human-authored HN fact/demo checklist | [14](14-hn-human-checklist.md) |
@@ -51,7 +53,9 @@ and topic-specific docs links as citations even when canonical is unset.
 
 The direct service is authless, but purchases use Mnemonic + Fragment Cookie;
 optional `Api-Key` is a TonConsole provider key. All four operations share the
-default per-IP 30/minute limit. Purchases never auto-retry; no idempotency guarantee
-or purchase-status endpoint exists. Backend stores submitted credentials. Public
+default per-IP 30/minute limit. Purchases never auto-retry; HTTP 400 with
+`unconfirmed:true` is an unknown payment outcome, not ordinary validation rejection.
+Keep a safe transaction reference and reconcile before another intended purchase.
+No idempotency guarantee or purchase-status endpoint exists. Backend stores submitted credentials. Public
 examples are mocked/read-only or explicitly purchase-gated; never fund a demo
 wallet or paste a real secret to make an article, screenshot, or video.

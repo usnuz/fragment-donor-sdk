@@ -1,7 +1,7 @@
 # Medium publication payload
 
 Status: AI-generated draft; human editorial review pending; not posted.
-External publication is deferred. Format: public **non-paywalled**
+Eligible publication is authorized; account/editorial gates remain. Format: public **non-paywalled**
 engineering article. Title: **No service auth is not no wallet risk**.
 Topics: Software Engineering, APIs, Security.
 
@@ -30,6 +30,8 @@ completion. Without a backend idempotency guarantee or purchase-status endpoint,
 the application should mark the result unknown and reconcile wallet/recipient
 evidence before any new intentional dispatch. A generic network-retry loop may
 silently double spend; a local database intent alone doesn't change remote rules.
+Even HTTP 400 can be uncertain: `unconfirmed:true` with `tx_hash` is a
+reconciliation signal, not proof of validation rejection or unspent funds.
 
 Fragment Donor's seven SDKs make those limitations explicit. Purchases never
 automatically retry; reads can opt into at most two bounded retries and 60 seconds

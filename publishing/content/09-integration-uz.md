@@ -59,7 +59,10 @@ Stars/Premium xaridi hech qanday xatoda avtomatik qayta yuborilmaydi: timeout,
 429, 503 yoki 5xx’da ham. Birinchi so‘rov pul sarflagan, javob esa yo‘qolgan
 bo‘lishi mumkin. Backend idempotency kafolati yoki purchase-status endpoint
 bermaydi. Natijani “noma’lum” deb belgilang, hamyon tranzaksiyalari va oluvchini
-tekshiring, keyin yangi xarid kerakligini ongli ravishda hal qiling.
+tekshiring, keyin yangi xarid kerakligini ongli ravishda hal qiling. HTTP 400’da
+`unconfirmed:true` va `tx_hash` kelsa ham natija noma’lum: bu oddiy validation
+rad etilishi emas. Xavfsiz tranzaksiya havolasini saqlang; 400 statusning o‘zi
+mablag‘ sarflanmaganini isbotlamaydi va qayta yuborishga ruxsat emas.
 
 Muhim xavf: tekshirilgan backend yuborilgan credentiallarni bazada saqlaydi.
 SDK loglaridagi redaction server saqlashini bekor qilmaydi va servisni

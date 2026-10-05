@@ -42,11 +42,14 @@ export interface ErrorOptions {
 export type HttpTransport = (
   url: string,
   init: RequestInit,
+  options?: Readonly<{ connectTimeoutMs?: number }>,
 ) => Promise<Response>;
 export interface ClientOptions {
   baseUrl?: string;
   credentials?: WalletCredentials;
   timeoutMs?: number;
+  /** Requires an injected transport that enforces this setting; not native fetch. */
+  connectTimeoutMs?: number;
   readonlyRetries?: number;
   autoWait?: boolean;
   maxWaitSeconds?: number;
@@ -112,6 +115,7 @@ export class ValidationError extends ApiError {}
 export class FloodWaitError extends ApiError {}
 export class ServiceUnavailableError extends ApiError {}
 export class TransportError extends ApiError {}
+export class PurchaseOutcomeUnknownError extends ApiError {}
 export class MalformedResponseError extends ApiError {}
 
 export class WalletCredentials {
@@ -253,6 +257,7 @@ function retryHint(
 export class FragmentDonorClient {
   readonly baseUrl: string;
   readonly timeoutMs: number;
+  readonly connectTimeoutMs?: number;
   readonly readonlyRetries: number;
   readonly autoWait: boolean;
   readonly maxWaitSeconds: number;
@@ -290,11 +295,22 @@ export class FragmentDonorClient {
     }
     this.baseUrl = url.toString().replace(/\/$/, "");
     this.timeoutMs = options.timeoutMs ?? 30_000;
+    this.connectTimeoutMs = options.connectTimeoutMs;
     this.readonlyRetries = options.readonlyRetries ?? 0;
     this.autoWait = options.autoWait ?? false;
     this.maxWaitSeconds = options.maxWaitSeconds ?? 60;
     if (!Number.isFinite(this.timeoutMs) || this.timeoutMs <= 0)
       throw new ValidationError("timeoutMs must be positive and finite");
+    if (this.connectTimeoutMs !== undefined) {
+      if (!Number.isFinite(this.connectTimeoutMs) || this.connectTimeoutMs <= 0)
+        throw new ValidationError(
+          "connectTimeoutMs must be positive and finite",
+        );
+      if (!options.fetch)
+        throw new ValidationError(
+          "connectTimeoutMs requires an injected transport that enforces it",
+        );
+    }
     if (
       !Number.isInteger(this.readonlyRetries) ||
       this.readonlyRetries < 0 ||
@@ -425,13 +441,17 @@ export class FragmentDonorClient {
       const timer = setTimeout(() => controller.abort(), this.timeoutMs);
       let failure: ApiError;
       try {
-        const response = await this.#fetch(this.baseUrl + path, {
-          method,
-          headers,
-          body,
-          signal: controller.signal,
-          redirect: "manual",
-        });
+        const response = await this.#fetch(
+          this.baseUrl + path,
+          {
+            method,
+            headers,
+            body,
+            signal: controller.signal,
+            redirect: "manual",
+          },
+          { connectTimeoutMs: this.connectTimeoutMs },
+        );
         const text = await response.text();
         const result = this.#decode<T>(
           response,
@@ -494,12 +514,22 @@ export class FragmentDonorClient {
       body,
       purchaseOutcomeUnknown:
         kind === "purchase" &&
-        (malformed ||
+        (body.unconfirmed === true ||
+          malformed ||
           response.status >= 500 ||
           (response.status >= 300 && response.status < 400)),
     };
     if (typeof body.error_code === "string")
       options.errorCode = body.error_code;
+    if (kind === "purchase" && body.unconfirmed === true)
+      return new PurchaseOutcomeUnknownError(
+        String(
+          body.info ??
+            body.error ??
+            "Purchase outcome is unconfirmed; reconcile before another purchase",
+        ),
+        options,
+      );
     if (response.status === 429)
       return new FloodWaitError(
         "Rate limit exceeded; inspect retryAfter",

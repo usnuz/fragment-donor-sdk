@@ -125,6 +125,7 @@ pub enum ErrorKind {
     Timeout,
     Network,
     MalformedResponse,
+    PurchaseOutcomeUnknown,
 }
 
 /// Safe to format: contains no request dumps, raw transport causes or secrets.
@@ -134,6 +135,8 @@ pub struct Error {
     pub code: Option<String>,
     pub retry_after: Option<Duration>,
     pub message: String,
+    /// Purchase may already have spent funds. False is not a rejection guarantee.
+    pub outcome_unknown: bool,
     /// Recursively redacted JSON fields, including reconciliation/unknown fields.
     pub details: Map<String, Value>,
 }
@@ -145,6 +148,7 @@ impl Error {
             code: None,
             retry_after: None,
             message: message.into(),
+            outcome_unknown: false,
             details: Map::new(),
         }
     }
@@ -491,7 +495,7 @@ impl Client {
         let retries = if purchase { 0 } else { self.read_retries };
         for attempt in 0..=retries {
             let data = match self.transport.send(&request) {
-                Ok(response) => self.parse(response),
+                Ok(response) => self.parse(response, purchase),
                 Err(TransportError::Timeout) => Err(Error::new(
                     ErrorKind::Timeout,
                     "Transport timed out; sensitive details omitted",
@@ -503,14 +507,30 @@ impl Client {
             };
             match data {
                 Ok(data) => {
+                    let details = self.safe_details(data.as_object());
                     return serde_json::from_value(data).map_err(|_| {
-                        Error::new(
+                        let mut error = Error::new(
                             ErrorKind::MalformedResponse,
                             "Unexpected response field type",
-                        )
-                    })
+                        );
+                        error.outcome_unknown = purchase;
+                        error.details = details;
+                        error
+                    });
                 }
-                Err(error) => {
+                Err(mut error) => {
+                    if purchase
+                        && (matches!(
+                            error.kind,
+                            ErrorKind::Network | ErrorKind::Timeout | ErrorKind::MalformedResponse
+                        ) || (error.status.is_some_and(|status| status >= 500)
+                            && error.code.as_deref() != Some("RATE_LIMIT_UNAVAILABLE"))
+                            || error
+                                .status
+                                .is_some_and(|status| (300..400).contains(&status)))
+                    {
+                        error.outcome_unknown = true;
+                    }
                     if attempt < retries {
                         if let Some(wait) = self.retry_delay(&error, attempt) {
                             (self.sleeper)(wait);
@@ -524,7 +544,7 @@ impl Client {
         unreachable!("retry loop always returns")
     }
 
-    fn parse(&self, response: TransportResponse) -> Result<Value, Error> {
+    fn parse(&self, response: TransportResponse, purchase: bool) -> Result<Value, Error> {
         if response.body.len() > 4 * 1024 * 1024 {
             return Err(Error::new(
                 ErrorKind::MalformedResponse,
@@ -534,9 +554,34 @@ impl Client {
         let data = serde_json::from_str::<Value>(&response.body).ok();
         let object = data.as_ref().and_then(Value::as_object);
         let retry_after = parse_retry_after(&response.headers, object, (self.clock)());
+        if purchase
+            && object
+                .and_then(|object| object.get("unconfirmed"))
+                .and_then(Value::as_bool)
+                == Some(true)
+        {
+            let message = object
+                .and_then(|object| {
+                    ["error", "reason", "info", "message"]
+                        .iter()
+                        .find_map(|key| object.get(*key).and_then(Value::as_str))
+                })
+                .unwrap_or("Purchase outcome unknown; reconcile manually and do not retry");
+            return Err(Error {
+                kind: ErrorKind::PurchaseOutcomeUnknown,
+                status: Some(response.status),
+                code: object
+                    .and_then(|object| object.get("error_code"))
+                    .and_then(Value::as_str)
+                    .map(|code| self.redact(code)),
+                retry_after,
+                message: self.redact(message),
+                outcome_unknown: true,
+                details: self.safe_details(object),
+            });
+        }
         if !(200..300).contains(&response.status) {
             let kind = match response.status {
-                400 | 422 => ErrorKind::Validation,
                 429 => ErrorKind::RateLimit,
                 503 => ErrorKind::Unavailable,
                 _ => ErrorKind::Api,
@@ -558,6 +603,7 @@ impl Client {
                 code,
                 retry_after,
                 message: self.redact(message),
+                outcome_unknown: false,
                 details: self.safe_details(object),
             });
         }
@@ -580,6 +626,7 @@ impl Client {
                     code: None,
                     retry_after,
                     message: self.redact(message),
+                    outcome_unknown: false,
                     details: self.safe_details(object),
                 })
             }

@@ -1,6 +1,7 @@
 # Hashnode publication payload
 
-Status: READY AI-assisted draft; owner publication/access NOT_RUN.
+Status: READY AI-generated draft; eligible publication authorized,
+account/editorial review and actual publication NOT_RUN.
 Title: **A server-only Telegram Stars SDK: transport and trust boundaries**.
 Tags: `typescript`, `nodejs`, `api`, `security`.
 
@@ -38,7 +39,9 @@ Our transport refuses redirects and uses abort for timeouts. Redirect refusal
 prevents forwarding secret headers to a redirected host. Aborting a request does
 not roll back remote side effects, which is why a spending POST never retries,
 including 429/503/5xx. Read-only retries are explicit and bounded, with Retry-After
-seconds/date and JSON hints; a wait above the maximum is not shortened.
+seconds/date and JSON hints; a wait above the maximum is not shortened. HTTP 400
+with `unconfirmed:true` and a transaction hash also requires reconciliation,
+not a classification of “validation rejected, safely retry.”
 
 The most useful tests inject fetch and count dispatches. A synthetic timeout
 after a purchase results in one request, not two. Additional cases preserve

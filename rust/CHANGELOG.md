@@ -6,3 +6,5 @@
 - Safe credential/error debug, disabled redirects, no purchase retry.
 - Optional bounded read retries and synthetic shared contract test suite.
 - Recursively redacted structured errors preserve reconciliation and future fields.
+- Explicit PurchaseOutcomeUnknown and uncertainty metadata; no false validation.
+- Built-crate inspection and meaningful isolated offline consumer smoke.

@@ -36,16 +36,21 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let balance = client.wallet_balance()?;
     let _ = (user, balance.ton, balance.usdt_ton); // exact decimal strings
 
-    // Each of the following operations spends wallet funds. These are examples,
-    // not a smoke-test script; execute only a deliberately chosen purchase.
-    match client.buy_stars("durov", 50, Some("usdt_ton")) {
-        Err(error) if error.kind == ErrorKind::RateLimit => {
-            let _ = error.retry_after; // display wait; do not repeat purchase blindly
+    // Real-funds operations require both opt-in and one selected purchase.
+    if std::env::var("FRAGMENT_ALLOW_PURCHASES").as_deref() != Ok("yes") {
+        return Ok(());
+    }
+    let result = match std::env::var("FRAGMENT_PURCHASE_KIND").as_deref() {
+        Ok("stars") => client.buy_stars("durov", 50, Some("usdt_ton")),
+        Ok("premium") => client.buy_premium("durov", 3, Some("ton")),
+        _ => return Ok(()),
+    };
+    match result {
+        Err(error) if error.kind == ErrorKind::PurchaseOutcomeUnknown || error.outcome_unknown => {
+            let _ = error.details.get("tx_hash"); // reconcile manually; no replay
         }
         result => { let _ = result?; }
     }
-    let premium = client.buy_premium("durov", 3, Some("ton"))?;
-    let _ = premium;
     Ok(())
 }
 ```
@@ -66,6 +71,13 @@ HTTP date, JSON `retry_after`/`flood_wait`, choosing the longest valid hint.
 Raw transport errors/request objects are not included in Error/debug output.
 `Error.details` retains recursively redacted JSON error fields including
 `info`, `tx_hash`, `unconfirmed`, `transient` and future fields for reconciliation.
+`unconfirmed: true` on a purchase produces `ErrorKind::PurchaseOutcomeUnknown`
+with `outcome_unknown: true`, even for HTTP 400. Purchase transport/malformed
+failures, redirects and ambiguous 5xx also set that flag. Known pre-purchase
+limiter codes retain RateLimit/Unavailable. Reconcile `details["tx_hash"]`
+manually; never replay the purchase. A false flag is not a rejection or
+idempotency guarantee. Remote HTTP 400/422 failures are Api; Validation is
+reserved for SDK preflight validation.
 
 Default retries: zero. `Config { read_retries: 2, automatic_wait: true, .. }`
 opts read-only requests into bounded retries. Maximum wait is 60 seconds;
@@ -93,9 +105,15 @@ cargo test --locked
 cargo build --locked
 cargo package --list
 cargo package --locked
+python smoke/verify.py
 cargo publish --dry-run --locked
 ```
 
+`smoke/verify.py` checks the built `.crate` allowlist and fixture/private-key
+exclusion, then extracts that artifact into a fresh offline Cargo consumer.
+Its mock transport exercises all four methods, exact balance preservation,
+unconfirmed Stars/Premium classification, redacted details and no duplicates.
+It does not claim crates.io installation. `CARGO_TARGET_DIR` is supported.
 Inspect crate contents and perform secret scanning before a separate registry
 release. Never use actual credentials or real purchases for tests. Verify
 crates.io ownership/access and MFA/trusted publishing before `cargo publish`;

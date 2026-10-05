@@ -8,6 +8,7 @@
   "responses": {
     "user_info": {"ok": true, "username": "durov", "is_premium": false, "future_field": {"kept": true}},
     "purchase": {"ok": true, "data": {"transaction": "SYNTHETIC_TRANSACTION"}, "future_field": "preserve"},
+    "purchase_unconfirmed": {"ok": false, "unconfirmed": true, "tx_hash": "SYNTHETIC_UNCONFIRMED_TX_HASH", "destination": "SYNTHETIC_DESTINATION", "amount_nano": "1000000000", "seqno_before": 12, "info": "SYNTHETIC_TRANSFER_CONFIRMATION_UNKNOWN"},
     "wallet_balance": {"ok": true, "address": "SYNTHETIC_WALLET_ADDRESS", "ton": "2.500000001", "usdt_ton": "9007199254740993.01", "future_field": "preserve"},
     "validation": {"ok": false, "error": "Invalid amount"},
     "flood_wait": {"ok": false, "error": "Too many requests", "error_code": "FLOOD_WAIT", "retry_after": 42, "flood_wait": 42},

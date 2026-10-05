@@ -59,7 +59,10 @@ read requests occur, not an unbounded loop.
 
 For `buy_stars`/`buy_premium`, automatic retry is always zero, even with those
 options. A timeout, connection reset, 5xx or malformed JSON can follow a completed
-wallet transaction. There is no idempotency guarantee or purchase-status endpoint.
+wallet transaction. HTTP 400 with `unconfirmed:true` and `tx_hash` is also an
+unknown payment outcome, not ordinary validation rejection. Keep the safe
+transaction reference; an error status alone does not prove funds were unspent.
+There is no idempotency guarantee or purchase-status endpoint.
 Record “outcome unknown,” examine wallet/recipient evidence, and let the operator
 decide on a new intentional purchase. Configure any proxy, job queue and custom
 transport so they do not invisibly retry POSTs behind the SDK's back.

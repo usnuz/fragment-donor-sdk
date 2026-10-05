@@ -1,0 +1,12 @@
+ffconcat version 1.0
+file '01-overview.png'
+duration 10
+file '02-wire-contract.png'
+duration 10
+file '03-retry-errors.png'
+duration 10
+file '04-unknown-purchase.png'
+duration 10
+file '05-retention-evidence.png'
+duration 10
+file '05-retention-evidence.png'

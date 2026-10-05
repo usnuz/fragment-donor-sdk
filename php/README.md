@@ -4,6 +4,9 @@ Independent PHP 8.2+ server-side client, version `0.1.0`. Requires cURL and JSON
 Not affiliated with Telegram, Fragment or TON. Package name remains provisional
 until registry availability and publisher access are verified.
 
+Packagist publication is deferred. The command below is for after an actual
+release; meanwhile use the reviewed source or locally built Composer archive.
+
 ```sh
 composer require fragment-donor/sdk:^0.1
 ```
@@ -51,9 +54,13 @@ Purchase bodies are form-urlencoded. Response `raw` retains future fields.
 
 ```php
 use FragmentDonor\{RateLimitError, ServiceUnavailableError, TransportTimeoutError,
-    ValidationError, ApiError, MalformedResponseError};
+    PurchaseOutcomeUnknownError, ValidationError, ApiError, MalformedResponseError};
 try {
     $client->buyStars(new StarsRequest('durov', 50));
+} catch (PurchaseOutcomeUnknownError $e) {
+    // HTTP 400 + unconfirmed:true is NOT validation or proof of no payment.
+    $txHash = $e->data['tx_hash'] ?? null; // safe-redacted reconciliation evidence
+    // Persist a reconciliation-required state; do not dispatch another purchase.
 } catch (RateLimitError | ServiceUnavailableError $e) {
     // Let the caller decide whether and when to retry; this SDK never retries purchases.
     $seconds = $e->retryAfter; // maximum of Retry-After seconds/date and JSON hints
@@ -76,6 +83,13 @@ argument traces (`zend.exception_ignore_args=On`) in production, and never enabl
 cURL verbose logging. An injected transport must also disable redirects, retries
 and credential logging.
 
+`purchaseOutcomeUnknown` is true for backend `unconfirmed:true` purchase responses
+(including HTTP 400), purchase timeout/network/malformed replies, redirects and
+5xx. Known unconfirmed replies raise `PurchaseOutcomeUnknownError`, not
+`ValidationError`. Redacted `data` retains `tx_hash`, `transient` and future fields.
+A false flag is not an exactly-once or no-charge guarantee; reconcile any ambiguous
+response before intentionally purchasing again.
+
 The backend currently stores submitted mnemonic/cookie/provider/proxy credentials
 in its database. SDK redaction cannot change that. Use a dedicated minimally
 funded wallet and secret manager; never put real seeds in source or browser code.
@@ -88,8 +102,11 @@ From the monorepo `php/` directory:
 ```sh
 php tests/lint.php
 php -d zend.exception_ignore_args=1 tests/run.php
+composer install
+composer format:check
 composer validate --strict
-composer archive --format=zip --dir=dist
+composer archive --format=zip --dir=dist --file=fragment-donor-sdk-0.1.0
+php tests/check-package.php dist/fragment-donor-sdk-0.1.0.zip
 ```
 
 Tests consume `../contract/fixtures.json`, inject deterministic transports and
@@ -100,3 +117,10 @@ a root Composer manifest with the same package and `php/src/` classmap; register
 `https://github.com/usnuz/fragment-donor-sdk` there. This standalone subdirectory
 manifest can also be used when exporting only the PHP package. Register the
 package only after all tests and archive content checks pass.
+The development-only formatter is PHP CS Fixer (`composer format` applies PSR-12).
+The package checker needs ext-zip, enforces exact member allowlists for standalone
+and root archives, and scans known token/private-key patterns without printing
+contents. It is a defense in depth check, not proof that arbitrary secrets cannot
+exist. Install the extracted archive with Composer `--no-dev --no-scripts --no-plugins`
+and run `php tests/package-smoke.php /absolute/extracted/path`; it exercises all four
+operations, decimal preservation and unknown-outcome redaction using mocks only.

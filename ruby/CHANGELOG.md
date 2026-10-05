@@ -6,3 +6,5 @@
 - Preserves exact decimal balances and unknown fields; errors redact credentials.
 - Bounded optional read retry; purchase retries and redirects disabled.
 - Safe structured error details and finite timeout configuration validation.
+- PurchaseOutcomeUnknownError and uncertainty flag preserve ambiguous purchases.
+- Syntax/whitespace gates and allowlisted installed-gem consumer verification.

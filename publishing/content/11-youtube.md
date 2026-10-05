@@ -1,8 +1,34 @@
 # YouTube: script, recording checklist and metadata
 
-Status: READY AI-assisted script; video recording, editing, upload and public
-verification **NOT_RUN**. A script is not a published video. Channel access not
-assumed. All purchase screens are mocks, labelled on screen and in narration.
+Status: READY AI-generated script and an actual local 50-second silent rendered
+synthetic video. Live screencast/narration, YouTube upload and public verification
+are **NOT_RUN**. Eligible publication is authorized; channel access and review
+are not assumed. Every purchase image is explicitly synthetic, not a real order.
+
+## Actual generated short video
+
+[walkthrough-en.mp4](../media/walkthrough-en.mp4): H.264, 1920×1080, 30 fps,
+50 seconds, **no audio**. Five rendered PNG/SVG frames have visible synthetic
+labels; English subtitle track and [SRT](../media/walkthrough-en.srt) are provided.
+[Size/hash metadata](../media/assets.json) and [local verification](../media/verification.json)
+describe these files, not a successful YouTube upload or live SDK execution.
+This is not a screen recording, human narration, customer testimonial or payment
+proof. The longer narration script below remains a separate unrecorded option.
+
+Use these exact chapters only for this 50-second file:
+
+```text
+00:00 Rendered synthetic overview — no API requests
+00:10 Form contract and wallet credential boundary
+00:20 Retry hints are not purchase replay permission
+00:30 HTTP 400 unconfirmed — reconcile unknown outcome
+00:40 Backend retention and actual evidence
+```
+
+Short-video title: **Fragment Donor SDK contract: a 50-second synthetic walkthrough**.
+Description addition: “Silent rendered diagrams, English captions; not a live
+transaction or screencast. No API request, wallet-secret input or funds spent.”
+Keep source/docs/retention/independent-project disclosures from the metadata below.
 
 ## Metadata — EN
 
@@ -26,7 +52,8 @@ Description:
 > Docs: https://usnuz.github.io/fragment-donor-sdk/en/
 > Release state: https://github.com/usnuz/fragment-donor-sdk/blob/main/publishing/publication-status.json
 
-Suggested chapters (adjust to actual final edit, do not publish wrong timestamps):
+Long-form planned chapters (**not** timestamps for the existing 50-second file;
+adjust only after actually recording/editing the longer tutorial):
 
 ```text
 00:00 Independent project and mock-only demo
@@ -68,7 +95,9 @@ Avoid tags implying official affiliation, guaranteed earnings or successful gift
 7. **Mock purchase timeout, request counter.** “Here the injected transport times
    out after dispatch. The purchase counter remains one. Retrying could spend
    twice: this backend has no idempotency guarantee or purchase-status endpoint.
-   Production code must reconcile wallet and recipient evidence first.”
+   Production code must reconcile wallet and recipient evidence first. HTTP 400
+   with unconfirmed:true and a tx_hash is also unknown outcome, not validation
+   rejection or proof that no funds were spent.”
 8. **Security guide.** “Client redaction and redirect refusal reduce accidental
    leakage. They cannot change server retention: the inspected backend records
    submitted credentials. Use a dedicated minimally funded wallet and evaluate

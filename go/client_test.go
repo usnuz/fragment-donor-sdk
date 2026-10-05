@@ -163,7 +163,7 @@ func TestErrorKindsAndRetryHints(t *testing.T) {
 		kind   ErrorKind
 		wait   time.Duration
 	}{
-		{"validation", 400, f.Responses["validation"], "", ValidationError, 0},
+		{"remote failure", 400, f.Responses["validation"], "", APIError, 0},
 		{"flood", 429, f.Responses["flood_wait"], "30", RateLimitError, 42 * time.Second},
 		{"unavailable", 503, f.Responses["unavailable"], "", UnavailableError, 5 * time.Second},
 		{"malformed", 200, []byte("not json"), "", MalformedResponseError, 0},
@@ -383,6 +383,9 @@ func TestStructuredErrorDetailsPreserveReconciliationAndRedact(t *testing.T) {
 	if !errors.As(err, &apiErr) || apiErr.Message != "Transaction unconfirmed" {
 		t.Fatalf("info fallback missing: %v", err)
 	}
+	if apiErr.Kind != PurchaseOutcomeUnknownError || !apiErr.OutcomeUnknown {
+		t.Fatal("unconfirmed purchase misclassified as rejection")
+	}
 	if string(apiErr.Details["tx_hash"]) != `"SYNTHETIC_TX_HASH"` || string(apiErr.Details["unconfirmed"]) != "true" || string(apiErr.Details["transient"]) != "true" {
 		t.Fatal("reconciliation fields lost")
 	}
@@ -394,5 +397,76 @@ func TestStructuredErrorDetailsPreserveReconciliationAndRedact(t *testing.T) {
 	}
 	if !strings.Contains(string(encoded), "9007199254740993.01") {
 		t.Fatal("extra decimal lost")
+	}
+}
+
+func TestPurchaseOutcomeKindsAndNoDuplicateAttempts(t *testing.T) {
+	f := loadFixture(t)
+	for _, premium := range []bool{false, true} {
+		for _, tc := range []struct {
+			name    string
+			status  int
+			body    string
+			network error
+			kind    ErrorKind
+			unknown bool
+		}{
+			{"unconfirmed 400", 400, `{"ok":false,"unconfirmed":true,"info":"Await confirmation","tx_hash":"SYNTHETIC_TX_HASH","transient":true}`, nil, PurchaseOutcomeUnknownError, true},
+			{"unconfirmed 200", 200, `{"ok":false,"unconfirmed":true,"tx_hash":"SYNTHETIC_TX_HASH"}`, nil, PurchaseOutcomeUnknownError, true},
+			{"unconfirmed inconsistent ok", 200, `{"ok":true,"unconfirmed":true}`, nil, PurchaseOutcomeUnknownError, true},
+			{"remote lookup failure", 400, `{"ok":false,"reason":"Not a user"}`, nil, APIError, false},
+			{"false string flag", 400, `{"ok":false,"unconfirmed":"true"}`, nil, APIError, false},
+			{"flood guard", 429, `{"ok":false,"error_code":"FLOOD_WAIT","retry_after":42}`, nil, RateLimitError, false},
+			{"unavailable guard", 503, `{"ok":false,"error_code":"RATE_LIMIT_UNAVAILABLE"}`, nil, UnavailableError, false},
+			{"generic unavailable", 503, `{"ok":false}`, nil, UnavailableError, true},
+			{"server failure", 500, `{"ok":false}`, nil, APIError, true},
+			{"redirect", 307, ``, nil, APIError, true},
+			{"invalid JSON", 200, `not JSON`, nil, MalformedResponseError, true},
+			{"successful purchase", 200, `{"ok":true,"data":{},"extra":"kept"}`, nil, "", false},
+			{"timeout", 0, ``, context.DeadlineExceeded, TimeoutError, true},
+			{"network", 0, ``, errors.New("SYNTHETIC_NETWORK_ERROR"), NetworkError, true},
+		} {
+			t.Run(fmt.Sprintf("premium=%t/%s", premium, tc.name), func(t *testing.T) {
+				calls, waits := 0, 0
+				c := newMock(t, f, func(*http.Request) (*http.Response, error) {
+					calls++
+					if tc.network != nil {
+						return nil, tc.network
+					}
+					return response(tc.status, []byte(tc.body), nil), nil
+				}, func(cfg *Config) {
+					cfg.ReadRetries = 2
+					cfg.AutomaticWait = true
+					cfg.Sleep = func(context.Context, time.Duration) error { waits++; return nil }
+				})
+				var err error
+				if premium {
+					_, err = c.BuyPremium(context.Background(), "durov", 3, "")
+				} else {
+					_, err = c.BuyStars(context.Background(), "durov", 50, "")
+				}
+				if calls != 1 || waits != 0 {
+					t.Fatal("purchase duplicated")
+				}
+				if tc.kind == "" {
+					if err != nil {
+						t.Fatal(err)
+					}
+					return
+				}
+				var apiErr *Error
+				if !errors.As(err, &apiErr) || apiErr.Kind != tc.kind || apiErr.OutcomeUnknown != tc.unknown {
+					t.Fatalf("wrong outcome: %#v", err)
+				}
+				if tc.kind == PurchaseOutcomeUnknownError && tc.status == 400 && string(apiErr.Details["tx_hash"]) != `"SYNTHETIC_TX_HASH"` {
+					t.Fatal("transaction hash lost")
+				}
+			})
+		}
+	}
+	_, err := newMock(t, f, func(*http.Request) (*http.Response, error) { t.Fatal("local validation sent request"); return nil, nil }, nil).BuyStars(context.Background(), "durov", 49, "")
+	var apiErr *Error
+	if !errors.As(err, &apiErr) || apiErr.Kind != ValidationError || apiErr.OutcomeUnknown {
+		t.Fatal("local validation outcome wrong")
 	}
 }

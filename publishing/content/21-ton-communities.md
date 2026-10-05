@@ -3,7 +3,8 @@
 Checked 2026-10-05. No message sent. Exact Telegram destinations are linked by
 [official TON support documentation](https://docs.ton.org/get-support):
 EN https://t.me/tondev_eng, RU https://t.me/tondev. Official directory listing is
-not permission to advertise. Owner deferred external posts; no private outreach.
+not permission to advertise. Eligible public posting is authorized only after
+actual community eligibility/rules/access checks; no private outreach is authorized.
 
 ## TON Dev EN
 
@@ -62,5 +63,5 @@ Remaining verification: obtain an unexpired invite linked by the project's own
 official documentation, verify server identity and read server/channel pinned
 rules from authorized UI. Record exact server name, invite URL, relevant channel,
 AI/promotion rules and date. If no permitted developer-sharing channel exists,
-mark NOT_ELIGIBLE rather than spraying announcements. No joining/private messages
-or server-wide mentions are authorized in this preparation scope.
+mark NOT_ELIGIBLE rather than spraying announcements. Do not join unverified
+servers, privately message people or use server-wide mentions to force a launch.

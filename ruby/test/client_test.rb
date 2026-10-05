@@ -73,7 +73,7 @@ class FragmentDonorClientTest < Minitest::Test
   end
 
   def test_errors_and_retry_hints
-    [[400, "validation", FragmentDonor::ValidationError, nil], [429, "flood_wait", FragmentDonor::RateLimitError, 42], [503, "unavailable", FragmentDonor::UnavailableError, 5]].each do |status, fixture, klass, wait|
+    [[400, "validation", FragmentDonor::APIError, nil], [429, "flood_wait", FragmentDonor::RateLimitError, 42], [503, "unavailable", FragmentDonor::UnavailableError, 5]].each do |status, fixture, klass, wait|
       sdk = client(->(_) { response(status, FIXTURE["responses"][fixture], "Retry-After" => "2") })
       error = assert_raises(klass) { sdk.get_user_info("durov") }
       assert_equal wait || 2, error.retry_after
@@ -133,7 +133,7 @@ class FragmentDonorClientTest < Minitest::Test
   def test_redaction_in_error_debug_and_json
     text = [credentials.mnemonic, credentials.cookie, credentials.provider_key].join(" ")
     sdk = client(->(_) { response(400, { "ok" => false, "error" => text }) })
-    error = assert_raises(FragmentDonor::ValidationError) { sdk.buy_stars("durov", 50) }
+    error = assert_raises(FragmentDonor::APIError) { sdk.buy_stars("durov", 50) }
     output = [error.inspect, error.full_message, sdk.inspect, sdk.to_json, credentials.inspect, credentials.to_json].join(" ")
     [credentials.mnemonic, credentials.cookie, credentials.provider_key].each { |secret| refute_includes output, secret }
   end
@@ -171,7 +171,7 @@ class FragmentDonorClientTest < Minitest::Test
     configured = FragmentDonor::Credentials.new(mnemonic: seed.gsub(" ", "   "), cookie: "stel_ssid=#{token}", proxy: "http://SYNTHETIC_PROXY_USER:SYNTHETIC_PROXY%20PASSWORD@example.invalid")
     text = [seed, token, "SYNTHETIC_PROXY_USER", "SYNTHETIC_PROXY PASSWORD"].join(" ")
     sdk = FragmentDonor::Client.new(credentials: configured, transport: ->(_) { response(400, { "ok" => false, "error" => text, "error_code" => text }) })
-    error = assert_raises(FragmentDonor::ValidationError) { sdk.buy_stars("durov", 50) }
+    error = assert_raises(FragmentDonor::APIError) { sdk.buy_stars("durov", 50) }
     output = [error.message, error.code, error.inspect, error.full_message].join(" ")
     [seed, token, "SYNTHETIC_PROXY_USER", "SYNTHETIC_PROXY PASSWORD"].each { |secret| refute_includes output, secret }
     models = [FragmentDonor::UserInfo.new(username: text, extra: { "future_field" => text }), FragmentDonor::Purchase.new(data: text, extra: { "future_field" => text }), FragmentDonor::WalletBalance.new(address: text, extra: { "future_field" => text })]
@@ -186,7 +186,8 @@ class FragmentDonorClientTest < Minitest::Test
     payload = { "ok" => false, "info" => "Transaction unconfirmed", "tx_hash" => "SYNTHETIC_TX_HASH", "unconfirmed" => true, "transient" => true,
                 "future_field" => { "balance" => "9007199254740993.01", "echo" => credentials.mnemonic, "cookie" => "ANOTHER_SYNTHETIC_SECRET", "array" => [credentials.provider_key] } }
     sdk = client(->(_) { response(400, payload) })
-    error = assert_raises(FragmentDonor::ValidationError) { sdk.buy_stars("durov", 50) }
+    error = assert_raises(FragmentDonor::PurchaseOutcomeUnknownError) { sdk.buy_stars("durov", 50) }
+    assert error.outcome_unknown?
     assert_equal "Transaction unconfirmed", error.message
     assert_equal "SYNTHETIC_TX_HASH", error.details["tx_hash"]
     assert_equal true, error.details["unconfirmed"]
@@ -201,5 +202,45 @@ class FragmentDonorClientTest < Minitest::Test
         assert_raises(FragmentDonor::ValidationError) { FragmentDonor::Client.new(**{ option => value }) }
       end
     end
+  end
+
+  def test_purchase_outcomes_never_claim_unconfirmed_rejected_or_retry
+    cases = [
+      [400, { "ok" => false, "unconfirmed" => true, "tx_hash" => "SYNTHETIC_TX_HASH", "info" => "Await confirmation", "transient" => true }, FragmentDonor::PurchaseOutcomeUnknownError, true],
+      [200, { "ok" => false, "unconfirmed" => true }, FragmentDonor::PurchaseOutcomeUnknownError, true],
+      [200, { "ok" => true, "unconfirmed" => true }, FragmentDonor::PurchaseOutcomeUnknownError, true],
+      [400, { "ok" => false, "reason" => "Not a user" }, FragmentDonor::APIError, false],
+      [400, { "ok" => false, "unconfirmed" => "true" }, FragmentDonor::APIError, false],
+      [429, { "ok" => false, "error_code" => "FLOOD_WAIT" }, FragmentDonor::RateLimitError, false],
+      [503, { "ok" => false, "error_code" => "RATE_LIMIT_UNAVAILABLE" }, FragmentDonor::UnavailableError, false],
+      [503, { "ok" => false }, FragmentDonor::UnavailableError, true],
+      [500, { "ok" => false }, FragmentDonor::APIError, true],
+      [307, "redirect", FragmentDonor::APIError, true],
+      [200, "not JSON", FragmentDonor::MalformedResponseError, true],
+      [:timeout, nil, FragmentDonor::TimeoutError, true],
+      [:network, nil, FragmentDonor::NetworkError, true]
+    ]
+    %i[buy_stars buy_premium].each do |operation|
+      cases.each do |status, payload, klass, unknown|
+        calls, waits = 0, 0
+        sdk = FragmentDonor::Client.new(credentials: credentials, read_retries: 2, automatic_wait: true, sleeper: ->(_) { waits += 1 }, transport: lambda { |_|
+          calls += 1
+          raise Net::ReadTimeout if status == :timeout
+          raise IOError if status == :network
+          response(status, payload)
+        })
+        error = assert_raises(klass) { sdk.public_send(operation, "durov", operation == :buy_stars ? 50 : 3) }
+        assert_equal unknown, error.outcome_unknown?
+        assert_equal 1, calls
+        assert_equal 0, waits
+        refute_kind_of FragmentDonor::ValidationError, error
+        if klass == FragmentDonor::PurchaseOutcomeUnknownError && status == 400
+          assert_equal "SYNTHETIC_TX_HASH", error.details["tx_hash"]
+          assert_equal true, error.details["transient"]
+        end
+      end
+    end
+    error = assert_raises(FragmentDonor::ValidationError) { client(->(_) { flunk "local validation sent request" }).buy_stars("durov",49) }
+    refute error.outcome_unknown?
   end
 end

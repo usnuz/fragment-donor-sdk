@@ -12,11 +12,16 @@ module FragmentDonor
   class Error < StandardError
     attr_reader :status, :code, :retry_after, :details
 
-    def initialize(message, status: nil, code: nil, retry_after: nil, details: nil)
+    def initialize(message, status: nil, code: nil, retry_after: nil, details: nil, outcome_unknown: false)
       super(message)
       @status, @code, @retry_after = status, code, retry_after
       @details = details
+      @outcome_unknown = outcome_unknown
     end
+
+    # False is not a rejection or idempotency guarantee.
+    def outcome_unknown? = @outcome_unknown
+    def mark_outcome_unknown! = @outcome_unknown = true
   end
 
   class ValidationError < Error; end
@@ -26,6 +31,7 @@ module FragmentDonor
   class TimeoutError < Error; end
   class NetworkError < Error; end
   class MalformedResponseError < Error; end
+  class PurchaseOutcomeUnknownError < APIError; end
 
   class Credentials
     attr_reader :mnemonic, :cookie, :wallet_version, :wallet_address, :provider_key, :proxy, :user_agent
@@ -214,8 +220,13 @@ module FragmentDonor
       loop do
         begin
           response = safe_transport(request_data)
-          return parse_response(response)
+          return parse_response(response, purchase)
         rescue Error => error
+          if purchase && (error.is_a?(TimeoutError) || error.is_a?(NetworkError) || error.is_a?(MalformedResponseError) ||
+                          (error.status && error.status >= 500 && error.code != "RATE_LIMIT_UNAVAILABLE") ||
+                          (error.status && (300..399).cover?(error.status)))
+            error.mark_outcome_unknown!
+          end
           raise error, cause: nil if attempts >= limit
           wait = retry_delay(error, attempts)
           raise error, cause: nil unless wait
@@ -233,7 +244,7 @@ module FragmentDonor
       raise NetworkError.new("Transport failed; sensitive details omitted"), cause: nil
     end
 
-    def parse_response(response)
+    def parse_response(response, purchase)
       status = response.status
       begin
         data = JSON.parse(response.body)
@@ -242,9 +253,16 @@ module FragmentDonor
       end
       data = nil unless data.is_a?(Hash)
       wait = retry_after(response.headers, data || {})
+      if purchase && data && data["unconfirmed"] == true
+        message = %w[error reason info message].filter_map { |key| data[key] if data[key].is_a?(String) && !data[key].empty? }.first
+        message ||= "Purchase outcome unknown; reconcile manually and do not retry"
+        code = data["error_code"]
+        code = nil unless code.is_a?(String)
+        raise PurchaseOutcomeUnknownError.new(redact(message), status: status, code: code && redact(code), retry_after: wait,
+                                              details: safe_details(data), outcome_unknown: true), cause: nil
+      end
       if !(200..299).cover?(status)
         klass = case status
-                when 400, 422 then ValidationError
                 when 429 then RateLimitError
                 when 503 then UnavailableError
                 else APIError

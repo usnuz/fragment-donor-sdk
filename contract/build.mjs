@@ -1,9 +1,10 @@
-import {writeFile} from 'node:fs/promises';
+import {writeFile,readFile} from 'node:fs/promises';
 import {dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const dir=dirname(fileURLToPath(import.meta.url));
 const json=file=>writeFile(join(dir,file.name),JSON.stringify(file.value,null,2)+'\n');
 const api='https://fragment.donor.uz';
+const fixtures=JSON.parse(await readFile(join(dir,'fixtures.json'),'utf8'));
 const error={type:'object',required:['ok'],additionalProperties:true,properties:{ok:{type:'boolean',enum:[false]},error:{type:'string'},reason:{type:'string'},info:{},retry_after:{type:'integer',minimum:0},flood_wait:{type:'integer',minimum:0},tx_hash:{type:'string'},transient:{type:'boolean'},unconfirmed:{type:'boolean'}}};
 const response=(description,schema)=>({description,content:{'application/json':{schema}}});
 const common={400:response('Invalid request or upstream purchase failure; error details may appear in error, reason, or info.',error),429:{...response('FLOOD_WAIT: wait retry_after seconds. No automatic purchase retries.',error),headers:{'Retry-After':{description:'Whole seconds to wait.',schema:{type:'integer',minimum:0}}}},503:{...response('RATE_LIMIT_UNAVAILABLE: safety limiter unavailable; no automatic purchase retries.',error),headers:{'Retry-After':{schema:{type:'integer',minimum:0}}}}};
@@ -19,4 +20,14 @@ const walletPostmanHeaders=walletHeaders.map(p=>({key:p.name,value:p.name==='Mne
 const postItem=(name,path,field,value)=>({name,event:[{listen:'prerequest',script:{type:'text/javascript',exec:["if (pm.variables.get('allow_real_purchases') !== 'I_UNDERSTAND_REAL_FUNDS') {","  throw new Error('Purchase disabled: set allow_real_purchases explicitly only on a trusted backend with a funded dedicated wallet.');","}"]}}],request:{method:'POST',auth:{type:'noauth'},header:[...walletPostmanHeaders,{key:'Cookie',value:'{{fragment_cookie}}',type:'text'},{key:'Content-Type',value:'application/x-www-form-urlencoded',type:'text'}],body:{mode:'urlencoded',urlencoded:[{key:'username',value:'{{username}}',type:'text'},{key:field,value:String(value),type:'text'},{key:'payment_method',value:'usdt_ton',type:'text'}]},url:`{{base_url}}/${path}/`}});
 const collection={info:{name:'Fragment Donor API — safe public examples',description:'No service auth. Secrets are empty placeholders. Purchases are disabled by default and require an explicit real-funds flag. Do not run purchases in CI. Independent, not an official Telegram/Fragment product.',schema:'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'},auth:{type:'noauth'},variable:[{key:'base_url',value:api},{key:'username',value:'durov'},{key:'mnemonic',value:''},{key:'fragment_cookie',value:''},{key:'tonconsole_key',value:''},{key:'allow_real_purchases',value:'false'}],item:[{name:'Read public user info',request:{method:'GET',auth:{type:'noauth'},url:'{{base_url}}/get-user-info/?username={{username}}'}},{name:'Read wallet balance',request:{method:'GET',auth:{type:'noauth'},header:walletPostmanHeaders,url:'{{base_url}}/wallet-balance/'}},postItem('Gift Stars — disabled by default','buy-stars','amount',50),postItem('Gift Premium — disabled by default','buy-premium','duration',3)]};
 await json({name:'postman.json',value:collection});
+// Published response examples are synthetic snapshots, not evidence of purchases.
+const savedResponse=(item,name,status,body,headers=[])=>({name:`MOCK — ${name}`,originalRequest:item.request,status:status===200?'OK':status===429?'Too Many Requests':status===503?'Service Unavailable':'Bad Request',code:status,_postman_previewlanguage:'json',header:[{key:'Content-Type',value:'application/json'},...headers],cookie:[],body:JSON.stringify(body,null,2)});
+for(const item of collection.item){
+  const purchase=item.request.method==='POST';
+  const success=item.name.includes('user info')?fixtures.responses.user_info:item.name.includes('wallet balance')?fixtures.responses.wallet_balance:fixtures.responses.purchase;
+  item.response=[savedResponse(item,'synthetic success',200,success),savedResponse(item,'wait 42 seconds; purchase must not repeat',429,fixtures.responses.flood_wait,[{key:'Retry-After',value:'42'}]),savedResponse(item,'limiter unavailable; bounded waits only',503,fixtures.responses.unavailable,[{key:'Retry-After',value:'5'}])];
+  if(purchase)item.response.push(savedResponse(item,'payment outcome UNKNOWN — reconcile, never repeat automatically',400,fixtures.responses.purchase_unconfirmed));
+}
+await json({name:'postman.json',value:collection});
+await json({name:'postman.environment.json',value:{name:'Fragment Donor — placeholder-only public environment',_postman_variable_scope:'environment',values:collection.variable.map(v=>({key:v.key,value:v.value,enabled:true,type:['mnemonic','fragment_cookie','tonconsole_key'].includes(v.key)?'secret':'default'}))}});
 console.log('Generated public OpenAPI and guarded Postman collection. No requests were sent.');

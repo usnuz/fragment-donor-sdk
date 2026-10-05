@@ -29,9 +29,17 @@ balance = client.wallet_balance
 # Exact strings; do not convert to Float.
 puts balance.ton
 
-# Examples that spend real money: run only the operation you deliberately want.
-stars = client.buy_stars("durov", 50, payment_method: "usdt_ton")
-premium = client.buy_premium("durov", 3, payment_method: "ton")
+# Real-funds operations require both opt-in and one selected purchase.
+if ENV["FRAGMENT_ALLOW_PURCHASES"] == "yes"
+  begin
+    case ENV["FRAGMENT_PURCHASE_KIND"]
+    when "stars" then client.buy_stars("durov", 50, payment_method: "usdt_ton")
+    when "premium" then client.buy_premium("durov", 3, payment_method: "ton")
+    end
+  rescue FragmentDonor::PurchaseOutcomeUnknownError => error
+    # Reconcile error.details["tx_hash"] manually. Do not repeat the purchase.
+  end
+end
 ```
 
 No service account, login, `Authorization` or `X-Api-Key` is needed. Cookie and
@@ -59,6 +67,13 @@ end
 
 Error `details` retains recursively redacted JSON fields such as `info`,
 `tx_hash`, `unconfirmed`, `transient` and unknown fields for reconciliation.
+An explicit purchase `unconfirmed: true` raises `PurchaseOutcomeUnknownError`
+with `outcome_unknown? == true`, including HTTP 400. Timeouts/network failures,
+malformed replies, redirects and ambiguous 5xx also set the uncertainty flag.
+Known pre-purchase limiter codes retain RateLimitError/UnavailableError.
+Reconcile `details["tx_hash"]` manually and never replay the purchase. A false
+flag is not a rejection/idempotency guarantee. Remote HTTP 400/422 failures
+are APIError; ValidationError is reserved for SDK preflight validation.
 
 The shared per-IP limit is normally 30/minute. Retry hints understand HTTP
 seconds, HTTP date, JSON `retry_after` and `flood_wait`. Default retry count is
@@ -80,12 +95,17 @@ credentials; do not claim zero retention.
 From this directory in the monorepo:
 
 ```sh
+ruby scripts/check.rb
 ruby -Ilib test/client_test.rb
 gem build fragment-donor-sdk.gemspec
-gem specification --local fragment-donor-sdk-0.1.0.gem files
-gem install --local fragment-donor-sdk-0.1.0.gem
+ruby smoke/verify.rb
 ```
 
+`scripts/check.rb` enforces Ruby syntax plus tabs/trailing-space/final-newline
+consistency (not a full RuboCop style claim). The smoke inspects the gem's exact
+file allowlist/fixture-private-key exclusion, installs the built artifact into
+an isolated GEM_HOME and exercises all four methods with mocked transport,
+unconfirmed Stars/Premium classification, no duplicates and redacted details.
 Tests consume `../contract/fixtures.json` with synthetic credentials, mocked
 transport and no real purchases. Run a secret scan and inspect gem contents
 before releasing. Publish only with verified RubyGems ownership/MFA or trusted

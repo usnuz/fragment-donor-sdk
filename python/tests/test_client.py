@@ -5,6 +5,7 @@ import threading
 import unittest
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 from urllib.parse import parse_qs, urlsplit
 
@@ -13,12 +14,14 @@ from fragment_donor_sdk import (
     FloodWaitError,
     FragmentDonorClient,
     MalformedResponseError,
+    PurchaseOutcomeUnknownError,
     ServiceUnavailableError,
     TransportError,
     TransportResponse,
     ValidationError,
     WalletCredentials,
 )
+from fragment_donor_sdk.client import _urllib_transport
 
 FIXTURE = json.loads(
     (Path(__file__).resolve().parents[2] / "contract" / "fixtures.json").read_text(
@@ -63,6 +66,127 @@ class FakeTransport:
 
 
 class ClientTests(unittest.TestCase):
+    def test_unconfirmed_purchase_is_not_validation_and_never_retries(self):
+        body = FIXTURE["responses"].get(
+            "purchase_unconfirmed",
+            {
+                "ok": False,
+                "unconfirmed": True,
+                "tx_hash": "SYNTHETIC_UNCONFIRMED_TX_HASH",
+                "info": "SYNTHETIC_TRANSFER_CONFIRMATION_UNKNOWN",
+            },
+        )
+        for method in ("buy_stars", "buy_premium"):
+            transport = FakeTransport(
+                response(status=400, data=body), response("purchase")
+            )
+            client = FragmentDonorClient(
+                credentials=credentials(),
+                transport=transport,
+                readonly_retries=2,
+                auto_wait=True,
+                sleep=lambda _: self.fail("unconfirmed purchase waited"),
+            )
+            with (
+                self.subTest(method=method),
+                self.assertRaises(PurchaseOutcomeUnknownError) as caught,
+            ):
+                getattr(client, method)("durov", 50 if method == "buy_stars" else 3)
+            error = caught.exception
+            self.assertNotIsInstance(error, ValidationError)
+            self.assertTrue(error.purchase_outcome_unknown)
+            self.assertEqual(error.status, 400)
+            self.assertEqual(error.body["tx_hash"], body["tx_hash"])
+            self.assertEqual(str(error), body["info"])
+            self.assertEqual(len(transport.requests), 1)
+
+    def test_timeout_phase_options_reach_injected_transport(self):
+        transport = FakeTransport(response())
+        FragmentDonorClient(
+            transport=transport,
+            timeout=9,
+            connect_timeout=2,
+            socket_timeout=3,
+        ).get_user_info("durov")
+        request = transport.requests[0]
+        self.assertEqual(
+            (request.timeout, request.connect_timeout, request.socket_timeout),
+            (9, 2, 3),
+        )
+        for options in (
+            {"connect_timeout": 0},
+            {"socket_timeout": float("inf")},
+            {"connect_timeout": True},
+        ):
+            with self.subTest(options=options), self.assertRaises(ValidationError):
+                FragmentDonorClient(**options)
+
+    def test_stdlib_deadline_bounds_connection_and_each_body_chunk(self):
+        response_object = MagicMock(
+            spec=["fp", "read", "read1", "code", "headers", "__enter__", "__exit__"]
+        )
+        socket = MagicMock()
+        response_object.fp = SimpleNamespace(raw=SimpleNamespace(_sock=socket))
+        response_object.read1.side_effect = [
+            b'{"ok":true,"username":"durov",',
+            b'"is_premium":false}',
+            b"",
+        ]
+        response_object.code = 200
+        response_object.headers = {}
+        response_object.__enter__.return_value = response_object
+        opener = MagicMock()
+        opener.open.return_value = response_object
+        transport = FakeTransport(response())
+        client = FragmentDonorClient(
+            transport=transport, timeout=5, connect_timeout=2, socket_timeout=3
+        )
+        client.get_user_info("durov")
+        with (
+            patch("fragment_donor_sdk.client.build_opener", return_value=opener),
+            patch(
+                "fragment_donor_sdk.client.time.monotonic",
+                side_effect=[0, 0, 0, 1, 1, 4, 4, 4],
+            ),
+        ):
+            result = _urllib_transport(transport.requests[0])
+        self.assertEqual(opener.open.call_args.kwargs["timeout"], 2)
+        self.assertEqual(
+            [call.args[0] for call in socket.settimeout.call_args_list], [3, 3, 1]
+        )
+        self.assertEqual(json.loads(result.body)["username"], "durov")
+
+    def test_stdlib_total_deadline_expires_between_progressing_chunks(self):
+        response_object = MagicMock()
+        response_object.__enter__.return_value = response_object
+        response_object.read1.return_value = b"still progressing"
+        opener = MagicMock()
+        opener.open.return_value = response_object
+        transport = FakeTransport(response())
+        FragmentDonorClient(transport=transport, timeout=5).get_user_info("durov")
+        with (
+            patch("fragment_donor_sdk.client.build_opener", return_value=opener),
+            patch("fragment_donor_sdk.client.time.monotonic", side_effect=[0, 0, 0, 6]),
+            self.assertRaises(TimeoutError),
+        ):
+            _urllib_transport(transport.requests[0])
+        self.assertEqual(response_object.read1.call_count, 1)
+        response_object.__exit__.assert_called_once()
+
+    def test_503_http_date_wait_hint(self):
+        with self.assertRaises(ServiceUnavailableError) as caught:
+            FragmentDonorClient(
+                transport=FakeTransport(
+                    response(
+                        status=503,
+                        headers={"Retry-After": "Thu, 01 Jan 1970 00:01:10 GMT"},
+                        data={"ok": False},
+                    )
+                ),
+                clock=lambda: 40,
+            ).get_user_info("durov")
+        self.assertEqual(caught.exception.retry_after, 30)
+
     def test_example_spending_requires_one_explicit_kind(self):
         example = Path(__file__).resolve().parents[1] / "examples" / "all_endpoints.py"
         for kind in (None, "invalid", "stars", "premium"):

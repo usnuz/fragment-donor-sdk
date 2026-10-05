@@ -11,6 +11,14 @@ for(const entry of entries){
   const target=resolve(destination,entry.path);
   if(!target.startsWith(destination+'/')&&!target.startsWith(destination+'\\'))throw new Error('Export path escaped clone');
   await mkdir(dirname(target),{recursive:true});
-  await writeFile(target,entry.content,'utf8');
+  if(entry.encoding==='base64'){
+    if(!/^publishing\/media\/(?:0[1-5]-[a-z-]+\.png|walkthrough-en\.mp4)$/.test(entry.path))throw new Error('Unreviewed binary snapshot path');
+    const bytes=Buffer.from(entry.content,'base64');
+    if(bytes.toString('base64')!==entry.content)throw new Error('Noncanonical binary snapshot');
+    await writeFile(target,bytes);
+  }else{
+    if(entry.encoding!==undefined)throw new Error('Unsupported snapshot encoding');
+    await writeFile(target,entry.content,'utf8');
+  }
 }
 console.log(`Materialized ${entries.length} scanned source files in isolated SDK clone.`);

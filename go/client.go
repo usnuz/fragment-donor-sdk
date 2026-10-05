@@ -137,13 +137,14 @@ func sleepContext(ctx context.Context, d time.Duration) error {
 type ErrorKind string
 
 const (
-	ValidationError        ErrorKind = "validation"
-	APIError               ErrorKind = "api"
-	RateLimitError         ErrorKind = "rate_limit"
-	UnavailableError       ErrorKind = "unavailable"
-	TimeoutError           ErrorKind = "timeout"
-	NetworkError           ErrorKind = "network"
-	MalformedResponseError ErrorKind = "malformed_response"
+	ValidationError             ErrorKind = "validation"
+	APIError                    ErrorKind = "api"
+	RateLimitError              ErrorKind = "rate_limit"
+	UnavailableError            ErrorKind = "unavailable"
+	TimeoutError                ErrorKind = "timeout"
+	NetworkError                ErrorKind = "network"
+	MalformedResponseError      ErrorKind = "malformed_response"
+	PurchaseOutcomeUnknownError ErrorKind = "purchase_outcome_unknown"
 )
 
 // Error intentionally has no raw response, headers, URL or underlying transport error.
@@ -153,6 +154,9 @@ type Error struct {
 	Code       string
 	Message    string
 	RetryAfter time.Duration
+	// OutcomeUnknown means a purchase may already have spent funds. Never replay it.
+	// False is not an idempotency or rejection guarantee.
+	OutcomeUnknown bool
 	// Details retains every JSON error field, recursively redacting credentials.
 	// tx_hash/unconfirmed/transient remain available for manual reconciliation.
 	Details map[string]json.RawMessage
@@ -252,6 +256,11 @@ func (c *Client) buy(ctx context.Context, path, username, field string, quantity
 	}
 	var result Purchase
 	if err := decodeResponse(data, &result); err != nil {
+		var apiErr *Error
+		if errors.As(err, &apiErr) {
+			apiErr.OutcomeUnknown = true
+			apiErr.Details = c.safeDetails(data)
+		}
 		return nil, err
 	}
 	result.Extra = unknown(data, "ok", "data")
@@ -385,11 +394,15 @@ func (c *Client) request(ctx context.Context, method, path string, query, form u
 			} else if len(raw) > 4*1024*1024 {
 				apiErr = &Error{Kind: MalformedResponseError, StatusCode: resp.StatusCode, Message: "Response too large"}
 			} else {
-				data, apiErr = c.parse(resp, raw)
+				data, apiErr = c.parse(resp, raw, purchase)
 			}
 		}
 		if apiErr == nil {
 			return data, nil
+		}
+		if purchase && (apiErr.Kind == NetworkError || apiErr.Kind == TimeoutError || apiErr.Kind == MalformedResponseError ||
+			(apiErr.StatusCode >= 500 && apiErr.Code != "RATE_LIMIT_UNAVAILABLE") || (apiErr.StatusCode >= 300 && apiErr.StatusCode < 400)) {
+			apiErr.OutcomeUnknown = true
 		}
 		if attempt >= maxRetries || ctx.Err() != nil {
 			return nil, apiErr
@@ -404,15 +417,24 @@ func (c *Client) request(ctx context.Context, method, path string, query, form u
 	}
 }
 
-func (c *Client) parse(resp *http.Response, raw []byte) (map[string]json.RawMessage, *Error) {
+func (c *Client) parse(resp *http.Response, raw []byte, purchase bool) (map[string]json.RawMessage, *Error) {
 	var data map[string]json.RawMessage
 	err := json.Unmarshal(raw, &data)
 	status := resp.StatusCode
+	var unconfirmed bool
+	if purchase && err == nil && json.Unmarshal(data["unconfirmed"], &unconfirmed) == nil && unconfirmed {
+		message := "Purchase outcome unknown; reconcile manually and do not retry"
+		for _, field := range []string{"error", "reason", "info", "message"} {
+			if json.Unmarshal(data[field], &message) == nil && message != "" {
+				break
+			}
+		}
+		var code string
+		_ = json.Unmarshal(data["error_code"], &code)
+		return nil, &Error{Kind: PurchaseOutcomeUnknownError, StatusCode: status, OutcomeUnknown: true, Message: c.redact(message), Code: c.redact(code), RetryAfter: retryAfter(resp.Header.Get("Retry-After"), data, c.now()), Details: c.safeDetails(data)}
+	}
 	if status == 429 || status == 503 || status < 200 || status >= 300 {
 		kind := APIError
-		if status == 400 || status == 422 {
-			kind = ValidationError
-		}
 		if status == 429 {
 			kind = RateLimitError
 		}

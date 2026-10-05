@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FragmentDonor;
@@ -65,14 +66,23 @@ final class Credentials
         $proxyText = $this->proxy !== null && !str_contains($this->proxy, '://') ? '//' . $this->proxy : $this->proxy;
         if ($proxyText !== null && ($proxy = parse_url($proxyText)) !== false) {
             foreach (['user', 'pass'] as $key) {
-                if (isset($proxy[$key])) { $values[] = $proxy[$key]; $values[] = rawurldecode($proxy[$key]); }
+                if (isset($proxy[$key])) {
+                    $values[] = $proxy[$key];
+                    $values[] = rawurldecode($proxy[$key]);
+                }
             }
         }
         return array_values(array_unique(array_filter($values, fn ($value) => $value !== null && $value !== '')));
     }
 
-    public function __debugInfo(): array { return ['credentials' => '[REDACTED]']; }
-    public function __serialize(): array { return ['credentials' => '[REDACTED]']; }
+    public function __debugInfo(): array
+    {
+        return ['credentials' => '[REDACTED]'];
+    }
+    public function __serialize(): array
+    {
+        return ['credentials' => '[REDACTED]'];
+    }
 }
 
 final readonly class StarsRequest
@@ -118,23 +128,46 @@ final class Validation
 /** Entire JSON object is preserved, including future fields; decimal strings stay strings. */
 abstract class ApiResponse
 {
-    public function __construct(public readonly array $raw) {}
-    public function __debugInfo(): array { return ['response' => static::class, 'ok' => true]; }
+    public function __construct(public readonly array $raw)
+    {
+    }
+    public function __debugInfo(): array
+    {
+        return ['response' => static::class, 'ok' => true];
+    }
 }
 final class UserInfoResponse extends ApiResponse
 {
-    public function username(): ?string { return $this->raw['username'] ?? null; }
-    public function isPremium(): ?bool { return $this->raw['is_premium'] ?? null; }
+    public function username(): ?string
+    {
+        return $this->raw['username'] ?? null;
+    }
+    public function isPremium(): ?bool
+    {
+        return $this->raw['is_premium'] ?? null;
+    }
 }
 final class PurchaseResponse extends ApiResponse
 {
-    public function data(): mixed { return $this->raw['data'] ?? null; }
+    public function data(): mixed
+    {
+        return $this->raw['data'] ?? null;
+    }
 }
 final class WalletBalanceResponse extends ApiResponse
 {
-    public function address(): ?string { return $this->raw['address'] ?? null; }
-    public function ton(): string { return $this->raw['ton']; }
-    public function usdtTon(): string { return $this->raw['usdt_ton']; }
+    public function address(): ?string
+    {
+        return $this->raw['address'] ?? null;
+    }
+    public function ton(): string
+    {
+        return $this->raw['ton'];
+    }
+    public function usdtTon(): string
+    {
+        return $this->raw['usdt_ton'];
+    }
 }
 
 class SdkError extends \RuntimeException
@@ -145,26 +178,66 @@ class SdkError extends \RuntimeException
         public readonly ?int $retryAfter = null,
         public readonly ?string $errorCode = null,
         public readonly array $data = [],
-    ) { parent::__construct($message); }
+        public readonly bool $purchaseOutcomeUnknown = false,
+    ) {
+        parent::__construct($message);
+    }
+
+    /** Preserve the error category while marking a dispatched purchase uncertain. */
+    public function asPurchaseOutcomeUnknown(): static
+    {
+        return $this->purchaseOutcomeUnknown ? $this : new static($this->getMessage(), $this->status,
+            $this->retryAfter, $this->errorCode, $this->data, true);
+    }
 
     public function __debugInfo(): array
     {
         return ['type' => static::class, 'message' => $this->getMessage(), 'status' => $this->status,
-            'retry_after' => $this->retryAfter, 'error_code' => $this->errorCode];
+            'retry_after' => $this->retryAfter, 'error_code' => $this->errorCode,
+            'purchase_outcome_unknown' => $this->purchaseOutcomeUnknown];
     }
 }
-class ApiError extends SdkError {}
-class ValidationError extends ApiError {}
-class RateLimitError extends ApiError {}
-class ServiceUnavailableError extends ApiError {}
-class TransportError extends SdkError {}
-class TransportTimeoutError extends TransportError {}
-class MalformedResponseError extends SdkError {}
+class ApiError extends SdkError
+{
+}
+class ValidationError extends ApiError
+{
+}
+final class PurchaseOutcomeUnknownError extends ApiError
+{
+    public function __construct(
+        string $message = 'Purchase completion is unknown; reconcile before another purchase.',
+        ?int $status = null,
+        ?int $retryAfter = null,
+        ?string $errorCode = null,
+        array $data = [],
+        bool $purchaseOutcomeUnknown = true
+    ) {
+        parent::__construct($message, $status, $retryAfter, $errorCode, $data, true);
+    }
+}
+class RateLimitError extends ApiError
+{
+}
+class ServiceUnavailableError extends ApiError
+{
+}
+class TransportError extends SdkError
+{
+}
+class TransportTimeoutError extends TransportError
+{
+}
+class MalformedResponseError extends SdkError
+{
+}
 
 final class Redactor
 {
     /** @param list<string> $secrets */
-    public function __construct(private readonly array $secrets = []) {}
+    public function __construct(private readonly array $secrets = [])
+    {
+    }
     public function clean(mixed $value): mixed
     {
         if (is_array($value)) {

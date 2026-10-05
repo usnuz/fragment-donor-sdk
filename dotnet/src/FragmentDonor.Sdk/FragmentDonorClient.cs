@@ -31,7 +31,8 @@ public sealed class FragmentDonorClient : IDisposable
             AllowAutoRedirect = false,
             ConnectTimeout = this.options.ConnectTimeout,
             UseCookies = false,
-        }, disposeHandler: true) { Timeout = this.options.RequestTimeout };
+        }, disposeHandler: true)
+        { Timeout = this.options.RequestTimeout };
         this.delay = delay ?? Task.Delay;
         this.clock = clock ?? (() => DateTimeOffset.UtcNow);
         secrets = this.options.Credentials?.Secrets().OrderByDescending(s => s.Length).ToArray() ?? [];
@@ -53,14 +54,18 @@ public sealed class FragmentDonorClient : IDisposable
     {
         return new PurchaseResponse(await CallAsync(HttpMethod.Post, "/buy-stars/", new()
         {
-            ["username"] = request.Username, ["amount"] = request.Amount.ToString(CultureInfo.InvariantCulture), ["payment_method"] = request.PaymentMethod,
+            ["username"] = request.Username,
+            ["amount"] = request.Amount.ToString(CultureInfo.InvariantCulture),
+            ["payment_method"] = request.PaymentMethod,
         }, purchase: true, cancellationToken: cancellationToken).ConfigureAwait(false));
     }
     public async Task<PurchaseResponse> BuyPremiumAsync(PremiumRequest request, CancellationToken cancellationToken = default)
     {
         return new PurchaseResponse(await CallAsync(HttpMethod.Post, "/buy-premium/", new()
         {
-            ["username"] = request.Username, ["duration"] = request.Duration.ToString(CultureInfo.InvariantCulture), ["payment_method"] = request.PaymentMethod,
+            ["username"] = request.Username,
+            ["duration"] = request.Duration.ToString(CultureInfo.InvariantCulture),
+            ["payment_method"] = request.PaymentMethod,
         }, purchase: true, cancellationToken: cancellationToken).ConfigureAwait(false));
     }
     // The backend also accepts POST. Both balance methods are read-only.
@@ -118,6 +123,8 @@ public sealed class FragmentDonorClient : IDisposable
                     var hint = RetryAfter(response, raw);
                     var safe = Redact(raw);
                     var code = safe.TryGetValue("error_code", out var ec) && ec.ValueKind == JsonValueKind.String ? ec.GetString() : null;
+                    if (purchase && raw.TryGetValue("unconfirmed", out var unconfirmed) && unconfirmed.ValueKind == JsonValueKind.True)
+                        throw new PurchaseOutcomeUnknownException(status, hint, code, safe);
                     if (status == 429) throw new RateLimitException(hint, code, safe);
                     if (status == 503) throw new ServiceUnavailableException(hint, code, safe);
                     if (status == 400) throw new ValidationException("API rejected the request.", 400, hint, code, safe);
@@ -127,10 +134,17 @@ public sealed class FragmentDonorClient : IDisposable
             }
             catch (SdkException error)
             {
+                if (purchase)
+                {
+                    if (error is TransportException or MalformedResponseException
+                        || error.StatusCode >= 500 || error.StatusCode is >= 300 and < 400)
+                        error.MarkPurchaseOutcomeUnknown();
+                    throw;
+                }
                 var retryable = error is TransportException or ServiceUnavailableException
                     || (error is RateLimitException && options.AutoWaitFlood)
                     || (error is ApiException && error.StatusCode >= 500);
-                if (purchase || !retryable || attempt >= options.ReadOnlyRetries) throw;
+                if (!retryable || attempt >= options.ReadOnlyRetries) throw;
                 var wait = error.RetryAfter ?? (1 << attempt);
                 if (wait > options.MaxWaitSeconds) throw;
                 await delay(TimeSpan.FromSeconds(wait), cancellationToken).ConfigureAwait(false);

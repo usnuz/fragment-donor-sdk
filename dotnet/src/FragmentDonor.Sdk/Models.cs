@@ -152,6 +152,8 @@ public class SdkException : Exception
     public int? StatusCode { get; }
     public int? RetryAfter { get; }
     public string? ErrorCode { get; }
+    public bool PurchaseOutcomeUnknown { get; private set; }
+    internal void MarkPurchaseOutcomeUnknown() => PurchaseOutcomeUnknown = true;
     // Exception.Data is IDictionary, so use a distinct property for redacted API JSON.
     public IReadOnlyDictionary<string, JsonElement> ResponseData { get; }
     public SdkException(string message, int? statusCode = null, int? retryAfter = null, string? errorCode = null,
@@ -170,6 +172,13 @@ public sealed class ValidationException : ApiException
 {
     public ValidationException(string message, int? statusCode = null, int? retryAfter = null, string? errorCode = null,
         Dictionary<string, JsonElement>? responseData = null) : base(message, statusCode, retryAfter, errorCode, responseData) { }
+}
+public sealed class PurchaseOutcomeUnknownException : ApiException
+{
+    public PurchaseOutcomeUnknownException(int? statusCode, int? retryAfter, string? errorCode,
+        Dictionary<string, JsonElement> responseData)
+        : base("Purchase completion is unknown; reconcile before another purchase.", statusCode, retryAfter, errorCode, responseData)
+    { MarkPurchaseOutcomeUnknown(); }
 }
 public sealed class RateLimitException : ApiException
 {

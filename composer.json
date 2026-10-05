@@ -11,6 +11,6 @@
   },
   "keywords": ["telegram", "stars", "premium", "fragment-donor", "sdk"],
   "archive": {
-    "exclude": ["/.github", "/.tools", "/.git", "/.gitignore", "/build", "/dist", "/examples", "/openapi", "/contract", "/docs", "/site", "/scripts", "/publishing", "/python", "/typescript", "/dotnet", "/go", "/rust", "/ruby", "/php/tests", "/php/dist", "/php/vendor", "/php/examples", "/php/.gitignore", "/php/composer.json", "/php/composer.lock", "/CONTRIBUTING.md"]
+    "exclude": ["/.github", "/.tools", "/.git", "/.gitignore", "/build", "/dist", "/examples", "/openapi", "/contract", "/docs", "/site", "/scripts", "/publishing", "/demo", "/python", "/typescript", "/dotnet", "/go", "/rust", "/ruby", "/php/tests", "/php/dist", "/php/vendor", "/php/examples", "/php/.gitignore", "/php/.php-cs-fixer.dist.php", "/php/composer.json", "/php/composer.lock", "/CONTRIBUTING.md"]
   }
 }

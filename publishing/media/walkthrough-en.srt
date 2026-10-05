@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:09,999
+This is a rendered synthetic walkthrough, not a live transaction or screencast.
+
+2
+00:00:10,000 --> 00:00:19,999
+No service authentication does not mean wallet operations require no credentials.
+
+3
+00:00:20,000 --> 00:00:29,999
+Read retries are optional and bounded. Purchases never automatically retry.
+
+4
+00:00:30,000 --> 00:00:39,999
+A 400 with unconfirmed:true is an unknown purchase outcome. Reconcile; never replay.
+
+5
+00:00:40,000 --> 00:00:49,999
+SDK redaction does not erase backend credential storage. Review the trust boundary.

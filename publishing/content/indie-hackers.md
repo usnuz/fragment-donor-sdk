@@ -1,9 +1,10 @@
 # Indie Hackers — conditional build-in-public material
 
 Status: **NOT_RUN — official current posting rules not retrieved**. This draft
-is not authorized for posting until the actual signed-in rules/editor/pinned
+is not eligible for posting until the actual signed-in rules/editor/pinned
 guidance are checked. `/guidelines` retrieval failed; comments written by users
-and r/IndieHackers rules are not platform policy. External posting deferred.
+and r/IndieHackers rules are not platform policy. Eligible publication is
+authorized, but eligibility/access/editorial gates remain unverified here.
 AI-generated draft; human editorial review pending.
 
 Conditional title: **Shipping seven SDKs without teaching a payment retry bug**.
@@ -20,6 +21,8 @@ The project is seven server SDKs for one small four-operation contract. The hard
 part wasn't adding seven install commands; it was making failure behavior agree.
 A spending POST cannot be wrapped in the same retries as a read. A timeout may
 follow a successful payment, and this backend has no idempotency guarantee.
+HTTP 400 `unconfirmed:true` is also uncertain, not ordinary validation rejection;
+retain the safe transaction reference and reconcile rather than retry.
 
 The common tests use synthetic fixtures: form fields, exact decimal strings,
 429 hints, malformed responses, credentials echoed in errors and one outbound

@@ -8,6 +8,7 @@ import {
   FloodWaitError,
   FragmentDonorClient,
   MalformedResponseError,
+  PurchaseOutcomeUnknownError,
   ServiceUnavailableError,
   TransportError,
   ValidationError,
@@ -97,6 +98,80 @@ function mock(...responses) {
   };
   return { fetch, calls };
 }
+
+test("unconfirmed HTTP400 has dedicated uncertain outcome error for both gifts, no retry", async () => {
+  const body = fixture.responses.purchase_unconfirmed ?? {
+    ok: false,
+    unconfirmed: true,
+    tx_hash: "SYNTHETIC_UNCONFIRMED_TX_HASH",
+    info: "SYNTHETIC_TRANSFER_CONFIRMATION_UNKNOWN",
+  };
+  for (const method of ["buyStars", "buyPremium"]) {
+    const transport = mock(
+      response("purchase", 400, {}, body),
+      response("purchase"),
+    );
+    const client = new FragmentDonorClient({
+      credentials: credentials(),
+      fetch: transport.fetch,
+      readonlyRetries: 2,
+      autoWait: true,
+      sleep: async () => assert.fail("unconfirmed purchase waited"),
+    });
+    await assert.rejects(
+      client[method]("durov", method === "buyStars" ? 50 : 3),
+      (error) => {
+        assert.ok(error instanceof PurchaseOutcomeUnknownError);
+        assert.equal(error instanceof ValidationError, false);
+        assert.equal(error.purchaseOutcomeUnknown, true);
+        assert.equal(error.status, 400);
+        assert.equal(error.body.tx_hash, body.tx_hash);
+        assert.equal(error.message, body.info);
+        return true;
+      },
+    );
+    assert.equal(transport.calls.length, 1);
+  }
+});
+test("connect timeout requires custom enforcement and is passed separately from request timeout", async () => {
+  assert.throws(
+    () => new FragmentDonorClient({ connectTimeoutMs: 1000 }),
+    ValidationError,
+  );
+  for (const connectTimeoutMs of [0, -1, Infinity])
+    assert.throws(
+      () => new FragmentDonorClient({ connectTimeoutMs, fetch: mock().fetch }),
+      ValidationError,
+    );
+  let settings;
+  await new FragmentDonorClient({
+    timeoutMs: 9000,
+    connectTimeoutMs: 2000,
+    fetch: async (_url, init, options) => {
+      assert.ok(init.signal);
+      settings = options;
+      return response();
+    },
+  }).getUserInfo("durov");
+  assert.deepEqual(settings, { connectTimeoutMs: 2000 });
+});
+test("503 HTTP-date exposes wait hint", async () => {
+  await assert.rejects(
+    new FragmentDonorClient({
+      clock: () => 40_000,
+      fetch: mock(
+        response(
+          "unavailable",
+          503,
+          { "Retry-After": "Thu, 01 Jan 1970 00:01:10 GMT" },
+          { ok: false },
+        ),
+      ).fetch,
+    }).getUserInfo("durov"),
+    (error) =>
+      error instanceof ServiceUnavailableError && error.retryAfter === 30,
+  );
+});
 
 test("username GET preserves future fields and requires no auth", async () => {
   const transport = mock(response());

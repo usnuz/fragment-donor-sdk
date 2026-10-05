@@ -1,0 +1,75 @@
+{
+  "kind": "rendered synthetic walkthrough—not a live transaction or screencast",
+  "language": "en",
+  "video": {
+    "duration_seconds": 50,
+    "width": 1920,
+    "height": 1080,
+    "codec": "H.264",
+    "fps": 30,
+    "audio": "none / silent",
+    "captions": "burned frame summaries + embedded English subtitle track + SRT sidecar"
+  },
+  "assets": [
+    {
+      "file": "01-overview.svg",
+      "bytes": 4448,
+      "sha256": "5bcd87329839780c40bb622277095909aa2bf9b01cba74518edc5e8a1bc7ad43"
+    },
+    {
+      "file": "01-overview.png",
+      "bytes": 143332,
+      "sha256": "5f1fb2ce2b4752976ee97e1f1967122e749216f960906618dd49f21a80e29a57"
+    },
+    {
+      "file": "02-wire-contract.svg",
+      "bytes": 3575,
+      "sha256": "d5905f01dc8733795f9b78512e016eb4fb54c9df57cb75ae4fc9b581161d4e0c"
+    },
+    {
+      "file": "02-wire-contract.png",
+      "bytes": 163084,
+      "sha256": "5cd8ea59987e1771a4368c2d4297173873450bfb00af65efa1eeaf2377837816"
+    },
+    {
+      "file": "03-retry-errors.svg",
+      "bytes": 3923,
+      "sha256": "a587c45b35fa78453b24d893b3947fb30b8e8169d3c25b01cd0a6f53de31cb8a"
+    },
+    {
+      "file": "03-retry-errors.png",
+      "bytes": 163930,
+      "sha256": "79b4fddd35b4b383d88b84b59e53f6093f9f816e7cbe0fe1e283fda9dabe9fe0"
+    },
+    {
+      "file": "04-unknown-purchase.svg",
+      "bytes": 3816,
+      "sha256": "d8a1cb93b6e98b6f3aa742c647aed0441adba2ab34311f4695402c14a73605b2"
+    },
+    {
+      "file": "04-unknown-purchase.png",
+      "bytes": 165156,
+      "sha256": "b1828d30feccf1845ea6ceeaa20854970a5d3bae7c5b3026c28d9f6cdb402d16"
+    },
+    {
+      "file": "05-retention-evidence.svg",
+      "bytes": 3395,
+      "sha256": "b0984cd90e7c3230347a796541927579f2f3893bea97be90a897019f753a9828"
+    },
+    {
+      "file": "05-retention-evidence.png",
+      "bytes": 168456,
+      "sha256": "b165684d0e7571a6bf0c680fc064d17434c9cd8b801e361b3bb114f72029beb8"
+    },
+    {
+      "file": "walkthrough-en.srt",
+      "bytes": 571,
+      "sha256": "c77ed87481fcc022ac97857c9b784f78f147da47ef012a12211cdf900db0ecf6"
+    },
+    {
+      "file": "walkthrough-en.mp4",
+      "bytes": 1034110,
+      "sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7"
+    }
+  ]
+}

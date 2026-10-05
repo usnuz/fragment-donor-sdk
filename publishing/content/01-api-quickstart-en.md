@@ -51,7 +51,9 @@ All four operations share a normally 30-request/IP/minute window. A 429 contains
 Automatic waits and retries default to off. Read-only retries can be explicitly
 bounded, but a payment POST must never be automatically repeated, even after a
 timeout or 5xx. The first attempt may have spent funds; no backend idempotency
-key or purchase-status endpoint resolves that ambiguity.
+key or purchase-status endpoint resolves that ambiguity. HTTP 400 with
+`unconfirmed:true`/`tx_hash` can also follow payment dispatch: preserve the safe
+reference and reconcile, rather than treating it as ordinary validation rejection.
 
 The trust boundary is important: the inspected backend stores submitted
 purchase credentials in its database. SDK log redaction does not remove that

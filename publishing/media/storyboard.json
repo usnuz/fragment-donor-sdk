@@ -1,0 +1,29 @@
+{
+  "kind": "rendered synthetic walkthrough—not a live transaction or screencast",
+  "language": "en",
+  "width": 1920,
+  "height": 1080,
+  "seconds_per_frame": 10,
+  "frames": [
+    {
+      "file": "01-overview",
+      "caption": "This is a rendered synthetic walkthrough, not a live transaction or screencast."
+    },
+    {
+      "file": "02-wire-contract",
+      "caption": "No service authentication does not mean wallet operations require no credentials."
+    },
+    {
+      "file": "03-retry-errors",
+      "caption": "Read retries are optional and bounded. Purchases never automatically retry."
+    },
+    {
+      "file": "04-unknown-purchase",
+      "caption": "A 400 with unconfirmed:true is an unknown purchase outcome. Reconcile; never replay."
+    },
+    {
+      "file": "05-retention-evidence",
+      "caption": "SDK redaction does not erase backend credential storage. Review the trust boundary."
+    }
+  ]
+}

@@ -125,7 +125,7 @@ fn all_operation_mappings_fields_and_decimal_precision() {
 #[test]
 fn error_kinds_json_http_date_hints_and_malformed_payloads() {
     for (status, key, kind, wait) in [
-        (400, "validation", ErrorKind::Validation, None),
+        (400, "validation", ErrorKind::Api, None),
         (429, "flood_wait", ErrorKind::RateLimit, Some(42)),
         (503, "unavailable", ErrorKind::Unavailable, Some(5)),
         (200, "upstream_error", ErrorKind::Api, None),
@@ -375,6 +375,8 @@ fn structured_errors_preserve_reconciliation_and_redact() {
     let client = Client::new(config(move |_| Ok(response(400, body.clone())))).unwrap();
     let error = client.buy_stars("durov", 50, None).unwrap_err();
     assert_eq!(error.message, "Transaction unconfirmed");
+    assert_eq!(error.kind, ErrorKind::PurchaseOutcomeUnknown);
+    assert!(error.outcome_unknown);
     assert_eq!(error.details["tx_hash"], "SYNTHETIC_TX_HASH");
     assert_eq!(error.details["unconfirmed"], true);
     assert_eq!(error.details["transient"], true);
@@ -390,4 +392,104 @@ fn structured_errors_preserve_reconciliation_and_redact() {
     ] {
         assert!(!encoded.contains(secret));
     }
+}
+
+#[test]
+fn purchase_outcome_kinds_preserve_uncertainty_without_replay() {
+    for premium in [false, true] {
+        for (status, body, kind, unknown) in [
+            (
+                400,
+                json!({"ok":false,"unconfirmed":true,"tx_hash":"SYNTHETIC_TX_HASH","info":"Await confirmation","transient":true}),
+                ErrorKind::PurchaseOutcomeUnknown,
+                true,
+            ),
+            (
+                200,
+                json!({"ok":false,"unconfirmed":true,"tx_hash":"SYNTHETIC_TX_HASH"}),
+                ErrorKind::PurchaseOutcomeUnknown,
+                true,
+            ),
+            (
+                200,
+                json!({"ok":true,"unconfirmed":true}),
+                ErrorKind::PurchaseOutcomeUnknown,
+                true,
+            ),
+            (
+                400,
+                json!({"ok":false,"reason":"Not a user"}),
+                ErrorKind::Api,
+                false,
+            ),
+            (
+                400,
+                json!({"ok":false,"unconfirmed":"true"}),
+                ErrorKind::Api,
+                false,
+            ),
+            (
+                429,
+                json!({"ok":false,"error_code":"FLOOD_WAIT"}),
+                ErrorKind::RateLimit,
+                false,
+            ),
+            (
+                503,
+                json!({"ok":false,"error_code":"RATE_LIMIT_UNAVAILABLE"}),
+                ErrorKind::Unavailable,
+                false,
+            ),
+            (503, json!({"ok":false}), ErrorKind::Unavailable, true),
+            (500, json!({"ok":false}), ErrorKind::Api, true),
+            (307, Value::Null, ErrorKind::Api, true),
+            (
+                200,
+                json!({"ok":"true"}),
+                ErrorKind::MalformedResponse,
+                true,
+            ),
+        ] {
+            let calls = Arc::new(Mutex::new(0));
+            let seen = calls.clone();
+            let waits = Arc::new(Mutex::new(0));
+            let waited = waits.clone();
+            let mut cfg = config(move |_| {
+                *seen.lock().unwrap() += 1;
+                Ok(response(status, body.clone()))
+            });
+            cfg.read_retries = 2;
+            cfg.automatic_wait = true;
+            cfg.sleeper = Some(Arc::new(move |_| *waited.lock().unwrap() += 1));
+            let client = Client::new(cfg).unwrap();
+            let error = if premium {
+                client.buy_premium("durov", 3, None)
+            } else {
+                client.buy_stars("durov", 50, None)
+            }
+            .unwrap_err();
+            assert_eq!(error.kind, kind);
+            assert_eq!(error.outcome_unknown, unknown);
+            assert_eq!(*calls.lock().unwrap(), 1);
+            assert_eq!(*waits.lock().unwrap(), 0);
+            if kind == ErrorKind::PurchaseOutcomeUnknown && status == 400 {
+                assert_eq!(error.details["tx_hash"], "SYNTHETIC_TX_HASH");
+                assert_eq!(error.details["transient"], true);
+            }
+        }
+        for transport_error in [TransportError::Timeout, TransportError::Network] {
+            let client = Client::new(config(move |_| Err(transport_error))).unwrap();
+            let error = if premium {
+                client.buy_premium("durov", 3, None)
+            } else {
+                client.buy_stars("durov", 50, None)
+            }
+            .unwrap_err();
+            assert!(error.outcome_unknown);
+        }
+    }
+    let client = Client::new(config(|_| panic!("local validation sent request"))).unwrap();
+    let error = client.buy_stars("durov", 49, None).unwrap_err();
+    assert_eq!(error.kind, ErrorKind::Validation);
+    assert!(!error.outcome_unknown);
 }

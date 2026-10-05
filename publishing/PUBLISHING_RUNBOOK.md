@@ -4,6 +4,19 @@ Owner: `usnuz`. Repository: [fragment-donor-sdk](https://github.com/usnuz/fragme
 Primary docs: [GitHub Pages](https://usnuz.github.io/fragment-donor-sdk/).
 Independent project: no affiliation with Telegram, Fragment or TON.
 
+## Authorization and access
+
+The owner authorized all **eligible** publication, not only GitHub/Pages.
+Authorization does not bypass a platform's rules, login, ownership, editorial
+review, or paid-plan approval. Browser access to PyPI, npm, Packagist, NuGet,
+crates.io, RubyGems and Postman is currently **BLOCKED_ACCESS** by the saved tool
+permission; no publication on those platforms has been verified. Do not treat a
+prepared workflow or package as a completed registry release. Other channels
+remain NOT_RUN until their own access, eligibility and actual submission checks.
+See [manual actions](manual-actions.md) and the authoritative
+[status evidence](publication-status.json). Never work around a denied browser
+permission by extracting a session cookie or credential.
+
 ## Release gates
 
 1. All seven native SDK tests, builds and package-install smoke checks pass.
@@ -34,23 +47,80 @@ PYTHONPATH=python/src python -W error -m unittest discover -s python/tests -v
 cd python && python -m build && python -m twine check dist/*
 cd ../typescript && npm ci && npm test && npm pack
 cd ..
-php php/tests/lint.php
-php -d zend.exception_ignore_args=1 php/tests/run.php
+cd php && composer install --no-interaction && composer test && composer lint && composer format:check
+cd ..
 composer validate --strict
 composer archive --format=zip --dir=php/dist --file=fragment-donor-sdk-0.1.0
+php php/tests/check-package.php php/dist/fragment-donor-sdk-0.1.0.zip
 dotnet run --project dotnet/tests/FragmentDonor.Sdk.Tests -c Release
 dotnet pack dotnet/src/FragmentDonor.Sdk -c Release -o dotnet/dist
+dotnet run --project dotnet/tests/PackageCheck -c Release -- dotnet/dist/FragmentDonor.Sdk.0.1.0.nupkg
 dotnet restore dotnet/tests/PackageSmoke --source "$PWD/dotnet/dist" --configfile dotnet/NuGet.Config
 dotnet run --project dotnet/tests/PackageSmoke -c Release --no-restore
+dotnet build dotnet/examples/QuickStart -c Release
+for project in dotnet/src/FragmentDonor.Sdk dotnet/tests/FragmentDonor.Sdk.Tests dotnet/tests/PackageCheck dotnet/tests/PackageSmoke dotnet/examples/QuickStart; do
+  dotnet format whitespace "$project" --no-restore --verify-no-changes
+done
 cd go && go test -race ./... && go vet ./... && go build ./...
-cd ../rust && cargo test --locked && cargo clippy --locked --all-targets -- -D warnings
-cargo package --locked --allow-dirty
-cd ../ruby && ruby -Ilib test/client_test.rb && gem build fragment-donor-sdk.gemspec
+sh scripts/check.sh
+cd ../rust && cargo fmt --all -- --check && rustfmt --edition 2021 --check smoke/src/main.rs
+cargo test --locked && cargo clippy --locked --all-targets -- -D warnings
+cargo package --locked --allow-dirty && python smoke/verify.py
+cd ../ruby && ruby scripts/check.rb && ruby -Ilib test/client_test.rb
+gem build fragment-donor-sdk.gemspec && ruby smoke/verify.rb
 ```
 
 Use the runtime equivalents in PowerShell; shell environment syntax above is
 POSIX. Purchase examples are not part of CI. `--allow-dirty` packages only the
 crate's reviewed include list; it is not permission to publish unrelated files.
+PHP ZIP inspection needs `ext-zip`. The CI workflow also runs installed PHP
+consumer checks and `python scripts/check-artifacts.py` over every package type;
+follow its exact current commands before releasing, not just the short block.
+
+## Prepared release automation
+
+`.github/workflows/release.yml` responds to a stable version tag such as
+`v0.1.0`, validates versions, reruns CI, inspects downloaded package artifacts,
+and prepares a GitHub release with checksums. It also creates/verifies
+`go/v0.1.0` at the same tested source commit. A tag push is a release action:
+do it only after gates pass. An existing Go tag must not be moved silently.
+
+`.github/workflows/registry-publish.yml` is separate and manual. In GitHub
+Actions choose **Authorized registry publication**, run on `main`, set `tag` to
+the exact verified stable GitHub release, choose **one** `package`, and explicitly
+set `confirm=true`. The guarded workflow requires that public release; it does
+not configure publisher accounts or prove registry acceptance. Configure the
+corresponding GitHub environment and its protection/reviewer rules first.
+
+### Owner setup fields
+
+For GitHub-backed trusted publishers, enter repository owner `usnuz`, repository
+`fragment-donor-sdk`, workflow filename **`registry-publish.yml`** (not its full
+path), and the exact environment below. Use the actual owner account on each
+registry; its username need not be `usnuz`. Complete its normal login, ownership
+and required email/MFA/2FA steps. Do not put recovery codes, OTPs or credentials
+in this repository, an issue, a workflow input, or chat.
+
+| Workflow package | Registry/package | GitHub environment | First-release owner action |
+| --- | --- | --- | --- |
+| `python` | PyPI `fragment-donor-sdk` | `pypi` | In account publishing settings, create a pending GitHub publisher for the new project, or configure the existing owned project. |
+| `node` | npm `fragment-donor-sdk` | `npm` | Configure the package's GitHub Actions Trusted Publisher. If settings require an existing package, the owner must bootstrap its first release securely before that configuration is available. Do not assume the name is reserved. |
+| `dotnet` | NuGet `FragmentDonor.Sdk` | `nuget` | Add a trusted-publishing policy permitting this package/new version; set environment variable `NUGET_USER` to the actual NuGet profile name, not an email. |
+| `rust` | crates.io `fragment-donor-sdk` | `crates-io` | Inspect the current publisher UI. If no pending/new-crate publisher is supported, the owner must perform the first publication with securely configured Cargo credentials, then add the GitHub publisher for later versions. Do not republish the same immutable version. |
+| `ruby` | RubyGems `fragment-donor-sdk` | `rubygems` | Configure an existing gem publisher or a pending trusted publisher naming this new gem. |
+| `php` | Packagist `fragment-donor/sdk` | `packagist` | Initially submit `https://github.com/usnuz/fragment-donor-sdk` with the root Composer manifest. Set environment variable `PACKAGIST_USER` and protected secret `PACKAGIST_TOKEN`; this workflow only synchronizes an **existing** package. No native Packagist OIDC is claimed. |
+| `go` | `github.com/usnuz/fragment-donor-sdk/go` | `go-module` | Verify release-created `go/v0.1.0`; this job fetches the public module. pkg.go.dev indexing is a separate observation. |
+
+npm trusted publishing requires at least **Node.js 22.14.0 and npm 11.5.1**;
+the workflow uses a newer hosted runner setup. This publishing requirement is
+different from the SDK's Node.js 20 runtime compatibility. Official setup:
+[PyPI pending publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/),
+[npm](https://docs.npmjs.com/trusted-publishers/),
+[NuGet trusted publishing](https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing),
+[crates.io](https://crates.io/docs/trusted-publishing),
+[Cargo credential setup](https://doc.rust-lang.org/cargo/reference/registry-authentication.html),
+[RubyGems pending publishers](https://guides.rubygems.org/trusted-publishing/),
+[Packagist submission](https://packagist.org/about).
 
 ## Registry release order
 
@@ -79,8 +149,14 @@ Official instructions: [PyPI trusted publishing](https://docs.pypi.org/trusted-p
 
 Publish the GitHub source and primary static docs before linking them from
 catalogs. GitLab/SourceForge/ReadTheDocs are mirrors or clearly secondary pages;
-do not create duplicate canonical SEO sites. Postman import uses the guarded
-collection; real purchase execution is disabled. Swagger Studio imports OpenAPI
+do not create duplicate canonical SEO sites. Run `node contract/build.mjs` then
+`node docs/build.mjs`; Postman import uses separate `site/postman.json` and
+`site/postman.environment.json`. Review collection, local/current/shared and
+environment values: wallet/provider fields must stay empty and
+`allow_real_purchases=false`. Saved responses are explicitly synthetic: success,
+429, 503, and purchase HTTP 400 with `unconfirmed: true`/`tx_hash`. That 400 means
+**unknown payment outcome**, not ordinary rejected validation; reconcile rather
+than resending. Do not execute real purchases for a listing. Swagger Studio imports OpenAPI
 and must not introduce a fake service-key scheme. APIs.guru review is distinct
 from acceptance. RapidAPI is a separately chosen gateway model, not proof that
 the direct API requires authentication. Do not accept a paid plan or gateway
@@ -90,6 +166,15 @@ Use PLATFORM_MATRIX.md for complete channel requirements and content/ for
 prepared assets. Recheck each community's actual rules immediately before a
 post. No fabricated questions, fake user reviews, cross-post flooding, private
 outreach, vote solicitation, or AI posts on platforms that prohibit them.
+Local presentation assets now include a CSS-only synthetic fixture viewer,
+five 1920×1080 rendered PNG/SVG frames and a 50-second silent H.264 captioned
+video. See [Product Hunt pack](content/10-product-hunt.md) and
+[video pack](content/11-youtube.md) for actual files/metadata. They are not live
+transactions, screencasts, human narration or platform publication. Verify the
+demo after actual deployment; review gallery/captions and channel requirements
+before any upload. Do not use the planned long-form chapter times for the
+existing 50-second video.
+
 Hacker News and English Stack Overflow prohibit generated posts; those channels
 are not eligible for AI-generated submission. Russian Stack Overflow has its
 own policy; only a genuine matching question can justify an attributed answer.
@@ -98,11 +183,28 @@ Never mark an editorially reviewed submission PUBLISHED before acceptance.
 ## Search submission and verification
 
 Submit `https://usnuz.github.io/fragment-donor-sdk/sitemap.xml` only after the live
-site returns HTTP 200. Search Console uses a URL-prefix property for the project
-path, not domain DNS ownership of github.io. Supply the platform-issued meta
-verification value in a reviewed build change. Bing Webmaster Tools can import a
-verified property or use its issued verification method. These account checks
-are manual when no access is available.
+site returns HTTP 200. These are three separate owner-access tasks; none has a
+verified search submission merely because the sitemap is hosted:
+
+1. **Google Search Console:** add URL-prefix
+   `https://usnuz.github.io/fragment-donor-sdk/`, not a `github.io` domain property.
+   Use the account-issued verification method; a meta tag belongs in the project
+   homepage `<head>` through a reviewed build change. Then submit the live sitemap.
+   [Official ownership verification](https://support.google.com/webmasters/answer/9008080).
+2. **Bing Webmaster Tools:** sign in, import a genuinely verified property or use
+   the verification method issued for the accepted site property, then submit the
+   same sitemap. Do not fabricate or reuse somebody else's verification token.
+   [Official ownership help](https://www.bing.com/webmasters/help/verifying-ownership-of-your-site-afcfefc6).
+3. **Yandex Webmaster:** add the site property the current UI actually accepts,
+   then use its issued HTML-file or `yandex-verification` meta-tag method and
+   retain that verification. If it requires the origin `https://usnuz.github.io/`
+   rather than the project path, this repository alone cannot publish the origin
+   verification file/homepage tag. The owner must separately control that origin
+   site, or record the rights/access blocker. Owning this project does **not**
+   grant DNS control of `github.io`. In the verified property's **Indexing →
+   Sitemap files**, add the live project sitemap above; observe processing and
+   indexed URLs separately. [Official rights verification](https://yandex.com/support/webmaster/en/service/rights.html),
+   [sitemap instructions](https://yandex.com/support/webmaster/en/indexing-options/sitemap).
 
 Project-path robots.txt is downloadable, but crawlers discover robots.txt at the
 origin root `https://usnuz.github.io/robots.txt`, not under the project path. Do not
@@ -111,7 +213,7 @@ links remain useful. Never apply another user's verification token.
 
 Cross-posted blog articles should reference the exact primary topic as canonical
 where the platform supports it. Translated primary pages self-canonicalize; don't
-canonicalize all translations to English. Search Console submission is SUBMITTED,
+canonicalize all translations to English. An accepted webmaster submission is SUBMITTED,
 an observed indexed URL is a separate verified event, and rankings are not
 guaranteed. Do not call unverified search appearance a publication.
 

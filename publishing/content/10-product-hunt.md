@@ -1,8 +1,10 @@
 # Product Hunt launch pack
 
-Status: READY text/plan; **NOT_RUN** gallery completion, interactive demo,
-submission and approval. Account/launch access not assumed. This AI-assisted
-draft needs maker review. No invented customer quote, vote, download or payment.
+Status: READY AI-generated text, five local synthetic gallery frames, CSS-only
+fixture viewer and 50-second rendered video. **NOT_RUN** Product Hunt submission
+and approval; public deployment/upload not inferred from local files. Eligible
+publication is authorized, but account/onboarding and maker review remain.
+No invented customer quote, vote, download or payment.
 
 ## Product fields — copy
 
@@ -48,25 +50,29 @@ Description:
 Only use first-person maker text if the publishing account is genuinely the
 maintainer. Do not ask users to upvote or privately message voters.
 
-## Gallery and demo plan
+## Actual local gallery and demo assets
 
-| Shot | What to show | Safety / state |
+| Asset | Actual content | Safety / state |
 | --- | --- | --- |
-| 1 | Static EN/RU/UZ language navigation and four-operation reference | Docs-only browser; no admin/session/secret tabs |
-| 2 | Python/Node source and one credential-free mocked lookup | Synthetic fixtures, visible “mock” label; no live recipient claim |
-| 3 | 429 wait hint and read-retry settings | Fixture response; no fabricated production rate measurement |
-| 4 | Timeout after one purchase dispatch in mock test | Counter remains 1; no real TON transfer or success animation |
-| 5 | Credential-retention disclosure and package publication status | Show limitations, not “zero storage” marketing |
+| [01-overview.png](../media/01-overview.png) | Four paths and seven server SDKs | Rendered overview, not a live request or screenshot |
+| [02-wire-contract.png](../media/02-wire-contract.png) | Form-urlencoded purchase and placeholder-only headers | No real wallet/session/provider value |
+| [03-retry-errors.png](../media/03-retry-errors.png) | Synthetic 429/503, bounded read waits and no purchase replay | Not measured production telemetry |
+| [04-unknown-purchase.png](../media/04-unknown-purchase.png) | HTTP 400 `unconfirmed:true` and synthetic reconciliation fields | Not validation rejection or transaction confirmation |
+| [05-retention-evidence.png](../media/05-retention-evidence.png) | Backend credential-retention boundary | No zero-retention, official-affiliation or security-certification claim |
 
-There is a local docs screenshot at `publishing/screenshots/docs-uz.jpg` prepared
-elsewhere in this run; inspect pixels and platform dimension requirements before
-using it. A screenshot does not prove the product is submitted or approved.
-Additional gallery assets and demo recording are still required.
+The five PNGs are 1920×1080; editable SVG companions and SHA-256/size records are
+in [assets.json](../media/assets.json). Inspect the current form's dimensions
+before selecting/cropping. [walkthrough-en.mp4](../media/walkthrough-en.mp4) is a
+50-second **silent rendered synthetic walkthrough**, with English captions and
+[SRT](../media/walkthrough-en.srt); it is not a screencast, live SDK execution,
+human narration or successful purchase. Local existence does not prove upload.
 
-Interactive demo requirement: a visitor should be able to run deterministic
-source tests or a read-only/mock walkthrough without entering a mnemonic. Do not
-add a public wallet-secret form to Pages. A docs-only landing page is not a
-claim of a completed interactive product launch.
+The local fixture viewer `site/demo/index.html` ([generator](../../demo/build.mjs)) switches pre-rendered
+responses for four operations using CSS/radio controls: no executable JavaScript,
+API request, secret input or invented dispatch counter. Intended public URL:
+`https://usnuz.github.io/fragment-donor-sdk/demo/`; reopen it after deployment
+before submitting as a live demo. Source tests, not this viewer, establish request
+counts. This is a mock-only product preview, not completed platform launch.
 
 ## Submission checklist
 

@@ -10,8 +10,11 @@ var credentials = fixtures.GetProperty("credentials");
 var tests = 0;
 WalletCredentials Credentials() => new(credentials.GetProperty("mnemonic").GetString()!, credentials.GetProperty("cookie").GetString())
 {
-    ProviderKey = credentials.GetProperty("provider_key").GetString(), Proxy = "https://SYNTHETIC_USER:SYNTHETIC_PASSWORD@proxy.invalid",
-    WalletAddress = "SYNTHETIC_ADDRESS", UserAgent = "SYNTHETIC_FRAGMENT_AGENT", WalletVersion = "v5r1",
+    ProviderKey = credentials.GetProperty("provider_key").GetString(),
+    Proxy = "https://SYNTHETIC_USER:SYNTHETIC_PASSWORD@proxy.invalid",
+    WalletAddress = "SYNTHETIC_ADDRESS",
+    UserAgent = "SYNTHETIC_FRAGMENT_AGENT",
+    WalletVersion = "v5r1",
 };
 HttpResponseMessage Response(string key, int status = 200, string? retry = null)
 {
@@ -115,8 +118,15 @@ await Test("Both purchases never retry any error", async () =>
     {
         foreach (var premium in new[] { false, true })
         {
-            object first = kind switch { 0 => Response("flood_wait", 429), 1 => Response("unavailable", 503), 2 => Response("validation", 500),
-                3 => new TaskCanceledException("private"), 4 => new HttpRequestException("private"), _ => new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("invalid") } };
+            object first = kind switch
+            {
+                0 => Response("flood_wait", 429),
+                1 => Response("unavailable", 503),
+                2 => Response("validation", 500),
+                3 => new TaskCanceledException("private"),
+                4 => new HttpRequestException("private"),
+                _ => new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("invalid") }
+            };
             var fake = new FakeHandler(first, Response("purchase"));
             using var client = new FragmentDonorClient(new ClientOptions { Credentials = Credentials(), ReadOnlyRetries = 2, AutoWaitFlood = true }, fake, (_, _) => Task.CompletedTask);
             await Error<SdkException>(() => premium ? client.BuyPremiumAsync(new PremiumRequest("durov", 3)) : client.BuyStarsAsync(new StarsRequest("durov", 50)));
@@ -144,6 +154,59 @@ await Test("Read-only retries opt-in, bounded and wait capped", async () =>
     using var maximum = new FragmentDonorClient(new ClientOptions { ReadOnlyRetries = 2 }, bounded, (_, _) => Task.CompletedTask);
     await Error<ServiceUnavailableException>(() => maximum.GetUserInfoAsync("durov"));
     Check(bounded.Requests.Count == 3, "Retries unbounded");
+});
+await Test("Unconfirmed HTTP400 is uncertain, preserves redacted reconciliation data, never repeats either purchase", async () =>
+{
+    foreach (var premium in new[] { false, true })
+    {
+        var secret = credentials.GetProperty("mnemonic").GetString()!;
+        var body = JsonSerializer.Serialize(new
+        {
+            ok = false,
+            unconfirmed = true,
+            transient = true,
+            tx_hash = "SYNTHETIC_TX_HASH",
+            info = secret,
+            future_field = new { amount = "9007199254740993.01", cookie = "SYNTHETIC_ECHO" }
+        });
+        var fake = new FakeHandler(new HttpResponseMessage(HttpStatusCode.BadRequest) { Content = new StringContent(body) }, Response("purchase"));
+        var waits = 0;
+        using var client = new FragmentDonorClient(new ClientOptions { Credentials = Credentials(), ReadOnlyRetries = 2, AutoWaitFlood = true }, fake,
+            (_, _) => { waits++; return Task.CompletedTask; });
+        var error = await Error<PurchaseOutcomeUnknownException>(() => premium
+            ? client.BuyPremiumAsync(new PremiumRequest("durov", 3)) : client.BuyStarsAsync(new StarsRequest("durov", 50)));
+        Check(error.PurchaseOutcomeUnknown && error.StatusCode == 400, "Missing uncertain outcome");
+        Check(error.ResponseData["tx_hash"].GetString() == "SYNTHETIC_TX_HASH" && error.ResponseData["unconfirmed"].GetBoolean()
+            && error.ResponseData["transient"].GetBoolean() && error.ResponseData["future_field"].GetProperty("amount").GetString() == "9007199254740993.01", "Reconciliation data lost");
+        Check(!error.ToString().Contains(secret, StringComparison.Ordinal) && !JsonSerializer.Serialize(error.ResponseData).Contains(secret, StringComparison.Ordinal)
+            && error.ResponseData["future_field"].GetProperty("cookie").GetString() == "[REDACTED]", "Uncertainty error leaked secrets");
+        Check(fake.Requests.Count == 1 && waits == 0 && error.InnerException is null, "Unconfirmed purchase repeated or unsafe cause retained");
+    }
+});
+await Test("Purchase transport/malformed errors carry unknown flag; reads and local validation do not", async () =>
+{
+    foreach (var premium in new[] { false, true })
+    {
+        foreach (var kind in new[] { "timeout", "network", "malformed", "503" })
+        {
+            object first = kind switch
+            {
+                "timeout" => new TaskCanceledException("SYNTHETIC_UNSAFE_TRANSPORT"),
+                "network" => new HttpRequestException("SYNTHETIC_UNSAFE_TRANSPORT"),
+                "503" => Response("unavailable", 503),
+                _ => new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("invalid JSON") },
+            };
+            var fake = new FakeHandler(first, Response("purchase"));
+            using var client = new FragmentDonorClient(new ClientOptions { Credentials = Credentials(), ReadOnlyRetries = 2 }, fake);
+            var error = await Error<SdkException>(() => premium
+                ? client.BuyPremiumAsync(new PremiumRequest("durov", 3)) : client.BuyStarsAsync(new StarsRequest("durov", 50)));
+            Check(error.PurchaseOutcomeUnknown && fake.Requests.Count == 1, "Missing purchase uncertainty");
+            Check(!error.ToString().Contains("SYNTHETIC_UNSAFE_TRANSPORT", StringComparison.Ordinal) && error.InnerException is null, "Unsafe cause retained");
+        }
+    }
+    using var read = new FragmentDonorClient(handler: new FakeHandler(new TaskCanceledException("private")));
+    Check(!(await Error<TransportTimeoutException>(() => read.GetUserInfoAsync("durov"))).PurchaseOutcomeUnknown, "Read marked as purchase");
+    Check(!(await Error<ValidationException>(() => Task.FromResult(new StarsRequest("durov", 49)))).PurchaseOutcomeUnknown, "Local validation uncertain");
 });
 await Test("Redacted credential diagnostics, unsafe errors discarded, cancellation honored", async () =>
 {

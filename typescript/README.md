@@ -65,7 +65,7 @@ try {
 ```
 
 Also exported: `ValidationError`, `ServiceUnavailableError`,
-`MalformedResponseError`. All SDK errors have sanitized `body`, `status`,
+`MalformedResponseError`, `PurchaseOutcomeUnknownError`. All SDK errors have sanitized `body`, `status`,
 `errorCode`, `retryAfter`, and `purchaseOutcomeUnknown`.
 `Retry-After` seconds/HTTP-date and JSON `retry_after`/`flood_wait` are understood;
 conflicting valid hints use the longest wait.
@@ -83,6 +83,37 @@ the server hint. PURCHASES NEVER RETRY automatically, including 429/503.
 A timeout, reset, malformed response, or 5xx can follow a successful purchase;
 inspect real wallet and delivery history before deciding to submit again.
 There is no backend idempotency-key guarantee.
+
+An HTTP 400 purchase reply with `unconfirmed: true` raises
+`PurchaseOutcomeUnknownError`, **not** `ValidationError`, with
+`purchaseOutcomeUnknown: true`. Safe `tx_hash`, `info`, and additional fields
+remain in `body`; reconcile before another intentional purchase. A 400 status
+does not establish that funds were not spent. Normal input rejection still uses
+`ValidationError`.
+
+## Timeouts and injected transports
+
+`timeoutMs` (default 30,000) uses AbortController for each attempt, including body
+reading. Native Node fetch obeys its signal; a custom transport must also obey
+`init.signal`, disable redirects/hidden retries, and avoid credential logging.
+The SDK cannot interrupt a custom promise that ignores abort. Retry sleeps and
+later attempts have separate budgets; timeout does not undo a remote transfer.
+
+Native fetch has no portable SDK-level connect-timeout option. If your own trusted
+transport supports a separate connection phase, explicitly inject it and set
+`connectTimeoutMs`. The SDK passes `{ connectTimeoutMs }` as the third transport
+argument; the transport must enforce the value and clean up its socket timers.
+Setting it without an injected transport is rejected, avoiding a silently ignored
+configuration. Existing two-argument transports remain compatible when no
+separate connection setting is requested. No extra runtime dependency is added.
+
+```typescript
+// `enforcingTransport` implements HttpTransport and enforces both the AbortSignal
+// and the third argument's connectTimeoutMs; never forward secrets on redirect.
+// const client = new FragmentDonorClient({
+//   fetch: enforcingTransport, timeoutMs: 30_000, connectTimeoutMs: 5_000,
+// });
+```
 
 ## Server-only credential handling
 
@@ -109,6 +140,7 @@ npm ci
 npm test                   # build + strict typecheck + mocked runtime tests
 npm pack --dry-run
 npm pack
+npm run check:artifacts    # inspect exact tarball paths and known-secret patterns
 ```
 
 The shared `../contract/fixtures.json` drives mocked HTTP tests; no wallet funds
@@ -119,7 +151,11 @@ only one selected gift executes. Missing/invalid selection fails before dispatch
 Never enable spending in CI or a demonstration. Inspect the
 tarball for only dist, examples, README, changelog, license and package metadata.
 Test installation from the tarball before release. Publish using npm Trusted
-Publishing where available; the repository workflow gates releases.
+Publishing where available; CI gates are not themselves registry publication.
+`npm run package:check` builds/packs/checks exact tarball paths, rejects links and
+duplicates, validates UTF-8 and scans known credential patterns. This is an
+additional control, not a guarantee that every possible secret is recognized.
+Inspect contents privately and publish only through an authorized release.
 
 [Documentation](https://usnuz.github.io/fragment-donor-sdk/en/)
 · [Source](https://github.com/usnuz/fragment-donor-sdk/tree/main/typescript)

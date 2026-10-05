@@ -45,7 +45,9 @@ Common behavior matters more than naming: form-urlencoded purchases; exact
 decimal balance strings; retained unknown response fields; no service account,
 `Authorization` or `X-Api-Key`; optional TonConsole provider key; redirect refusal;
 structured errors; default zero retries; opt-in bounded read-only waits; and
-**never** automatic purchase retries. The usual quota is shared 30/minute/IP.
+**never** automatic purchase retries. HTTP 400 `unconfirmed:true` is a payment
+outcome requiring reconciliation, not ordinary validation rejection; retain a
+safe transaction reference if supplied. The usual quota is shared 30/minute/IP.
 
 Every language is tested against common synthetic fixtures and mocked transport.
 Native test/build status must be read separately for each runtime; code existing

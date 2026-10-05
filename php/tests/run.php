@@ -1,48 +1,81 @@
 <?php
+
 declare(strict_types=1);
 require __DIR__ . '/bootstrap.php';
 
 use FragmentDonor\{Client, Credentials, StarsRequest, PremiumRequest, Transport, HttpRequest, HttpResponse,
-    SdkError, ValidationError, RateLimitError, ServiceUnavailableError, TransportTimeoutError, TransportError, MalformedResponseError};
+    SdkError, ValidationError, PurchaseOutcomeUnknownError, RateLimitError, ServiceUnavailableError, TransportTimeoutError, TransportError, MalformedResponseError};
 
 $fixture = json_decode(file_get_contents(__DIR__ . '/../../contract/fixtures.json'), true, 512, JSON_THROW_ON_ERROR);
 $count = 0;
-function check(bool $condition, string $message): void { if (!$condition) { throw new RuntimeException($message); } }
-function test(string $name, Closure $fn): void {
-    global $count;
-    $fn(); ++$count; echo "PASS $name\n";
+function check(bool $condition, string $message): void
+{
+    if (!$condition) {
+        throw new RuntimeException($message);
+    }
 }
-function expectError(string $type, Closure $fn): SdkError {
-    try { $fn(); } catch (SdkError $error) { check($error instanceof $type, 'Wrong error type'); return $error; }
+function test(string $name, Closure $fn): void
+{
+    global $count;
+    $fn();
+    ++$count;
+    echo "PASS $name\n";
+}
+function expectError(string $type, Closure $fn): SdkError
+{
+    try {
+        $fn();
+    } catch (SdkError $error) {
+        check($error instanceof $type, 'Wrong error type');
+        return $error;
+    }
     throw new RuntimeException('Expected SDK error');
 }
-final class FakeTransport implements Transport {
+final class FakeTransport implements Transport
+{
     public array $requests = [];
-    public function __construct(public array $queue) {}
-    public function send(HttpRequest $request): HttpResponse {
+    public function __construct(public array $queue)
+    {
+    }
+    public function send(HttpRequest $request): HttpResponse
+    {
         $this->requests[] = $request;
         $next = array_shift($this->queue);
-        if ($next instanceof Throwable) { throw $next; }
-        if (!$next instanceof HttpResponse) { throw new RuntimeException('Missing mock response'); }
+        if ($next instanceof Throwable) {
+            throw $next;
+        }
+        if (!$next instanceof HttpResponse) {
+            throw new RuntimeException('Missing mock response');
+        }
         return $next;
     }
 }
-function response(string $name, int $status = 200, array $headers = []): HttpResponse {
+function response(string $name, int $status = 200, array $headers = []): HttpResponse
+{
     global $fixture;
     return new HttpResponse($status, $headers, json_encode($fixture['responses'][$name], JSON_THROW_ON_ERROR));
 }
-function creds(): Credentials {
+function creds(): Credentials
+{
     global $fixture;
-    return new Credentials($fixture['credentials']['mnemonic'], $fixture['credentials']['cookie'],
-        $fixture['credentials']['provider_key'], 'https://SYNTHETIC_PROXY_USER:SYNTHETIC_PROXY_PASSWORD@proxy.invalid',
-        'SYNTHETIC_FRAGMENT_AGENT', 'SYNTHETIC_ADDRESS', 'v5r1');
+    return new Credentials(
+        $fixture['credentials']['mnemonic'],
+        $fixture['credentials']['cookie'],
+        $fixture['credentials']['provider_key'],
+        'https://SYNTHETIC_PROXY_USER:SYNTHETIC_PROXY_PASSWORD@proxy.invalid',
+        'SYNTHETIC_FRAGMENT_AGENT',
+        'SYNTHETIC_ADDRESS',
+        'v5r1'
+    );
 }
 test('GET user info query, no service auth or credentials, future fields retained', function () {
     $http = new FakeTransport([response('user_info')]);
     $result = (new Client(credentials: creds(), transport: $http))->getUserInfo('@durov');
     $r = $http->requests[0];
     check($r->method === 'GET' && $r->url === 'https://fragment.donor.uz/get-user-info/?username=%40durov', 'Wrong user query');
-    foreach (['Mnemonic', 'Cookie', 'Authorization', 'X-Api-Key'] as $name) { check(!isset($r->headers[$name]), 'Leaked unnecessary headers'); }
+    foreach (['Mnemonic', 'Cookie', 'Authorization', 'X-Api-Key'] as $name) {
+        check(!isset($r->headers[$name]), 'Leaked unnecessary headers');
+    }
     check($result->username() === 'durov' && !$result->isPremium() && $result->raw['future_field']['kept'], 'Response lost fields');
 });
 test('POST Stars uses exact form, purchase headers and safe debug', function () {
@@ -58,8 +91,12 @@ test('POST Stars uses exact form, purchase headers and safe debug', function () 
     check($r->headers['Api-Key'] === $fixture['credentials']['provider_key'] && $r->headers['Wallet-Version'] === 'v5r1'
         && $r->headers['Wallet-Address'] === 'SYNTHETIC_ADDRESS' && isset($r->headers['Proxy']) && $r->headers['User-Agent'] === 'SYNTHETIC_FRAGMENT_AGENT', 'Wrong optional headers');
     check($result->raw['future_field'] === 'preserve', 'Purchase response lost fields');
-    ob_start(); var_dump($client, creds(), $r); $dump = ob_get_clean();
-    foreach ($fixture['credentials'] as $secret) { check(!str_contains($dump, $secret), 'Credential debug leak'); }
+    ob_start();
+    var_dump($client, creds(), $r);
+    $dump = ob_get_clean();
+    foreach ($fixture['credentials'] as $secret) {
+        check(!str_contains($dump, $secret), 'Credential debug leak');
+    }
 });
 test('POST Premium exact form and path', function () {
     $http = new FakeTransport([response('purchase')]);
@@ -91,7 +128,8 @@ test('local validation rejects values before transport', function () {
 test('400, false ok, malformed JSON and malformed shape are typed', function () {
     foreach ([[response('validation', 400), ValidationError::class], [response('upstream_error'), FragmentDonor\ApiError::class],
         [new HttpResponse(200, [], 'invalid JSON'), MalformedResponseError::class], [new HttpResponse(200, [], '[true]'), MalformedResponseError::class]] as [$r, $type]) {
-        $http = new FakeTransport([$r]); expectError($type, fn () => (new Client(transport: $http))->getUserInfo('durov'));
+        $http = new FakeTransport([$r]);
+        expectError($type, fn () => (new Client(transport: $http))->getUserInfo('durov'));
     }
 });
 test('429 hint takes safe maximum of seconds/date/JSON; 503 typed even HTML', function () {
@@ -118,8 +156,11 @@ test('purchases never retry 429, 503, 500, timeout, reset or malformed JSON', fu
 test('read-only retries are opt-in, capped and do not exceed max wait', function () {
     $waits = [];
     $http = new FakeTransport([response('flood_wait', 429), response('user_info')]);
-    $client = new Client(transport: $http, readOnlyRetries: 2, autoWaitFlood: true, sleeper: function ($s) use (&$waits) { $waits[] = $s; });
-    $client->getUserInfo('durov'); check(count($http->requests) === 2 && $waits === [42], 'Opt-in retry failed');
+    $client = new Client(transport: $http, readOnlyRetries: 2, autoWaitFlood: true, sleeper: function ($s) use (&$waits) {
+        $waits[] = $s;
+    });
+    $client->getUserInfo('durov');
+    check(count($http->requests) === 2 && $waits === [42], 'Opt-in retry failed');
     $http = new FakeTransport([response('flood_wait', 429), response('user_info')]);
     expectError(RateLimitError::class, fn () => (new Client(transport: $http, readOnlyRetries: 2))->getUserInfo('durov'));
     check(count($http->requests) === 1, 'Flood auto wait was not opted in');
@@ -129,6 +170,54 @@ test('read-only retries are opt-in, capped and do not exceed max wait', function
     $http = new FakeTransport([response('unavailable', 503), response('unavailable', 503), response('unavailable', 503), response('user_info')]);
     expectError(ServiceUnavailableError::class, fn () => (new Client(transport: $http, readOnlyRetries: 2, sleeper: fn () => null))->getUserInfo('durov'));
     check(count($http->requests) === 3, 'Retries not bounded');
+});
+test('unconfirmed HTTP 400 is uncertain, retains safe reconciliation fields and never repeats either purchase', function () {
+    global $fixture;
+    foreach (['stars', 'premium'] as $operation) {
+        $payload = ['ok' => false, 'unconfirmed' => true, 'transient' => true, 'tx_hash' => 'SYNTHETIC_TX_HASH',
+            'info' => $fixture['credentials']['mnemonic'], 'future_field' => ['amount' => '9007199254740993.01', 'cookie' => 'SYNTHETIC_ECHO']];
+        $http = new FakeTransport([new HttpResponse(400, [], json_encode($payload)), response('purchase')]);
+        $waits = 0;
+        $client = new Client(
+            credentials: creds(),
+            transport: $http,
+            readOnlyRetries: 2,
+            autoWaitFlood: true,
+            sleeper: function () use (&$waits) {
+                $waits++;
+            }
+        );
+        $error = expectError(PurchaseOutcomeUnknownError::class, fn () => $operation === 'stars'
+            ? $client->buyStars(new StarsRequest('durov', 50)) : $client->buyPremium(new PremiumRequest('durov', 3)));
+        check(!$error instanceof ValidationError && $error->purchaseOutcomeUnknown && $error->status === 400, 'Uncertain payment classified as validation');
+        check($error->data['tx_hash'] === 'SYNTHETIC_TX_HASH' && $error->data['unconfirmed'] === true && $error->data['transient'] === true
+            && $error->data['future_field']['amount'] === '9007199254740993.01', 'Reconciliation data lost');
+        ob_start();
+        var_dump($error);
+        $dump = ob_get_clean();
+        check(!str_contains($dump . (string) $error . json_encode($error->data), $fixture['credentials']['mnemonic'])
+            && $error->data['future_field']['cookie'] === '[REDACTED]', 'Uncertainty error leaked secrets');
+        check(count($http->requests) === 1 && $waits === 0, 'Unconfirmed purchase repeated');
+    }
+});
+test('purchase timeout and malformed response carry unknown flag, read-only and local validation do not', function () {
+    foreach (['stars', 'premium'] as $operation) {
+        foreach ([new TransportTimeoutError('SYNTHETIC_UNSAFE_TRANSPORT'), new RuntimeException('SYNTHETIC_UNSAFE_TRANSPORT'),
+            new HttpResponse(200, [], 'invalid JSON'), response('unavailable', 503)] as $first) {
+            $http = new FakeTransport([$first, response('purchase')]);
+            $client = new Client(credentials: creds(), transport: $http, readOnlyRetries: 2);
+            $error = expectError(SdkError::class, fn () => $operation === 'stars'
+                ? $client->buyStars(new StarsRequest('durov', 50)) : $client->buyPremium(new PremiumRequest('durov', 3)));
+            check($error->purchaseOutcomeUnknown && count($http->requests) === 1, 'Purchase uncertainty flag missing');
+            check(!str_contains((string) $error, 'SYNTHETIC_UNSAFE_TRANSPORT') && $error->getPrevious() === null, 'Unsafe cause retained');
+        }
+    }
+    $http = new FakeTransport([new TransportTimeoutError('private')]);
+    check(
+        !expectError(TransportTimeoutError::class, fn () => (new Client(transport: $http))->getUserInfo('durov'))->purchaseOutcomeUnknown,
+        'Read-only timeout marked as purchase'
+    );
+    check(!expectError(ValidationError::class, fn () => new StarsRequest('durov', 49))->purchaseOutcomeUnknown, 'Local validation marked uncertain');
 });
 test('transport errors discard unsafe original message and API errors redact secrets', function () {
     global $fixture;
@@ -143,8 +232,11 @@ test('transport errors discard unsafe original message and API errors redact sec
 test('partial cookie token, proxy password, normalized or encoded mnemonic echoes are redacted', function () {
     global $fixture;
     $secret = $fixture['credentials']['mnemonic'];
-    $credentials = new Credentials(str_replace(' ', '  ', $secret), 'stel_ssid=SYNTHETIC_COOKIE_TOKEN',
-        proxy: 'https://SYNTHETIC_PROXY_USER:SYNTHETIC_PROXY_PASSWORD@proxy.invalid');
+    $credentials = new Credentials(
+        str_replace(' ', '  ', $secret),
+        'stel_ssid=SYNTHETIC_COOKIE_TOKEN',
+        proxy: 'https://SYNTHETIC_PROXY_USER:SYNTHETIC_PROXY_PASSWORD@proxy.invalid'
+    );
     $echo = $secret . ' ' . rawurlencode($secret) . ' SYNTHETIC_COOKIE_TOKEN SYNTHETIC_PROXY_PASSWORD';
     $http = new FakeTransport([new HttpResponse(400, [], json_encode(['ok' => false, 'error' => $echo]))]);
     $error = expectError(ValidationError::class, fn () => (new Client(credentials: $credentials, transport: $http))->walletBalance());

@@ -42,7 +42,80 @@
           "type": "noauth"
         },
         "url": "{{base_url}}/get-user-info/?username={{username}}"
-      }
+      },
+      "response": [
+        {
+          "name": "MOCK — synthetic success",
+          "originalRequest": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "url": "{{base_url}}/get-user-info/?username={{username}}"
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": true,\n  \"username\": \"durov\",\n  \"is_premium\": false,\n  \"future_field\": {\n    \"kept\": true\n  }\n}"
+        },
+        {
+          "name": "MOCK — wait 42 seconds; purchase must not repeat",
+          "originalRequest": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "url": "{{base_url}}/get-user-info/?username={{username}}"
+          },
+          "status": "Too Many Requests",
+          "code": 429,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": "42"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": false,\n  \"error\": \"Too many requests\",\n  \"error_code\": \"FLOOD_WAIT\",\n  \"retry_after\": 42,\n  \"flood_wait\": 42\n}"
+        },
+        {
+          "name": "MOCK — limiter unavailable; bounded waits only",
+          "originalRequest": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "url": "{{base_url}}/get-user-info/?username={{username}}"
+          },
+          "status": "Service Unavailable",
+          "code": 503,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": "5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": false,\n  \"error\": \"Rate limit temporarily unavailable\",\n  \"error_code\": \"RATE_LIMIT_UNAVAILABLE\",\n  \"retry_after\": 5\n}"
+        }
+      ]
     },
     {
       "name": "Read wallet balance",
@@ -90,7 +163,194 @@
           }
         ],
         "url": "{{base_url}}/wallet-balance/"
-      }
+      },
+      "response": [
+        {
+          "name": "MOCK — synthetic success",
+          "originalRequest": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              }
+            ],
+            "url": "{{base_url}}/wallet-balance/"
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": true,\n  \"address\": \"SYNTHETIC_WALLET_ADDRESS\",\n  \"ton\": \"2.500000001\",\n  \"usdt_ton\": \"9007199254740993.01\",\n  \"future_field\": \"preserve\"\n}"
+        },
+        {
+          "name": "MOCK — wait 42 seconds; purchase must not repeat",
+          "originalRequest": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              }
+            ],
+            "url": "{{base_url}}/wallet-balance/"
+          },
+          "status": "Too Many Requests",
+          "code": 429,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": "42"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": false,\n  \"error\": \"Too many requests\",\n  \"error_code\": \"FLOOD_WAIT\",\n  \"retry_after\": 42,\n  \"flood_wait\": 42\n}"
+        },
+        {
+          "name": "MOCK — limiter unavailable; bounded waits only",
+          "originalRequest": {
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              }
+            ],
+            "url": "{{base_url}}/wallet-balance/"
+          },
+          "status": "Service Unavailable",
+          "code": 503,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": "5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": false,\n  \"error\": \"Rate limit temporarily unavailable\",\n  \"error_code\": \"RATE_LIMIT_UNAVAILABLE\",\n  \"retry_after\": 5\n}"
+        }
+      ]
     },
     {
       "name": "Gift Stars — disabled by default",
@@ -181,7 +441,373 @@
           ]
         },
         "url": "{{base_url}}/buy-stars/"
-      }
+      },
+      "response": [
+        {
+          "name": "MOCK — synthetic success",
+          "originalRequest": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "{{fragment_cookie}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "text"
+                },
+                {
+                  "key": "amount",
+                  "value": "50",
+                  "type": "text"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "usdt_ton",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{base_url}}/buy-stars/"
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": true,\n  \"data\": {\n    \"transaction\": \"SYNTHETIC_TRANSACTION\"\n  },\n  \"future_field\": \"preserve\"\n}"
+        },
+        {
+          "name": "MOCK — wait 42 seconds; purchase must not repeat",
+          "originalRequest": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "{{fragment_cookie}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "text"
+                },
+                {
+                  "key": "amount",
+                  "value": "50",
+                  "type": "text"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "usdt_ton",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{base_url}}/buy-stars/"
+          },
+          "status": "Too Many Requests",
+          "code": 429,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": "42"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": false,\n  \"error\": \"Too many requests\",\n  \"error_code\": \"FLOOD_WAIT\",\n  \"retry_after\": 42,\n  \"flood_wait\": 42\n}"
+        },
+        {
+          "name": "MOCK — limiter unavailable; bounded waits only",
+          "originalRequest": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "{{fragment_cookie}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "text"
+                },
+                {
+                  "key": "amount",
+                  "value": "50",
+                  "type": "text"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "usdt_ton",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{base_url}}/buy-stars/"
+          },
+          "status": "Service Unavailable",
+          "code": 503,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": "5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": false,\n  \"error\": \"Rate limit temporarily unavailable\",\n  \"error_code\": \"RATE_LIMIT_UNAVAILABLE\",\n  \"retry_after\": 5\n}"
+        },
+        {
+          "name": "MOCK — payment outcome UNKNOWN — reconcile, never repeat automatically",
+          "originalRequest": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "{{fragment_cookie}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "text"
+                },
+                {
+                  "key": "amount",
+                  "value": "50",
+                  "type": "text"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "usdt_ton",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{base_url}}/buy-stars/"
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": false,\n  \"unconfirmed\": true,\n  \"tx_hash\": \"SYNTHETIC_UNCONFIRMED_TX_HASH\",\n  \"destination\": \"SYNTHETIC_DESTINATION\",\n  \"amount_nano\": \"1000000000\",\n  \"seqno_before\": 12,\n  \"info\": \"SYNTHETIC_TRANSFER_CONFIRMATION_UNKNOWN\"\n}"
+        }
+      ]
     },
     {
       "name": "Gift Premium — disabled by default",
@@ -272,7 +898,373 @@
           ]
         },
         "url": "{{base_url}}/buy-premium/"
-      }
+      },
+      "response": [
+        {
+          "name": "MOCK — synthetic success",
+          "originalRequest": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "{{fragment_cookie}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "text"
+                },
+                {
+                  "key": "duration",
+                  "value": "3",
+                  "type": "text"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "usdt_ton",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{base_url}}/buy-premium/"
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": true,\n  \"data\": {\n    \"transaction\": \"SYNTHETIC_TRANSACTION\"\n  },\n  \"future_field\": \"preserve\"\n}"
+        },
+        {
+          "name": "MOCK — wait 42 seconds; purchase must not repeat",
+          "originalRequest": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "{{fragment_cookie}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "text"
+                },
+                {
+                  "key": "duration",
+                  "value": "3",
+                  "type": "text"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "usdt_ton",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{base_url}}/buy-premium/"
+          },
+          "status": "Too Many Requests",
+          "code": 429,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": "42"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": false,\n  \"error\": \"Too many requests\",\n  \"error_code\": \"FLOOD_WAIT\",\n  \"retry_after\": 42,\n  \"flood_wait\": 42\n}"
+        },
+        {
+          "name": "MOCK — limiter unavailable; bounded waits only",
+          "originalRequest": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "{{fragment_cookie}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "text"
+                },
+                {
+                  "key": "duration",
+                  "value": "3",
+                  "type": "text"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "usdt_ton",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{base_url}}/buy-premium/"
+          },
+          "status": "Service Unavailable",
+          "code": 503,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Retry-After",
+              "value": "5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": false,\n  \"error\": \"Rate limit temporarily unavailable\",\n  \"error_code\": \"RATE_LIMIT_UNAVAILABLE\",\n  \"retry_after\": 5\n}"
+        },
+        {
+          "name": "MOCK — payment outcome UNKNOWN — reconcile, never repeat automatically",
+          "originalRequest": {
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "header": [
+              {
+                "key": "Mnemonic",
+                "value": "{{mnemonic}}",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Version",
+                "value": "auto",
+                "disabled": false,
+                "type": "text"
+              },
+              {
+                "key": "Wallet-Address",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Proxy",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Api-Key",
+                "value": "{{tonconsole_key}}",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "",
+                "disabled": true,
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "{{fragment_cookie}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "text"
+                },
+                {
+                  "key": "duration",
+                  "value": "3",
+                  "type": "text"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "usdt_ton",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "{{base_url}}/buy-premium/"
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"ok\": false,\n  \"unconfirmed\": true,\n  \"tx_hash\": \"SYNTHETIC_UNCONFIRMED_TX_HASH\",\n  \"destination\": \"SYNTHETIC_DESTINATION\",\n  \"amount_nano\": \"1000000000\",\n  \"seqno_before\": 12,\n  \"info\": \"SYNTHETIC_TRANSFER_CONFIRMATION_UNKNOWN\"\n}"
+        }
+      ]
     }
   ]
 }

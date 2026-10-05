@@ -49,16 +49,23 @@ func main() {
     _ = balance // TON and USDTTON are exact decimal strings.
     if err != nil { return }
 
-    // These two calls spend real wallet funds. Select one deliberately;
-    // they are examples, not a safe production smoke test.
-    stars, err := client.BuyStars(ctx, "durov", 50, "usdt_ton")
-    _ = stars
-    var apiErr *donor.Error
-    if errors.As(err, &apiErr) && apiErr.Kind == donor.RateLimitError {
-        _ = apiErr.RetryAfter // communicate wait; never blindly repeat purchase.
+    // Real-funds operations require both opt-in and one selected purchase.
+    if os.Getenv("FRAGMENT_ALLOW_PURCHASES") != "yes" { return }
+    switch os.Getenv("FRAGMENT_PURCHASE_KIND") {
+    case "stars":
+        _, err = client.BuyStars(ctx, "durov", 50, "usdt_ton")
+    case "premium":
+        _, err = client.BuyPremium(ctx, "durov", 3, "ton")
+    default:
+        return
     }
-    premium, err := client.BuyPremium(ctx, "durov", 3, "ton")
-    _, _ = premium, err
+    var apiErr *donor.Error
+    if errors.As(err, &apiErr) {
+        if apiErr.OutcomeUnknown {
+            _ = apiErr.Details["tx_hash"] // reconcile manually; do not repeat.
+        }
+        _ = apiErr.RetryAfter // communicate wait, never auto-replay purchase.
+    }
 }
 ```
 
@@ -76,6 +83,13 @@ timeout/network and malformed response failures. There are no raw transport
 errors or credential-bearing request dumps in SDK errors.
 `Error.Details` preserves recursively redacted JSON error fields, including
 `info`, `tx_hash`, `unconfirmed` and `transient`, for manual reconciliation.
+An explicit purchase `unconfirmed: true` raises `PurchaseOutcomeUnknownError`,
+not validation or a safe rejection. `Error.OutcomeUnknown` is also true after
+purchase timeouts, network/malformed replies, redirects and ambiguous 5xx.
+The known pre-purchase limiter codes retain their rate/unavailable errors.
+Never replay a purchase; reconcile its redacted `tx_hash` manually. A false
+flag is not an idempotency/rejection guarantee. Remote HTTP 400/422 failures
+are `APIError`; `ValidationError` denotes SDK preflight validation only.
 
 Default retries: zero. Set `ReadRetries: 2, AutomaticWait: true` to allow bounded
 read-only retries with waits of at most 60 seconds. Longer server waits return
@@ -98,15 +112,17 @@ examples, screenshots or CI.
 From this directory in a checkout including `../contract/fixtures.json`:
 
 ```sh
-gofmt -w client.go client_test.go
-go vet ./...
-go test ./...
-go build ./...
+sh scripts/check.sh
 ```
 
 Tests use the shared synthetic contract and mocked transport/local HTTP. They
-never buy Stars/Premium or call the production API. Inspect tracked module
-contents and run a secret scan before tagging. Tag `go/v0.1.0` only after the
+never buy Stars/Premium or call the production API.
+`scripts/check.sh` enforces gofmt, tests, vet/build and runs `go run ./scripts`:
+an allowlisted source ZIP is extracted into a fresh offline consumer module,
+which exercises all four methods, unknown purchase outcomes and redaction.
+This source smoke does not verify a public Go version/tag/proxy installation.
+Inspect tracked module contents and run a secret scan before tagging. Tag
+`go/v0.1.0` only after the
 clean public monorepo is released. After publishing, verify installation from
 an empty consumer module and inspect pkg.go.dev visibility separately.
 

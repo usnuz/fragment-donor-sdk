@@ -1,0 +1,83 @@
+name: Verified GitHub release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: node scripts/release-validate.mjs
+        env:
+          SDK_RELEASE_TAG: ${{ github.ref_name }}
+  checks:
+    needs: validate
+    uses: ./.github/workflows/ci.yml
+    permissions:
+      contents: read
+  publish:
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      attestations: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: '{python-3.12,node-22,php-8.4,dotnet-package,rust-package,ruby-3.4}'
+          path: release-artifacts
+          merge-multiple: true
+      - run: python scripts/check-artifacts.py release-artifacts/*
+      - run: node scripts/release-assets.mjs release-artifacts
+        env:
+          SDK_RELEASE_TAG: ${{ github.ref_name }}
+      - name: Sign exact reviewed release bytes with GitHub OIDC
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
+        with:
+          subject-path: release-artifacts/*
+          create-storage-record: false
+      - name: Verify each signature against this source commit and release workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SDK_RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          for artifact in release-artifacts/*; do
+            gh attestation verify "$artifact" --repo "$GITHUB_REPOSITORY" --signer-workflow "$GITHUB_REPOSITORY/.github/workflows/release.yml" --source-ref "refs/tags/$SDK_RELEASE_TAG" --source-digest "$GITHUB_SHA"
+          done
+      - name: Create immutable Go submodule tag and GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SDK_RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          go_ref="tags/go/$SDK_RELEASE_TAG"
+          if go_sha=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/$go_ref" --jq '.object.sha' 2>/dev/null); then
+            go_sha=$(node --input-type=module -e "import {peelRemoteTag,githubJson} from './scripts/verify-release-download.mjs'; console.log(await peelRemoteTag('go/'+process.env.SDK_RELEASE_TAG,githubJson))")
+            test "$go_sha" = "$GITHUB_SHA"
+          else
+            gh api --method POST "repos/$GITHUB_REPOSITORY/git/refs" -f "ref=refs/$go_ref" -f "sha=$GITHUB_SHA" >/dev/null
+          fi
+          gh release create "$SDK_RELEASE_TAG" release-artifacts/* --verify-tag --title "Fragment Donor SDK $SDK_RELEASE_TAG" --notes-file publishing/RELEASE_NOTES.md
+      - name: Apply repository topics if token permits metadata changes
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method PUT "repos/$GITHUB_REPOSITORY/topics" --input publishing/github-topics.json

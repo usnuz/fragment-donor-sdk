@@ -1,0 +1,42 @@
+{
+  "name": "Fragment Donor — placeholder-only public environment",
+  "_postman_variable_scope": "environment",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "https://fragment.donor.uz",
+      "enabled": true,
+      "type": "default"
+    },
+    {
+      "key": "username",
+      "value": "durov",
+      "enabled": true,
+      "type": "default"
+    },
+    {
+      "key": "mnemonic",
+      "value": "",
+      "enabled": true,
+      "type": "secret"
+    },
+    {
+      "key": "fragment_cookie",
+      "value": "",
+      "enabled": true,
+      "type": "secret"
+    },
+    {
+      "key": "tonconsole_key",
+      "value": "",
+      "enabled": true,
+      "type": "secret"
+    },
+    {
+      "key": "allow_real_purchases",
+      "value": "false",
+      "enabled": true,
+      "type": "default"
+    }
+  ]
+}

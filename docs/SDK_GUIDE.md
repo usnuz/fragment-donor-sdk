@@ -68,7 +68,19 @@ Purchases **never retry**, including 429, 503, transport failures, timeouts, or
 5xx. No backend idempotency-key or purchase-status endpoint is available. A
 timeout does not establish whether funds were spent. Check wallet transaction
 history and recipient state, keep the upstream transaction hash if supplied,
-and reconcile manually before intentionally issuing another purchase.
+and reconcile manually before intentionally issuing another purchase. The
+backend can also return **HTTP 400** with `ok:false`, `unconfirmed:true` and a
+`tx_hash` after dispatch. This is an **unknown payment outcome**, not ordinary
+validation/rejection and not proof that no funds were spent. Keep safe-redacted
+details and the transaction hash for reconciliation; do not blindly resend.
+Purchase uncertainty is distinct from the HTTP status/error message. SDK
+error properties document that distinction in each package README.
+
+Generated Postman imports are separate `site/postman.json` and
+`site/postman.environment.json` after the build below. Their saved responses are
+synthetic success/429/503 and purchase-unconfirmed-400 examples. Keep mnemonic,
+cookie and provider values empty and `allow_real_purchases=false`; never run a
+real purchase to test documentation or a directory listing.
 
 ## Secret handling and trust boundary
 
@@ -95,8 +107,32 @@ Primary site: `https://usnuz.github.io/fragment-donor-sdk/`, separate `/en/`,
 reciprocal same-topic hreflang links and a sitemap entry. x-default points to the
 root language chooser for homepages and to the English version for topic pages.
 There are no automatic language redirects. Switching language preserves topic.
-Search Console/Bing submission requires account/property access; technical SEO
+Search Console/Bing/Yandex submission requires account/property access; technical SEO
 checks do not guarantee indexing, rankings, or appearance in any language.
+Google's project URL-prefix is not `github.io` DNS ownership. Yandex may require
+the origin-root property: project repository access alone cannot verify or edit
+`https://usnuz.github.io/`. Follow the actual issued ownership method and the
+[webmaster runbook](../publishing/PUBLISHING_RUNBOOK.md#search-submission-and-verification).
+
+## Publication workflow and actual availability
+
+Eligible external publication is authorized, but registry/Postman browser access
+is currently blocked by saved permission. Prepared release workflows do not
+prove publication: [release.yml](../.github/workflows/release.yml) builds tested
+GitHub assets and the Go submodule tag; [registry-publish.yml](../.github/workflows/registry-publish.yml)
+requires explicit manual confirmation for one configured publisher/environment
+at a time. Check [status evidence](../publishing/publication-status.json) before
+using registry installation commands. Publisher ownership, 2FA/OIDC, Packagist's
+initial repository submission and any first-crate bootstrap remain owner-access
+steps; see [manual actions](../publishing/manual-actions.md).
+
+A locally generated fixture viewer `site/demo/index.html` ([source generator](../demo/build.mjs)) uses CSS controls
+to display synthetic responses for all four operations. It makes no API calls,
+executes no JavaScript, accepts no wallet secrets and invents no dispatch counter.
+The intended public route is `/demo/`; confirm actual deployment separately.
+The [gallery/video pack](../publishing/content/10-product-hunt.md) includes five
+rendered frames and a 50-second silent captioned video, not a live transaction
+or screencast. Local assets are not evidence of a Product Hunt/YouTube listing.
 
 Build: `node contract/build.mjs`, `node docs/build.mjs`, `node docs/test.mjs`.
 Package-specific commands and native examples live in the linked READMEs.
