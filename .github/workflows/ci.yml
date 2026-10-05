@@ -1,0 +1,117 @@
+name: SDK contract and package checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  docs-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - run: node scripts/public-files.mjs && node scripts/status-check.mjs
+      - run: node contract/build.mjs && node docs/build.mjs && node docs/test.mjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: static-docs
+          path: site
+  python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12', '3.14']
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install build twine ruff mypy
+      - run: python -m ruff check src tests examples && python -m ruff format --check src tests examples && python -m mypy --strict src
+        working-directory: python
+      - run: python -W error -m unittest discover -s tests -v
+        working-directory: python
+        env:
+          PYTHONPATH: src
+      - run: python -m build && python -m twine check dist/* && python tests/check_artifacts.py && python -m pip install dist/*.whl
+        working-directory: python
+      - run: python python/tests/smoke_installed.py
+      - run: python -m pip install --force-reinstall python/dist/*.tar.gz && python python/tests/smoke_installed.py
+  typescript:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['20', '22', '24']
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci && npm test && npm pack
+        working-directory: typescript
+      - run: mkdir -p /tmp/sdk-smoke && cd /tmp/sdk-smoke && npm install "$GITHUB_WORKSPACE/typescript/fragment-donor-sdk-0.1.0.tgz" && node --input-type=module -e "import {FragmentDonorClient} from 'fragment-donor-sdk'; if (!FragmentDonorClient) process.exit(1)"
+      - run: node typescript/test/install-smoke.mjs /tmp/sdk-smoke/node_modules/fragment-donor-sdk/dist/index.js
+  php:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.2', '8.4']
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: curl, json
+          tools: composer:v2
+      - run: composer validate --strict && composer install --no-interaction && composer test && composer lint
+        working-directory: php
+      - run: composer validate --strict && composer archive --format=zip --dir=php/dist --file=fragment-donor-sdk-0.1.0
+      - run: mkdir -p /tmp/php-sdk-smoke && unzip php/dist/fragment-donor-sdk-0.1.0.zip -d /tmp/php-sdk-smoke && cd /tmp/php-sdk-smoke && composer install --no-dev --no-scripts --no-plugins --no-interaction
+      - run: php php/tests/package-smoke.php /tmp/php-sdk-smoke
+  dotnet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet run --project dotnet/tests/FragmentDonor.Sdk.Tests -c Release
+      - run: dotnet pack dotnet/src/FragmentDonor.Sdk -c Release -o dotnet/dist
+      - run: dotnet restore dotnet/tests/PackageSmoke --source "$PWD/dotnet/dist" --configfile dotnet/NuGet.Config && dotnet run --project dotnet/tests/PackageSmoke -c Release --no-restore
+      - run: dotnet build dotnet/examples/QuickStart -c Release
+  go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.23.x'
+          cache: false
+      - run: go test -race ./... && go vet ./... && go build ./...
+        working-directory: go
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: rustup update stable --no-self-update && rustup default stable
+      - run: cargo test --locked && cargo clippy --locked --all-targets -- -D warnings && cargo package --locked --allow-dirty
+        working-directory: rust
+  ruby:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ['3.2', '3.4']
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - run: ruby -Ilib test/client_test.rb && gem build fragment-donor-sdk.gemspec
+        working-directory: ruby
+      - run: gem install ruby/fragment-donor-sdk-0.1.0.gem --no-document && ruby -rfragment_donor_sdk -e 'abort unless FragmentDonor::Client'

@@ -1,0 +1,557 @@
+{
+  "schema_version": 1,
+  "project": "Fragment Donor",
+  "repository": "usnuz/fragment-donor-sdk",
+  "version": "0.1.0",
+  "updated_on": "2026-10-05",
+  "scope": "Publish independent GitHub source and multilingual docs; registry and social submissions deferred by owner.",
+  "no_real_payments": true,
+  "no_backend_deployment": true,
+  "backend_credential_retention": "Inspected backend persists submitted purchase credentials; SDK redaction does not prevent retention.",
+  "test_results": {
+    "python": {
+      "status": "PASS",
+      "runtime": "Python 3.12",
+      "tests": 20,
+      "notes": "Warnings-as-errors tests, Ruff, strict mypy, wheel/sdist contents and isolated package install smoke passed."
+    },
+    "typescript": {
+      "status": "PASS",
+      "runtime": "Node.js 24.18.0",
+      "tests": 21,
+      "notes": "Native tests, strict TypeScript build/declarations, format, tarball contents and isolated package install smoke passed."
+    },
+    "php": {
+      "status": "PASS",
+      "runtime": "PHP 8.2.34",
+      "test_groups": 11,
+      "notes": "Tests, syntax lint, Composer strict validation, root archive and isolated autoload/redaction smoke passed."
+    },
+    "dotnet": {
+      "status": "PASS",
+      "runtime": ".NET SDK 8.0.425",
+      "test_groups": 11,
+      "notes": "Tests, zero-warning build, NuGet pack, installed nupkg smoke and example build passed."
+    },
+    "go": {
+      "status": "PASS",
+      "runtime": "Go 1.26",
+      "top_level_tests": 9,
+      "tests_and_subcases": 37,
+      "notes": "Native test/vet/build and custom-default-transport regression passed."
+    },
+    "ruby": {
+      "status": "PASS",
+      "runtime": "Ruby 4.0.7",
+      "tests": 9,
+      "assertions": 215,
+      "notes": "Tests, syntax, gem contents/build and isolated gem install/redaction smoke passed."
+    },
+    "rust": {
+      "status": "PASS",
+      "runtime": "Rust 1.99",
+      "tests": 8,
+      "notes": "Locked native tests/build, format, strict clippy, crate contents/verification and publish dry-run passed; no upload."
+    },
+    "docs": {
+      "status": "PASS",
+      "pages": 61,
+      "translated_pages": 60,
+      "notes": "Static content, canonical/reciprocal hreflang, sitemap and internal link tests passed; browser layout verified."
+    },
+    "public_source_scan": {
+      "status": "PASS",
+      "notes": "Allowlisted UTF-8 public source scanned; runtime/caches/artifacts/environment/parent history excluded."
+    },
+    "remote_ci": {
+      "status": "NOT_RUN",
+      "notes": "Workflow source prepared; remote source upload pending."
+    }
+  },
+  "channels": [
+    {
+      "id": "github",
+      "name": "GitHub",
+      "status": "READY",
+      "url": null,
+      "planned_url": "https://github.com/usnuz/fragment-donor-sdk",
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "Independent public repository created; reviewed SDK source upload pending."
+    },
+    {
+      "id": "github-pages",
+      "name": "GitHub Pages",
+      "status": "READY",
+      "url": null,
+      "planned_url": "https://usnuz.github.io/fragment-donor-sdk/",
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "Static site built/tested; hosting source configured, deployment pending."
+    },
+    {
+      "id": "gitlab",
+      "name": "GitLab",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "readthedocs",
+      "name": "ReadTheDocs",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "sourceforge",
+      "name": "SourceForge",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "pypi",
+      "name": "PyPI",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "npm",
+      "name": "npm",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "packagist",
+      "name": "Packagist",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "nuget",
+      "name": "NuGet",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "go-pkg-go-dev",
+      "name": "Go/pkg.go.dev",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "crates-io",
+      "name": "crates.io",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "rubygems",
+      "name": "RubyGems",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "postman-api-network",
+      "name": "Postman API Network",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "swagger-studio",
+      "name": "Swagger Studio",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "apis-guru",
+      "name": "APIs.guru",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "rapidapi",
+      "name": "RapidAPI",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "ton-app",
+      "name": "TON App",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "dev-to",
+      "name": "DEV.to",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "hashnode",
+      "name": "Hashnode",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "medium",
+      "name": "Medium",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "linkedin-articles",
+      "name": "LinkedIn Articles",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "youtube",
+      "name": "YouTube",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "indiehackers",
+      "name": "IndieHackers",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "producthunt",
+      "name": "ProductHunt",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "vc-ru",
+      "name": "vc.ru",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "ru-stackoverflow",
+      "name": "ru.stackoverflow",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "r-sideproject",
+      "name": "r/SideProject",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "r-telegrambots",
+      "name": "r/TelegramBots",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "r-toncoin",
+      "name": "r/TONcoin",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "r-python",
+      "name": "r/Python",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "r-node",
+      "name": "r/node",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "r-django",
+      "name": "r/django",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "ton-developer-en",
+      "name": "TON developer EN",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "ton-developer-ru",
+      "name": "TON developer RU",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "telegram-developer-communities",
+      "name": "Telegram developer communities",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "discord-developer-communities",
+      "name": "Discord developer communities",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "google-search-console",
+      "name": "Google Search Console",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "bing-webmaster-tools",
+      "name": "Bing Webmaster Tools",
+      "status": "NOT_RUN",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "External submission/publication not run; owner currently selected GitHub and documentation only."
+    },
+    {
+      "id": "hacker-news-show-hn",
+      "name": "Hacker News / Show HN",
+      "status": "NOT_ELIGIBLE",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "Generated promotional text is not eligible under researched platform rules; see PLATFORM_MATRIX.md."
+    },
+    {
+      "id": "stack-overflow",
+      "name": "Stack Overflow",
+      "status": "NOT_ELIGIBLE",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "Generated promotional text is not eligible under researched platform rules; see PLATFORM_MATRIX.md."
+    },
+    {
+      "id": "habr",
+      "name": "Habr",
+      "status": "NOT_ELIGIBLE",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "Generated promotional text is not eligible under researched platform rules; see PLATFORM_MATRIX.md."
+    },
+    {
+      "id": "hackernoon",
+      "name": "HackerNoon",
+      "status": "NOT_ELIGIBLE",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "Generated promotional text is not eligible under researched platform rules; see PLATFORM_MATRIX.md."
+    },
+    {
+      "id": "r-saas",
+      "name": "r/SaaS",
+      "status": "NOT_ELIGIBLE",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "Generated promotional text is not eligible under researched platform rules; see PLATFORM_MATRIX.md."
+    },
+    {
+      "id": "r-webdev",
+      "name": "r/webdev",
+      "status": "NOT_ELIGIBLE",
+      "url": null,
+      "planned_url": null,
+      "version": "0.1.0",
+      "observed_at": null,
+      "evidence": [],
+      "notes": "Generated promotional text is not eligible under researched platform rules; see PLATFORM_MATRIX.md."
+    }
+  ]
+}

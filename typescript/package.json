@@ -1,0 +1,60 @@
+{
+  "name": "fragment-donor-sdk",
+  "version": "0.1.0",
+  "description": "Typed server-side Node.js SDK for the independent Fragment Donor API",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "examples"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.typecheck.json --noEmit",
+    "format": "prettier --write src test examples package.json tsconfig*.json",
+    "format:check": "prettier --check src test examples package.json tsconfig*.json",
+    "lint": "npm run typecheck && npm run format:check",
+    "test": "npm run build && npm run lint && node --test test/*.test.mjs",
+    "prepack": "npm run build"
+  },
+  "license": "MIT",
+  "author": "Fragment Donor contributors",
+  "homepage": "https://usnuz.github.io/fragment-donor-sdk/en/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usnuz/fragment-donor-sdk.git",
+    "directory": "typescript"
+  },
+  "bugs": {
+    "url": "https://github.com/usnuz/fragment-donor-sdk/issues"
+  },
+  "keywords": [
+    "telegram",
+    "stars",
+    "premium",
+    "ton",
+    "fragment",
+    "sdk"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "prettier": "3.6.2"
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "info": {
+    "name": "Fragment Donor API — safe public examples",
+    "description": "No service auth. Secrets are empty placeholders. Purchases are disabled by default and require an explicit real-funds flag. Do not run purchases in CI. Independent, not an official Telegram/Fragment product.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://fragment.donor.uz"
+    },
+    {
+      "key": "username",
+      "value": "durov"
+    },
+    {
+      "key": "mnemonic",
+      "value": ""
+    },
+    {
+      "key": "fragment_cookie",
+      "value": ""
+    },
+    {
+      "key": "tonconsole_key",
+      "value": ""
+    },
+    {
+      "key": "allow_real_purchases",
+      "value": "false"
+    }
+  ],
+  "item": [
+    {
+      "name": "Read public user info",
+      "request": {
+        "method": "GET",
+        "auth": {
+          "type": "noauth"
+        },
+        "url": "{{base_url}}/get-user-info/?username={{username}}"
+      }
+    },
+    {
+      "name": "Read wallet balance",
+      "request": {
+        "method": "GET",
+        "auth": {
+          "type": "noauth"
+        },
+        "header": [
+          {
+            "key": "Mnemonic",
+            "value": "{{mnemonic}}",
+            "disabled": false,
+            "type": "text"
+          },
+          {
+            "key": "Wallet-Version",
+            "value": "auto",
+            "disabled": false,
+            "type": "text"
+          },
+          {
+            "key": "Wallet-Address",
+            "value": "",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "Proxy",
+            "value": "",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "Api-Key",
+            "value": "{{tonconsole_key}}",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "User-Agent",
+            "value": "",
+            "disabled": true,
+            "type": "text"
+          }
+        ],
+        "url": "{{base_url}}/wallet-balance/"
+      }
+    },
+    {
+      "name": "Gift Stars — disabled by default",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.variables.get('allow_real_purchases') !== 'I_UNDERSTAND_REAL_FUNDS') {",
+              "  throw new Error('Purchase disabled: set allow_real_purchases explicitly only on a trusted backend with a funded dedicated wallet.');",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "auth": {
+          "type": "noauth"
+        },
+        "header": [
+          {
+            "key": "Mnemonic",
+            "value": "{{mnemonic}}",
+            "disabled": false,
+            "type": "text"
+          },
+          {
+            "key": "Wallet-Version",
+            "value": "auto",
+            "disabled": false,
+            "type": "text"
+          },
+          {
+            "key": "Wallet-Address",
+            "value": "",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "Proxy",
+            "value": "",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "Api-Key",
+            "value": "{{tonconsole_key}}",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "User-Agent",
+            "value": "",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{fragment_cookie}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "type": "text"
+            },
+            {
+              "key": "amount",
+              "value": "50",
+              "type": "text"
+            },
+            {
+              "key": "payment_method",
+              "value": "usdt_ton",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "{{base_url}}/buy-stars/"
+      }
+    },
+    {
+      "name": "Gift Premium — disabled by default",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "if (pm.variables.get('allow_real_purchases') !== 'I_UNDERSTAND_REAL_FUNDS') {",
+              "  throw new Error('Purchase disabled: set allow_real_purchases explicitly only on a trusted backend with a funded dedicated wallet.');",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "auth": {
+          "type": "noauth"
+        },
+        "header": [
+          {
+            "key": "Mnemonic",
+            "value": "{{mnemonic}}",
+            "disabled": false,
+            "type": "text"
+          },
+          {
+            "key": "Wallet-Version",
+            "value": "auto",
+            "disabled": false,
+            "type": "text"
+          },
+          {
+            "key": "Wallet-Address",
+            "value": "",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "Proxy",
+            "value": "",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "Api-Key",
+            "value": "{{tonconsole_key}}",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "User-Agent",
+            "value": "",
+            "disabled": true,
+            "type": "text"
+          },
+          {
+            "key": "Cookie",
+            "value": "{{fragment_cookie}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "{{username}}",
+              "type": "text"
+            },
+            {
+              "key": "duration",
+              "value": "3",
+              "type": "text"
+            },
+            {
+              "key": "payment_method",
+              "value": "usdt_ton",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "{{base_url}}/buy-premium/"
+      }
+    }
+  ]
+}

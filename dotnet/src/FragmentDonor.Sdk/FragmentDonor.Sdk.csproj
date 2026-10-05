@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PackageId>FragmentDonor.Sdk</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Fragment Donor</Authors>
+    <Description>Independent .NET client for the public Fragment Donor Stars and Premium API.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/usnuz/fragment-donor-sdk</RepositoryUrl>
+    <PackageProjectUrl>https://usnuz.github.io/fragment-donor-sdk/en/</PackageProjectUrl>
+    <PackageTags>telegram;stars;premium;fragment-donor;sdk</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+    <None Include="../../LICENSE" Pack="true" PackagePath="/" />
+    <None Include="../../CHANGELOG.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+</Project>

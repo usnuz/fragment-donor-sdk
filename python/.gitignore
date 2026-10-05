@@ -1,0 +1,10 @@
+.tools/
+.smoke/
+.smoke-sdist/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.pyc

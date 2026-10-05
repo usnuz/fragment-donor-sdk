@@ -1,0 +1,25 @@
+{
+  "version": "0.1.0",
+  "base_url": "https://fragment.donor.uz",
+  "service_authentication": false,
+  "default_rate_limit_per_minute": 30,
+  "limits": {"stars_min": 50, "stars_max": 1000000, "premium_durations": [3, 6, 12], "wallet_versions": ["auto", "v5r1", "v4r2", "v3r2"], "payment_methods": ["usdt_ton", "ton"]},
+  "credentials": {"mnemonic": "SYNTHETIC01 SYNTHETIC02 SYNTHETIC03 SYNTHETIC04 SYNTHETIC05 SYNTHETIC06 SYNTHETIC07 SYNTHETIC08 SYNTHETIC09 SYNTHETIC10 SYNTHETIC11 SYNTHETIC12", "cookie": "stel_ssid=SYNTHETIC_SESSION_NOT_REAL", "provider_key": "SYNTHETIC_PROVIDER_KEY_NOT_REAL"},
+  "responses": {
+    "user_info": {"ok": true, "username": "durov", "is_premium": false, "future_field": {"kept": true}},
+    "purchase": {"ok": true, "data": {"transaction": "SYNTHETIC_TRANSACTION"}, "future_field": "preserve"},
+    "wallet_balance": {"ok": true, "address": "SYNTHETIC_WALLET_ADDRESS", "ton": "2.500000001", "usdt_ton": "9007199254740993.01", "future_field": "preserve"},
+    "validation": {"ok": false, "error": "Invalid amount"},
+    "flood_wait": {"ok": false, "error": "Too many requests", "error_code": "FLOOD_WAIT", "retry_after": 42, "flood_wait": 42},
+    "unavailable": {"ok": false, "error": "Rate limit temporarily unavailable", "error_code": "RATE_LIMIT_UNAVAILABLE", "retry_after": 5},
+    "upstream_error": {"ok": false, "reason": "Not a user"}
+  },
+  "operations": {
+    "get_user_info": {"method": "GET", "path": "/get-user-info/", "query": ["username"], "credentials_required": false},
+    "buy_stars": {"method": "POST", "path": "/buy-stars/", "form": ["username", "amount", "payment_method"], "credentials_required": true, "automatic_retry": false},
+    "buy_premium": {"method": "POST", "path": "/buy-premium/", "form": ["username", "duration", "payment_method"], "credentials_required": true, "automatic_retry": false},
+    "wallet_balance": {"method": "GET", "path": "/wallet-balance/", "credentials_required": true, "cookie_required": false, "also_supports_post": true}
+  },
+  "retry_policy": {"purchase_retry": "never", "read_only_default_retries": 0, "read_only_max_retries": 2, "automatic_wait_default": false, "max_wait_seconds": 60, "retry_after_sources": ["HTTP seconds", "HTTP date", "JSON retry_after", "JSON flood_wait"]},
+  "security": {"service_auth_headers": [], "provider_header": "Api-Key", "redirects": "never", "credential_logging": "never", "browser_purchases": "unsupported"}
+}

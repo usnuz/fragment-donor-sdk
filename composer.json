@@ -1,0 +1,16 @@
+{
+  "name": "fragment-donor/sdk",
+  "description": "Independent server-side PHP SDK for the Fragment Donor public API",
+  "type": "library",
+  "license": "MIT",
+  "require": {"php": ">=8.2", "ext-curl": "*", "ext-json": "*"},
+  "autoload": {"classmap": ["php/src/"]},
+  "support": {
+    "source": "https://github.com/usnuz/fragment-donor-sdk",
+    "docs": "https://usnuz.github.io/fragment-donor-sdk/en/"
+  },
+  "keywords": ["telegram", "stars", "premium", "fragment-donor", "sdk"],
+  "archive": {
+    "exclude": ["/.github", "/.tools", "/.git", "/.gitignore", "/build", "/dist", "/examples", "/openapi", "/contract", "/docs", "/site", "/scripts", "/publishing", "/python", "/typescript", "/dotnet", "/go", "/rust", "/ruby", "/php/tests", "/php/dist", "/php/vendor", "/php/examples", "/php/.gitignore", "/php/composer.json", "/php/composer.lock", "/CONTRIBUTING.md"]
+  }
+}

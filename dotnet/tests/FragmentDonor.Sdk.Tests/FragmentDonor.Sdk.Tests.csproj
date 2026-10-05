@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/FragmentDonor.Sdk/FragmentDonor.Sdk.csproj" />
+    <None Include="../../../contract/fixtures.json" Link="fixtures.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

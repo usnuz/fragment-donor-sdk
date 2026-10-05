@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fragment-donor-sdk"
+version = "0.1.0"
+description = "Server-side Python SDK for the independent Fragment Donor API"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "Fragment Donor contributors"}]
+keywords = ["telegram", "stars", "premium", "ton", "fragment", "sdk"]
+classifiers = ["Programming Language :: Python :: 3", "Typing :: Typed"]
+dependencies = []
+
+[project.urls]
+Documentation = "https://usnuz.github.io/fragment-donor-sdk/en/"
+Source = "https://github.com/usnuz/fragment-donor-sdk/tree/main/python"
+Issues = "https://github.com/usnuz/fragment-donor-sdk/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+fragment_donor_sdk = ["py.typed"]
+
+[tool.ruff]
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "RUF"]
