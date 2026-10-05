@@ -4,7 +4,8 @@ Independent .NET 8+ server-side client, version `0.1.0`, with no external runtim
 packages. Not affiliated with Telegram, Fragment or TON. Package name remains
 provisional until registry availability and publisher access are verified.
 
-NuGet publication is deferred. The command below is for after an actual release;
+NuGet publication is authorized but browser/publisher access is currently blocked;
+no registry release is verified. The command below is for after an actual release;
 meanwhile use the reviewed source or locally built nupkg with a local package feed.
 
 ```sh
@@ -107,6 +108,7 @@ dotnet run --project tests/FragmentDonor.Sdk.Tests -c Release
 dotnet format whitespace src/FragmentDonor.Sdk --no-restore --verify-no-changes
 dotnet format whitespace tests/FragmentDonor.Sdk.Tests --no-restore --verify-no-changes
 dotnet pack src/FragmentDonor.Sdk -c Release -o dist
+dotnet run --project tests/PackageCheck -c Release -- --self-test
 dotnet run --project tests/PackageCheck -c Release -- dist/FragmentDonor.Sdk.0.1.0.nupkg
 dotnet restore tests/PackageSmoke --source dist --configfile NuGet.Config
 dotnet run --project tests/PackageSmoke -c Release --no-restore
@@ -122,5 +124,12 @@ Apply the whitespace gate to PackageSmoke, PackageCheck and QuickStart too.
 PackageCheck verifies NuGet identity/version, an exact member allowlist and known
 token/private-key patterns in UTF-8 content and UTF-16 assembly strings. It never
 prints suspected content and is not proof against every arbitrary secret format.
+It permits exactly one known NuGet core-properties member: the older 32-lowercase-
+hex name or the deterministic `nuget.psmdcp` name used by
+[NuGet.Client](https://github.com/NuGet/NuGet.Client/blob/dev/src/NuGet.Core/NuGet.Packaging/PackageCreation/Authoring/PackageBuilder.cs).
+Its `--self-test` rejects unknown namespaces/names, extra or duplicate metadata,
+unexpected/duplicate required members and missing metadata; the package still
+must have exactly eight members. Repository `global.json` pins the intended
+.NET 8 SDK feature band rather than a newer preinstalled runner SDK.
 PackageSmoke exercises all four operations, exact decimal strings, HTTP400
 unknown-outcome classification and redaction from the installed nupkg with mocks.

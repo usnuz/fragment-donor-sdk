@@ -102,6 +102,7 @@ jobs:
           dotnet-version: '8.0.x'
       - run: dotnet run --project dotnet/tests/FragmentDonor.Sdk.Tests -c Release
       - run: dotnet pack dotnet/src/FragmentDonor.Sdk -c Release -o dotnet/dist
+      - run: dotnet run --project dotnet/tests/PackageCheck -c Release -- --self-test
       - run: dotnet run --project dotnet/tests/PackageCheck -c Release -- dotnet/dist/FragmentDonor.Sdk.0.1.0.nupkg
       - run: dotnet restore dotnet/tests/PackageSmoke --source "$PWD/dotnet/dist" --configfile dotnet/NuGet.Config && dotnet run --project dotnet/tests/PackageSmoke -c Release --no-restore
       - run: dotnet build dotnet/examples/QuickStart -c Release

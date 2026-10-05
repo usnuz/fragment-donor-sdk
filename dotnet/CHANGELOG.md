@@ -9,3 +9,5 @@
   unknown-outcome flag for transport/malformed/5xx failures; never retry.
 - Native whitespace format gates, exact nupkg-content/known-token scan and
   four-operation installed-package uncertainty/redaction smoke.
+- Exact compatibility for NuGet's deterministic metadata member, with ten
+  package-checker regressions retaining the eight-member fail-closed gate.

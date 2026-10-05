@@ -3,14 +3,65 @@
   "description": "Independent server-side PHP SDK for the Fragment Donor public API",
   "type": "library",
   "license": "MIT",
-  "require": {"php": ">=8.2", "ext-curl": "*", "ext-json": "*"},
-  "autoload": {"classmap": ["php/src/"]},
+  "require": {
+    "php": ">=8.2",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "classmap": [
+      "php/src/"
+    ]
+  },
   "support": {
     "source": "https://github.com/usnuz/fragment-donor-sdk",
     "docs": "https://usnuz.github.io/fragment-donor-sdk/en/"
   },
-  "keywords": ["telegram", "stars", "premium", "fragment-donor", "sdk"],
+  "keywords": [
+    "telegram",
+    "stars",
+    "premium",
+    "fragment-donor",
+    "sdk"
+  ],
   "archive": {
-    "exclude": ["/.github", "/.tools", "/.git", "/.gitignore", "/build", "/dist", "/examples", "/openapi", "/contract", "/docs", "/site", "/scripts", "/publishing", "/demo", "/python", "/typescript", "/dotnet", "/go", "/rust", "/ruby", "/php/tests", "/php/dist", "/php/vendor", "/php/examples", "/php/.gitignore", "/php/.php-cs-fixer.dist.php", "/php/composer.json", "/php/composer.lock", "/CONTRIBUTING.md"]
+    "exclude": [
+      "/.github",
+      "/.tools",
+      "/.git",
+      "/.gitignore",
+      "/global.json",
+      "/build",
+      "/dist",
+      "/examples",
+      "/openapi",
+      "/contract",
+      "/docs",
+      "/site",
+      "/scripts",
+      "/publishing",
+      "/demo",
+      "/python",
+      "/typescript",
+      "/dotnet",
+      "/go",
+      "/rust",
+      "/ruby",
+      "/php/tests",
+      "/php/dist",
+      "/php/vendor",
+      "/php/examples",
+      "/php/.gitignore",
+      "/php/.php-cs-fixer.dist.php",
+      "/php/composer.json",
+      "/php/composer.lock",
+      "/CONTRIBUTING.md",
+      "/.ruff_cache",
+      "/.mypy_cache",
+      "/.pytest_cache",
+      "/__pycache__",
+      "/.venv",
+      "/php/.php-cs-fixer.cache"
+    ]
   }
 }

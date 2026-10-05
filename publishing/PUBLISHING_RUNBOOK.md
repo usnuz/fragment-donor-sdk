@@ -85,12 +85,29 @@ and prepares a GitHub release with checksums. It also creates/verifies
 `go/v0.1.0` at the same tested source commit. A tag push is a release action:
 do it only after gates pass. An existing Go tag must not be moved silently.
 
+The configured release job uses commit-pinned `actions/attest` v4 and GitHub OIDC
+to attest **each of nine exact assets**: seven packages,
+`release-provenance.json` and `SHA256SUMS`. Before publication it runs
+`gh attestation verify` for every file against the exact source commit, release
+tag/ref and signer workflow
+`usnuz/fragment-donor-sdk/.github/workflows/release.yml`. Checksums detect byte
+mismatches; a checksum file or unsigned provenance JSON is **not signed
+provenance**. Attestations must actually exist and verify, not merely be declared
+in YAML. No SLSA Level 3 claim is made.
+
 `.github/workflows/registry-publish.yml` is separate and manual. In GitHub
 Actions choose **Authorized registry publication**, run on `main`, set `tag` to
 the exact verified stable GitHub release, choose **one** `package`, and explicitly
 set `confirm=true`. The guarded workflow requires that public release; it does
 not configure publisher accounts or prove registry acceptance. Configure the
 corresponding GitHub environment and its protection/reviewer rules first.
+
+Its validation job downloads all nine exact release files, checks package
+contents/hashes/metadata, verifies successful release-run identity and matching
+root/Go tags, then verifies **every signature** against the same source commit,
+ref and release workflow. Only then can the single selected ecosystem publish
+from the reviewed artifact handoff. Checksums alone do not replace that signature
+gate or registry ownership.
 
 ### Owner setup fields
 
