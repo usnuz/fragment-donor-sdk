@@ -65,15 +65,16 @@
     },
     "remote_ci": {
       "status": "PASS",
-      "validated_commit": "e3f43e0a5f5e01369b46dcf4901c73578ddc2746",
-      "url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37302423775",
+      "validated_commit": "0e444c9710c907a5ee0c0b9da812d4d1e9bb3783",
+      "url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37304917805",
       "matrix_jobs": 14,
-      "notes": "All baseline runtime matrix jobs passed; final follow-up hardening source is locally verified and awaiting another remote run."
+      "observed_at": "2026-10-05T11:51:13Z",
+      "notes": "All 14 runtime matrix jobs passed for the final SDK/docs source commit. The subsequent publication-evidence update changes this report only."
     },
     "content": {
       "status": "PASS",
       "markdown_assets": 23,
-      "verified_links": 104,
+      "verified_links": 107,
       "notes": "Tailored EN/RU/UZ and channel-specific payloads prepared; no external posts or registrations."
     }
   },
@@ -85,10 +86,10 @@
       "url": "https://github.com/usnuz/fragment-donor-sdk",
       "planned_url": "https://github.com/usnuz/fragment-donor-sdk",
       "version": "0.1.0",
-      "observed_at": "2026-10-05T11:36:00Z",
+      "observed_at": "2026-10-05T11:51:13Z",
       "evidence": [
-        "Git push initial commit e3f43e0 to owned independent public repository succeeded.",
-        "Public GitHub CI run 37302423775 completed success, 14 jobs."
+        "Git push final SDK/docs source commit 0e444c9710c907a5ee0c0b9da812d4d1e9bb3783 to owned independent public repository succeeded.",
+        "Public GitHub CI run 37304917805 completed success; all 14 jobs independently verified."
       ],
       "notes": "Independent SDK-only source published; no production history or secrets included."
     },
@@ -99,12 +100,13 @@
       "url": "https://usnuz.github.io/fragment-donor-sdk/",
       "planned_url": "https://usnuz.github.io/fragment-donor-sdk/",
       "version": "0.1.0",
-      "observed_at": "2026-10-05T11:36:00Z",
+      "observed_at": "2026-10-05T11:51:13Z",
       "evidence": [
-        "GitHub Pages run 37302424016 completed success.",
-        "Live Uzbek homepage returned HTTP 200 and expected canonical/title; same-topic EN/RU language navigation verified."
+        "GitHub Pages run 37305009133 completed success for source commit 0e444c9710c907a5ee0c0b9da812d4d1e9bb3783, gated on successful SDK CI.",
+        "Read-only live verification passed: 61 static pages plus sitemap/robots/OpenAPI/Postman returned HTTP 200 with expected languages, canonical/hreflang and no executable JavaScript.",
+        "Live Uzbek homepage layout and same-topic EN/RU language navigation verified in the browser."
       ],
-      "notes": "Static EN/RU/UZ docs published; final follow-up hardening deployment validation pending."
+      "notes": "Static EN/RU/UZ docs published and final hardening deployment verified. Search-engine indexing is not confirmed; registry and social publication remain deferred."
     },
     {
       "id": "gitlab",
