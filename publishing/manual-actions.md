@@ -10,6 +10,14 @@ published `fragment-donor-sdk==0.1.0` successfully through Trusted Publishing.
 The public version, provenance, metadata, clean install/import and mocked smoke
 are verified. Do not dispatch version 0.1.0 again.
 
+npm account `shohzodbek` enabled 2FA with one security key. The exact reviewed
+tarball published `fragment-donor-sdk@0.1.0`; its public metadata, clean registry
+install and installed mocked smoke passed. A GitHub Actions Trusted Publisher is
+now configured for `usnuz/fragment-donor-sdk`, `registry-publish.yml`, environment
+`npm`, permitting `npm publish` (not `npm dist-tag`). The bootstrap version was a
+direct authenticated upload, so it has registry signing but not GitHub OIDC
+provenance. Do not republish immutable 0.1.0; use OIDC for later versions.
+
 First access batch: [PyPI](https://pypi.org/), [npm](https://www.npmjs.com/),
 [Packagist](https://packagist.org/), [NuGet](https://www.nuget.org/),
 [crates.io](https://crates.io/), [RubyGems](https://rubygems.org/),
@@ -21,9 +29,9 @@ scoped GitHub publishing secret/trusted publisher yourself.
 
 The owner now authorizes all eligible publication. The remaining limitation is
 access/policy/readiness, not an owner decision to defer every other platform.
-Login/ownership on npm, Packagist, NuGet, crates.io, RubyGems and Postman is still
-unverified. No publication on those six services is claimed. GitHub v0.1.0 and
-the public Go module/pkg.go.dev and PyPI 0.1.0 are verified published.
+Login/ownership on Packagist, NuGet, crates.io, RubyGems and Postman is still
+unverified. No publication on those five services is claimed. GitHub v0.1.0,
+the public Go module/pkg.go.dev, PyPI 0.1.0 and npm 0.1.0 are verified published.
 
 GitHub topics remain unset because the optional release action received HTTP403.
 Using the genuine owner's repository UI, copy only the reviewed topic names from

@@ -25,7 +25,7 @@ returned HTTP 200 at **2026-10-05 17:20:07 UTC**. All nine release signatures
 were checked in the actual release job before publication; independently
 downloaded files then passed integrity, metadata and archive-content checks.
 
-The other **five package registries**, external Postman listing, social/community
+The other **four package registries**, external Postman listing, social/community
 posts, Product Hunt and YouTube publication are **not verified/published**.
 No backend deployment or real Stars/Premium purchase was performed.
 Later evidence/media-only main-branch changes do not move the released tags.
@@ -46,6 +46,18 @@ and sdist with Trusted Publishing provenance bound to GitHub Actions, this repos
 workflow and commit `2e364d03d3e72fcbd63518e673e7b28032a8433b`.
 A clean Python 3.12 environment installed the exact version using only public
 PyPI with cache disabled; import, metadata and installed mocked-HTTP smoke passed.
+
+[npm 0.1.0](https://www.npmjs.com/package/fragment-donor-sdk/v/0.1.0) was
+bootstrapped under owner `shohzodbek` after enabling account 2FA with a security
+key. The upload used the exact reviewed tarball with SHA256
+`9b6a61139297a05ba391b2195de38f7c0b0c7458ae50003f802d989ddd50ff3f`.
+Public registry metadata and a clean install followed by the installed mocked-HTTP
+smoke passed. The package now trusts GitHub Actions for
+`usnuz/fragment-donor-sdk`, `registry-publish.yml`, environment `npm`, permitting
+`npm publish` but not `npm dist-tag`. Because the first release was a direct
+authenticated bootstrap upload, it has registry signing but no GitHub OIDC
+provenance; later versions should use the trusted publisher. Immutable 0.1.0
+must not be published again.
 
 The later main-branch [CI run 37366652572](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37366652572)
 also ended after 15 minutes during the same incident. Eight jobs produced normal
@@ -198,8 +210,8 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**4 PUBLISHED, 6 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
-not mean publication. GitHub/Pages and Go module/index are verified.
+**5 PUBLISHED, 5 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
+not mean publication. GitHub/Pages, PyPI, npm and Go module/index are verified.
 
 | # | Platform | Actual state |
 | --- | --- | --- |
@@ -209,7 +221,7 @@ not mean publication. GitHub/Pages and Go module/index are verified.
 | 4 | ReadTheDocs | NOT_RUN |
 | 5 | SourceForge | NOT_RUN |
 | 6 | PyPI | PUBLISHED |
-| 7 | npm | BLOCKED_ACCESS |
+| 7 | npm | PUBLISHED |
 | 8 | Packagist | BLOCKED_ACCESS |
 | 9 | NuGet | BLOCKED_ACCESS |
 | 10 | Go/pkg.go.dev | PUBLISHED |
@@ -251,7 +263,7 @@ not mean publication. GitHub/Pages and Go module/index are verified.
 
 ## Remaining work and non-negotiable boundaries
 
-PyPI is **PUBLISHED** and public-install verified. npm, Packagist, NuGet,
+PyPI and npm are **PUBLISHED** and public-install verified. Packagist, NuGet,
 crates.io, RubyGems and Postman remain
 **BLOCKED_ACCESS** pending their own login/ownership checks. Use normal login/2FA
 and [manual actions](manual-actions.md); never put secrets in chat.
@@ -277,7 +289,7 @@ or transport/malformed replies may be unknown payment outcome. Preserve safe
 reconciliation details and examine wallet/recipient evidence before a new
 intentional dispatch; no backend idempotency or purchase-status endpoint exists.
 
-Next gates: complete human login/2FA for the other registries, configure their exact
+Next gates: complete human login/2FA for the remaining registries, configure their exact
 owner/publisher environments and topic metadata, then execute accessible
 eligible registry/platform actions. Reopen every actual registry version/post
 and perform fresh registry installs before updating PUBLISHED. Google/Bing/Yandex

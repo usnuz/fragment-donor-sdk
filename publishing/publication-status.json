@@ -4,7 +4,7 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.0",
   "updated_on": "2026-10-06",
-  "scope": "GitHub release/docs, Go module/index and PyPI 0.1.0 are verified public. PyPI Trusted Publishing run 37404248538 succeeded and a clean public-index install/import/mocked smoke passed. Other registry/Postman owner access remains unverified. No production deploy or real payment.",
+  "scope": "GitHub release/docs, Go module/index, PyPI 0.1.0 and npm 0.1.0 are verified public. PyPI Trusted Publishing run 37404248538 succeeded; npm was securely bootstrapped from the reviewed tarball and its future GitHub Actions Trusted Publisher is configured. Clean public-registry consumers and mocked smokes passed. Other registry/Postman owner access remains unverified. No production deploy or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "backend_credential_retention": "Inspected backend persists submitted purchase credentials; SDK redaction does not prevent retention.",
@@ -204,14 +204,19 @@
     {
       "id": "npm",
       "name": "npm",
-      "status": "BLOCKED_ACCESS",
-      "url": null,
-      "planned_url": null,
+      "status": "PUBLISHED",
+      "url": "https://www.npmjs.com/package/fragment-donor-sdk/v/0.1.0",
+      "planned_url": "https://www.npmjs.com/package/fragment-donor-sdk/v/0.1.0",
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-06T03:01:48Z",
+      "evidence": [
+        "npm owner shohzodbek enabled account 2FA with one security key before the first publication.",
+        "The exact reviewed typescript/fragment-donor-sdk-0.1.0.tgz with SHA256 9b6a61139297a05ba391b2195de38f7c0b0c7458ae50003f802d989ddd50ff3f published successfully as public fragment-donor-sdk@0.1.0.",
+        "Public npm metadata reports version/latest 0.1.0, MIT, Node >=20, the expected repository/docs metadata, seven package files and matching integrity.",
+        "A fresh public-registry install with scripts disabled passed metadata inspection and the installed mocked-HTTP smoke without a real purchase.",
+        "A GitHub Actions Trusted Publisher was added for usnuz/fragment-donor-sdk, registry-publish.yml, environment npm, with npm publish and npm stage publish allowed; npm dist-tag is not allowed."
+      ],
+      "notes": "Verified immutable public 0.1.0 release. The required first-package bootstrap used direct authenticated publication, so this version has registry signing but no GitHub OIDC provenance. Use the configured Trusted Publisher for future versions; do not republish 0.1.0."
     },
     {
       "id": "packagist",
@@ -688,7 +693,7 @@
     "ruby_gem_sha256": "023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea",
     "provenance_sha256": "c47ace7f9ca721a929e66c17c86daaea9e90fbfb1b9aa8027e5ad12053ddad14",
     "checksums_sha256": "0fba42121372aba009e6fcc30461a0b795918e6baad157274379f55555eaf2b4",
-    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI 0.1.0 is published and public-install verified; five other external registries remain BLOCKED_ACCESS.",
+    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI and npm 0.1.0 are published and public-install verified; four other external registries remain BLOCKED_ACCESS.",
     "synthetic_video_sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7",
     "baseline_screenshot_sha256": "c8e6dd90b653f8043ea83266dc2b7536327fb8b0c56b37400ae0b5261396133b"
   },
@@ -723,6 +728,6 @@
     "status": "READY",
     "requested_browser": "Chrome",
     "observed_error": null,
-    "notes": "Chrome access was restored and authenticated PyPI/GitHub pages were verified on 2026-10-06 Asia/Tashkent. This does not establish login or ownership on npm, Packagist, NuGet, crates.io, RubyGems or Postman."
+    "notes": "Chrome access was restored and authenticated PyPI, npm and GitHub pages were verified on 2026-10-06 Asia/Tashkent. This does not establish login or ownership on Packagist, NuGet, crates.io, RubyGems or Postman."
   }
 }

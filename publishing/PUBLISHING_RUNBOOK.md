@@ -10,8 +10,9 @@ The owner authorized all **eligible** publication, not only GitHub/Pages.
 Authorization does not bypass a platform's rules, login, ownership, editorial
 review, or paid-plan approval. PyPI 0.1.0 is published through its verified
 trusted publisher; owner-confirmed run 37404248538 and a clean public-index
-consumer were verified. Access to npm,
-Packagist, NuGet, crates.io, RubyGems and Postman remains unverified. Do not treat a
+consumer were verified. npm 0.1.0 was bootstrapped from the reviewed tarball,
+public-install verified, and its GitHub Actions Trusted Publisher is configured.
+Access to Packagist, NuGet, crates.io, RubyGems and Postman remains unverified. Do not treat a
 prepared workflow or package as a completed registry release. Other channels
 remain NOT_RUN until their own access, eligibility and actual submission checks.
 See [manual actions](manual-actions.md) and the authoritative
@@ -122,7 +123,7 @@ in this repository, an issue, a workflow input, or chat.
 | Workflow package | Registry/package | GitHub environment | First-release owner action |
 | --- | --- | --- | --- |
 | `python` | PyPI `fragment-donor-sdk` | `pypi/python` | PUBLISHED at 0.1.0 by successful owner-confirmed run 37404248538. PyPI provenance and clean public-index install/import/mocked smoke verified. Do not dispatch 0.1.0 again. |
-| `node` | npm `fragment-donor-sdk` | `npm` | Configure the package's GitHub Actions Trusted Publisher. If settings require an existing package, the owner must bootstrap its first release securely before that configuration is available. Do not assume the name is reserved. |
+| `node` | npm `fragment-donor-sdk` | `npm` | PUBLISHED at 0.1.0 from the exact reviewed tarball; clean public-registry install/mocked smoke passed. Trusted Publisher is configured for this workflow/environment with `npm publish` permission. The bootstrap release has registry signing but not GitHub OIDC provenance. Do not publish 0.1.0 again. |
 | `dotnet` | NuGet `FragmentDonor.Sdk` | `nuget` | Add a trusted-publishing policy permitting this package/new version; set environment variable `NUGET_USER` to the actual NuGet profile name, not an email. |
 | `rust` | crates.io `fragment-donor-sdk` | `crates-io` | Inspect the current publisher UI. If no pending/new-crate publisher is supported, the owner must perform the first publication with securely configured Cargo credentials, then add the GitHub publisher for later versions. Do not republish the same immutable version. |
 | `ruby` | RubyGems `fragment-donor-sdk` | `rubygems` | Configure an existing gem publisher or a pending trusted publisher naming this new gem. |
@@ -145,7 +146,7 @@ different from the SDK's Node.js 20 runtime compatibility. Official setup:
 | Registry | Identifier | Publication and verification |
 | --- | --- | --- |
 | PyPI | `fragment-donor-sdk` | Configure GitHub trusted publisher or secure scoped upload credentials. Upload only verified wheel/sdist, then inspect the exact version page and install it in a clean environment. |
-| npm | `fragment-donor-sdk` | Publish the verified tarball from typescript/ with public access. npm trusted publishing requires package/account setup; use its official instructions. Verify `npm view fragment-donor-sdk@0.1.0` and a clean install. |
+| npm | `fragment-donor-sdk` | 0.1.0 is published and verified. For later versions use the configured Trusted Publisher, inspect the exact registry metadata, and perform a clean install. Never overwrite immutable 0.1.0. |
 | Packagist | `fragment-donor/sdk` | Root composer.json uses php/src/; submit the public repo, publish v0.1.0 tag, enable synchronization. A PHP subdirectory alone is not a valid root package. Verify Composer installs actual classes from the release. |
 | NuGet | `FragmentDonor.Sdk` | Push the verified nupkg through a scoped account credential, verify 0.1.0 registration and restore/use from nuget.org. |
 | Go / pkg.go.dev | `github.com/usnuz/fragment-donor-sdk/go` | Publish the **go/v0.1.0** tag pointing to tested source. Module resides in go/. Fetch through proxy.golang.org and verify docs on pkg.go.dev. A root v0.1.0 tag is not a Go submodule release. |

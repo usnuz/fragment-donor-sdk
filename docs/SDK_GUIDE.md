@@ -11,8 +11,10 @@ contains reviewed downloadable packages. The [Go 0.1.0 index](https://pkg.go.dev
 and `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.0` are verified public.
 PyPI `fragment-donor-sdk==0.1.0` is published through Trusted Publishing and was
 verified by a clean public-index install, import and mocked HTTP smoke test.
-npm, Packagist, NuGet, crates.io and RubyGems
-still require owner-access setup. A GitHub artifact install is not a registry install.
+npm `fragment-donor-sdk@0.1.0` is also public and was verified by a clean
+registry install and mocked HTTP smoke test. Packagist, NuGet, crates.io and
+RubyGems still require owner-access setup. A GitHub artifact install is not a
+registry install.
 
 ## Contract
 
@@ -124,8 +126,8 @@ the origin-root property: project repository access alone cannot verify or edit
 
 ## Publication workflow and actual availability
 
-Eligible external publication is authorized. PyPI 0.1.0 and its trusted publisher
-are verified; other registry/Postman access is unverified. Prepared release workflows do not
+Eligible external publication is authorized. PyPI and npm 0.1.0 plus their
+trusted publishers are verified; other registry/Postman access is unverified. Prepared release workflows do not
 prove publication: [release.yml](../.github/workflows/release.yml) builds tested
 GitHub assets and the Go submodule tag; [registry-publish.yml](../.github/workflows/registry-publish.yml)
 requires explicit manual confirmation for one configured publisher/environment
