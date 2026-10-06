@@ -131,9 +131,10 @@ the origin-root property: project repository access alone cannot verify or edit
 
 ## Publication workflow and actual availability
 
-Eligible external publication is authorized. PyPI, npm, Packagist, NuGet and
-crates.io 0.1.0 are verified; PyPI/npm/NuGet/crates.io trusted publishers are configured. Other
-registry/Postman access is unverified. Prepared release workflows do not
+Eligible external publication is authorized. PyPI, npm, Packagist, NuGet,
+crates.io and RubyGems 0.1.0 are verified; PyPI/npm/NuGet/crates.io/RubyGems trusted
+publishers are configured. [Postman documentation](https://documenter.getpostman.com/view/24750404/2sBYHNYPn3)
+is publicly verified with a placeholder-only environment. Prepared release workflows do not
 prove publication: [release.yml](../.github/workflows/release.yml) builds tested
 GitHub assets and the Go submodule tag; [registry-publish.yml](../.github/workflows/registry-publish.yml)
 requires explicit manual confirmation for one configured publisher/environment

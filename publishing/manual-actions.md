@@ -49,8 +49,9 @@ scoped GitHub publishing secret/trusted publisher yourself.
 The owner now authorizes all eligible publication. The remaining limitation is
 access/policy/readiness, not an owner decision to defer every other platform.
 RubyGems ownership is verified and 0.1.0 was published through GitHub Trusted
-Publishing. Login/workspace ownership on Postman is still unverified, so no
-Postman API Network publication is claimed. GitHub v0.1.0, the public Go
+Publishing. Postman workspace ownership is verified and its public four-operation
+documentation was published with the placeholder-only environment; no request
+or purchase was run. GitHub v0.1.0, the public Go
 module/pkg.go.dev, PyPI 0.1.0, npm 0.1.0, Packagist v0.1.0, NuGet 0.1.0,
 crates.io 0.1.0 and RubyGems 0.1.0 are verified published.
 
@@ -85,13 +86,13 @@ optional launch metadata or extract stored credentials.
    [Rights/sitemap steps](PUBLISHING_RUNBOOK.md#search-submission-and-verification).
    No Google/Bing/Yandex indexing or ranking guarantee is made.
 4. **Mirrors/catalogs:** authenticate only the eligible GitLab, ReadTheDocs,
-   SourceForge, Postman, Swagger Studio, TON App or RapidAPI account. Catalog
+   SourceForge, Swagger Studio, TON App or RapidAPI account. Catalog
    acceptance and publication are distinct. Decline paid plans until explicitly
    authorized. Preserve a single primary canonical documentation site.
-   Postman needs permitted workspace editing access: import both generated
-   collection/environment files, keep wallet/provider values empty and real
-   purchases disabled; reopen any public listing logged out. HTTP 400
-   `unconfirmed:true` in the synthetic examples is an unknown payment outcome.
+   Postman is complete: both generated artifacts were imported into a public
+   workspace, wallet/provider values remained empty, real purchases remained
+   disabled, and the published documentation was reopened successfully. HTTP 400
+   `unconfirmed:true` in the synthetic examples remains an unknown payment outcome.
 5. **Editorial/community channels:** inspect current platform/subreddit/group
    rules and AI policies before posting. Provide genuine product details and
    affiliation disclosure. Do not submit fabricated Stack Overflow questions.

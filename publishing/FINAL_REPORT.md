@@ -25,8 +25,9 @@ returned HTTP 200 at **2026-10-05 17:20:07 UTC**. All nine release signatures
 were checked in the actual release job before publication; independently
 downloaded files then passed integrity, metadata and archive-content checks.
 
-The external Postman listing, social/community posts, Product Hunt and YouTube
-publication are **not verified/published**.
+The [public Postman documentation](https://documenter.getpostman.com/view/24750404/2sBYHNYPn3)
+is published and browser verified with the four safe examples and placeholder-only
+environment. Social/community posts, Product Hunt and YouTube remain unpublished.
 No backend deployment or real Stars/Premium purchase was performed.
 Later evidence/media-only main-branch changes do not move the released tags.
 
@@ -219,7 +220,7 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**9 PUBLISHED, 1 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
+**10 PUBLISHED, 0 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
 not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io,
 RubyGems and Go module/index are verified.
 
@@ -237,7 +238,7 @@ RubyGems and Go module/index are verified.
 | 10 | Go/pkg.go.dev | PUBLISHED |
 | 11 | crates.io | PUBLISHED |
 | 12 | RubyGems | PUBLISHED |
-| 13 | Postman API Network | BLOCKED_ACCESS |
+| 13 | Postman API Network | PUBLISHED |
 | 14 | Swagger Studio | NOT_RUN |
 | 15 | APIs.guru | NOT_RUN |
 | 16 | RapidAPI | NOT_RUN |
@@ -274,8 +275,9 @@ RubyGems and Go module/index are verified.
 ## Remaining work and non-negotiable boundaries
 
 PyPI, npm, Packagist, NuGet, crates.io and RubyGems are **PUBLISHED** and
-public-install or download verified. Postman remains **BLOCKED_ACCESS** pending
-login/workspace ownership checks. Use normal login/2FA and
+public-install or download verified. Postman is **PUBLISHED** with a public
+four-operation collection, masked secrets and a placeholder-only environment;
+no API request or purchase was executed. Use normal login/2FA for remaining
 [manual actions](manual-actions.md); never put secrets in chat.
 
 NOT_ELIGIBLE concerns the current generated/free promotional format. HN, English
