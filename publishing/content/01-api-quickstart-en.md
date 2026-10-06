@@ -56,8 +56,8 @@ key or purchase-status endpoint resolves that ambiguity. HTTP 400 with
 reference and reconcile, rather than treating it as ordinary validation rejection.
 
 The trust boundary is important: purchase requests transmit wallet mnemonic and
-Fragment session/cookie data to the API operator. Evaluate operator access, use server-side secret storage and a
-dedicated minimally funded wallet; never put seeds into frontend code or public
+Fragment session/cookie data to the API operator. Use server-side secret storage
+and a dedicated, minimally funded wallet; never put seeds into frontend code or public
 collection variables.
 
 [Four-operation docs](https://usnuz.github.io/fragment-donor-sdk/en/) ·

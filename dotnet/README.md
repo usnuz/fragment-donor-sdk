@@ -103,8 +103,8 @@ Caller cancellation after dispatch may also require reconciliation; cancellation
 still uses the standard `OperationCanceledException` contract.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. use a dedicated, minimally
-funded wallet and secret manager, and do not expose seeds in frontend code.
+the API operator. Use a dedicated, minimally funded wallet and secret manager,
+and do not expose seeds in frontend code.
 
 ## Build, test and release
 
@@ -127,7 +127,7 @@ and tests injected deterministic handlers without real purchases. Its nonzero ex
 code fails CI. The PackageSmoke executable installs the built local nupkg rather
 than referencing SDK source. Inspect nupkg contents before `dotnet nuget push`.
 Use repository NuGet trusted publishing where available
-or the registry credential stored as a protected CI secret; never put it in source.
+or a registry credential supplied through protected CI configuration; never put it in source.
 Apply the whitespace gate to PackageSmoke, PackageCheck and QuickStart too.
 PackageCheck verifies NuGet identity/version, an exact member allowlist and known
 token/private-key patterns in UTF-8 content and UTF-16 assembly strings. It never

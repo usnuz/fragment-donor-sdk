@@ -62,8 +62,8 @@ Description (copy):
 > Canonical development, issues, releases and EN/RU/UZ docs are linked from
 > https://github.com/usnuz/fragment-donor-sdk. No production backend history.
 > This is not official Telegram, Fragment or TON software. Wallet operations
-> submit sensitive credentials to a backend that stores them; read the security
-> boundary before integrating. A mirror is not a registry release.
+> transmit sensitive credentials to the API operator; use server-side secret
+> storage and a dedicated, minimally funded wallet. A mirror is not a registry release.
 
 Tags: `sdk`, `telegram`, `ton`, `api`. Create a genuine clean Git mirror and keep
 its README pointing to GitHub. Use normal owner-authorized Git push or a supported
@@ -162,7 +162,7 @@ Human contributor facts, not an automatically submitted claim:
 - API provider domain: `fragment.donor.uz`; title Fragment Donor API; version0.1.0.
 - Schema source: generated OpenAPI; documentation and clean SDK source as above.
 - Direct no-service-auth contract, four operations, synthetic examples; sensitive
-  wallet headers and backend operator access described openly.
+  wallet headers and credential transmission described openly.
 - SDK source uses MIT. The owner explicitly authorized APIs.guru to distribute the
   submitted definition under CC0 1.0; the stable GitHub Pages schema URL was submitted.
 - Do not claim this is a decentralized wallet or an official Fragment API.

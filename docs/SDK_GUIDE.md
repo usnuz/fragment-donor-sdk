@@ -107,9 +107,8 @@ forwarding to a redirected host. Custom transports must enforce this themselves
 and must not retry purchases or log sensitive headers.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. SDK redaction cannot restrict that access or establish what
-the operator retains. ,
-use server-side secret storage, and use a dedicated, minimally funded wallet.
+the API operator. SDK redaction applies to client-side diagnostics only. Use
+server-side secret storage and a dedicated, minimally funded wallet.
 
 All tests use synthetic fixtures and mocked/local transports. They prove SDK
 behavior, not a successful blockchain purchase or production wallet safety.

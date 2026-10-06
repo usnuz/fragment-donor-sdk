@@ -13,16 +13,16 @@ Fragment Donor is independent, not an official Telegram, Fragment or TON product
 This is a mock/source walkthrough, not a customer testimonial or real purchase.
 
 “No auth” is an overloaded phrase. It may mean you don't need to create a service
-account, but it says nothing about what secrets an operation needs or where those
-secrets will be retained. In this API, a username lookup requires no credential,
+account, but it says nothing about what secrets an operation needs or where they
+are transmitted. In this API, a username lookup requires no credential,
 while a Stars/Premium purchase uses a wallet mnemonic and Fragment session cookie.
 An optional key configures TonConsole, not the service's authorization layer.
 
 The SDK boundary and server boundary are separate. A client can use redacted
 diagnostics, disable redirect forwarding and avoid leaking transport causes.
 Purchase requests still transmit wallet mnemonic and Fragment session/cookie data
-to the API operator. “The SDK doesn't print my seed” is not equivalent to “the
-operator cannot access my seed.” A dedicated minimally funded wallet and trusted
+to the API operator. SDK redaction applies to client-side diagnostics only. A
+dedicated, minimally funded wallet and trusted
 server-side secret storage help limit exposure, but do not eliminate trust.
 
 Payment retry is another boundary. A timeout can occur after remote payment

@@ -60,7 +60,7 @@ GitHub topics remain unset because the optional release action received HTTP403.
 Using the genuine owner's repository UI, copy only the reviewed topic names from
 [github-topics.json](github-topics.json), save, then reopen the public repository
 and verify the displayed topics. Do not broaden CI token permissions merely for
-optional launch metadata or extract stored credentials.
+optional launch metadata or extract sensitive credentials.
 
 1. **Registry access/publishers:** allow the normal platform browser access when
    intended, sign in to each actual owner account, complete email/required 2FA,

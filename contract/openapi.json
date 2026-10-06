@@ -3,7 +3,7 @@
   "info": {
     "title": "Fragment Donor Public API",
     "version": "0.1.0",
-    "description": "Independent service, not an official Telegram, Fragment, or TON product. No service authentication. Default shared quota: 30 requests per IP per minute across all endpoints. Credential-bearing requests are server-side only and transmit sensitive wallet/session data to the API operator. ",
+    "description": "Independent service, not an official Telegram, Fragment, or TON product. No service authentication. Default shared quota: 30 requests per IP per minute across all endpoints. Credential-bearing requests are server-side only and transmit sensitive wallet/session data to the API operator. Use server-side secret storage and a dedicated, minimally funded wallet.",
     "license": {
       "name": "MIT",
       "url": "https://github.com/usnuz/fragment-donor-sdk/blob/main/LICENSE"
@@ -228,7 +228,7 @@
             "name": "Mnemonic",
             "in": "header",
             "required": true,
-            "description": "Wallet mnemonic with 12, 18, or 24 words. Secret; use only on a trusted backend. It is transmitted to the API operator; ",
+            "description": "Wallet mnemonic with 12, 18, or 24 words. Secret; use only on a trusted backend. It is transmitted to the API operator. Use server-side secret storage and a dedicated, minimally funded wallet.",
             "schema": {
               "type": "string"
             }
@@ -522,7 +522,7 @@
             "name": "Mnemonic",
             "in": "header",
             "required": true,
-            "description": "Wallet mnemonic with 12, 18, or 24 words. Secret; use only on a trusted backend. It is transmitted to the API operator; ",
+            "description": "Wallet mnemonic with 12, 18, or 24 words. Secret; use only on a trusted backend. It is transmitted to the API operator. Use server-side secret storage and a dedicated, minimally funded wallet.",
             "schema": {
               "type": "string"
             }
@@ -818,7 +818,7 @@
             "name": "Mnemonic",
             "in": "header",
             "required": true,
-            "description": "Wallet mnemonic with 12, 18, or 24 words. Secret; use only on a trusted backend. It is transmitted to the API operator; ",
+            "description": "Wallet mnemonic with 12, 18, or 24 words. Secret; use only on a trusted backend. It is transmitted to the API operator. Use server-side secret storage and a dedicated, minimally funded wallet.",
             "schema": {
               "type": "string"
             }
@@ -1068,7 +1068,7 @@
             "name": "Mnemonic",
             "in": "header",
             "required": true,
-            "description": "Wallet mnemonic with 12, 18, or 24 words. Secret; use only on a trusted backend. It is transmitted to the API operator; ",
+            "description": "Wallet mnemonic with 12, 18, or 24 words. Secret; use only on a trusted backend. It is transmitted to the API operator. Use server-side secret storage and a dedicated, minimally funded wallet.",
             "schema": {
               "type": "string"
             }

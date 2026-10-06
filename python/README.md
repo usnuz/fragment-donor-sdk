@@ -136,8 +136,8 @@ HTTP redirects are disabled so headers cannot be forwarded to another site.
 HTTPS is required except localhost for deterministic integration tests.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. use server-side secret
-storage, and use a dedicated, minimally funded wallet.
+the API operator. Use server-side secret storage and a dedicated, minimally
+funded wallet.
 
 ## Development and release
 

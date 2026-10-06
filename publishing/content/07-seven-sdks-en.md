@@ -54,8 +54,8 @@ Native test/build status must be read separately for each runtime; code existing
 in a repository is not proof of a passing compiler or package publication. No
 real Stars or Premium purchase is needed for those checks.
 
-Keep mnemonic/cookie/proxy/provider secrets server-side, evaluate operator access,
-and remember that SDK diagnostics redaction does not restrict that access. The docs provide
+Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
+the API operator. Keep secrets server-side and use a dedicated, minimally funded wallet. The docs provide
 the same topics at separate English, Russian and Uzbek URLs without promising
 search engine rankings.
 

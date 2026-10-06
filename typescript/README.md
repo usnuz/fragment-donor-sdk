@@ -131,8 +131,8 @@ explicitly printing its return value exposes secrets.
 Redirects are always `manual`; HTTPS is required except local test servers.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. keep secrets server-side,
-and use a dedicated, minimally funded wallet.
+the API operator. Keep secrets server-side and use a dedicated, minimally
+funded wallet.
 
 ## Development and release
 

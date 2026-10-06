@@ -35,9 +35,9 @@ Two other review points deserve equal attention. First, “no service authentica
 doesn't mean “no wallet credential”: the direct API has no service account/key,
 but balance reads use a mnemonic and purchases also use a sensitive session
 cookie; optional Api-Key configures
-TonConsole only. Second, SDK redaction doesn't govern operator access: the
-Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. Evaluate operator access
-and use trusted server storage and a dedicated minimally funded wallet.
+TonConsole only. Second, purchase requests transmit wallet mnemonic and Fragment
+session/cookie data to the API operator. Use trusted server storage and a
+dedicated, minimally funded wallet.
 
 The source includes mocked contract tests and EN/RU/UZ docs. These are evidence
 of client behavior, not proof of successful blockchain delivery, independent

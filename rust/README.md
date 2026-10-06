@@ -91,9 +91,9 @@ serde_json's arbitrary_precision retains unknown JSON numbers as well.
 Client/Config/Credentials/TransportRequest debug is redacted. Do not log
 custom transport internals. A custom `Transport` must not retry requests,
 redirect them or expose credentials. Purchase requests transmit the wallet
-mnemonic and Fragment session/cookie to the API operator. SDK redaction does not
-use server-side secret storage and a dedicated, minimally
-funded wallet.
+mnemonic and Fragment session/cookie to the API operator. SDK redaction applies
+to client-side diagnostics only. Use server-side secret storage and a dedicated,
+minimally funded wallet.
 
 ## Development and release
 
