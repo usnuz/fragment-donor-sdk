@@ -4,7 +4,7 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.0",
   "updated_on": "2026-10-06",
-  "scope": "GitHub release/docs, GitLab mirror, Read the Docs, Go module/index, PyPI, npm, Packagist, NuGet, crates.io, RubyGems 0.1.0 and the Postman API Network documentation are verified public. RubyGems Trusted Publishing run 37423695304 succeeded and the registry download matches the exact GitHub release gem. Clean public-registry consumers and mocked smokes passed. Postman publishes four safe examples with a placeholder-only environment. No production deploy, real API request or real payment.",
+  "scope": "GitHub release/docs, GitLab and SourceForge mirrors, Read the Docs, Go module/index, PyPI, npm, Packagist, NuGet, crates.io, RubyGems 0.1.0 and the Postman API Network documentation are verified public. RubyGems Trusted Publishing run 37423695304 succeeded and the registry download matches the exact GitHub release gem. Clean public-registry consumers and mocked smokes passed. Postman publishes four safe examples with a placeholder-only environment. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "backend_credential_retention": "Inspected backend persists submitted purchase credentials; SDK redaction does not prevent retention.",
@@ -181,14 +181,18 @@
     {
       "id": "sourceforge",
       "name": "SourceForge",
-      "status": "NOT_RUN",
-      "url": null,
-      "planned_url": null,
+      "status": "PUBLISHED",
+      "url": "https://sourceforge.net/projects/fragment-donor-sdk/",
+      "planned_url": "https://sourceforge.net/projects/fragment-donor-sdk/",
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-06T08:16:00Z",
+      "evidence": [
+        "Owner-created SourceForge project imported only GitHub source code and release downloads; Issues and Wiki import were disabled.",
+        "Public project page returned HTTP 200 with MIT, Libraries, Developers, OS Independent, Production/Stable, EN/RU/UZ and six supported programming-language categories.",
+        "Public files listing contains the nine reviewed v0.1.0 release assets plus SourceForge source archives; imported Git main resolves to fc33185d4eeb0e50471ee1822c29016abe8ec44e and both v0.1.0 tags dereference to exact release commit 9e8a9f8577936a37ed750f55f6604e475a545ad9."
+      ],
+      "notes": "Verified public secondary source/download mirror. GitHub remains canonical. SourceForge limits programming-language categories to six, so Ruby remains documented in the public description rather than the category list. Automatic future release import was not enabled.",
+      "preparation_status": "PUBLISHED"
     },
     {
       "id": "pypi",

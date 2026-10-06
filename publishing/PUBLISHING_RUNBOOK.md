@@ -175,6 +175,7 @@ Official instructions: [PyPI trusted publishing](https://docs.pypi.org/trusted-p
 Publish the GitHub source and primary static docs before linking them from
 catalogs. GitLab/SourceForge/ReadTheDocs are mirrors or clearly secondary pages. Read the Docs is published through
 the root `.readthedocs.yaml` custom Node build at `https://fragment-donor-sdk.readthedocs.io/en/latest/`;
+SourceForge is published at `https://sourceforge.net/projects/fragment-donor-sdk/` with source and reviewed v0.1.0 downloads.
 do not create duplicate canonical SEO sites. Run `node contract/build.mjs` then
 `node docs/build.mjs`; Postman import uses separate `site/postman.json` and
 `site/postman.environment.json`. Review collection, local/current/shared and
