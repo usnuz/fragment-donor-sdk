@@ -139,6 +139,7 @@ is publicly verified with a placeholder-only environment. A public
 is a verified public snapshot with both release tags; GitHub remains authoritative. The secondary
 [Read the Docs build](https://fragment-donor-sdk.readthedocs.io/en/latest/) is public with EN/RU/UZ paths. A
 [SourceForge source/download mirror](https://sourceforge.net/projects/fragment-donor-sdk/) exposes the reviewed release assets.
+[Swagger Studio OpenAPI 0.1.0](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0) exposes the public credential-free schema.
 Prepared release workflows do not
 prove publication: [release.yml](../.github/workflows/release.yml) builds tested
 GitHub assets and the Go submodule tag; [registry-publish.yml](../.github/workflows/registry-publish.yml)

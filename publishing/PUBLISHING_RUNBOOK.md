@@ -176,6 +176,8 @@ Publish the GitHub source and primary static docs before linking them from
 catalogs. GitLab/SourceForge/ReadTheDocs are mirrors or clearly secondary pages. Read the Docs is published through
 the root `.readthedocs.yaml` custom Node build at `https://fragment-donor-sdk.readthedocs.io/en/latest/`;
 SourceForge is published at `https://sourceforge.net/projects/fragment-donor-sdk/` with source and reviewed v0.1.0 downloads.
+Swagger Studio publishes the credential-free OpenAPI 0.1.0 schema at
+`https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0`; the public URL returned HTTP 200.
 do not create duplicate canonical SEO sites. Run `node contract/build.mjs` then
 `node docs/build.mjs`; Postman import uses separate `site/postman.json` and
 `site/postman.environment.json`. Review collection, local/current/shared and
@@ -183,8 +185,8 @@ environment values: wallet/provider fields must stay empty and
 `allow_real_purchases=false`. Saved responses are explicitly synthetic: success,
 429, 503, and purchase HTTP 400 with `unconfirmed: true`/`tx_hash`. That 400 means
 **unknown payment outcome**, not ordinary rejected validation; reconcile rather
-than resending. Do not execute real purchases for a listing. Swagger Studio imports OpenAPI
-and must not introduce a fake service-key scheme. APIs.guru review is distinct
+than resending. Do not execute real purchases for a listing. Swagger Studio imported the public OpenAPI without
+introducing a fake service-key scheme. APIs.guru review is distinct
 from acceptance. RapidAPI is a separately chosen gateway model, not proof that
 the direct API requires authentication. Do not accept a paid plan or gateway
 contract on the user's behalf.

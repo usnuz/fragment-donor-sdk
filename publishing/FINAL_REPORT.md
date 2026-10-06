@@ -220,7 +220,7 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**13 PUBLISHED, 0 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 25 NOT_RUN**. READY materials do
+**14 PUBLISHED, 0 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 24 NOT_RUN**. READY materials do
 not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io,
 RubyGems and Go module/index are verified.
 
@@ -239,7 +239,7 @@ RubyGems and Go module/index are verified.
 | 11 | crates.io | PUBLISHED |
 | 12 | RubyGems | PUBLISHED |
 | 13 | Postman API Network | PUBLISHED |
-| 14 | Swagger Studio | NOT_RUN |
+| 14 | Swagger Studio | PUBLISHED |
 | 15 | APIs.guru | NOT_RUN |
 | 16 | RapidAPI | NOT_RUN |
 | 17 | TON App | NOT_RUN |
@@ -280,7 +280,8 @@ four-operation collection, masked secrets and a placeholder-only environment;
 no API request or purchase was executed. The [GitLab mirror](https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror)
 is a public verified snapshot at commit `d5278d0` with both tags. [Read the Docs](https://fragment-donor-sdk.readthedocs.io/en/latest/)
 is also public with a successful custom build and HTTP-200 EN/RU/UZ paths. The [SourceForge project](https://sourceforge.net/projects/fragment-donor-sdk/)
-publishes a verified source/download mirror with MIT metadata and all nine v0.1.0 assets. Use normal login/2FA for remaining
+publishes a verified source/download mirror with MIT metadata and all nine v0.1.0 assets. [Swagger Studio](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0)
+publishes the public credential-free OpenAPI 0.1.0 schema and returned HTTP 200. Use normal login/2FA for remaining
 [manual actions](manual-actions.md); never put secrets in chat.
 
 NOT_ELIGIBLE concerns the current generated/free promotional format. HN, English

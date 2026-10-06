@@ -4,7 +4,7 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.0",
   "updated_on": "2026-10-06",
-  "scope": "GitHub release/docs, GitLab and SourceForge mirrors, Read the Docs, Go module/index, PyPI, npm, Packagist, NuGet, crates.io, RubyGems 0.1.0 and the Postman API Network documentation are verified public. RubyGems Trusted Publishing run 37423695304 succeeded and the registry download matches the exact GitHub release gem. Clean public-registry consumers and mocked smokes passed. Postman publishes four safe examples with a placeholder-only environment. No production deploy, real API request or real payment.",
+  "scope": "GitHub release/docs, GitLab and SourceForge mirrors, Read the Docs, Go module/index, PyPI, npm, Packagist, NuGet, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 are verified public. RubyGems Trusted Publishing run 37423695304 succeeded and the registry download matches the exact GitHub release gem. Clean public-registry consumers and mocked smokes passed. Postman publishes four safe examples with a placeholder-only environment. Swagger Studio exposes the credential-free OpenAPI schema. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "backend_credential_retention": "Inspected backend persists submitted purchase credentials; SDK redaction does not prevent retention.",
@@ -336,14 +336,18 @@
     {
       "id": "swagger-studio",
       "name": "Swagger Studio",
-      "status": "NOT_RUN",
-      "url": null,
+      "status": "PUBLISHED",
+      "url": "https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0",
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-06T12:04:18Z",
+      "evidence": [
+        "GitHub-authenticated SmartBear owner imported the public raw contract/openapi.json URL as fragment-donor-sdk.",
+        "Swagger Studio reports version 0.1.0 and confirmed that the file was successfully imported with Public visibility.",
+        "The public API URL returned HTTP 200 without an authenticated browser session."
+      ],
+      "notes": "Public credential-free OpenAPI schema verified. No subscription upgrade, generated server, API request or purchase was used.",
+      "preparation_status": "PUBLISHED"
     },
     {
       "id": "apis-guru",
