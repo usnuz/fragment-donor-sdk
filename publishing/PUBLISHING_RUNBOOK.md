@@ -8,9 +8,9 @@ Independent project: no affiliation with Telegram, Fragment or TON.
 
 The owner authorized all **eligible** publication, not only GitHub/Pages.
 Authorization does not bypass a platform's rules, login, ownership, editorial
-review, or paid-plan approval. PyPI access and its pending trusted publisher are
-verified, but run 37364162843 failed before execution when GitHub Actions could
-not assign a hosted runner; no PyPI publication occurred. Access to npm,
+review, or paid-plan approval. PyPI 0.1.0 is published through its verified
+trusted publisher; owner-confirmed run 37404248538 and a clean public-index
+consumer were verified. Access to npm,
 Packagist, NuGet, crates.io, RubyGems and Postman remains unverified. Do not treat a
 prepared workflow or package as a completed registry release. Other channels
 remain NOT_RUN until their own access, eligibility and actual submission checks.
@@ -121,7 +121,7 @@ in this repository, an issue, a workflow input, or chat.
 
 | Workflow package | Registry/package | GitHub environment | First-release owner action |
 | --- | --- | --- | --- |
-| `python` | PyPI `fragment-donor-sdk` | `pypi/python` | Pending publisher created and verified for `usnuz/fragment-donor-sdk` + `registry-publish.yml`. Run 37364162843 did not execute because GitHub failed to allocate a runner; owner confirmation is required before a new dispatch. |
+| `python` | PyPI `fragment-donor-sdk` | `pypi/python` | PUBLISHED at 0.1.0 by successful owner-confirmed run 37404248538. PyPI provenance and clean public-index install/import/mocked smoke verified. Do not dispatch 0.1.0 again. |
 | `node` | npm `fragment-donor-sdk` | `npm` | Configure the package's GitHub Actions Trusted Publisher. If settings require an existing package, the owner must bootstrap its first release securely before that configuration is available. Do not assume the name is reserved. |
 | `dotnet` | NuGet `FragmentDonor.Sdk` | `nuget` | Add a trusted-publishing policy permitting this package/new version; set environment variable `NUGET_USER` to the actual NuGet profile name, not an email. |
 | `rust` | crates.io `fragment-donor-sdk` | `crates-io` | Inspect the current publisher UI. If no pending/new-crate publisher is supported, the owner must perform the first publication with securely configured Cargo credentials, then add the GitHub publisher for later versions. Do not republish the same immutable version. |

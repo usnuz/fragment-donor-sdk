@@ -4,7 +4,7 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.0",
   "updated_on": "2026-10-06",
-  "scope": "GitHub release/docs and Go module/index are verified public. PyPI access and a pending trusted publisher were verified, but the authorized first publish run failed before execution during a confirmed GitHub Actions service incident. Other registry/Postman owner access remains unverified. No production deploy or real payment.",
+  "scope": "GitHub release/docs, Go module/index and PyPI 0.1.0 are verified public. PyPI Trusted Publishing run 37404248538 succeeded and a clean public-index install/import/mocked smoke passed. Other registry/Postman owner access remains unverified. No production deploy or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "backend_credential_retention": "Inspected backend persists submitted purchase credentials; SDK redaction does not prevent retention.",
@@ -77,12 +77,12 @@
     },
     "post_release_delivery_ci": {
       "status": "PASS",
-      "validated_commit": "e34ed219e453894b9a203b74418a6f5b05095fd2",
-      "url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37348979185",
+      "validated_commit": "2e364d03d3e72fcbd63518e673e7b28032a8433b",
+      "url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37403714196",
       "matrix_jobs": 14,
-      "pages_url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37349102133",
-      "observed_at": "2026-10-05T17:35:22Z",
-      "notes": "All14 delivery CI jobs and same-commit Pages deployment succeeded. New baseline JPEG independently returned HTTP200 with exact117338bytes/SHA256; later metadata-only evidence updates do not move release tags or change screenshot bytes."
+      "pages_url": "https://github.com/usnuz/fragment-donor-sdk/actions/runs/37403793708",
+      "observed_at": "2026-10-06T02:23:06Z",
+      "notes": "After the GitHub Actions incident resolved, all 14 delivery CI jobs and same-commit Pages build/deploy succeeded. A fresh live check passed 61 pages plus demo/media, sitemap/robots, OpenAPI and Postman. Later publication-evidence changes do not move release tags."
     },
     "remote_ci": {
       "status": "PASS",
@@ -185,19 +185,21 @@
     {
       "id": "pypi",
       "name": "PyPI",
-      "status": "READY",
-      "url": null,
-      "planned_url": null,
+      "status": "PUBLISHED",
+      "url": "https://pypi.org/project/fragment-donor-sdk/0.1.0/",
+      "planned_url": "https://pypi.org/project/fragment-donor-sdk/0.1.0/",
       "version": "0.1.0",
-      "observed_at": "2026-10-05T19:48:00Z",
+      "observed_at": "2026-10-06T02:28:00Z",
       "evidence": [
         "Authenticated PyPI account shohzodbek and existing django-open-bot project were inspected read-only; django-open-bot was not changed.",
         "The fragment-donor-sdk project and JSON endpoints returned HTTP 404 before publication.",
         "A pending GitHub trusted publisher was created for usnuz/fragment-donor-sdk, registry-publish.yml, environment pypi/python.",
-        "Authorized run 37364162843 used main, tag=v0.1.0, package=python and confirm=true, but validate was never acquired by a hosted runner and was cancelled after 15 minutes during GitHub Actions degraded performance; the Python publish job was skipped."
+        "Authorized run 37364162843 used main, tag=v0.1.0, package=python and confirm=true, but validate was never acquired by a hosted runner and was cancelled after 15 minutes during GitHub Actions degraded performance; the Python publish job was skipped.",
+        "After fresh owner confirmation and incident recovery, run 37404248538 completed successfully: validate and Python publication passed; all other ecosystems were skipped.",
+        "PyPI exposes wheel and sdist for 0.1.0, marks both uploads as Trusted Publishing with GitHub Actions provenance for commit 2e364d03d3e72fcbd63518e673e7b28032a8433b, and reports MIT/Python >=3.10/source/docs/issues metadata.",
+        "A clean Python 3.12 virtual environment installed fragment-donor-sdk==0.1.0 using only https://pypi.org/simple with cache disabled; import, version/metadata inspection and installed mocked-HTTP smoke passed without a real purchase."
       ],
-      "notes": "Exact release files, checksums, archive scan and publisher configuration are ready. No PyPI project/version was created. A new dispatch is an action-time publication decision and must not be duplicated without owner confirmation.",
-      "preparation_status": "READY"
+      "notes": "Verified immutable public 0.1.0 release. Do not re-dispatch this version; publish any future version only after its own release gates and owner confirmation."
     },
     {
       "id": "npm",
@@ -686,7 +688,7 @@
     "ruby_gem_sha256": "023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea",
     "provenance_sha256": "c47ace7f9ca721a929e66c17c86daaea9e90fbfb1b9aa8027e5ad12053ddad14",
     "checksums_sha256": "0fba42121372aba009e6fcc30461a0b795918e6baad157274379f55555eaf2b4",
-    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI is READY after publisher setup but not published; five other external registries remain BLOCKED_ACCESS.",
+    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI 0.1.0 is published and public-install verified; five other external registries remain BLOCKED_ACCESS.",
     "synthetic_video_sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7",
     "baseline_screenshot_sha256": "c8e6dd90b653f8043ea83266dc2b7536327fb8b0c56b37400ae0b5261396133b"
   },

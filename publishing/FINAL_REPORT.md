@@ -25,7 +25,7 @@ returned HTTP 200 at **2026-10-05 17:20:07 UTC**. All nine release signatures
 were checked in the actual release job before publication; independently
 downloaded files then passed integrity, metadata and archive-content checks.
 
-The other **six package registries**, external Postman listing, social/community
+The other **five package registries**, external Postman listing, social/community
 posts, Product Hunt and YouTube publication are **not verified/published**.
 No backend deployment or real Stars/Premium purchase was performed.
 Later evidence/media-only main-branch changes do not move the released tags.
@@ -38,12 +38,27 @@ failed before validation: GitHub Actions did not acquire a hosted runner after
 multiple attempts during a reported service incident. The Python job was skipped,
 the public package remained absent, and no duplicate dispatch was sent.
 
+After the incident resolved, the owner explicitly confirmed one replacement.
+[Run 37404248538](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37404248538)
+passed validation and Python publication while every other ecosystem was skipped.
+[PyPI 0.1.0](https://pypi.org/project/fragment-donor-sdk/0.1.0/) exposes the wheel
+and sdist with Trusted Publishing provenance bound to GitHub Actions, this repository,
+workflow and commit `2e364d03d3e72fcbd63518e673e7b28032a8433b`.
+A clean Python 3.12 environment installed the exact version using only public
+PyPI with cache disabled; import, metadata and installed mocked-HTTP smoke passed.
+
 The later main-branch [CI run 37366652572](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37366652572)
 also ended after 15 minutes during the same incident. Eight jobs produced normal
 artifacts, while PHP 8.2/8.4, .NET, Go and Node 22/24 were not acquired by hosted
 runners; GitHub also reported an internal server error. This is infrastructure
 failure evidence, not a package-test failure. GitHub reported Actions operating
 normally at 2026-10-05 21:54 UTC and resolved the incident at 22:49 UTC.
+
+After recovery, [CI run 37403714196](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37403714196)
+passed all 14 jobs for commit `2e364d03d3e72fcbd63518e673e7b28032a8433b`.
+[Pages run 37403793708](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37403793708)
+then passed build and deploy for that exact commit; the subsequent live check
+again passed all 61 static pages plus demo/media, sitemap/robots, OpenAPI and Postman.
 
 The [post-release delivery CI](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37348979185)
 also passed all 14 jobs at `e34ed219e453894b9a203b74418a6f5b05095fd2`;
@@ -183,7 +198,7 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**3 PUBLISHED, 6 BLOCKED_ACCESS, 1 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
+**4 PUBLISHED, 6 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
 not mean publication. GitHub/Pages and Go module/index are verified.
 
 | # | Platform | Actual state |
@@ -193,7 +208,7 @@ not mean publication. GitHub/Pages and Go module/index are verified.
 | 3 | GitLab | NOT_RUN |
 | 4 | ReadTheDocs | NOT_RUN |
 | 5 | SourceForge | NOT_RUN |
-| 6 | PyPI | READY |
+| 6 | PyPI | PUBLISHED |
 | 7 | npm | BLOCKED_ACCESS |
 | 8 | Packagist | BLOCKED_ACCESS |
 | 9 | NuGet | BLOCKED_ACCESS |
@@ -236,9 +251,8 @@ not mean publication. GitHub/Pages and Go module/index are verified.
 
 ## Remaining work and non-negotiable boundaries
 
-PyPI is **READY**, not PUBLISHED: access and the pending publisher are verified,
-but the first run failed before execution because GitHub did not allocate a hosted
-runner. npm, Packagist, NuGet, crates.io, RubyGems and Postman remain
+PyPI is **PUBLISHED** and public-install verified. npm, Packagist, NuGet,
+crates.io, RubyGems and Postman remain
 **BLOCKED_ACCESS** pending their own login/ownership checks. Use normal login/2FA
 and [manual actions](manual-actions.md); never put secrets in chat.
 
@@ -263,8 +277,7 @@ or transport/malformed replies may be unknown payment outcome. Preserve safe
 reconciliation details and examine wallet/recipient evidence before a new
 intentional dispatch; no backend idempotency or purchase-status endpoint exists.
 
-Next gates: obtain action-time approval for a single replacement PyPI dispatch,
-complete human login/2FA for the other registries, configure their exact
+Next gates: complete human login/2FA for the other registries, configure their exact
 owner/publisher environments and topic metadata, then execute accessible
 eligible registry/platform actions. Reopen every actual registry version/post
 and perform fresh registry installs before updating PUBLISHED. Google/Bing/Yandex

@@ -2,13 +2,13 @@
 
 ## Current owner decisions
 
-Chrome access is working. PyPI account `shohzodbek`, the untouched existing
-`django-open-bot` project, and the new pending publisher were verified. The
-owner-confirmed run [37364162843](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37364162843)
-failed before any validation or upload because GitHub Actions did not assign a
-hosted runner during a service incident. The Python publish job was skipped.
-Do not re-run or dispatch a replacement until the owner gives a new action-time
-confirmation; first confirm the incident is resolved and the PyPI URL remains 404.
+Chrome access is working. PyPI account `shohzodbek` and the untouched existing
+`django-open-bot` project were verified. After the first incident-blocked run,
+the owner explicitly confirmed one replacement. Run
+[37404248538](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37404248538)
+published `fragment-donor-sdk==0.1.0` successfully through Trusted Publishing.
+The public version, provenance, metadata, clean install/import and mocked smoke
+are verified. Do not dispatch version 0.1.0 again.
 
 First access batch: [PyPI](https://pypi.org/), [npm](https://www.npmjs.com/),
 [Packagist](https://packagist.org/), [NuGet](https://www.nuget.org/),
@@ -23,7 +23,7 @@ The owner now authorizes all eligible publication. The remaining limitation is
 access/policy/readiness, not an owner decision to defer every other platform.
 Login/ownership on npm, Packagist, NuGet, crates.io, RubyGems and Postman is still
 unverified. No publication on those six services is claimed. GitHub v0.1.0 and
-the public Go module/pkg.go.dev are verified; PyPI is READY but not published.
+the public Go module/pkg.go.dev and PyPI 0.1.0 are verified published.
 
 GitHub topics remain unset because the optional release action received HTTP403.
 Using the genuine owner's repository UI, copy only the reviewed topic names from
