@@ -220,7 +220,7 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**15 PUBLISHED, 1 SUBMITTED, 0 BLOCKED_ACCESS, 0 READY, 8 NOT_ELIGIBLE, 21 NOT_RUN**. READY materials do
+**16 PUBLISHED, 1 SUBMITTED, 0 BLOCKED_ACCESS, 0 READY, 8 NOT_ELIGIBLE, 20 NOT_RUN**. READY materials do
 not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io,
 RubyGems and Go module/index are verified.
 
@@ -245,7 +245,7 @@ RubyGems and Go module/index are verified.
 | 17 | TON App | NOT_RUN |
 | 18 | DEV.to | NOT_ELIGIBLE |
 | 19 | Hashnode | PUBLISHED ([public article](https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries)) |
-| 20 | Medium | NOT_RUN |
+| 20 | Medium | PUBLISHED ([public article](https://medium.com/@vipfthef/no-service-auth-is-not-no-wallet-risk-644cd8cc8412)) |
 | 21 | LinkedIn Articles | NOT_RUN |
 | 22 | YouTube | NOT_RUN |
 | 23 | IndieHackers | NOT_RUN |
@@ -287,6 +287,10 @@ publishes the public credential-free OpenAPI 0.1.0 schema and returned HTTP 200.
 [Hashnode](https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries)
 now publishes the owner-reviewed AI-assisted security article with an explicit disclosure; its public URL returned
 HTTP 200. DEV.to was not submitted because the current generated promotional article is not eligible under its AI policy.
+
+[Medium](https://medium.com/@vipfthef/no-service-auth-is-not-no-wallet-risk-644cd8cc8412)
+publishes the owner-reviewed generated article with visible disclosure and three topics, outside Partner Program/paywall.
+The public article reopened in Chrome; Medium returned HTTP 403 to unauthenticated command-line probes.
 
 APIs.guru review is pending in [issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556).
 The owner authorized CC0 distribution for that directory submission. It remains **SUBMITTED**, not PUBLISHED,

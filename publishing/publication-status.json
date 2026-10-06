@@ -419,14 +419,17 @@
     {
       "id": "medium",
       "name": "Medium",
-      "status": "NOT_RUN",
-      "url": null,
-      "planned_url": null,
+      "status": "PUBLISHED",
+      "url": "https://medium.com/@vipfthef/no-service-auth-is-not-no-wallet-risk-644cd8cc8412",
+      "planned_url": "https://medium.com/@vipfthef/no-service-auth-is-not-no-wallet-risk-644cd8cc8412",
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-06T13:08:02Z",
+      "evidence": [
+        "Medium displayed 'Your story has been published and sent!' and reopened the public article URL with its title, body, author and three topics.",
+        "The public article rendered in Chrome; unauthenticated command-line HEAD/GET probes were blocked by Medium with HTTP 403."
+      ],
+      "notes": "Owner reviewed and approved the AI-generated article before publication. The article includes an explicit disclosure, was published outside the Partner Program/paywall, and was not submitted to a publication or scheduled.",
+      "preparation_status": "PUBLISHED"
     },
     {
       "id": "linkedin-articles",
