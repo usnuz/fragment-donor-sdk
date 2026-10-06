@@ -237,14 +237,20 @@
     {
       "id": "nuget",
       "name": "NuGet",
-      "status": "BLOCKED_ACCESS",
-      "url": null,
-      "planned_url": null,
+      "status": "PUBLISHED",
+      "url": "https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.0",
+      "planned_url": "https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.0",
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-06T05:14:07Z",
+      "evidence": [
+        "NuGet owner shohzodbek uploaded the exact reviewed FragmentDonor.Sdk.0.1.0.nupkg with SHA256 fd3ce326cb3f423852fa4aad909a6b6110021c100398822f9c2c88835752e96c.",
+        "NuGet validation and indexing completed; the package page and public flat-container feed returned version 0.1.0 with HTTP 200.",
+        "A fresh .NET 8 restore using only https://api.nuget.org/v3/index.json passed the installed four-operation/uncertainty/decimal/redaction mocked smoke without network API calls or a real purchase.",
+        "NuGet added .signature.p7s; the downloaded registry package SHA256 is 9b664ed671629ec77db745d769320bdd77dcd1a37ba30c6354a8857111976e96.",
+        "Trusted Publishing policy Fragment Donor GitHub Actions is Active for usnuz/fragment-donor-sdk, registry-publish.yml, environment nuget, FragmentDonor.Sdk, push only new package versions."
+      ],
+      "notes": "Verified public 0.1.0 release. The bootstrap was a direct owner upload and has no GitHub OIDC provenance; future versions use the scoped active policy. The immutable package README contains stale pre-publication audit wording, corrected by these status reports. Do not republish 0.1.0.",
+      "preparation_status": "PUBLISHED"
     },
     {
       "id": "go-pkg-go-dev",
@@ -697,7 +703,7 @@
     "ruby_gem_sha256": "023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea",
     "provenance_sha256": "c47ace7f9ca721a929e66c17c86daaea9e90fbfb1b9aa8027e5ad12053ddad14",
     "checksums_sha256": "0fba42121372aba009e6fcc30461a0b795918e6baad157274379f55555eaf2b4",
-    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI, npm and Packagist 0.1.0 are published and public-install verified; three other external registries remain BLOCKED_ACCESS.",
+    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI, npm, Packagist and NuGet 0.1.0 are published and public-install verified; two other external registries remain BLOCKED_ACCESS.",
     "synthetic_video_sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7",
     "baseline_screenshot_sha256": "c8e6dd90b653f8043ea83266dc2b7536327fb8b0c56b37400ae0b5261396133b"
   },
@@ -732,6 +738,6 @@
     "status": "READY",
     "requested_browser": "Chrome",
     "observed_error": null,
-    "notes": "Chrome access was restored and authenticated PyPI, npm, Packagist and GitHub pages were verified on 2026-10-06 Asia/Tashkent. This does not establish login or ownership on NuGet, crates.io, RubyGems or Postman."
+    "notes": "Chrome access was restored and authenticated PyPI, npm, Packagist, NuGet and GitHub pages were verified on 2026-10-06 Asia/Tashkent. This does not establish login or ownership on crates.io, RubyGems or Postman."
   }
 }

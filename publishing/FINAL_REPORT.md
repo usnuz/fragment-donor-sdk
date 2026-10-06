@@ -219,8 +219,8 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**6 PUBLISHED, 4 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
-not mean publication. GitHub/Pages, PyPI, npm, Packagist and Go module/index are verified.
+**7 PUBLISHED, 3 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
+not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet and Go module/index are verified.
 
 | # | Platform | Actual state |
 | --- | --- | --- |
@@ -232,7 +232,7 @@ not mean publication. GitHub/Pages, PyPI, npm, Packagist and Go module/index are
 | 6 | PyPI | PUBLISHED |
 | 7 | npm | PUBLISHED |
 | 8 | Packagist | PUBLISHED |
-| 9 | NuGet | BLOCKED_ACCESS |
+| 9 | NuGet | PUBLISHED |
 | 10 | Go/pkg.go.dev | PUBLISHED |
 | 11 | crates.io | BLOCKED_ACCESS |
 | 12 | RubyGems | BLOCKED_ACCESS |
@@ -272,7 +272,7 @@ not mean publication. GitHub/Pages, PyPI, npm, Packagist and Go module/index are
 
 ## Remaining work and non-negotiable boundaries
 
-PyPI, npm and Packagist are **PUBLISHED** and public-install verified. NuGet,
+PyPI, npm, Packagist and NuGet are **PUBLISHED** and public-install verified.
 crates.io, RubyGems and Postman remain
 **BLOCKED_ACCESS** pending their own login/ownership checks. Use normal login/2FA
 and [manual actions](manual-actions.md); never put secrets in chat.

@@ -13,9 +13,10 @@ PyPI `fragment-donor-sdk==0.1.0` is published through Trusted Publishing and was
 verified by a clean public-index install, import and mocked HTTP smoke test.
 npm `fragment-donor-sdk@0.1.0` is also public and was verified by a clean
 registry install and mocked HTTP smoke test. Packagist `fragment-donor/sdk`
-v0.1.0 is public and passed a clean Composer install plus mocked smoke. NuGet,
-crates.io and RubyGems still require owner-access setup. A GitHub artifact
-install is not a registry install.
+v0.1.0 is public and passed a clean Composer install plus mocked smoke. NuGet
+`FragmentDonor.Sdk` 0.1.0 is public and passed a clean public-feed restore plus
+mocked smoke. crates.io and RubyGems still require owner-access setup. A GitHub
+artifact install is not a registry install.
 
 ## Contract
 
@@ -127,8 +128,9 @@ the origin-root property: project repository access alone cannot verify or edit
 
 ## Publication workflow and actual availability
 
-Eligible external publication is authorized. PyPI, npm and Packagist 0.1.0 are
-verified; PyPI/npm trusted publishers are configured. Other registry/Postman access is unverified. Prepared release workflows do not
+Eligible external publication is authorized. PyPI, npm, Packagist and NuGet
+0.1.0 are verified; PyPI/npm/NuGet trusted publishers are configured. Other
+registry/Postman access is unverified. Prepared release workflows do not
 prove publication: [release.yml](../.github/workflows/release.yml) builds tested
 GitHub assets and the Go submodule tag; [registry-publish.yml](../.github/workflows/registry-publish.yml)
 requires explicit manual confirmation for one configured publisher/environment

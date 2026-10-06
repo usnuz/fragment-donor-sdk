@@ -12,8 +12,9 @@ review, or paid-plan approval. PyPI 0.1.0 is published through its verified
 trusted publisher; owner-confirmed run 37404248538 and a clean public-index
 consumer were verified. npm 0.1.0 was bootstrapped from the reviewed tarball,
 public-install verified, and its GitHub Actions Trusted Publisher is configured.
-Packagist v0.1.0 is public and clean-install verified. Access to NuGet, crates.io,
-RubyGems and Postman remains unverified. Do not treat a
+Packagist v0.1.0 is public and clean-install verified. NuGet 0.1.0 is public,
+clean-restore verified, and its new-version-only Trusted Publishing policy is
+active. Access to crates.io, RubyGems and Postman remains unverified. Do not treat a
 prepared workflow or package as a completed registry release. Other channels
 remain NOT_RUN until their own access, eligibility and actual submission checks.
 See [manual actions](manual-actions.md) and the authoritative
@@ -125,7 +126,7 @@ in this repository, an issue, a workflow input, or chat.
 | --- | --- | --- | --- |
 | `python` | PyPI `fragment-donor-sdk` | `pypi/python` | PUBLISHED at 0.1.0 by successful owner-confirmed run 37404248538. PyPI provenance and clean public-index install/import/mocked smoke verified. Do not dispatch 0.1.0 again. |
 | `node` | npm `fragment-donor-sdk` | `npm` | PUBLISHED at 0.1.0 from the exact reviewed tarball; clean public-registry install/mocked smoke passed. Trusted Publisher is configured for this workflow/environment with `npm publish` permission. The bootstrap release has registry signing but not GitHub OIDC provenance. Do not publish 0.1.0 again. |
-| `dotnet` | NuGet `FragmentDonor.Sdk` | `nuget` | Add a trusted-publishing policy permitting this package/new version; set environment variable `NUGET_USER` to the actual NuGet profile name, not an email. |
+| `dotnet` | NuGet `FragmentDonor.Sdk` | `nuget` | PUBLISHED at 0.1.0 from the exact reviewed nupkg; clean public-feed restore/mocked smoke passed. Active policy `Fragment Donor GitHub Actions` permits only new versions of `FragmentDonor.Sdk` from this workflow/environment. The bootstrap release was a direct upload and has no GitHub OIDC provenance. Set `NUGET_USER=shohzodbek` for future workflow validation. Do not publish 0.1.0 again. |
 | `rust` | crates.io `fragment-donor-sdk` | `crates-io` | Inspect the current publisher UI. If no pending/new-crate publisher is supported, the owner must perform the first publication with securely configured Cargo credentials, then add the GitHub publisher for later versions. Do not republish the same immutable version. |
 | `ruby` | RubyGems `fragment-donor-sdk` | `rubygems` | Configure an existing gem publisher or a pending trusted publisher naming this new gem. |
 | `php` | Packagist `fragment-donor/sdk` | `packagist` | PUBLISHED at v0.1.0 from the public repository and exact release commit; clean Composer install/mocked smoke passed. Automatic GitHub updates are not configured. A future workflow sync still requires `PACKAGIST_USER` and protected `PACKAGIST_TOKEN`; no native Packagist OIDC is claimed. |
@@ -149,7 +150,7 @@ different from the SDK's Node.js 20 runtime compatibility. Official setup:
 | PyPI | `fragment-donor-sdk` | Configure GitHub trusted publisher or secure scoped upload credentials. Upload only verified wheel/sdist, then inspect the exact version page and install it in a clean environment. |
 | npm | `fragment-donor-sdk` | 0.1.0 is published and verified. For later versions use the configured Trusted Publisher, inspect the exact registry metadata, and perform a clean install. Never overwrite immutable 0.1.0. |
 | Packagist | `fragment-donor/sdk` | v0.1.0 is published from the root manifest and verified by a clean public Composer install. Configure an approved update mechanism before later versions; do not resubmit the package. |
-| NuGet | `FragmentDonor.Sdk` | Push the verified nupkg through a scoped account credential, verify 0.1.0 registration and restore/use from nuget.org. |
+| NuGet | `FragmentDonor.Sdk` | 0.1.0 is published and verified by a clean public-feed restore. For later versions use the active new-version-only Trusted Publishing policy, inspect the exact registry metadata/signature, and perform a clean restore. Never overwrite immutable 0.1.0. |
 | Go / pkg.go.dev | `github.com/usnuz/fragment-donor-sdk/go` | Publish the **go/v0.1.0** tag pointing to tested source. Module resides in go/. Fetch through proxy.golang.org and verify docs on pkg.go.dev. A root v0.1.0 tag is not a Go submodule release. |
 | crates.io | `fragment-donor-sdk` | After cargo test/package verification, publish from rust/ using the authorized publisher. Verify version, ownership, metadata, and clean cargo build. |
 | RubyGems | `fragment-donor-sdk` | Push the verified gem through the owner's authenticated MFA-capable session; verify 0.1.0 page and isolated gem install. |
