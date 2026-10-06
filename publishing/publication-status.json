@@ -4,7 +4,7 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.0",
   "updated_on": "2026-10-06",
-  "scope": "GitHub release/docs, Go module/index, PyPI 0.1.0, npm 0.1.0 and Packagist v0.1.0 are verified public. PyPI Trusted Publishing run 37404248538 succeeded; npm was securely bootstrapped and its future GitHub Actions Trusted Publisher is configured; Packagist indexed the exact release commit. Clean public-registry consumers and mocked smokes passed. Other registry/Postman owner access remains unverified. No production deploy or real payment.",
+  "scope": "GitHub release/docs, Go module/index, PyPI, npm, Packagist, NuGet, crates.io and RubyGems 0.1.0 are verified public. RubyGems Trusted Publishing run 37423695304 succeeded and the registry download matches the exact GitHub release gem. Clean public-registry consumers and mocked smokes passed. Postman workspace access remains unverified. No production deploy or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "backend_credential_retention": "Inspected backend persists submitted purchase credentials; SDK redaction does not prevent retention.",
@@ -290,14 +290,20 @@
     {
       "id": "rubygems",
       "name": "RubyGems",
-      "status": "BLOCKED_ACCESS",
-      "url": null,
-      "planned_url": null,
+      "status": "PUBLISHED",
+      "url": "https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.0",
+      "planned_url": "https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.0",
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-06T06:26:00Z",
+      "evidence": [
+        "Authenticated owner shohzodbek created a pending GitHub Actions Trusted Publisher for usnuz/fragment-donor-sdk, registry-publish.yml, environment rubygems.",
+        "Owner-confirmed registry publication run 37423695304 succeeded: validate 41s and ruby 7s.",
+        "RubyGems public 0.1.0 page and download returned HTTP 200; the version is latest and not yanked.",
+        "Registry download SHA256 023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea exactly matches the stable GitHub release gem.",
+        "RubyGems identifies GitHub Actions usnuz/fragment-donor-sdk registry-publish.yml environment rubygems as the publisher and reports the version published with MFA."
+      ],
+      "notes": "Verified public immutable 0.1.0 release through GitHub Trusted Publishing. RubyGems requires MFA for new versions.",
+      "preparation_status": "PUBLISHED"
     },
     {
       "id": "postman-api-network",
@@ -709,7 +715,7 @@
     "ruby_gem_sha256": "023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea",
     "provenance_sha256": "c47ace7f9ca721a929e66c17c86daaea9e90fbfb1b9aa8027e5ad12053ddad14",
     "checksums_sha256": "0fba42121372aba009e6fcc30461a0b795918e6baad157274379f55555eaf2b4",
-    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI, npm, Packagist, NuGet and crates.io 0.1.0 are published and public-install/download verified; one other external registry remains BLOCKED_ACCESS.",
+    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI, npm, Packagist, NuGet, crates.io and RubyGems 0.1.0 are published and public-install/download verified; the RubyGems registry gem matches the release SHA256.",
     "synthetic_video_sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7",
     "baseline_screenshot_sha256": "c8e6dd90b653f8043ea83266dc2b7536327fb8b0c56b37400ae0b5261396133b"
   },
@@ -744,6 +750,6 @@
     "status": "READY",
     "requested_browser": "Chrome",
     "observed_error": null,
-    "notes": "Chrome access was restored and authenticated PyPI, npm, Packagist, NuGet, crates.io and GitHub pages were verified on 2026-10-06 Asia/Tashkent. This does not establish login or ownership on RubyGems or Postman."
+    "notes": "Chrome access was restored and authenticated PyPI, npm, Packagist, NuGet, crates.io, RubyGems and GitHub pages were verified on 2026-10-06 Asia/Tashkent. This does not establish login or workspace ownership on Postman."
   }
 }

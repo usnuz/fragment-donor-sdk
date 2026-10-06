@@ -25,8 +25,8 @@ returned HTTP 200 at **2026-10-05 17:20:07 UTC**. All nine release signatures
 were checked in the actual release job before publication; independently
 downloaded files then passed integrity, metadata and archive-content checks.
 
-The other **three package registries**, external Postman listing, social/community
-posts, Product Hunt and YouTube publication are **not verified/published**.
+The external Postman listing, social/community posts, Product Hunt and YouTube
+publication are **not verified/published**.
 No backend deployment or real Stars/Premium purchase was performed.
 Later evidence/media-only main-branch changes do not move the released tags.
 
@@ -219,8 +219,9 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**8 PUBLISHED, 2 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
-not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io and Go module/index are verified.
+**9 PUBLISHED, 1 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
+not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io,
+RubyGems and Go module/index are verified.
 
 | # | Platform | Actual state |
 | --- | --- | --- |
@@ -235,7 +236,7 @@ not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io and G
 | 9 | NuGet | PUBLISHED |
 | 10 | Go/pkg.go.dev | PUBLISHED |
 | 11 | crates.io | PUBLISHED |
-| 12 | RubyGems | BLOCKED_ACCESS |
+| 12 | RubyGems | PUBLISHED |
 | 13 | Postman API Network | BLOCKED_ACCESS |
 | 14 | Swagger Studio | NOT_RUN |
 | 15 | APIs.guru | NOT_RUN |
@@ -272,10 +273,10 @@ not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io and G
 
 ## Remaining work and non-negotiable boundaries
 
-PyPI, npm, Packagist, NuGet and crates.io are **PUBLISHED** and public-install or
-download verified. RubyGems and Postman remain
-**BLOCKED_ACCESS** pending their own login/ownership checks. Use normal login/2FA
-and [manual actions](manual-actions.md); never put secrets in chat.
+PyPI, npm, Packagist, NuGet, crates.io and RubyGems are **PUBLISHED** and
+public-install or download verified. Postman remains **BLOCKED_ACCESS** pending
+login/workspace ownership checks. Use normal login/2FA and
+[manual actions](manual-actions.md); never put secrets in chat.
 
 NOT_ELIGIBLE concerns the current generated/free promotional format. HN, English
 Stack Overflow, Habr, HackerNoon and restricted subreddits must not receive

@@ -16,8 +16,10 @@ registry install and mocked HTTP smoke test. Packagist `fragment-donor/sdk`
 v0.1.0 is public and passed a clean Composer install plus mocked smoke. NuGet
 `FragmentDonor.Sdk` 0.1.0 is public and passed a clean public-feed restore plus
 mocked smoke. crates.io `fragment-donor-sdk` 0.1.0 is public from the exact
-release commit and registry-download verified. RubyGems still requires
-owner-access setup. A GitHub artifact install is not a registry install.
+release commit and registry-download verified. RubyGems `fragment-donor-sdk`
+0.1.0 is public through GitHub Trusted Publishing and its registry download
+matches the signed GitHub release asset. A GitHub artifact install is not a
+registry install.
 
 ## Contract
 

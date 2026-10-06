@@ -15,8 +15,9 @@ public-install verified, and its GitHub Actions Trusted Publisher is configured.
 Packagist v0.1.0 is public and clean-install verified. NuGet 0.1.0 is public,
 clean-restore verified, and its new-version-only Trusted Publishing policy is
 active. crates.io 0.1.0 is public and its Trusted Publisher is configured; the
-bootstrap token was revoked. Access to RubyGems and Postman remains unverified. Do not treat a
-prepared workflow or package as a completed registry release. Other channels
+bootstrap token was revoked. RubyGems 0.1.0 is public through GitHub Trusted
+Publishing. Access to Postman remains unverified. Do not treat a prepared
+workflow or package as a completed registry release. Other channels
 remain NOT_RUN until their own access, eligibility and actual submission checks.
 See [manual actions](manual-actions.md) and the authoritative
 [status evidence](publication-status.json). Never work around a denied browser
@@ -129,7 +130,7 @@ in this repository, an issue, a workflow input, or chat.
 | `node` | npm `fragment-donor-sdk` | `npm` | PUBLISHED at 0.1.0 from the exact reviewed tarball; clean public-registry install/mocked smoke passed. Trusted Publisher is configured for this workflow/environment with `npm publish` permission. The bootstrap release has registry signing but not GitHub OIDC provenance. Do not publish 0.1.0 again. |
 | `dotnet` | NuGet `FragmentDonor.Sdk` | `nuget` | PUBLISHED at 0.1.0 from the exact reviewed nupkg; clean public-feed restore/mocked smoke passed. Active policy `Fragment Donor GitHub Actions` permits only new versions of `FragmentDonor.Sdk` from this workflow/environment. The bootstrap release was a direct upload and has no GitHub OIDC provenance. Set `NUGET_USER=shohzodbek` for future workflow validation. Do not publish 0.1.0 again. |
 | `rust` | crates.io `fragment-donor-sdk` | `crates-io` | PUBLISHED at 0.1.0 from exact release commit `9e8a9f8`. GitHub Trusted Publishing is configured for this workflow/environment and the narrow bootstrap token is revoked. Do not republish immutable 0.1.0. |
-| `ruby` | RubyGems `fragment-donor-sdk` | `rubygems` | Configure an existing gem publisher or a pending trusted publisher naming this new gem. |
+| `ruby` | RubyGems `fragment-donor-sdk` | `rubygems` | PUBLISHED at 0.1.0 by owner-confirmed run `37423695304` through the pending GitHub Actions Trusted Publisher. Public download SHA-256 matches the exact GitHub release gem. Do not republish immutable 0.1.0. |
 | `php` | Packagist `fragment-donor/sdk` | `packagist` | PUBLISHED at v0.1.0 from the public repository and exact release commit; clean Composer install/mocked smoke passed. Automatic GitHub updates are not configured. A future workflow sync still requires `PACKAGIST_USER` and protected `PACKAGIST_TOKEN`; no native Packagist OIDC is claimed. |
 | `go` | `github.com/usnuz/fragment-donor-sdk/go` | `go-module` | Verify release-created `go/v0.1.0`; this job fetches the public module. pkg.go.dev indexing is a separate observation. |
 
@@ -154,7 +155,7 @@ different from the SDK's Node.js 20 runtime compatibility. Official setup:
 | NuGet | `FragmentDonor.Sdk` | 0.1.0 is published and verified by a clean public-feed restore. For later versions use the active new-version-only Trusted Publishing policy, inspect the exact registry metadata/signature, and perform a clean restore. Never overwrite immutable 0.1.0. |
 | Go / pkg.go.dev | `github.com/usnuz/fragment-donor-sdk/go` | Publish the **go/v0.1.0** tag pointing to tested source. Module resides in go/. Fetch through proxy.golang.org and verify docs on pkg.go.dev. A root v0.1.0 tag is not a Go submodule release. |
 | crates.io | `fragment-donor-sdk` | 0.1.0 is published and public-download verified. For later versions use the configured Trusted Publisher, inspect registry metadata/checksum, and perform a clean consumer build. Never overwrite immutable 0.1.0. |
-| RubyGems | `fragment-donor-sdk` | Push the verified gem through the owner's authenticated MFA-capable session; verify 0.1.0 page and isolated gem install. |
+| RubyGems | `fragment-donor-sdk` | 0.1.0 is published through the configured GitHub Trusted Publisher and public-download verified. For later versions use the gem's trusted publisher, inspect registry metadata/checksum, and perform a clean install. Never overwrite immutable 0.1.0. |
 
 Do not rename/reuse somebody else's existing package or silently reserve alternate
 names. A registry URL returning 404 is not a completed publication. Published

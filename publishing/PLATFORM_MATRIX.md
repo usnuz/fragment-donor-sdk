@@ -7,11 +7,10 @@ publication**. PyPI `fragment-donor-sdk==0.1.0` and npm
 replacement owner-confirmed Trusted Publishing run succeeded and a clean
 public-index install/import/mocked smoke passed. Packagist `fragment-donor/sdk`
 v0.1.0 is also public-install verified. NuGet `FragmentDonor.Sdk` 0.1.0 is
-public-restore verified. crates.io `fragment-donor-sdk` 0.1.0 is also public
-and registry-download verified. The remaining registry login plus Postman
-ownership/publisher setup remain unverified. GitHub v0.1.0, Pages and the Go
-module/pkg.go.dev are verified; five other registry releases and the Postman API
-Network listing are not. The
+public-restore verified. crates.io and RubyGems `fragment-donor-sdk` 0.1.0 are
+also public and registry-download verified. Only Postman workspace ownership and
+publisher access remain unverified. GitHub v0.1.0, Pages and the Go
+module/pkg.go.dev are verified; the Postman API Network listing is not. The
 machine-readable, externally verified publication state is
 [publication-status.json](publication-status.json). `READY` below means a payload
 exists, not a live post, registry release, approved listing, or search indexing.
@@ -45,7 +44,7 @@ downloads, uptime, security certification, or guaranteed search rankings.
 | NuGet / .NET 8+ | `FragmentDonor.Sdk` 0.1.0; nupkg, README/license; `telegram`, `sdk`, `ton` | Owner `shohzodbek` uploaded the exact reviewed nupkg. NuGet validation/indexing completed; the public feed returned HTTP 200 and a fresh restore plus four-operation/uncertainty/decimal/redaction mocked smoke passed. An Active GitHub Actions Trusted Publishing policy now restricts future pushes to `usnuz/fragment-donor-sdk`, `registry-publish.yml`, environment `nuget`, package `FragmentDonor.Sdk`, new versions only. | [Trusted publishing](https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing): the bootstrap upload was direct and has no GitHub OIDC provenance; NuGet added its registry signature, so the downloaded package hash differs from the reviewed upload hash. Future versions use the scoped policy. | PUBLISHED: [0.1.0](https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.0) |
 | Go / Go 1.23+ | Module `github.com/usnuz/fragment-donor-sdk/go`; version `v0.1.0` | **`go/v0.1.0`** verified at exact release commit; fresh public no-replace consumer, standard sumdb and mocked functional checks passed. Exact-version pkg.go.dev returned HTTP200. No registry login/upload required. | [Go module publishing](https://go.dev/doc/modules/publishing), [pkg.go.dev](https://pkg.go.dev/about): correct semantic module tag and fetchable public source; source visibility ≠ documentation indexing. | PUBLISHED module and pkg.go.dev v0.1.0, 2026-10-05 17:20:07 UTC |
 | crates.io / Rust 1.99+ | `fragment-donor-sdk` 0.1.0; crate source, Cargo metadata/license; `api`, `telegram`, `sdk` | Owner `usnuz` published from exact release commit `9e8a9f8`; crates.io API and download returned HTTP 200 with checksum `c5aad57e5744d26db6b501847761af0a056defb7d8de30b8b68733c0481384b3`. GitHub Trusted Publishing is configured for `usnuz/fragment-donor-sdk`, `registry-publish.yml`, environment `crates-io`; the bootstrap token was revoked. | [Cargo publishing](https://doc.rust-lang.org/cargo/reference/publishing.html): published versions are immutable. The first release used a narrow seven-day `publish-new` token; future releases use the configured publisher. | PUBLISHED: [0.1.0](https://crates.io/crates/fragment-donor-sdk/0.1.0) |
-| RubyGems / Ruby 3.2+ | `fragment-donor-sdk` 0.1.0; gem, README/MIT; `telegram`, `ton`, `sdk` | RubyGems owner/MFA + existing or pending GitHub trusted publisher; build/inspect/local installed smoke, push separately, fresh registry install. | [Publishing gems](https://guides.rubygems.org/publishing/): RubyGems account and release authorization required. Never insert credential into gemspec. | READY artifact/source; registry BLOCKED_ACCESS (Chrome policy/login unavailable) |
+| RubyGems / Ruby 3.2+ | `fragment-donor-sdk` 0.1.0; gem, README/MIT; `telegram`, `ton`, `sdk` | Owner `shohzodbek` created a pending GitHub Actions Trusted Publisher for `usnuz/fragment-donor-sdk`, `registry-publish.yml`, environment `rubygems`. Owner-confirmed run `37423695304` published the exact verified release gem; the public page/download returned HTTP 200 and SHA-256 matched the GitHub release asset. | [Publishing gems](https://guides.rubygems.org/publishing/): the version was published through OIDC and is immutable. RubyGems reports the release as published with MFA and requires MFA for new versions. | PUBLISHED: [0.1.0](https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.0) |
 
 Prepared workflows: `release.yml` builds GitHub assets and the Go submodule tag;
 `registry-publish.yml` requires manual confirmation for one registry at a time.

@@ -48,10 +48,11 @@ scoped GitHub publishing secret/trusted publisher yourself.
 
 The owner now authorizes all eligible publication. The remaining limitation is
 access/policy/readiness, not an owner decision to defer every other platform.
-Login/ownership on RubyGems and Postman is still unverified. No publication on
-those two services is claimed. GitHub v0.1.0, the public Go module/pkg.go.dev,
-PyPI 0.1.0, npm 0.1.0, Packagist v0.1.0, NuGet 0.1.0 and crates.io 0.1.0 are
-verified published.
+RubyGems ownership is verified and 0.1.0 was published through GitHub Trusted
+Publishing. Login/workspace ownership on Postman is still unverified, so no
+Postman API Network publication is claimed. GitHub v0.1.0, the public Go
+module/pkg.go.dev, PyPI 0.1.0, npm 0.1.0, Packagist v0.1.0, NuGet 0.1.0,
+crates.io 0.1.0 and RubyGems 0.1.0 are verified published.
 
 GitHub topics remain unset because the optional release action received HTTP403.
 Using the genuine owner's repository UI, copy only the reviewed topic names from
