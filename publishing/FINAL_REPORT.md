@@ -38,6 +38,13 @@ failed before validation: GitHub Actions did not acquire a hosted runner after
 multiple attempts during a reported service incident. The Python job was skipped,
 the public package remained absent, and no duplicate dispatch was sent.
 
+The later main-branch [CI run 37366652572](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37366652572)
+also ended after 15 minutes during the same incident. Eight jobs produced normal
+artifacts, while PHP 8.2/8.4, .NET, Go and Node 22/24 were not acquired by hosted
+runners; GitHub also reported an internal server error. This is infrastructure
+failure evidence, not a package-test failure. GitHub reported Actions operating
+normally at 2026-10-05 21:54 UTC and resolved the incident at 22:49 UTC.
+
 The [post-release delivery CI](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37348979185)
 also passed all 14 jobs at `e34ed219e453894b9a203b74418a6f5b05095fd2`;
 [Pages run 37349102133](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37349102133)
