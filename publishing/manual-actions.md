@@ -31,6 +31,12 @@ is Active for `usnuz/fragment-donor-sdk`, `registry-publish.yml`, environment
 `nuget`, and only new versions of `FragmentDonor.Sdk`. The bootstrap was a direct
 upload without GitHub OIDC provenance; do not republish immutable 0.1.0.
 
+crates.io account `usnuz` has a verified email and published
+`fragment-donor-sdk` 0.1.0 from exact release commit `9e8a9f8`. The public API
+and crate download passed. GitHub Trusted Publishing is configured for
+`registry-publish.yml`, environment `crates-io`; the narrow bootstrap token was
+revoked and no API tokens remain.
+
 First access batch: [PyPI](https://pypi.org/), [npm](https://www.npmjs.com/),
 [Packagist](https://packagist.org/), [NuGet](https://www.nuget.org/),
 [crates.io](https://crates.io/), [RubyGems](https://rubygems.org/),
@@ -42,9 +48,9 @@ scoped GitHub publishing secret/trusted publisher yourself.
 
 The owner now authorizes all eligible publication. The remaining limitation is
 access/policy/readiness, not an owner decision to defer every other platform.
-Login/ownership on crates.io, RubyGems and Postman is still unverified. No
-publication on those three services is claimed. GitHub v0.1.0, the public Go
-module/pkg.go.dev, PyPI 0.1.0, npm 0.1.0, Packagist v0.1.0 and NuGet 0.1.0 are
+Login/ownership on RubyGems and Postman is still unverified. No publication on
+those two services is claimed. GitHub v0.1.0, the public Go module/pkg.go.dev,
+PyPI 0.1.0, npm 0.1.0, Packagist v0.1.0, NuGet 0.1.0 and crates.io 0.1.0 are
 verified published.
 
 GitHub topics remain unset because the optional release action received HTTP403.

@@ -272,14 +272,20 @@
     {
       "id": "crates-io",
       "name": "crates.io",
-      "status": "BLOCKED_ACCESS",
-      "url": null,
-      "planned_url": null,
+      "status": "PUBLISHED",
+      "url": "https://crates.io/crates/fragment-donor-sdk/0.1.0",
+      "planned_url": "https://crates.io/crates/fragment-donor-sdk/0.1.0",
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "Package/material and release workflow prepared. Requested Chrome navigation was denied by saved browser permission; account/login/publisher setup unverified. No registry/network publication.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-06T06:02:43Z",
+      "evidence": [
+        "Authenticated crates.io owner usnuz published fragment-donor-sdk 0.1.0 from exact release commit 9e8a9f8577936a37ed750f55f6604e475a545ad9.",
+        "cargo publish --dry-run --locked --no-verify passed before the owner-confirmed immutable publication; the live publish completed successfully.",
+        "The crates.io version API and public download returned HTTP 200; the version is not yanked and registry checksum/download SHA256 both equal c5aad57e5744d26db6b501847761af0a056defb7d8de30b8b68733c0481384b3.",
+        "GitHub Trusted Publishing is configured for usnuz/fragment-donor-sdk, registry-publish.yml, environment crates-io.",
+        "The seven-day publish-new bootstrap token restricted to fragment-donor-sdk was revoked after publication; the account reports no API tokens."
+      ],
+      "notes": "Verified public immutable 0.1.0 release. Windows package re-verification required --no-verify because dlltool.exe is unavailable in the current shell; the exact release artifact and Rust consumer/tests were already independently verified. Future versions use Trusted Publishing.",
+      "preparation_status": "PUBLISHED"
     },
     {
       "id": "rubygems",
@@ -703,7 +709,7 @@
     "ruby_gem_sha256": "023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea",
     "provenance_sha256": "c47ace7f9ca721a929e66c17c86daaea9e90fbfb1b9aa8027e5ad12053ddad14",
     "checksums_sha256": "0fba42121372aba009e6fcc30461a0b795918e6baad157274379f55555eaf2b4",
-    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI, npm, Packagist and NuGet 0.1.0 are published and public-install verified; two other external registries remain BLOCKED_ACCESS.",
+    "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI, npm, Packagist, NuGet and crates.io 0.1.0 are published and public-install/download verified; one other external registry remains BLOCKED_ACCESS.",
     "synthetic_video_sha256": "98619de89eb9309732c3489c7811281455b0b5d4fbe26404d24228d8f98815e7",
     "baseline_screenshot_sha256": "c8e6dd90b653f8043ea83266dc2b7536327fb8b0c56b37400ae0b5261396133b"
   },
@@ -738,6 +744,6 @@
     "status": "READY",
     "requested_browser": "Chrome",
     "observed_error": null,
-    "notes": "Chrome access was restored and authenticated PyPI, npm, Packagist, NuGet and GitHub pages were verified on 2026-10-06 Asia/Tashkent. This does not establish login or ownership on crates.io, RubyGems or Postman."
+    "notes": "Chrome access was restored and authenticated PyPI, npm, Packagist, NuGet, crates.io and GitHub pages were verified on 2026-10-06 Asia/Tashkent. This does not establish login or ownership on RubyGems or Postman."
   }
 }
