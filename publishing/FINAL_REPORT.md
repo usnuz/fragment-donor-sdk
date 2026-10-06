@@ -1,4 +1,4 @@
-# Fragment Donor SDK 0.1.0 — delivery and publication report
+# Fragment Donor SDK 0.1.1 — delivery and publication report
 
 Snapshot: **2026-10-06**. Owner: `usnuz`. Independent project, not an official
 Telegram, Fragment or TON product. Preparation, tests, source publication,
@@ -7,9 +7,14 @@ registry release, platform acceptance and search indexing are separate states.
 ## Current outcome and remote gate
 
 Seven SDKs, multilingual docs, guarded contract exports and tailored publication
-materials are implemented. The stable [v0.1.0 release](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.0)
-is public with nine downloadable assets from exact source commit
-[`9e8a9f8577936a37ed750f55f6604e475a545ad9`](https://github.com/usnuz/fragment-donor-sdk/commit/9e8a9f8577936a37ed750f55f6604e475a545ad9).
+materials are implemented. The stable [v0.1.1 release](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.1)
+was published at **2026-10-06 17:47:20 UTC** with nine assets from exact source
+commit [`b23aa72ad1bd540ca3a22f94c14460f7caa70900`](https://github.com/usnuz/fragment-donor-sdk/commit/b23aa72ad1bd540ca3a22f94c14460f7caa70900).
+[Release workflow 37505959430](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37505959430)
+succeeded with all **16 jobs** successful. Root annotated tag `v0.1.1` peels to
+the exact commit and `go/v0.1.1` points directly to it. The registry records in
+this report remain at independently verified 0.1.0 versions; no registry 0.1.1
+publication is claimed.
 
 The exact release source's [CI run 37345045005](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345045005)
 passed all **14 runtime jobs**. [Release run 37345310643](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345310643)
@@ -220,7 +225,7 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**16 PUBLISHED, 1 SUBMITTED, 0 BLOCKED_ACCESS, 0 READY, 8 NOT_ELIGIBLE, 20 NOT_RUN**. READY materials do
+**17 PUBLISHED, 2 SUBMITTED, 0 BLOCKED_ACCESS, 0 READY, 8 NOT_ELIGIBLE, 18 NOT_RUN**. READY materials do
 not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io,
 RubyGems and Go module/index are verified.
 
@@ -241,7 +246,7 @@ RubyGems and Go module/index are verified.
 | 13 | Postman API Network | PUBLISHED |
 | 14 | Swagger Studio | PUBLISHED |
 | 15 | APIs.guru | SUBMITTED ([issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556)) |
-| 16 | RapidAPI | NOT_RUN |
+| 16 | RapidAPI | PUBLISHED ([public API project](https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api)) — OpenAPI 0.1.1 Active and Current |
 | 17 | TON App | NOT_RUN |
 | 18 | DEV.to | NOT_ELIGIBLE |
 | 19 | Hashnode | PUBLISHED ([public article](https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries)) |
@@ -295,6 +300,12 @@ The public article reopened in Chrome; Medium returned HTTP 403 to unauthenticat
 APIs.guru review is pending in [issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556).
 The owner authorized CC0 distribution for that directory submission. It remains **SUBMITTED**, not PUBLISHED,
 until maintainers accept it and the public catalog entry is verified.
+
+[RapidAPI](https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api)
+publishes the corrected OpenAPI 0.1.1 contract for Fragment Donor API. Version
+0.1.1 is Active and Current, five endpoints are visible, and the listing records
+the project website and `https://fragment.donor.uz` base URL. No real API request
+or payment was performed during publication verification.
 
 NOT_ELIGIBLE concerns the current generated/free promotional format. HN, English
 Stack Overflow, Habr, HackerNoon and restricted subreddits must not receive

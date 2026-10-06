@@ -4,14 +4,14 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.1",
   "updated_on": "2026-10-06",
-  "scope": "GitHub release/docs, GitLab and SourceForge mirrors, Read the Docs, Go module/index, PyPI, npm, Packagist, NuGet, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 are verified public. RubyGems Trusted Publishing run 37423695304 succeeded and the registry download matches the exact GitHub release gem. Clean public-registry consumers and mocked smokes passed. Postman publishes four safe examples with a placeholder-only environment. Swagger Studio exposes the credential-free OpenAPI schema. No production deploy, real API request or real payment.",
+  "scope": "GitHub v0.1.1 release/docs and RapidAPI OpenAPI 0.1.1 are verified public. GitLab and SourceForge mirrors, Read the Docs, Go module/index, PyPI, npm, Packagist, NuGet, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 remain verified public at their recorded versions. No registry 0.1.1 publication is claimed. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "credential_trust_boundary": "Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. ",
   "release_preparation": {
     "version": "0.1.1",
-    "status": "LOCAL_PREPARATION",
-    "notes": "Version metadata, package assertions, install examples, changelogs and release notes are prepared locally. No v0.1.1 tag, GitHub release, workflow dispatch or registry publication is claimed; channel records below remain historical 0.1.0 evidence until independently verified."
+    "status": "GITHUB_RELEASED",
+    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. Registry channel records remain historical 0.1.0 evidence until each registry version is independently verified."
   },
   "test_results": {
     "python": {
@@ -123,15 +123,17 @@
       "status": "PUBLISHED",
       "url": "https://github.com/usnuz/fragment-donor-sdk",
       "planned_url": "https://github.com/usnuz/fragment-donor-sdk",
-      "version": "0.1.0",
-      "observed_at": "2026-10-05T17:35:22Z",
+      "version": "0.1.1",
+      "observed_at": "2026-10-06T17:47:20Z",
       "evidence": [
         "Git push final SDK/docs source commit 0e444c9710c907a5ee0c0b9da812d4d1e9bb3783 to owned independent public repository succeeded.",
         "Public GitHub CI run 37304917805 completed success; all 14 jobs independently verified.",
         "Exact release source 9e8a9f8577936a37ed750f55f6604e475a545ad9: all 14 CI jobs passed in run 37345045005.",
-        "Public stable v0.1.0 release contains nine downloaded and SHA256/provenance-verified assets; release run 37345310643 succeeded and verified all nine cryptographic attestations."
+        "Public stable v0.1.0 release contains nine downloaded and SHA256/provenance-verified assets; release run 37345310643 succeeded and verified all nine cryptographic attestations.",
+        "Public v0.1.1 release https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.1 was published at 2026-10-06T17:47:20Z from exact commit b23aa72ad1bd540ca3a22f94c14460f7caa70900 with nine assets.",
+        "Release workflow run 37505959430 succeeded with all 16 jobs successful; root annotated tag v0.1.1 peels to the exact release commit and go/v0.1.1 points directly to that commit."
       ],
-      "notes": "Independent SDK-only source/release published; production history excluded and known-pattern secret gates passed. Topics remain unset: optional release topic update returned HTTP403, not successful publication of metadata."
+      "notes": "Independent SDK-only source/release published. v0.1.1 GitHub release and tags are verified; this does not claim registry 0.1.1 publication. Production history was excluded and known-pattern secret gates passed."
     },
     {
       "id": "github-pages",
@@ -373,14 +375,18 @@
     {
       "id": "rapidapi",
       "name": "RapidAPI",
-      "status": "NOT_RUN",
-      "url": null,
-      "planned_url": null,
-      "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
-      "preparation_status": "READY"
+      "status": "PUBLISHED",
+      "url": "https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api",
+      "planned_url": "https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api",
+      "version": "0.1.1",
+      "observed_at": "2026-10-06T17:54:23Z",
+      "evidence": [
+        "RapidAPI project Fragment Donor API is public at the recorded provider URL.",
+        "Imported contract/openapi.json version 0.1.1 is marked Active and Current and exposes five documented endpoints.",
+        "Listing records website https://usnuz.github.io/fragment-donor-sdk/ and base URL https://fragment.donor.uz; no real API request or payment was performed."
+      ],
+      "notes": "Public RapidAPI API project verified with the corrected OpenAPI 0.1.1 contract. Publication does not prove endpoint execution or a successful purchase.",
+      "preparation_status": "PUBLISHED"
     },
     {
       "id": "ton-app",
