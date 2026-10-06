@@ -186,8 +186,9 @@ environment values: wallet/provider fields must stay empty and
 429, 503, and purchase HTTP 400 with `unconfirmed: true`/`tx_hash`. That 400 means
 **unknown payment outcome**, not ordinary rejected validation; reconcile rather
 than resending. Do not execute real purchases for a listing. Swagger Studio imported the public OpenAPI without
-introducing a fake service-key scheme. APIs.guru review is distinct
-from acceptance. RapidAPI is a separately chosen gateway model, not proof that
+introducing a fake service-key scheme. APIs.guru issue
+`https://github.com/APIs-guru/openapi-directory/issues/3556` is SUBMITTED under the owner's explicit CC0 authorization;
+review is distinct from acceptance. RapidAPI is a separately chosen gateway model, not proof that
 the direct API requires authentication. Do not accept a paid plan or gateway
 contract on the user's behalf.
 

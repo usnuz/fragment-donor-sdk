@@ -155,18 +155,18 @@ No paid upgrade or listing action was performed.
 
 ## APIs.guru
 
-Status: NOT_RUN eligibility/licensing review, no submission/PR.
+Status: SUBMITTED in [APIs.guru issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556); directory acceptance pending.
 Human contributor facts, not an automatically submitted claim:
 
 - API provider domain: `fragment.donor.uz`; title Fragment Donor API; version0.1.0.
 - Schema source: generated OpenAPI; documentation and clean SDK source as above.
 - Direct no-service-auth contract, four operations, synthetic examples; sensitive
   wallet headers and backend retention described openly.
-- SDK source uses MIT. APIs.guru definition contributions are CC0; obtain explicit
-  owner licensing decision and verify current contribution criteria first.
+- SDK source uses MIT. The owner explicitly authorized APIs.guru to distribute the
+  submitted definition under CC0 1.0; the stable GitHub Pages schema URL was submitted.
 - Do not claim this is a decentralized wallet or an official Fragment API.
-- If ineligible or licensing approval absent, record NOT_ELIGIBLE/NOT_RUN rather
-  than forcing a directory PR. Actual approval is separate from submission.
+- Actual directory approval remains separate from submission; do not mark PUBLISHED
+  until the accepted catalog entry is reopened and verified.
 
 ## RapidAPI
 

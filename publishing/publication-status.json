@@ -352,14 +352,18 @@
     {
       "id": "apis-guru",
       "name": "APIs.guru",
-      "status": "NOT_RUN",
-      "url": null,
+      "status": "SUBMITTED",
+      "url": "https://github.com/APIs-guru/openapi-directory/issues/3556",
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-06T12:15:24Z",
+      "evidence": [
+        "Owner explicitly authorized APIs.guru to include and distribute the contributed API definition under the directory's CC0 1.0 terms.",
+        "Official APIs.guru Add API form generated GitHub issue 3556 with the stable GitHub Pages OpenAPI URL, official-owner flag and payments category.",
+        "The open issue records the Public, Persistent and Useful eligibility rationale plus the independent-service and server-only credential disclosures."
+      ],
+      "notes": "Submission is open for directory review. SUBMITTED is not acceptance or catalog publication; do not mark PUBLISHED until the API appears in the directory and its public record is verified.",
+      "preparation_status": "SUBMITTED"
     },
     {
       "id": "rapidapi",
