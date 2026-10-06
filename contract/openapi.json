@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Fragment Donor Public API",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Independent service, not an official Telegram, Fragment, or TON product. No service authentication. Default shared quota: 30 requests per IP per minute across all endpoints. Credential-bearing requests are server-side only and transmit sensitive wallet/session data to the API operator. Use server-side secret storage and a dedicated, minimally funded wallet.",
     "license": {
       "name": "MIT",

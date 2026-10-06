@@ -12,7 +12,7 @@ from pathlib import Path
 
 class ArtifactGateTests(unittest.TestCase):
     def test_exact_allowlists_and_secret_gate_reject_tampered_archives(self):
-        metadata = "fragment_donor_sdk-0.1.0.dist-info/"
+        metadata = "fragment_donor_sdk-0.1.1.dist-info/"
         wheel = {
             "fragment_donor_sdk/__init__.py": "",
             "fragment_donor_sdk/client.py": "",
@@ -61,7 +61,7 @@ class ArtifactGateTests(unittest.TestCase):
                 with tarfile.open(Path(directory) / "sdk.tar.gz", "w:gz") as archive:
                     for name, content in sources.items():
                         data = content.encode()
-                        member = tarfile.TarInfo("fragment_donor_sdk-0.1.0/" + name)
+                        member = tarfile.TarInfo("fragment_donor_sdk-0.1.1/" + name)
                         member.size = len(data)
                         archive.addfile(member, io.BytesIO(data))
                 result = subprocess.run(

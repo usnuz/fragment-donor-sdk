@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.1
+
+- Clarified that purchase requests transmit wallet mnemonic and Fragment
+  session/cookie data to the API operator, with server-side safety guidance.
+- Refreshed package metadata, install examples, and release artifacts for the
+  corrected documentation.
+
 ## 0.1.0
 
 - Four public API operations with typed requests/responses and preserved fields.

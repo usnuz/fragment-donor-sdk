@@ -5,4 +5,4 @@ edition = "2021"
 publish = false
 
 [dependencies]
-fragment-donor-sdk = { path = "../package", version = "=0.1.0" }
+fragment-donor-sdk = { path = "../package", version = "=0.1.1" }

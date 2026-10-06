@@ -1,6 +1,6 @@
 # Fragment Donor SDK for Node.js / TypeScript
 
-`fragment-donor-sdk` 0.1.0 provides typed server-side clients for the independent
+`fragment-donor-sdk` 0.1.1 provides typed server-side clients for the independent
 [Fragment Donor API](https://fragment.donor.uz). This is not an official
 Telegram, Fragment, or TON product. Node.js 20+, ESM, no runtime dependencies.
 
@@ -8,7 +8,7 @@ Registry release may still be pending; check the repository publication status.
 After release:
 
 ```sh
-npm install fragment-donor-sdk@0.1.0
+npm install fragment-donor-sdk@0.1.1
 ```
 
 No service account/login, `Authorization`, or `X-Api-Key` is required.

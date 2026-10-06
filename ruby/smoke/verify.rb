@@ -6,7 +6,7 @@ require "rbconfig"
 require "tmpdir"
 
 root = File.expand_path("..", __dir__)
-artifact = File.join(root, "fragment-donor-sdk-0.1.0.gem")
+artifact = File.join(root, "fragment-donor-sdk-0.1.1.gem")
 abort "Build the gem before this smoke" unless File.file?(artifact)
 package = Gem::Package.new(artifact)
 expected = %w[lib/fragment_donor_sdk.rb README.md LICENSE CHANGELOG.md]

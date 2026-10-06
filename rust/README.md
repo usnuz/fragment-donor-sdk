@@ -1,7 +1,7 @@
 # Fragment Donor Rust SDK
 
 Independent, blocking server-side client. Not an official Telegram, Fragment
-or TON product. Crate `fragment-donor-sdk`, initial version `0.1.0`.
+or TON product. Crate `fragment-donor-sdk`, version `0.1.1`.
 
 ## Install
 
@@ -9,7 +9,7 @@ After publication:
 
 ```toml
 [dependencies]
-fragment-donor-sdk = "0.1.0"
+fragment-donor-sdk = "0.1.1"
 ```
 
 Before publication: use `fragment-donor-sdk = { path = "../rust" }`.
@@ -119,7 +119,7 @@ Inspect crate contents and perform secret scanning before a separate registry
 release. Never use actual credentials or real purchases for tests. Verify
 crates.io ownership/access and MFA/trusted publishing before `cargo publish`;
 building a crate does not mean it is published. After publication, verify a
-fresh consumer can install/build version `0.1.0` from the registry.
+fresh consumer can install/build version `0.1.1` from the registry.
 
 [Docs](https://usnuz.github.io/fragment-donor-sdk/)
 · [Source](https://github.com/usnuz/fragment-donor-sdk/tree/main/rust)

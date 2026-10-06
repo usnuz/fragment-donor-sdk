@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageId>FragmentDonor.Sdk</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Fragment Donor</Authors>
     <Description>Independent .NET client for the public Fragment Donor Stars and Premium API.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

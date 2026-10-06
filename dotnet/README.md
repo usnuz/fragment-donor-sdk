@@ -1,6 +1,6 @@
 # Fragment Donor .NET SDK
 
-Independent .NET 8+ server-side client, version `0.1.0`, with no external runtime
+Independent .NET 8+ server-side client, version `0.1.1`, with no external runtime
 packages. Not affiliated with Telegram, Fragment or TON. Package name remains
 provisional until registry availability and publisher access are verified.
 
@@ -9,7 +9,7 @@ no registry release is verified. The command below is for after an actual releas
 meanwhile use the reviewed source or locally built nupkg with a local package feed.
 
 ```sh
-dotnet add package FragmentDonor.Sdk --version 0.1.0
+dotnet add package FragmentDonor.Sdk --version 0.1.1
 ```
 
 [Source](https://github.com/usnuz/fragment-donor-sdk) ·
@@ -117,7 +117,7 @@ dotnet format whitespace src/FragmentDonor.Sdk --no-restore --verify-no-changes
 dotnet format whitespace tests/FragmentDonor.Sdk.Tests --no-restore --verify-no-changes
 dotnet pack src/FragmentDonor.Sdk -c Release -o dist
 dotnet run --project tests/PackageCheck -c Release -- --self-test
-dotnet run --project tests/PackageCheck -c Release -- dist/FragmentDonor.Sdk.0.1.0.nupkg
+dotnet run --project tests/PackageCheck -c Release -- dist/FragmentDonor.Sdk.0.1.1.nupkg
 dotnet restore tests/PackageSmoke --source dist --configfile NuGet.Config
 dotnet run --project tests/PackageSmoke -c Release --no-restore
 ```

@@ -83,7 +83,7 @@ public sealed class FragmentDonorClient : IDisposable
     private async Task<Dictionary<string, JsonElement>> CallAsync(HttpMethod method, string path, Dictionary<string, string> fields,
         bool purchase = false, bool wallet = false, CancellationToken cancellationToken = default)
     {
-        var headers = new Dictionary<string, string> { ["Accept"] = "application/json", ["User-Agent"] = "fragment-donor-sdk-dotnet/0.1.0" };
+        var headers = new Dictionary<string, string> { ["Accept"] = "application/json", ["User-Agent"] = "fragment-donor-sdk-dotnet/0.1.1" };
         if (purchase || wallet)
         {
             if (options.Credentials is null) throw new ValidationException("Wallet credentials are required.");

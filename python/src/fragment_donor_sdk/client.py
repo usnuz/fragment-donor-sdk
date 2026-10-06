@@ -529,7 +529,7 @@ class FragmentDonorClient:
     ) -> R:
         headers = {
             "Accept": "application/json",
-            "User-Agent": "fragment-donor-sdk-python/0.1.0",
+            "User-Agent": "fragment-donor-sdk-python/0.1.1",
         }
         secrets = self._credentials._secrets() if self._credentials else ()
         if credentials:

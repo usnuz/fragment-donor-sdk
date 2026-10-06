@@ -64,13 +64,13 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: npm ci && npm test && npm run package:check
         working-directory: typescript
-      - run: mkdir -p /tmp/sdk-smoke && cd /tmp/sdk-smoke && npm install "$GITHUB_WORKSPACE/typescript/fragment-donor-sdk-0.1.0.tgz" && node --input-type=module -e "import {FragmentDonorClient} from 'fragment-donor-sdk'; if (!FragmentDonorClient) process.exit(1)"
+      - run: mkdir -p /tmp/sdk-smoke && cd /tmp/sdk-smoke && npm install "$GITHUB_WORKSPACE/typescript/fragment-donor-sdk-0.1.1.tgz" && node --input-type=module -e "import {FragmentDonorClient} from 'fragment-donor-sdk'; if (!FragmentDonorClient) process.exit(1)"
       - run: node typescript/test/install-smoke.mjs /tmp/sdk-smoke/node_modules/fragment-donor-sdk/dist/index.js
       - run: python scripts/check-artifacts.py typescript/*.tgz
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: node-${{ matrix.node }}
-          path: typescript/fragment-donor-sdk-0.1.0.tgz
+          path: typescript/fragment-donor-sdk-0.1.1.tgz
   php:
     runs-on: ubuntu-latest
     strategy:
@@ -85,9 +85,9 @@ jobs:
           tools: composer:v2
       - run: composer validate --strict && composer install --no-interaction && composer test && composer lint && composer format:check
         working-directory: php
-      - run: composer validate --strict && composer archive --format=zip --dir=php/dist --file=fragment-donor-sdk-0.1.0
-      - run: php php/tests/check-package.php php/dist/fragment-donor-sdk-0.1.0.zip && python scripts/check-artifacts.py php/dist/*.zip
-      - run: mkdir -p /tmp/php-sdk-smoke && unzip php/dist/fragment-donor-sdk-0.1.0.zip -d /tmp/php-sdk-smoke && cd /tmp/php-sdk-smoke && composer install --no-dev --no-scripts --no-plugins --no-interaction
+      - run: composer validate --strict && composer archive --format=zip --dir=php/dist --file=fragment-donor-sdk-0.1.1
+      - run: php php/tests/check-package.php php/dist/fragment-donor-sdk-0.1.1.zip && python scripts/check-artifacts.py php/dist/*.zip
+      - run: mkdir -p /tmp/php-sdk-smoke && unzip php/dist/fragment-donor-sdk-0.1.1.zip -d /tmp/php-sdk-smoke && cd /tmp/php-sdk-smoke && composer install --no-dev --no-scripts --no-plugins --no-interaction
       - run: php php/tests/package-smoke.php /tmp/php-sdk-smoke
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
@@ -103,7 +103,7 @@ jobs:
       - run: dotnet run --project dotnet/tests/FragmentDonor.Sdk.Tests -c Release
       - run: dotnet pack dotnet/src/FragmentDonor.Sdk -c Release -o dotnet/dist
       - run: dotnet run --project dotnet/tests/PackageCheck -c Release -- --self-test
-      - run: dotnet run --project dotnet/tests/PackageCheck -c Release -- dotnet/dist/FragmentDonor.Sdk.0.1.0.nupkg
+      - run: dotnet run --project dotnet/tests/PackageCheck -c Release -- dotnet/dist/FragmentDonor.Sdk.0.1.1.nupkg
       - run: dotnet restore dotnet/tests/PackageSmoke --source "$PWD/dotnet/dist" --configfile dotnet/NuGet.Config && dotnet run --project dotnet/tests/PackageSmoke -c Release --no-restore
       - run: dotnet build dotnet/examples/QuickStart -c Release
       - run: for project in dotnet/src/FragmentDonor.Sdk dotnet/tests/FragmentDonor.Sdk.Tests dotnet/tests/PackageCheck dotnet/tests/PackageSmoke dotnet/examples/QuickStart; do dotnet format whitespace "$project" --no-restore --verify-no-changes; done
@@ -148,7 +148,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
       - run: ruby scripts/check.rb && ruby -Ilib test/client_test.rb && gem build fragment-donor-sdk.gemspec && ruby smoke/verify.rb
         working-directory: ruby
-      - run: gem install ruby/fragment-donor-sdk-0.1.0.gem --no-document && ruby -rfragment_donor_sdk -e 'abort unless FragmentDonor::Client'
+      - run: gem install ruby/fragment-donor-sdk-0.1.1.gem --no-document && ruby -rfragment_donor_sdk -e 'abort unless FragmentDonor::Client'
       - run: python scripts/check-artifacts.py ruby/*.gem
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

@@ -1,13 +1,13 @@
 # Fragment Donor Ruby SDK
 
 Independent server-side Ruby 3.2+ client. Not an official Telegram, Fragment or
-TON product. Initial gem `fragment-donor-sdk` version `0.1.0`.
+TON product. Gem `fragment-donor-sdk` version `0.1.1`.
 
 ## Install
 
-After publication: `gem install fragment-donor-sdk -v 0.1.0`.
+After publication: `gem install fragment-donor-sdk -v 0.1.1`.
 Before publication: `gem build fragment-donor-sdk.gemspec`, then
-`gem install --local fragment-donor-sdk-0.1.0.gem`.
+`gem install --local fragment-donor-sdk-0.1.1.gem`.
 
 ## All four operations
 
