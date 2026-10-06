@@ -135,9 +135,9 @@ fields cannot be made secret; keep these objects inside the trusted server.
 HTTP redirects are disabled so headers cannot be forwarded to another site.
 HTTPS is required except localhost for deterministic integration tests.
 
-The inspected backend stores submitted credentials in its database. SDK
-redaction does not imply zero server retention or non-custodial operation.
-Use a dedicated minimally funded wallet and trust the operator accordingly.
+Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
+the API operator. use server-side secret
+storage, and use a dedicated, minimally funded wallet.
 
 ## Development and release
 

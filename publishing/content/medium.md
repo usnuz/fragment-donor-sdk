@@ -20,8 +20,8 @@ An optional key configures TonConsole, not the service's authorization layer.
 
 The SDK boundary and server boundary are separate. A client can use redacted
 diagnostics, disable redirect forwarding and avoid leaking transport causes.
-Those controls don't alter the inspected backend's database: it stores submitted
-purchase credentials. “The SDK doesn't print my seed” is not equivalent to “the
+Purchase requests still transmit wallet mnemonic and Fragment session/cookie data
+to the API operator. “The SDK doesn't print my seed” is not equivalent to “the
 operator cannot access my seed.” A dedicated minimally funded wallet and trusted
 server-side secret storage help limit exposure, but do not eliminate trust.
 

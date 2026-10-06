@@ -26,10 +26,10 @@ Use a dedicated, minimally funded wallet and server-side secret storage.
 Node.js purchase code is server-only; do not expose mnemonics in browser code,
 localStorage, screenshots, examples, or logs.
 
-SDK redaction does not make the backend a non-custodial or zero-retention
-service: the inspected backend records submitted wallet credentials in its
-database. Treat the operator as having access to the submitted credentials.
-Documentation must not claim that the server never stores them.
+Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
+the API operator. SDK redaction does not limit operator access or establish any
+operator access.
+keep secrets in server-side storage, and use a dedicated, minimally funded wallet.
 
 ## Release state
 

@@ -9,7 +9,7 @@ blocks, not verified publications. Read
 [the policy matrix](../PLATFORM_MATRIX.md) before using any asset.
 
 The body under each “Article”/“Copy” heading can be pasted after factual/editorial
-review. Keep the visible AI/independent-service/credential-retention disclosures.
+review. Keep the visible AI/independent-service/credential-transmission disclosures.
 Do not use generated text on HN, English Stack Overflow, Habr, HackerNoon,
 r/SaaS, or r/webdev where the checked rules reject this use. Their files contain
 human-only factual checklists instead, not forbidden post templates.
@@ -56,6 +56,6 @@ optional `Api-Key` is a TonConsole provider key. All four operations share the
 default per-IP 30/minute limit. Purchases never auto-retry; HTTP 400 with
 `unconfirmed:true` is an unknown payment outcome, not ordinary validation rejection.
 Keep a safe transaction reference and reconcile before another intended purchase.
-No idempotency guarantee or purchase-status endpoint exists. Backend stores submitted credentials. Public
+No idempotency guarantee or purchase-status endpoint exists. Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. Public
 examples are mocked/read-only or explicitly purchase-gated; never fund a demo
 wallet or paste a real secret to make an article, screenshot, or video.

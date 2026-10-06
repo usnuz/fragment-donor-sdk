@@ -102,10 +102,10 @@ Unknown response fields remain in `Extra`; purchase `Data` is raw JSON.
 Do not convert balance strings to float64. Config/credentials debug and JSON
 representations are redacted, but never log arbitrary request/response objects.
 
-Use server-side secret storage and a dedicated minimally funded wallet. The
-inspected backend **stores submitted wallet credentials**; SDK redaction does
-not mean that the operator cannot access them. No real credential belongs in
-examples, screenshots or CI.
+Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
+the API operator. use server-side secret
+storage and a dedicated, minimally funded wallet, and keep real credentials out
+of examples, screenshots and CI.
 
 ## Development and release
 

@@ -7,7 +7,7 @@
   "scope": "GitHub release/docs, GitLab and SourceForge mirrors, Read the Docs, Go module/index, PyPI, npm, Packagist, NuGet, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 are verified public. RubyGems Trusted Publishing run 37423695304 succeeded and the registry download matches the exact GitHub release gem. Clean public-registry consumers and mocked smokes passed. Postman publishes four safe examples with a placeholder-only environment. Swagger Studio exposes the credential-free OpenAPI schema. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
-  "backend_credential_retention": "Inspected backend persists submitted purchase credentials; SDK redaction does not prevent retention.",
+  "credential_trust_boundary": "Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. ",
   "test_results": {
     "python": {
       "status": "PASS",
@@ -634,14 +634,18 @@
     {
       "id": "google-search-console",
       "name": "Google Search Console",
-      "status": "NOT_RUN",
-      "url": null,
+      "status": "SUBMITTED",
+      "url": "https://usnuz.github.io/fragment-donor-sdk/sitemap.xml",
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-06T17:08:07Z",
+      "evidence": [
+        "Google Search Console automatically verified the URL-prefix property via the deployed HTML meta tag; the property dashboard opened successfully.",
+        "The live documentation root returned HTTP 200 with the exact verification meta tag, and CI run 37498768944 plus Pages run 37498914115 completed successfully.",
+        "Search Console accepted /sitemap.xml and displayed 'Sitemap submitted', but the immediate table status was 'Couldn't fetch'/'Not fetched', type unknown and zero discovered pages."
+      ],
+      "notes": "Ownership is verified and the sitemap was submitted, but successful sitemap retrieval or indexing is not verified. The owner instructed further sitemap diagnostics to be skipped; do not describe the site as indexed.",
+      "preparation_status": "SUBMITTED"
     },
     {
       "id": "bing-webmaster-tools",

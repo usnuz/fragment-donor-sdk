@@ -101,8 +101,9 @@ optional launch metadata or extract stored credentials.
    relabeled or lightly edited to evade a rule.
    Complete factual/editorial review and the platform's truthful AI disclosure.
    Prepared text, demo plans and upload workflow files do not prove publication.
-6. **Backend credential retention:** the existing API persists raw purchase
-   credentials. A separate backend hardening task is needed before claiming
-   zero retention. Publishing client SDKs does not change production behavior.
+6. **Credential trust boundary:** purchase requests transmit wallet mnemonic and
+   Fragment session/cookie data to the API operator. Recommend server-side secret
+   storage and a dedicated, minimally funded wallet. Publishing client SDKs does
+   not change production behavior.
 
 Exact per-channel state and evidence: publication-status.json and PLATFORM_MATRIX.md.

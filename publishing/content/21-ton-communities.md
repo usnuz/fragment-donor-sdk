@@ -17,8 +17,8 @@ Conditional technical note, only if current rules permit this AI-assisted messag
 
 > Affiliation: I maintain the independent Fragment Donor server SDK project;
 > AI assisted this note. I am reviewing a TON integration trust boundary: a
-> redacted client repr and refused redirects do not make a mnemonic-bearing API
-> non-custodial. The inspected backend stores submitted purchase credentials.
+> redacted client repr and refused redirects do not restrict operator access.
+> Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator.
 > Our mock tests also require a single spending POST after timeout, because no
 > idempotency guarantee exists. No real wallet funds were spent in the tests.
 > Source/tests: https://github.com/usnuz/fragment-donor-sdk.
@@ -38,7 +38,7 @@ Conditional note (only if permitted and relevant to current technical discussion
 
 > Я связан с независимым проектом Fragment Donor SDK; этот текст подготовлен с
 > помощью ИИ. Технический вопрос интеграции TON: редактирование seed в логах SDK
-> не делает API non-custodial. Изученный backend хранит переданные credentials.
+> не ограничивает доступ оператора. Запросы на покупку передают чувствительные credentials оператору API.
 > В mock-тестах также проверяем ровно один POST покупки после таймаута: гарантии
 > idempotency и endpoint статуса покупки нет. Реальные средства в тестах не
 > использовались. Исходники: https://github.com/usnuz/fragment-donor-sdk.

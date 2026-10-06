@@ -35,7 +35,7 @@ test('all displayed JSON responses come directly from the shared fixture', () =>
 
 test('trust, uncertainty and actual-test evidence are explicit', () => {
   assert.match(html, /PurchaseOutcomeUnknown, not safe rejection or validation/);
-  assert.match(html, /The inspected backend stores submitted purchase credentials/);
+  assert.match(html, /Purchase requests transmit wallet mnemonic and Fragment session\/cookie data to the API operator/);
   assert.match(html, /does not execute them and does not invent a dispatch counter/);
   assert.match(html, /not an official Telegram, Fragment or TON product/);
   assert.match(html, /Api-Key is only an optional TonConsole provider key/);

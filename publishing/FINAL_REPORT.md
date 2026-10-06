@@ -262,7 +262,7 @@ RubyGems and Go module/index are verified.
 | 34 | TON developer RU | NOT_RUN |
 | 35 | Telegram developer communities | NOT_RUN |
 | 36 | Discord developer communities | NOT_RUN |
-| 37 | Google Search Console | NOT_RUN |
+| 37 | Google Search Console | SUBMITTED — ownership verified; sitemap accepted but initial fetch unsuccessful |
 | 38 | Bing Webmaster Tools | NOT_RUN |
 | 39 | Hacker News / Show HN | NOT_ELIGIBLE |
 | 40 | Stack Overflow | NOT_ELIGIBLE |
@@ -303,14 +303,16 @@ promotional route remains ineligible. Other destinations still require genuine
 account/rule/editorial gates. No fake question, private outreach, vote
 manipulation or paid plan is authorized. [Policy evidence](PLATFORM_MATRIX.md).
 
-Google Search Console, Bing and Yandex verification/submission/indexing are
-**NOT_RUN**. Project-path access does not grant `github.io` DNS or origin-root
-ownership. SEO checks do not guarantee crawling, indexing or rankings.
+Google Search Console URL-prefix ownership is verified by a live HTML meta tag,
+and `/sitemap.xml` was submitted. Its immediate status was “Couldn't fetch” /
+“Not fetched”, so successful retrieval and indexing remain unverified; the owner
+skipped further diagnostics. Bing and Yandex remain **NOT_RUN**. SEO submission
+does not guarantee crawling, indexing or rankings.
 
-**The inspected backend stores submitted purchase credentials.** No service
-auth does not mean no wallet risk: purchases use Mnemonic + Fragment Cookie,
-balance uses Mnemonic, optional `Api-Key` configures TonConsole. SDK redaction
-does not erase retention or make this non-custodial/zero-retention.
+**Purchase requests transmit sensitive credentials to the API operator.** No
+service auth does not mean no wallet risk: purchases use Mnemonic + Fragment
+Cookie, balance uses Mnemonic, optional `Api-Key` configures TonConsole. SDK
+use a dedicated, minimally funded wallet.
 
 Purchases never auto-retry. HTTP 400 `unconfirmed:true`/`tx_hash`, timeouts
 or transport/malformed replies may be unknown payment outcome. Preserve safe

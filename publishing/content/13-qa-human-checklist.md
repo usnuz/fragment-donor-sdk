@@ -28,7 +28,7 @@ If a genuine question is later found, a human can independently verify:
 Relevant verifiable implementation references (research, not pasted answer):
 [Python tests](https://github.com/usnuz/fragment-donor-sdk/blob/main/python/tests/test_client.py),
 [Node tests](https://github.com/usnuz/fragment-donor-sdk/blob/main/typescript/test/client.test.mjs).
-No successful purchase, browser support or non-custodial model should be inferred.
+No successful purchase or browser support should be inferred.
 
 ## ru Stack Overflow
 
@@ -42,5 +42,5 @@ Before any future answer: locate an actual matching question, read its context,
 run a minimal reproducible example, provide a complete Russian explanation,
 cite tool/source as required, disclose affiliation and check anti-spam rules.
 Do not invent an accepted answer, author review, question URL or successful test.
-Sensitive snippets use synthetic data. Backend stores submitted credentials;
+Sensitive snippets use synthetic data. Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator;
 mention that boundary if the proposed solution involves its wallet endpoints.

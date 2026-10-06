@@ -51,8 +51,8 @@ retry is desired, enable it explicitly with at most two retries and 60 seconds
 per wait; 429 supports `Retry-After` seconds/date and JSON hints. Purchases remain
 non-retrying even on a client configured for read retries.
 
-The inspected backend persists submitted purchase credentials. This SDK cannot
-promise server-wide zero retention for wallet secrets. Keep mnemonic access in a
+Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
+the API operator. Keep mnemonic access in a
 server secret manager and evaluate operator trust before invoking any wallet API.
 
 [Balance docs](https://usnuz.github.io/fragment-donor-sdk/en/reference/wallet-balance/) ·

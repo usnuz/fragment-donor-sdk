@@ -74,8 +74,8 @@ and a hint above the maximum. The shared fixture tests use synthetic credentials
 and no real wallet funds.
 
 No service auth is needed; wallet Cookie/Mnemonic still are. The optional provider
-key is not service login. The inspected backend stores submitted credentials, so
-safe retry logic and SDK log redaction do not make the service non-custodial.
+key is not service login. Purchase requests transmit wallet mnemonic and Fragment
+session/cookie data to the API operator; retry logic and log redaction do not restrict that access.
 
 [Rate-limit guide](https://usnuz.github.io/fragment-donor-sdk/en/guides/rate-limit-flood-wait/) ·
 [Python request-count tests](https://github.com/usnuz/fragment-donor-sdk/blob/main/python/tests/test_client.py) ·

@@ -31,9 +31,9 @@ a built tarball and a published registry version are different milestones.
 
 The direct API requires no service login, Authorization or X-Api-Key. Wallet
 operations still need a mnemonic and purchases need the Fragment cookie; optional
-providerKey maps to TonConsole Api-Key only. The backend stores submitted purchase
-credentials, so server-only code is necessary but doesn't eliminate operator
-retention. Use a dedicated minimally funded wallet and evaluate that access.
+providerKey maps to TonConsole Api-Key only. Purchase requests transmit wallet
+mnemonic and Fragment session/cookie data to the API operator. Use a dedicated,
+minimally funded wallet, server-side secret storage, and evaluate that access.
 
 Our transport refuses redirects and uses abort for timeouts. Redirect refusal
 prevents forwarding secret headers to a redirected host. Aborting a request does

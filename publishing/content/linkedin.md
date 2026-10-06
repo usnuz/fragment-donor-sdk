@@ -35,8 +35,8 @@ Two other review points deserve equal attention. First, “no service authentica
 doesn't mean “no wallet credential”: the direct API has no service account/key,
 but balance reads use a mnemonic and purchases also use a sensitive session
 cookie; optional Api-Key configures
-TonConsole only. Second, SDK redaction doesn't govern server retention: the
-inspected backend stores submitted purchase credentials. Evaluate operator access
+TonConsole only. Second, SDK redaction doesn't govern operator access: the
+Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. Evaluate operator access
 and use trusted server storage and a dedicated minimally funded wallet.
 
 The source includes mocked contract tests and EN/RU/UZ docs. These are evidence

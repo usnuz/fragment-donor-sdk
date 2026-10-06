@@ -64,9 +64,9 @@ tekshiring, keyin yangi xarid kerakligini ongli ravishda hal qiling. HTTP 400’
 rad etilishi emas. Xavfsiz tranzaksiya havolasini saqlang; 400 statusning o‘zi
 mablag‘ sarflanmaganini isbotlamaydi va qayta yuborishga ruxsat emas.
 
-Muhim xavf: tekshirilgan backend yuborilgan credentiallarni bazada saqlaydi.
-SDK loglaridagi redaction server saqlashini bekor qilmaydi va servisni
-non-custodial qilmaydi. Alohida, minimal mablag‘li hamyon, server secret manager
+Muhim xavf: xarid so'rovlari sensitive credentiallarni API operatoriga uzatadi.
+SDK loglaridagi redaction operatorning uzatilgan ma’lumotlarga kirishini cheklamaydi.
+Alohida, minimal mablag‘li hamyon, server secret manager
 va operatorga ishonch chegarasini baholash kerak. Mnemonic/cookie’ni frontend,
 localStorage, repo, screenshot yoki ochiq Postman muhitiga joylamang.
 

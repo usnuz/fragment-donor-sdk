@@ -9,7 +9,7 @@ Use the [matrix](../PLATFORM_MATRIX.md) and [runbook](../PUBLISHING_RUNBOOK.md).
 
 Shared links: source https://github.com/usnuz/fragment-donor-sdk;
 docs https://usnuz.github.io/fragment-donor-sdk/en/ (also `/ru/`, `/uz/`).
-Every platform must retain independent-project and backend-retention disclosures.
+Every platform must retain independent-project and credential-transmission disclosures.
 No invented exact listing URL or reviewer acceptance is supplied.
 
 ## GitHub
@@ -22,7 +22,7 @@ Repository description (copy):
 
 Topics: `telegram-stars`, `telegram-premium`, `sdk`, `ton`, `python`, `typescript`,
 `php`, `dotnet`, `golang`, `rust`, `ruby` (select platform-supported limit).
-Website field: primary docs. README is authoritative for retention/limitations.
+Website field: primary docs. README is authoritative for security limitations.
 
 Release note copy, **only after all declared artifacts exist and pass**:
 
@@ -30,8 +30,9 @@ Release note copy, **only after all declared artifacts exist and pass**:
 > form-urlencoded purchases, decimal balance strings, future response fields,
 > typed errors, opt-in bounded read retries and no automatic purchase retry.
 > Tests use synthetic fixtures/mocked transport; no wallet funds were spent.
-> Not official Telegram/Fragment/TON software. Backend stores submitted
-> credentials; SDK redaction does not imply non-custodial or zero-retention service.
+> Not official Telegram/Fragment/TON software. Purchase requests transmit wallet
+> mnemonic and Fragment session/cookie data to the API operator. Use a dedicated,
+> minimally funded wallet and server-side secret storage.
 > Source release, registry publication and search indexing are separate states.
 > Consult publication-status.json for each package and channel.
 
@@ -45,7 +46,7 @@ Page title: Fragment Donor SDK documentation — English, Русский, O‘zb
 Description (copy):
 
 > Static four-endpoint documentation, seven runtime guides, 429/Retry-After
-> handling and credential-retention limitations for the independent Fragment
+> handling and credential-transmission limitations for the independent Fragment
 > Donor API. No wallet-secret forms or payment processing are hosted here.
 
 Build source: `docs/build.mjs`; contracts: `contract/build.mjs`; checks:
@@ -100,7 +101,7 @@ Long description (copy):
 > are not part of this project. Username lookup, wallet balance and intended
 > Stars/Premium gifting use a form-urlencoded contract. No service login/key is
 > needed, but wallet operations use sensitive credentials, and the inspected
-> backend records submitted purchase credentials. Purchases never retry
+> Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. Purchases never retry
 > automatically; there is no idempotency guarantee. Not an official Telegram,
 > Fragment or TON product. Source/docs link to the canonical GitHub project.
 
@@ -116,7 +117,7 @@ Description (copy):
 > Four operations for the independent Fragment Donor service: username lookup,
 > wallet balance, Stars gifting and Premium gifting. Direct service auth is none;
 > optional Api-Key is TonConsole provider configuration. Purchases need Mnemonic
-> and Fragment Cookie, and the backend stores submitted credentials. This public
+> and Fragment Cookie, and Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. This public
 > collection contains placeholder-only variables and synthetic responses; do
 > not run a purchase or share real secrets. Purchases are non-retrying and have
 > no idempotency guarantee. Docs: https://usnuz.github.io/fragment-donor-sdk/en/.
@@ -143,7 +144,7 @@ Description (copy):
 > Independent four-operation API at https://fragment.donor.uz. No service login,
 > account or service key. Cookie/Mnemonic are sensitive purchase credentials;
 > optional Api-Key is a TonConsole provider key, not a service security scheme.
-> Backend stores submitted credentials. Form-urlencoded purchases are never
+> Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. Form-urlencoded purchases are never
 > auto-retried; no idempotency guarantee. All public examples are synthetic.
 > Source: https://github.com/usnuz/fragment-donor-sdk.
 
@@ -161,7 +162,7 @@ Human contributor facts, not an automatically submitted claim:
 - API provider domain: `fragment.donor.uz`; title Fragment Donor API; version0.1.0.
 - Schema source: generated OpenAPI; documentation and clean SDK source as above.
 - Direct no-service-auth contract, four operations, synthetic examples; sensitive
-  wallet headers and backend retention described openly.
+  wallet headers and backend operator access described openly.
 - SDK source uses MIT. The owner explicitly authorized APIs.guru to distribute the
   submitted definition under CC0 1.0; the stable GitHub Pages schema URL was submitted.
 - Do not claim this is a decentralized wallet or an official Fragment API.
@@ -178,8 +179,8 @@ Draft description (copy **only after gateway review**):
 > reads. Direct API access is service-authless. A RapidAPI gateway route, if
 > enabled, has RapidAPI's separate platform key/subscription requirements;
 > those do not apply to the direct SDK base URL. Wallet operations use sensitive
-> credentials and the backend stores them. Passing seeds through a gateway
-> adds another intermediary; review credential forwarding, logs and retention
+> credentials and transmit them to the API operator. Passing seeds through a gateway
+> adds another intermediary; review credential forwarding and logging
 > before enabling those operations. No idempotency guarantee or automatic
 > purchase retry. No fee/plan value is claimed in this draft.
 
@@ -199,7 +200,8 @@ Description (copy):
 > Python, Node/TypeScript, PHP, .NET, Go, Rust and Ruby; mocked contract tests,
 > exact balance strings, 429/Retry-After handling and EN/RU/UZ documentation.
 > Not official TON/Telegram/Fragment software and not a decentralized wallet.
-> Backend stores submitted credentials; SDK redaction does not remove retention.
+> Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
+> the API operator. Use a dedicated, minimally funded wallet and server-side secret storage.
 > Purchases never automatically retry, and no idempotency guarantee exists.
 > Docs: https://usnuz.github.io/fragment-donor-sdk/en/.
 > Source: https://github.com/usnuz/fragment-donor-sdk.

@@ -10,7 +10,7 @@ commands below apply **only after an actual registry release**. Current state is
 Fragment Donor maintains seven idiomatic SDKs for the same four-operation HTTP
 contract. This is an independent project, not an official Telegram, Fragment or
 TON product. Choosing a language does not change the service's trust boundary:
-the inspected backend persists submitted purchase credentials.
+Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator.
 
 | Runtime | Package / version | Installation after publication | Example/source |
 | --- | --- | --- | --- |
@@ -55,7 +55,7 @@ in a repository is not proof of a passing compiler or package publication. No
 real Stars or Premium purchase is needed for those checks.
 
 Keep mnemonic/cookie/proxy/provider secrets server-side, evaluate operator access,
-and do not infer zero retention from SDK diagnostics redaction. The docs provide
+and remember that SDK diagnostics redaction does not restrict that access. The docs provide
 the same topics at separate English, Russian and Uzbek URLs without promising
 search engine rankings.
 

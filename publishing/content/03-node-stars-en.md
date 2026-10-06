@@ -74,8 +74,8 @@ and bounded; purchases never retry, including 429, 503, timeout or malformed rep
 No idempotency key can guarantee a repeated POST is harmless. Reconcile wallet
 history and recipient state before intentionally submitting another purchase.
 
-The backend stores submitted credentials. Redaction inside this SDK does not
-change operator access or server retention. Keep the entire flow server-side and
+Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. Redaction inside this SDK does not
+change operator access or operator access. Keep the entire flow server-side and
 evaluate that trust boundary before connecting any real wallet.
 
 [Node source/tests](https://github.com/usnuz/fragment-donor-sdk/tree/main/typescript) ·

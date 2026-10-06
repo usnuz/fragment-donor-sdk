@@ -20,8 +20,8 @@ hide that decision and accidentally convert a timeout into a second purchase.
 Fragment Donor exposes two reads and two purchase operations. Its direct API has
 no service account/API-key auth, but purchasing still needs sensitive Fragment
 Cookie and wallet Mnemonic. Optional Api-Key is TonConsole provider configuration.
-The backend stores submitted credentials; log redaction doesn't remove that
-trust boundary or make the service non-custodial.
+Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the
+API operator; log redaction does not restrict that access.
 
 Python/Node clients default to zero retries. The following opt-in configuration
 applies only to reads:

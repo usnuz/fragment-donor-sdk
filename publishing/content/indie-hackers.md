@@ -34,10 +34,10 @@ has same-topic alternates and a self-canonical; publishing a site doesn't
 guarantee search indexing or rankings. Crosspost canonicals should point to the
 actual original article, not all converge on the docs homepage.
 
-The trust limitation is part of the product, not a footnote: backend stores
-submitted credentials. No service account/key is required, but wallet operations
-need a mnemonic, and purchases also need a session cookie. SDK redaction doesn't
-make this non-custodial. The evaluation
+The trust limitation is part of the product, not a footnote: purchase requests
+transmit sensitive credentials to the API operator. No service account/key is
+required, but wallet operations need a mnemonic, and purchases also need a session
+cookie. SDK redaction does not restrict operator access. The evaluation
 path is mocked source tests, not asking visitors to fund a wallet or enter a seed.
 
 Source: https://github.com/usnuz/fragment-donor-sdk.

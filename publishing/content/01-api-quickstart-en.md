@@ -55,9 +55,8 @@ key or purchase-status endpoint resolves that ambiguity. HTTP 400 with
 `unconfirmed:true`/`tx_hash` can also follow payment dispatch: preserve the safe
 reference and reconcile, rather than treating it as ordinary validation rejection.
 
-The trust boundary is important: the inspected backend stores submitted
-purchase credentials in its database. SDK log redaction does not remove that
-retention. Evaluate operator access, use server-side secret storage and a
+The trust boundary is important: purchase requests transmit wallet mnemonic and
+Fragment session/cookie data to the API operator. Evaluate operator access, use server-side secret storage and a
 dedicated minimally funded wallet; never put seeds into frontend code or public
 collection variables.
 

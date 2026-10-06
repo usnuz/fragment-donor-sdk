@@ -32,8 +32,8 @@ Description:
 >
 > This is not an official Telegram, Fragment or TON product. Direct API service
 > auth is not required, but wallet operations need sensitive credentials; the
-> inspected backend stores submitted credentials. SDK redaction does not remove
-> that retention. Version 0.1.0 is available as a verified GitHub release; consult publication
+> Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
+> the API operator. Version 0.1.0 is available as a verified GitHub release; consult publication
 > status before using any registry install command. No real purchase is shown.
 
 ## Maker comment — copy after identity review
@@ -46,8 +46,8 @@ Description:
 >
 > The source includes mocked failure cases and credential-redaction tests across
 > seven runtimes. Documentation is available in English, Russian and Uzbek.
-> Please inspect the trust boundary before using a real wallet: the backend
-> records submitted credentials, so this is not a non-custodial claim. Feedback
+> Please inspect the trust boundary before using a real wallet: purchase requests
+> transmit sensitive credentials to the API operator. Feedback
 > on transport interfaces, unknown-outcome UX and the docs is welcome.
 
 Only use first-person maker text if the publishing account is genuinely the
@@ -61,7 +61,7 @@ maintainer. Do not ask users to upvote or privately message voters.
 | [02-wire-contract.png](../media/02-wire-contract.png) | Form-urlencoded purchase and placeholder-only headers | No real wallet/session/provider value |
 | [03-retry-errors.png](../media/03-retry-errors.png) | Synthetic 429/503, bounded read waits and no purchase replay | Not measured production telemetry |
 | [04-unknown-purchase.png](../media/04-unknown-purchase.png) | HTTP 400 `unconfirmed:true` and synthetic reconciliation fields | Not validation rejection or transaction confirmation |
-| [05-retention-evidence.png](../media/05-retention-evidence.png) | Backend credential-retention boundary | No zero-retention, official-affiliation or security-certification claim |
+| [05-retention-evidence.png](../media/05-retention-evidence.png) | API operator credential boundary | Dedicated wallet and server-side secret-storage guidance |
 | [docs-uz-baseline.jpg](../media/docs-uz-baseline.jpg) | Existing public Uzbek-docs browser screenshot, 1265×712 | Earlier baseline, predates new demo/footer; not newly captured current UI or payment proof; public image/hash verified |
 
 The five PNGs are 1920×1080; editable SVG companions and SHA-256/size records are
@@ -101,8 +101,8 @@ counts. This is a mock-only product preview, not completed platform launch.
 
 RU: Семь независимых серверных SDK для интеграции Telegram Stars/Premium: типы,
 429/Retry-After, точные строки баланса и запрет автоматических повторов платежа.
-Backend хранит переданные credentials; проект не официальный и не non-custodial.
+Запросы на покупку передают чувствительные credentials оператору API; проект не является официальным.
 
 UZ: Telegram Stars/Premium uchun yetti mustaqil server SDK: typed xatolar,
 429/Retry-After, aniq balans stringlari va avtomatik takrorlanmaydigan xarid.
-Backend credentiallarni saqlaydi; loyiha rasmiy yoki non-custodial servis emas.
+Xarid so'rovlari sensitive credentiallarni API operatoriga uzatadi; loyiha rasmiy servis emas.

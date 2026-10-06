@@ -130,8 +130,9 @@ headers and must not log them. The `headers()` method is for transport use only;
 explicitly printing its return value exposes secrets.
 Redirects are always `manual`; HTTPS is required except local test servers.
 
-The inspected backend stores submitted wallet credentials in its database.
-SDK redaction does not imply zero retention or non-custodial service behavior.
+Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
+the API operator. keep secrets server-side,
+and use a dedicated, minimally funded wallet.
 
 ## Development and release
 

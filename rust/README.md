@@ -90,9 +90,10 @@ Typed responses preserve unknown fields in `extra`. Balances stay strings;
 serde_json's arbitrary_precision retains unknown JSON numbers as well.
 Client/Config/Credentials/TransportRequest debug is redacted. Do not log
 custom transport internals. A custom `Transport` must not retry requests,
-redirect them or expose credentials. Use dedicated minimally funded wallets
-and server-side secret storage. The inspected backend stores submitted
-credentials; do not claim non-custodial or zero-retention behavior.
+redirect them or expose credentials. Purchase requests transmit the wallet
+mnemonic and Fragment session/cookie to the API operator. SDK redaction does not
+use server-side secret storage and a dedicated, minimally
+funded wallet.
 
 ## Development and release
 

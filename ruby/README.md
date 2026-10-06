@@ -86,9 +86,10 @@ Injected transports must not retry or log credential-bearing requests.
 Typed `UserInfo`, `Purchase`, `WalletBalance` preserve unknown fields in `extra`;
 `ton`/`usdt_ton` are strings. Debug/JSON representations of Client/Credentials
 are redacted and transport exception causes are discarded. Do not dump
-arbitrary request or response internals. Use dedicated, minimally funded
-wallets and server-side secret storage. The inspected backend stores submitted
-credentials; do not claim zero retention.
+arbitrary request or response internals. Purchase requests transmit the wallet
+mnemonic and Fragment session/cookie to the API operator. SDK redaction does not
+use server-side secret storage and a dedicated, minimally
+funded wallet.
 
 ## Tests/build/release
 

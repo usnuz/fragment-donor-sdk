@@ -24,8 +24,8 @@ Copy:
 >
 > I would value feedback on the “outcome unknown” state and the mocked request-
 > count tests, rather than on a sales page. A normal username lookup is authless;
-> wallet calls need credentials. Important limitation: the backend stores
-> submitted credentials, so the SDK is not a non-custodial claim. No real payment
+> wallet calls need credentials. Important limitation: purchase requests transmit
+> those credentials to the API operator. No real payment
 > is used in the demo. Source: https://github.com/usnuz/fragment-donor-sdk
 > Docs: https://usnuz.github.io/fragment-donor-sdk/en/
 
@@ -45,8 +45,8 @@ Copy only if current rules allow it:
 > We validate recipient/amount, serialize local dispatch, then leave timeout
 > outcomes for reconciliation instead of letting the job queue retry a purchase.
 >
-> No service key is needed, but purchase Cookie/Mnemonic are sensitive and the
-> backend stores them. Keep them out of bot messages/frontend/config logs. The
+> No service key is needed, but purchase Cookie/Mnemonic are sensitive and are
+> transmitted to the API operator. Keep them out of bot messages/frontend/config logs. The
 > source includes synthetic timeout/429 tests and no real transfer demo:
 > https://github.com/usnuz/fragment-donor-sdk. Contract/docs:
 > https://usnuz.github.io/fragment-donor-sdk/en/. This does not create remote
@@ -63,8 +63,8 @@ Copy:
 
 > I maintain an independent Fragment Donor SDK project, not an official TON,
 > Telegram or Fragment product. AI assisted this draft. The important limitation
-> is explicit: the backend records submitted purchase credentials. A redacted
-> client repr or disabled redirect doesn't make a seed-bearing API non-custodial.
+> is explicit: Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. A redacted
+> client repr or disabled redirect does not prevent operator access to a transmitted seed.
 >
 > The source models TON/USDT balances as decimal strings and tests that a timeout
 > results in one purchase POST, not a hidden retry. These are synthetic tests,
@@ -96,8 +96,8 @@ Copy:
 > secret echoes and exactly one POST after timeout. It does not promise remote
 > idempotency or compete with an official SDK by claiming endorsement.
 >
-> **Disclosure:** I maintain the project; this draft is AI-assisted. Backend
-> stores submitted credentials; SDK redaction is not zero retention. No real
+> **Disclosure:** I maintain the project; this draft is AI-assisted. Purchase
+> requests transmit sensitive credentials to the API operator. No real
 > purchase is used in tests. Source:
 > https://github.com/usnuz/fragment-donor-sdk/tree/main/python. Docs:
 > https://usnuz.github.io/fragment-donor-sdk/en/sdk/python/.
@@ -122,7 +122,7 @@ Copy:
 >
 > This is server-only: browser Cookie restrictions and seed exposure rule out a
 > frontend purchase integration. It is independent, not an official Telegram/
-> Fragment/TON product; backend stores submitted credentials. Unknown JSON fields
+> Fragment/TON product; Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. Unknown JSON fields
 > are retained and balances stay strings. Source/tests:
 > https://github.com/usnuz/fragment-donor-sdk/tree/main/typescript. Docs:
 > https://usnuz.github.io/fragment-donor-sdk/en/sdk/typescript/.
@@ -151,9 +151,9 @@ Copy:
 > Source has deterministic request-count tests:
 > https://github.com/usnuz/fragment-donor-sdk/tree/main/python. API/error docs:
 > https://usnuz.github.io/fragment-donor-sdk/en/guides/errors/. No actual Django
-> purchase was run here. Backend stores submitted credentials, so use a server
+> purchase was run here. Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator, so use a server
 > secret manager and dedicated wallet, not model fields containing real seeds.
-> Project is not official Telegram/Fragment/TON and not a zero-retention service.
+> Project is not official Telegram/Fragment/TON software.
 
 This is a design note, not a claim that a full Django payment application has
 been implemented/audited or that an outbox alone guarantees exactly once.
@@ -164,7 +164,7 @@ Status: **NOT_ELIGIBLE** for current generated text.
 Rules: https://www.reddit.com/r/SaaS/about/rules.json explicitly prohibit AI text.
 No generated post/title/comment supplied. Human-only facts to independently
 verify: seven runtimes, source licensing, no auth versus wallet credentials,
-backend retention, ambiguity after timeout, no traction/price/uptime claims.
+operator access, ambiguity after timeout, no traction/price/uptime claims.
 Future human author must comply with affiliation and promotional frequency/link
 limits; no lead collection, private solicitation or fabricated users.
 
@@ -177,4 +177,4 @@ No generated post/title/comment supplied. A future human may independently
 discuss a real technical problem only if current rules and context permit;
 not a disguised product launch. Fact checklist: server-only Cookie/mnemonic,
 redirect/referrer boundaries, no localStorage secrets, mocked counter tests and
-honest backend-retention disclosure.
+honest credential-transmission disclosure.

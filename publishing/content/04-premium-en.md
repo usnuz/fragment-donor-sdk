@@ -49,9 +49,9 @@ be displayed or scheduled for read-only work; SDK purchase methods never auto-
 retry them. A delivery claim in an article should be supported by an actual
 deliberate authorized payment, and none is made here.
 
-The inspected backend persists submitted credentials. Keep secrets on a trusted
+Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. Keep secrets on a trusted
 server, use a dedicated minimally funded wallet and consider operator access.
-Redirect refusal and log redaction are client controls, not zero-retention claims.
+Redirect refusal and log redaction are client controls; they do not restrict operator access.
 
 [Premium endpoint](https://usnuz.github.io/fragment-donor-sdk/en/reference/buy-premium/) ·
 [SDK source](https://github.com/usnuz/fragment-donor-sdk) ·

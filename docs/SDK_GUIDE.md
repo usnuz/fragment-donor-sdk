@@ -106,10 +106,10 @@ request examples. SDK-owned transports disable redirects, preventing credential
 forwarding to a redirected host. Custom transports must enforce this themselves
 and must not retry purchases or log sensitive headers.
 
-**The inspected backend persists submitted purchase credentials in its database.**
-SDK redaction cannot remove server-side retention or restrict operator access.
-Do not describe the service as non-custodial, zero-retention, or risk-free. Use a
-dedicated minimally funded wallet and evaluate the operator trust boundary.
+Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
+the API operator. SDK redaction cannot restrict that access or establish what
+the operator retains. ,
+use server-side secret storage, and use a dedicated, minimally funded wallet.
 
 All tests use synthetic fixtures and mocked/local transports. They prove SDK
 behavior, not a successful blockchain purchase or production wallet safety.

@@ -31,13 +31,13 @@ Use these exact chapters only for this 50-second file:
 00:10 Form contract and wallet credential boundary
 00:20 Retry hints are not purchase replay permission
 00:30 HTTP 400 unconfirmed — reconcile unknown outcome
-00:40 Backend retention and actual evidence
+00:40 Credential transmission and actual evidence
 ```
 
 Short-video title: **Fragment Donor SDK contract: a 50-second synthetic walkthrough**.
 Description addition: “Silent rendered diagrams, English captions; not a live
 transaction or screencast. No API request, wallet-secret input or funds spent.”
-Keep source/docs/retention/independent-project disclosures from the metadata below.
+Keep source/docs/credential-transmission/independent-project disclosures from the metadata below.
 
 ## Metadata — EN
 
@@ -52,8 +52,8 @@ Description:
 >
 > Independent project, not an official Telegram, Fragment or TON product.
 > No service API key is required, but wallet operations need sensitive credentials.
-> The inspected backend stores submitted credentials; SDK log redaction does not
-> prevent server retention. Keep secrets on a trusted server, never in browser
+> Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator; SDK log redaction does not
+> prevent operator access. Keep secrets on a trusted server, never in browser
 > code or localStorage. Script prepared with AI assistance; the uploader must
 > review actual narration, visuals and synthetic-media disclosures.
 >
@@ -72,7 +72,7 @@ adjust only after actually recording/editing the longer tutorial):
 03:10 Server-only Node.js and decimal balance strings
 04:10 429 Retry-After and bounded read retries
 05:20 One purchase POST after timeout: mock request counter
-06:30 Credential retention and safe server configuration
+06:30 Credential transmission and safe server configuration
 07:30 Source, multilingual docs and release status
 ```
 
@@ -108,8 +108,8 @@ Avoid tags implying official affiliation, guaranteed earnings or successful gift
    with unconfirmed:true and a tx_hash is also unknown outcome, not validation
    rejection or proof that no funds were spent.”
 8. **Security guide.** “Client redaction and redirect refusal reduce accidental
-   leakage. They cannot change server retention: the inspected backend records
-   submitted credentials. Use a dedicated minimally funded wallet and evaluate
+   leakage. Purchase requests transmit sensitive credentials to the API operator.
+   Use a dedicated minimally funded wallet and evaluate
    operator access. Do not put seeds in public Postman variables or screenshots.”
 9. **Closing, status JSON.** “Seven source packages and three documentation
    languages are available in the project. A local build is not a registry
@@ -136,11 +136,11 @@ Avoid tags implying official affiliation, guaranteed earnings or successful gift
 
 RU title: **Telegram Stars API: Python/Node SDK без реальной покупки**.
 Opening: “Независимый проект, не официальный продукт Telegram/Fragment/TON.
-Все платежи на экране — mocks. Backend хранит переданные credentials; после
+Все платежи на экране — mocks. Запросы на покупку передают чувствительные credentials оператору API; после
 таймаута покупку нельзя автоматически повторять.” Use the Russian docs link.
 
 UZ title: **Telegram Stars API: Python/Node SDK, haqiqiy xaridsiz misol**.
 Opening: “Mustaqil loyiha, Telegram/Fragment/TON rasmiy mahsuloti emas.
-Ekrandagi to‘lovlar mock. Backend credentiallarni saqlaydi; timeoutdan keyin
+Ekrandagi to‘lovlar mock. Xarid so'rovlari sensitive credentiallarni API operatoriga uzatadi; timeoutdan keyin
 xarid avtomatik takrorlanmaydi.” Use the Uzbek docs link. Translate narration
 accurately after technical review; do not claim these language tracks are recorded.

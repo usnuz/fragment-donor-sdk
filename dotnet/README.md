@@ -102,10 +102,9 @@ and future fields. A false flag is not an exactly-once or no-charge guarantee.
 Caller cancellation after dispatch may also require reconciliation; cancellation
 still uses the standard `OperationCanceledException` contract.
 
-The inspected backend stores submitted wallet/session/provider/proxy credentials
-in its database. SDK redaction does not prevent backend retention. Use a dedicated
-minimally funded wallet and secret manager; do not claim non-custodial or
-zero-retention behavior or expose seeds in frontend code.
+Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
+the API operator. use a dedicated, minimally
+funded wallet and secret manager, and do not expose seeds in frontend code.
 
 ## Build, test and release
 

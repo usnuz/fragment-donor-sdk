@@ -17,7 +17,7 @@ turn this generated integration draft into an eligible substantial human article
 
 Human research directions: inspect request-count tests after timeout; compare a
 local intent with remote idempotency; measure no actual production purchase; show
-form versus JSON and exact balances; evaluate backend credential retention.
+form versus JSON and exact balances; evaluate the API operator trust boundary.
 If a human writes an original Russian engineering article, use source evidence
 and own reproducible experiments, disclose genuine affiliation, avoid a launch ad
 and meet account/editorial requirements. Do not submit any generated draft as a
@@ -58,7 +58,7 @@ native tests and publication state. Four paths; direct API no service auth;
 wallet credentials still required; optional provider key is not login. Purchases
 never auto-retry; HTTP 400 `unconfirmed:true` is unknown outcome, not ordinary
 validation rejection; no backend idempotency or status endpoint. All demonstrations
-mocked, no real funds spent. Backend stores submitted purchase credentials, so
-redacted SDK errors are not a non-custodial/zero-retention guarantee.
+mocked, no real funds spent. Purchase requests transmit wallet mnemonic and Fragment
+session/cookie data to the API operator; SDK error redaction does not restrict that access.
 EN credential facts: https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/.
 EN error semantics: https://usnuz.github.io/fragment-donor-sdk/en/guides/errors/.

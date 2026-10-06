@@ -25,8 +25,8 @@ vote solicitation, private outreach or invented user traction.
   a larger server hint is surfaced, not shortened.
 - Decimal balance strings, retained unknown fields, sanitized diagnostics and
   disabled redirect forwarding. Custom transports must preserve safeguards.
-- Inspected backend **stores submitted purchase credentials**. Client redaction
-  is not non-custodial or zero-retention service behavior.
+- Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
+  the API operator. Recommend a dedicated, minimally funded wallet and server-side secret storage.
 - Separate EN/RU/UZ static docs; no indexing/ranking guarantee.
 - All payment demonstrations use synthetic mocks. No actual payment result,
   customer number, download count, uptime or independent security certification.

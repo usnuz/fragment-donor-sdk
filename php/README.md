@@ -98,10 +98,9 @@ and credential logging.
 A false flag is not an exactly-once or no-charge guarantee; reconcile any ambiguous
 response before intentionally purchasing again.
 
-The backend currently stores submitted mnemonic/cookie/provider/proxy credentials
-in its database. SDK redaction cannot change that. Use a dedicated minimally
-funded wallet and secret manager; never put real seeds in source or browser code.
-Do not claim non-custodial or zero-retention behavior.
+Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
+the API operator. use a dedicated, minimally
+funded wallet and secret manager, and never put real seeds in source or browser code.
 
 ## Tests and release
 
