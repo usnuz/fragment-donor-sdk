@@ -5,7 +5,7 @@ import {languages, ui, pages} from './content.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const out = join(root, 'site');
-const base = 'https://usnuz.github.io/fragment-donor-sdk/';
+const base = (process.env.DOCS_BASE_URL || 'https://usnuz.github.io/fragment-donor-sdk/').replace(/\/?$/, '/');
 const repo = 'https://github.com/usnuz/fragment-donor-sdk';
 // Reuse the tested package examples rather than maintaining divergent snippets.
 for(const [id,file] of Object.entries({python:'python/examples/all_endpoints.py',typescript:'typescript/examples/all-endpoints.mjs',php:'php/examples/quickstart.php',dotnet:'dotnet/examples/QuickStart/Program.cs'})) {

@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const ignored=new Set(['.git','.tools','.venv','venv','__pycache__','node_modules','dist','build','site','target','bin','obj','vendor','.smoke','.cache','.mypy_cache','.ruff_cache','.pytest_cache','tmp-gems','screenshots']);
 const allowedRoots=new Set(['.github','contract','docs','publishing','scripts','demo','python','typescript','php','dotnet','go','rust','ruby']);
-const allowedTop=new Set(['README.md','LICENSE','CHANGELOG.md','CONTRIBUTING.md','.gitignore','composer.json','global.json']);
+const allowedTop=new Set(['README.md','LICENSE','CHANGELOG.md','CONTRIBUTING.md','.gitignore','.readthedocs.yaml','composer.json','global.json']);
 const rules=[['private key',/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/],['GitHub token',/\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{60,})\b/],['Telegram bot token',/\b\d{8,12}:[A-Za-z0-9_-]{35}\b/],['URL credential',/https?:\/\/(?!SYNTHETIC)[^\s/@:]+:[^\s/@]+@/],['AWS access key',/\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/]];
 const entries=[];
 const mediaManifest=JSON.parse(await readFile(join(root,'publishing/media/assets.json'),'utf8'));

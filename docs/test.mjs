@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
 import {languages,pages} from './content.mjs';
 const out=resolve(dirname(fileURLToPath(import.meta.url)),'../site');
-const base='https://usnuz.github.io/fragment-donor-sdk/';
+const base=(process.env.DOCS_BASE_URL||'https://usnuz.github.io/fragment-donor-sdk/').replace(/\/?$/,'/');
 const sitemap=await readFile(join(out,'sitemap.xml'),'utf8');
 let count=0;
 for(const lang of languages) for(const page of pages){
