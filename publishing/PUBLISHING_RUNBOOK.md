@@ -17,7 +17,8 @@ clean-restore verified, and its new-version-only Trusted Publishing policy is
 active. crates.io 0.1.0 is public and its Trusted Publisher is configured; the
 bootstrap token was revoked. RubyGems 0.1.0 is public through GitHub Trusted
 Publishing. Postman public documentation is published with the reviewed
-placeholder-only environment; no API request or purchase was run. Do not treat
+placeholder-only environment; no API request or purchase was run. The GitLab
+secondary mirror is public at the exact latest source commit and both tags. Do not treat
 a prepared workflow or package as a completed registry release. Other channels
 remain NOT_RUN until their own access, eligibility and actual submission checks.
 See [manual actions](manual-actions.md) and the authoritative

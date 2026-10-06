@@ -51,7 +51,8 @@ access/policy/readiness, not an owner decision to defer every other platform.
 RubyGems ownership is verified and 0.1.0 was published through GitHub Trusted
 Publishing. Postman workspace ownership is verified and its public four-operation
 documentation was published with the placeholder-only environment; no request
-or purchase was run. GitHub v0.1.0, the public Go
+or purchase was run. The GitLab secondary mirror is public with the exact latest
+source commit and both tags; GitHub remains authoritative. GitHub v0.1.0, the public Go
 module/pkg.go.dev, PyPI 0.1.0, npm 0.1.0, Packagist v0.1.0, NuGet 0.1.0,
 crates.io 0.1.0 and RubyGems 0.1.0 are verified published.
 
@@ -85,7 +86,7 @@ optional launch metadata or extract stored credentials.
    cannot create origin-root verification files or grant `github.io` DNS rights.
    [Rights/sitemap steps](PUBLISHING_RUNBOOK.md#search-submission-and-verification).
    No Google/Bing/Yandex indexing or ranking guarantee is made.
-4. **Mirrors/catalogs:** authenticate only the eligible GitLab, ReadTheDocs,
+4. **Mirrors/catalogs:** GitLab is complete as a public one-time import; authenticate only the eligible ReadTheDocs,
    SourceForge, Swagger Studio, TON App or RapidAPI account. Catalog
    acceptance and publication are distinct. Decline paid plans until explicitly
    authorized. Preserve a single primary canonical documentation site.

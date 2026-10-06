@@ -220,7 +220,7 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**10 PUBLISHED, 0 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
+**11 PUBLISHED, 0 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 27 NOT_RUN**. READY materials do
 not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io,
 RubyGems and Go module/index are verified.
 
@@ -228,7 +228,7 @@ RubyGems and Go module/index are verified.
 | --- | --- | --- |
 | 1 | GitHub | PUBLISHED |
 | 2 | GitHub Pages | PUBLISHED |
-| 3 | GitLab | NOT_RUN |
+| 3 | GitLab | PUBLISHED |
 | 4 | ReadTheDocs | NOT_RUN |
 | 5 | SourceForge | NOT_RUN |
 | 6 | PyPI | PUBLISHED |
@@ -277,7 +277,8 @@ RubyGems and Go module/index are verified.
 PyPI, npm, Packagist, NuGet, crates.io and RubyGems are **PUBLISHED** and
 public-install or download verified. Postman is **PUBLISHED** with a public
 four-operation collection, masked secrets and a placeholder-only environment;
-no API request or purchase was executed. Use normal login/2FA for remaining
+no API request or purchase was executed. The [GitLab mirror](https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror)
+is public at the exact latest source commit with both tags. Use normal login/2FA for remaining
 [manual actions](manual-actions.md); never put secrets in chat.
 
 NOT_ELIGIBLE concerns the current generated/free promotional format. HN, English
