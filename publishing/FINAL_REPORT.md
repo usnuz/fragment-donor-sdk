@@ -220,7 +220,7 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**14 PUBLISHED, 1 SUBMITTED, 0 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 23 NOT_RUN**. READY materials do
+**15 PUBLISHED, 1 SUBMITTED, 0 BLOCKED_ACCESS, 0 READY, 8 NOT_ELIGIBLE, 21 NOT_RUN**. READY materials do
 not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io,
 RubyGems and Go module/index are verified.
 
@@ -243,8 +243,8 @@ RubyGems and Go module/index are verified.
 | 15 | APIs.guru | SUBMITTED ([issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556)) |
 | 16 | RapidAPI | NOT_RUN |
 | 17 | TON App | NOT_RUN |
-| 18 | DEV.to | NOT_RUN |
-| 19 | Hashnode | NOT_RUN |
+| 18 | DEV.to | NOT_ELIGIBLE |
+| 19 | Hashnode | PUBLISHED ([public article](https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries)) |
 | 20 | Medium | NOT_RUN |
 | 21 | LinkedIn Articles | NOT_RUN |
 | 22 | YouTube | NOT_RUN |
@@ -283,6 +283,10 @@ is also public with a successful custom build and HTTP-200 EN/RU/UZ paths. The [
 publishes a verified source/download mirror with MIT metadata and all nine v0.1.0 assets. [Swagger Studio](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0)
 publishes the public credential-free OpenAPI 0.1.0 schema and returned HTTP 200. Use normal login/2FA for remaining
 [manual actions](manual-actions.md); never put secrets in chat.
+
+[Hashnode](https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries)
+now publishes the owner-reviewed AI-assisted security article with an explicit disclosure; its public URL returned
+HTTP 200. DEV.to was not submitted because the current generated promotional article is not eligible under its AI policy.
 
 APIs.guru review is pending in [issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556).
 The owner authorized CC0 distribution for that directory submission. It remains **SUBMITTED**, not PUBLISHED,

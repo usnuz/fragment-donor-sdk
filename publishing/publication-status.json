@@ -392,26 +392,29 @@
     {
       "id": "dev-to",
       "name": "DEV.to",
-      "status": "NOT_RUN",
+      "status": "NOT_ELIGIBLE",
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
       "observed_at": null,
       "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
-      "preparation_status": "READY"
+      "notes": "Current DEV policy requires AI disclosure and excludes AI-assisted promotional content. This generated project article was not submitted; do not mislabel or lightly rewrite it to bypass the rule.",
+      "preparation_status": "NOT_ELIGIBLE"
     },
     {
       "id": "hashnode",
       "name": "Hashnode",
-      "status": "NOT_RUN",
-      "url": null,
-      "planned_url": null,
+      "status": "PUBLISHED",
+      "url": "https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries",
+      "planned_url": "https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries",
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-06T12:56:09Z",
+      "evidence": [
+        "Hashnode editor reported Article published successfully and the article remained marked Published.",
+        "Public article returned HTTP 200 after publication."
+      ],
+      "notes": "Owner reviewed and approved the AI-assisted article before publication. The article includes an explicit AI disclosure, uses a free Hashnode subdomain, and has no canonical crosspost URL or paid plan.",
+      "preparation_status": "PUBLISHED"
     },
     {
       "id": "medium",
