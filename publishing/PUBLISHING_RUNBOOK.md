@@ -12,7 +12,8 @@ review, or paid-plan approval. PyPI 0.1.0 is published through its verified
 trusted publisher; owner-confirmed run 37404248538 and a clean public-index
 consumer were verified. npm 0.1.0 was bootstrapped from the reviewed tarball,
 public-install verified, and its GitHub Actions Trusted Publisher is configured.
-Access to Packagist, NuGet, crates.io, RubyGems and Postman remains unverified. Do not treat a
+Packagist v0.1.0 is public and clean-install verified. Access to NuGet, crates.io,
+RubyGems and Postman remains unverified. Do not treat a
 prepared workflow or package as a completed registry release. Other channels
 remain NOT_RUN until their own access, eligibility and actual submission checks.
 See [manual actions](manual-actions.md) and the authoritative
@@ -127,7 +128,7 @@ in this repository, an issue, a workflow input, or chat.
 | `dotnet` | NuGet `FragmentDonor.Sdk` | `nuget` | Add a trusted-publishing policy permitting this package/new version; set environment variable `NUGET_USER` to the actual NuGet profile name, not an email. |
 | `rust` | crates.io `fragment-donor-sdk` | `crates-io` | Inspect the current publisher UI. If no pending/new-crate publisher is supported, the owner must perform the first publication with securely configured Cargo credentials, then add the GitHub publisher for later versions. Do not republish the same immutable version. |
 | `ruby` | RubyGems `fragment-donor-sdk` | `rubygems` | Configure an existing gem publisher or a pending trusted publisher naming this new gem. |
-| `php` | Packagist `fragment-donor/sdk` | `packagist` | Initially submit `https://github.com/usnuz/fragment-donor-sdk` with the root Composer manifest. Set environment variable `PACKAGIST_USER` and protected secret `PACKAGIST_TOKEN`; this workflow only synchronizes an **existing** package. No native Packagist OIDC is claimed. |
+| `php` | Packagist `fragment-donor/sdk` | `packagist` | PUBLISHED at v0.1.0 from the public repository and exact release commit; clean Composer install/mocked smoke passed. Automatic GitHub updates are not configured. A future workflow sync still requires `PACKAGIST_USER` and protected `PACKAGIST_TOKEN`; no native Packagist OIDC is claimed. |
 | `go` | `github.com/usnuz/fragment-donor-sdk/go` | `go-module` | Verify release-created `go/v0.1.0`; this job fetches the public module. pkg.go.dev indexing is a separate observation. |
 
 npm trusted publishing requires at least **Node.js 22.14.0 and npm 11.5.1**;
@@ -147,7 +148,7 @@ different from the SDK's Node.js 20 runtime compatibility. Official setup:
 | --- | --- | --- |
 | PyPI | `fragment-donor-sdk` | Configure GitHub trusted publisher or secure scoped upload credentials. Upload only verified wheel/sdist, then inspect the exact version page and install it in a clean environment. |
 | npm | `fragment-donor-sdk` | 0.1.0 is published and verified. For later versions use the configured Trusted Publisher, inspect the exact registry metadata, and perform a clean install. Never overwrite immutable 0.1.0. |
-| Packagist | `fragment-donor/sdk` | Root composer.json uses php/src/; submit the public repo, publish v0.1.0 tag, enable synchronization. A PHP subdirectory alone is not a valid root package. Verify Composer installs actual classes from the release. |
+| Packagist | `fragment-donor/sdk` | v0.1.0 is published from the root manifest and verified by a clean public Composer install. Configure an approved update mechanism before later versions; do not resubmit the package. |
 | NuGet | `FragmentDonor.Sdk` | Push the verified nupkg through a scoped account credential, verify 0.1.0 registration and restore/use from nuget.org. |
 | Go / pkg.go.dev | `github.com/usnuz/fragment-donor-sdk/go` | Publish the **go/v0.1.0** tag pointing to tested source. Module resides in go/. Fetch through proxy.golang.org and verify docs on pkg.go.dev. A root v0.1.0 tag is not a Go submodule release. |
 | crates.io | `fragment-donor-sdk` | After cargo test/package verification, publish from rust/ using the authorized publisher. Verify version, ownership, metadata, and clean cargo build. |

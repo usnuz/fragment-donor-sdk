@@ -25,7 +25,7 @@ returned HTTP 200 at **2026-10-05 17:20:07 UTC**. All nine release signatures
 were checked in the actual release job before publication; independently
 downloaded files then passed integrity, metadata and archive-content checks.
 
-The other **four package registries**, external Postman listing, social/community
+The other **three package registries**, external Postman listing, social/community
 posts, Product Hunt and YouTube publication are **not verified/published**.
 No backend deployment or real Stars/Premium purchase was performed.
 Later evidence/media-only main-branch changes do not move the released tags.
@@ -58,6 +58,15 @@ smoke passed. The package now trusts GitHub Actions for
 authenticated bootstrap upload, it has registry signing but no GitHub OIDC
 provenance; later versions should use the trusted publisher. Immutable 0.1.0
 must not be published again.
+
+[Packagist v0.1.0](https://packagist.org/packages/fragment-donor/sdk#v0.1.0)
+was submitted from the public repository by GitHub-authenticated owner `usnuz`.
+Packagist resolved the root Composer manifest to `fragment-donor/sdk` and indexed
+the exact release commit `9e8a9f8577936a37ed750f55f6604e475a545ad9`.
+Its public metadata reports PHP >=8.2, required cURL/JSON extensions, MIT and the
+expected source/docs/issues links. A fresh public Composer install selected
+v0.1.0 and the installed four-operation, uncertainty, decimal and credential-
+redaction mocked smoke passed. Automatic GitHub updates are not configured.
 
 The later main-branch [CI run 37366652572](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37366652572)
 also ended after 15 minutes during the same incident. Eight jobs produced normal
@@ -210,8 +219,8 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**5 PUBLISHED, 5 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
-not mean publication. GitHub/Pages, PyPI, npm and Go module/index are verified.
+**6 PUBLISHED, 4 BLOCKED_ACCESS, 0 READY, 7 NOT_ELIGIBLE, 28 NOT_RUN**. READY materials do
+not mean publication. GitHub/Pages, PyPI, npm, Packagist and Go module/index are verified.
 
 | # | Platform | Actual state |
 | --- | --- | --- |
@@ -222,7 +231,7 @@ not mean publication. GitHub/Pages, PyPI, npm and Go module/index are verified.
 | 5 | SourceForge | NOT_RUN |
 | 6 | PyPI | PUBLISHED |
 | 7 | npm | PUBLISHED |
-| 8 | Packagist | BLOCKED_ACCESS |
+| 8 | Packagist | PUBLISHED |
 | 9 | NuGet | BLOCKED_ACCESS |
 | 10 | Go/pkg.go.dev | PUBLISHED |
 | 11 | crates.io | BLOCKED_ACCESS |
@@ -263,7 +272,7 @@ not mean publication. GitHub/Pages, PyPI, npm and Go module/index are verified.
 
 ## Remaining work and non-negotiable boundaries
 
-PyPI and npm are **PUBLISHED** and public-install verified. Packagist, NuGet,
+PyPI, npm and Packagist are **PUBLISHED** and public-install verified. NuGet,
 crates.io, RubyGems and Postman remain
 **BLOCKED_ACCESS** pending their own login/ownership checks. Use normal login/2FA
 and [manual actions](manual-actions.md); never put secrets in chat.

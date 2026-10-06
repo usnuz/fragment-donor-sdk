@@ -18,6 +18,12 @@ now configured for `usnuz/fragment-donor-sdk`, `registry-publish.yml`, environme
 direct authenticated upload, so it has registry signing but not GitHub OIDC
 provenance. Do not republish immutable 0.1.0; use OIDC for later versions.
 
+Packagist account `usnuz` was created through the authorized GitHub login and
+the public repository was submitted as `fragment-donor/sdk`. Packagist crawled
+v0.1.0 at exact release commit `9e8a9f8577936a37ed750f55f6604e475a545ad9`;
+public metadata, a clean Composer install and installed mocked smoke passed. The
+package currently reports that automatic GitHub updates are not configured.
+
 First access batch: [PyPI](https://pypi.org/), [npm](https://www.npmjs.com/),
 [Packagist](https://packagist.org/), [NuGet](https://www.nuget.org/),
 [crates.io](https://crates.io/), [RubyGems](https://rubygems.org/),
@@ -29,9 +35,9 @@ scoped GitHub publishing secret/trusted publisher yourself.
 
 The owner now authorizes all eligible publication. The remaining limitation is
 access/policy/readiness, not an owner decision to defer every other platform.
-Login/ownership on Packagist, NuGet, crates.io, RubyGems and Postman is still
-unverified. No publication on those five services is claimed. GitHub v0.1.0,
-the public Go module/pkg.go.dev, PyPI 0.1.0 and npm 0.1.0 are verified published.
+Login/ownership on NuGet, crates.io, RubyGems and Postman is still unverified.
+No publication on those four services is claimed. GitHub v0.1.0, the public Go
+module/pkg.go.dev, PyPI 0.1.0, npm 0.1.0 and Packagist v0.1.0 are verified published.
 
 GitHub topics remain unset because the optional release action received HTTP403.
 Using the genuine owner's repository UI, copy only the reviewed topic names from
