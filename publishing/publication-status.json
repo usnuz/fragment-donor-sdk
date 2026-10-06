@@ -438,9 +438,11 @@
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "observed_at": "2026-10-06T16:16:00Z",
+      "evidence": [
+        "LinkedIn authentication reached an identity-verification flow requesting passport information; the owner instructed this channel to be skipped."
+      ],
+      "notes": "Publication was not attempted after the identity-verification gate. No passport or other identity document was entered or uploaded.",
       "preparation_status": "READY"
     },
     {
@@ -450,9 +452,11 @@
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "observed_at": "2026-10-06T16:17:00Z",
+      "evidence": [
+        "The authenticated YouTube Studio channel was inspected, but the owner explicitly instructed that YouTube be skipped."
+      ],
+      "notes": "No video was uploaded and no channel setting or publication was changed. The verified local synthetic video pack remains READY only.",
       "preparation_status": "READY"
     },
     {
@@ -462,9 +466,11 @@
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "observed_at": "2026-10-06T16:20:00Z",
+      "evidence": [
+        "The authenticated account shohzodbek opened /new-post and Indie Hackers displayed 'You can't create posts yet.'"
+      ],
+      "notes": "The signed-in account is currently gated from creating posts. No post draft was entered or submitted.",
       "preparation_status": "READY"
     },
     {
@@ -474,9 +480,12 @@
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
+      "observed_at": "2026-10-06T16:29:00Z",
+      "evidence": [
+        "Product Hunt displayed https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks with the explicit banner 'This product is a draft and is not scheduled for a launch yet.'",
+        "The draft checklist showed 100% of required fields complete, with a thumbnail, five uploaded synthetic gallery frames, three launch tags and the AI-disclosed first comment."
+      ],
+      "notes": "A private/in-progress Product Hunt product draft exists, but it is not scheduled, submitted for launch or publicly launched. Do not call it SUBMITTED or PUBLISHED.",
       "preparation_status": "READY"
     },
     {

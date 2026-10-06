@@ -246,10 +246,10 @@ RubyGems and Go module/index are verified.
 | 18 | DEV.to | NOT_ELIGIBLE |
 | 19 | Hashnode | PUBLISHED ([public article](https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries)) |
 | 20 | Medium | PUBLISHED ([public article](https://medium.com/@vipfthef/no-service-auth-is-not-no-wallet-risk-644cd8cc8412)) |
-| 21 | LinkedIn Articles | NOT_RUN |
-| 22 | YouTube | NOT_RUN |
-| 23 | IndieHackers | NOT_RUN |
-| 24 | ProductHunt | NOT_RUN |
+| 21 | LinkedIn Articles | NOT_RUN — identity-verification/passport gate; skipped by owner, no document entered |
+| 22 | YouTube | NOT_RUN — skipped by owner; no upload or channel change |
+| 23 | IndieHackers | NOT_RUN — authenticated account reports “You can't create posts yet” |
+| 24 | ProductHunt | NOT_RUN — [complete unscheduled draft](https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks), not launched |
 | 25 | vc.ru | NOT_ELIGIBLE |
 | 26 | ru.stackoverflow | NOT_RUN |
 | 27 | r/SideProject | NOT_RUN |
