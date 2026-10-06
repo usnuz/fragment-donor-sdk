@@ -30,6 +30,7 @@
       "/.tools",
       "/.git",
       "/.gitignore",
+      "/.readthedocs.yaml",
       "/global.json",
       "/build",
       "/dist",
