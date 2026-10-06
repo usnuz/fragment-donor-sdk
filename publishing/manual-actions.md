@@ -86,8 +86,8 @@ optional launch metadata or extract stored credentials.
    cannot create origin-root verification files or grant `github.io` DNS rights.
    [Rights/sitemap steps](PUBLISHING_RUNBOOK.md#search-submission-and-verification).
    No Google/Bing/Yandex indexing or ranking guarantee is made.
-4. **Mirrors/catalogs:** GitLab is complete as a public one-time import; authenticate only the eligible ReadTheDocs,
-   SourceForge, Swagger Studio, TON App or RapidAPI account. Catalog
+4. **Mirrors/catalogs:** GitLab is complete as a public one-time import and Read the Docs is complete as a
+   public webhook-backed custom build. Authenticate only the eligible SourceForge, Swagger Studio, TON App or RapidAPI account. Catalog
    acceptance and publication are distinct. Decline paid plans until explicitly
    authorized. Preserve a single primary canonical documentation site.
    Postman is complete: both generated artifacts were imported into a public

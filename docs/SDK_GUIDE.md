@@ -136,7 +136,8 @@ crates.io and RubyGems 0.1.0 are verified; PyPI/npm/NuGet/crates.io/RubyGems tru
 publishers are configured. [Postman documentation](https://documenter.getpostman.com/view/24750404/2sBYHNYPn3)
 is publicly verified with a placeholder-only environment. A public
 [GitLab mirror](https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror)
-contains the exact latest source commit and both release tags; GitHub remains authoritative.
+is a verified public snapshot with both release tags; GitHub remains authoritative. The secondary
+[Read the Docs build](https://fragment-donor-sdk.readthedocs.io/en/latest/) is public with EN/RU/UZ paths.
 Prepared release workflows do not
 prove publication: [release.yml](../.github/workflows/release.yml) builds tested
 GitHub assets and the Go submodule tag; [registry-publish.yml](../.github/workflows/registry-publish.yml)
