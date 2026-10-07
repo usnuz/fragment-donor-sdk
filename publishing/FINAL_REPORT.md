@@ -341,7 +341,7 @@ RubyGems and Go module/index are verified.
 | 13 | Postman API Network | PUBLISHED |
 | 14 | Swagger Studio | PUBLISHED |
 | 15 | APIs.guru | SUBMITTED ([issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556)) |
-| 16 | RapidAPI | PUBLISHED; UPDATE_BLOCKED ([public API project](https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api)) — OpenAPI 0.1.1 Active and Current; sanitized update rejected by Studio HTTP 400 |
+| 16 | RapidAPI | PUBLISHED ([public API project](https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api)) — sanitized OpenAPI 0.1.1 Active and Current; update saved successfully |
 | 17 | TON App | NOT_RUN |
 | 18 | DEV.to | NOT_ELIGIBLE |
 | 19 | Hashnode | PUBLISHED ([public article](https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries)) |
@@ -400,9 +400,10 @@ until maintainers accept it and the public catalog entry is verified.
 publishes OpenAPI 0.1.1 for Fragment Donor API. Version 0.1.1 is Active and
 Current, five endpoints are visible, and the listing records the project website
 and `https://fragment.donor.uz` base URL. A sanitized OpenAPI re-import was
-uploaded on 2026-10-07, but Studio rejected Save with HTTP 400 and did not
-persist it; the cleanup is therefore not claimed. No real API request or payment
-was performed during publication verification.
+accepted on 2026-10-07 after `info.title` was matched to the immutable project
+name; Studio reported “The spec was saved successfully,” and the refreshed
+public page contained none of the prohibited phrases. No real API request or
+payment was performed during publication verification.
 
 NOT_ELIGIBLE concerns the current generated/free promotional format. HN, English
 Stack Overflow, Habr, HackerNoon and restricted subreddits must not receive
@@ -429,7 +430,7 @@ intentional dispatch; no backend idempotency or purchase-status endpoint exists.
 
 All seven registries are published at 0.1.3. GitHub topics are applied and the
 Product Hunt listing is scheduled for 2026-10-08 at 00:01 PT. Remaining work is
-limited to RapidAPI's rejected definition update, APIs.guru review, eligible
+limited to APIs.guru review, eligible
 target-specific community submissions, and search-engine verification subject
 to current rules and owner access. Google/Bing/Yandex indexing remains an
 independent external process.

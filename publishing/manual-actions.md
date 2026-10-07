@@ -21,10 +21,10 @@ request or payment is part of publication verification.
 ## Remaining owner-gated work
 
 1. **API-contract mirrors:** Swagger Studio 0.1.1 is sanitized and independently
-   verified through its official read API. RapidAPI remains public, Active and
-   Current at 0.1.1, but its Studio rejected the sanitized OpenAPI re-import
-   with HTTP 400 and left the upload unsaved. Do not claim the RapidAPI text is
-   reconciled until the platform accepts an update. Postman is already current.
+   verified through its official read API. RapidAPI accepted the sanitized
+   OpenAPI 0.1.1 re-import after its immutable project title was matched; Studio
+   reported that the spec was saved successfully, and the refreshed public page
+   contained none of the prohibited phrases. Postman is already current.
 2. **Search discovery:** Google Search Console ownership is verified and its
    sitemap was re-submitted successfully on 2026-10-07, but the table still
    reports `Not fetched`; successful fetch/indexing is not yet verified.

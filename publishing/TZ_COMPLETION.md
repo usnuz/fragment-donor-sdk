@@ -23,9 +23,9 @@ SDK 0.1.3 publication work. Detailed per-channel evidence remains in
 
 ## Externally blocked or intentionally excluded
 
-- RapidAPI remains public, Active and Current at schema 0.1.1. Its Studio
-  rejected the sanitized OpenAPI update with HTTP 400 and did not persist it.
-  This is recorded as a platform update blocker, not as a successful cleanup.
+- RapidAPI remains public, Active and Current at schema 0.1.1. Studio accepted
+  the sanitized OpenAPI update after its title was matched to the existing
+  project name; the refreshed public page passed the prohibited-phrase check.
 - APIs.guru issue #3556 is submitted and awaits directory review.
 - Bing and Yandex ownership/submission remain dependent on accepted account and
   ownership flows; indexing is not claimed.

@@ -403,10 +403,11 @@
       "evidence": [
         "RapidAPI project Fragment Donor API is public at the recorded provider URL.",
         "The project is marked Active and Current at 0.1.1 and the generated Requests view exposes five endpoint/method entries.",
-        "On 2026-10-07 a sanitized OpenAPI 0.1.1 file was uploaded through Studio CI/CD, but Save was rejected with HTTP 400 and the upload remained unsaved; reconciliation is not claimed.",
+        "On 2026-10-07 a sanitized OpenAPI 0.1.1 file was uploaded through Studio CI/CD after info.title was matched to the immutable project name; Studio reported 'The spec was saved successfully'.",
+        "The refreshed public page contained none of the prohibited storage, secret-storage, dedicated-wallet, Authorization or X-Api-Key phrases.",
         "Listing records website https://usnuz.github.io/fragment-donor-sdk/ and base URL https://fragment.donor.uz; no real API request or payment was performed."
       ],
-      "notes": "Public RapidAPI API project verified at OpenAPI 0.1.1. The public project remains available, but the latest sanitized definition update is blocked by RapidAPI Studio HTTP 400. Publication does not prove endpoint execution or a successful purchase.",
+      "notes": "Public RapidAPI API project and sanitized OpenAPI 0.1.1 update verified. Publication does not prove endpoint execution or a successful purchase.",
       "preparation_status": "PUBLISHED"
     },
     {
