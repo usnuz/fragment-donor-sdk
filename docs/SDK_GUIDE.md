@@ -1,25 +1,18 @@
 # Fragment Donor SDK integration guide
 
-Version: 0.1.0. Independent SDK project, not an official Telegram, Fragment, or
-TON product. Package names are not reservations; consult the
+Version: 0.1.1. Independent SDK project, not an official Telegram, Fragment, or
+TON product. Consult the
 [publication status](../publishing/publication-status.json) before using registry
 commands. Source, installed artifact, registry release, and search indexing are
 separate states.
 
-Verified delivery: [GitHub v0.1.0 release](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.0)
-contains reviewed downloadable packages. The [Go 0.1.0 index](https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0)
-and `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.0` are verified public.
-PyPI `fragment-donor-sdk==0.1.0` is published through Trusted Publishing and was
-verified by a clean public-index install, import and mocked HTTP smoke test.
-npm `fragment-donor-sdk@0.1.0` is also public and was verified by a clean
-registry install and mocked HTTP smoke test. Packagist `fragment-donor/sdk`
-v0.1.0 is public and passed a clean Composer install plus mocked smoke. NuGet
-`FragmentDonor.Sdk` 0.1.0 is public and passed a clean public-feed restore plus
-mocked smoke. crates.io `fragment-donor-sdk` 0.1.0 is public from the exact
-release commit and registry-download verified. RubyGems `fragment-donor-sdk`
-0.1.0 is public through GitHub Trusted Publishing and its registry download
-matches the signed GitHub release asset. A GitHub artifact install is not a
-registry install.
+Verified delivery: [GitHub v0.1.1 release](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.1)
+contains reviewed downloadable packages. All seven SDK channels are verified
+public at 0.1.1: PyPI, npm, Packagist, NuGet, Go module, crates.io and RubyGems.
+The Go proxy/sumdb, registry metadata, public downloads and recorded checksums
+were independently checked. Installed-consumer evidence differs by ecosystem;
+consult the publication status rather than treating a GitHub artifact test as a
+registry-install test.
 
 ## Contract
 
@@ -53,13 +46,13 @@ are retained in the language-specific raw/extra response property.
 
 | Runtime | Registry command after publication | Tested source/examples |
 | --- | --- | --- |
-| Python 3.10+ | `pip install fragment-donor-sdk==0.1.0` | [Python](../python/README.md), [four operations](../python/examples/all_endpoints.py) |
-| Node.js 20+ / TypeScript | `npm install fragment-donor-sdk@0.1.0` | [TypeScript](../typescript/README.md), [four operations](../typescript/examples/all-endpoints.mjs) |
-| PHP 8.2+ with cURL | `composer require fragment-donor/sdk:^0.1` | [PHP](../php/README.md), [example](../php/examples/quickstart.php) |
-| .NET 8+ | `dotnet add package FragmentDonor.Sdk --version 0.1.0` | [.NET](../dotnet/README.md), [example](../dotnet/examples/QuickStart/Program.cs) |
-| Go 1.23+ | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.0` | [Go](../go/README.md) |
-| Rust 1.99+ | `cargo add fragment-donor-sdk@0.1.0` | [Rust](../rust/README.md) |
-| Ruby 3.2+ | `gem install fragment-donor-sdk -v 0.1.0` | [Ruby](../ruby/README.md) |
+| Python 3.10+ | `pip install fragment-donor-sdk==0.1.1` | [Python](../python/README.md), [four operations](../python/examples/all_endpoints.py) |
+| Node.js 20+ / TypeScript | `npm install fragment-donor-sdk@0.1.1` | [TypeScript](../typescript/README.md), [four operations](../typescript/examples/all-endpoints.mjs) |
+| PHP 8.2+ with cURL | `composer require fragment-donor/sdk:0.1.1` | [PHP](../php/README.md), [example](../php/examples/quickstart.php) |
+| .NET 8+ | `dotnet add package FragmentDonor.Sdk --version 0.1.1` | [.NET](../dotnet/README.md), [example](../dotnet/examples/QuickStart/Program.cs) |
+| Go 1.23+ | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.1` | [Go](../go/README.md) |
+| Rust 1.99+ | `cargo add fragment-donor-sdk@0.1.1` | [Rust](../rust/README.md) |
+| Ruby 3.2+ | `gem install fragment-donor-sdk -v 0.1.1` | [Ruby](../ruby/README.md) |
 
 Use the backend language you already deploy. Python and Node.js examples have
 explicit environment opt-in (`FRAGMENT_ALLOW_PURCHASES=yes`) and a single
@@ -131,14 +124,14 @@ the origin-root property: project repository access alone cannot verify or edit
 ## Publication workflow and actual availability
 
 Eligible external publication is authorized. PyPI, npm, Packagist, NuGet,
-crates.io and RubyGems 0.1.0 are verified; PyPI/npm/NuGet/crates.io/RubyGems trusted
-publishers are configured. [Postman documentation](https://documenter.getpostman.com/view/24750404/2sBYHNYPn3)
+Go module, crates.io and RubyGems 0.1.1 are verified public; scoped trusted
+publishers are configured where supported. [Postman documentation](https://documenter.getpostman.com/view/24750404/2sBYHNYPn3)
 is publicly verified with a placeholder-only environment. A public
 [GitLab mirror](https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror)
 is a verified public snapshot with both release tags; GitHub remains authoritative. The secondary
 [Read the Docs build](https://fragment-donor-sdk.readthedocs.io/en/latest/) is public with EN/RU/UZ paths. A
 [SourceForge source/download mirror](https://sourceforge.net/projects/fragment-donor-sdk/) exposes the reviewed release assets.
-[Swagger Studio OpenAPI 0.1.0](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0) exposes the public credential-free schema.
+[Swagger Studio OpenAPI 0.1.0](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0) remains the last verified version on that secondary surface; the canonical contract is 0.1.1 in this repository and on RapidAPI.
 Prepared release workflows do not
 prove publication: [release.yml](../.github/workflows/release.yml) builds tested
 GitHub assets and the Go submodule tag; [registry-publish.yml](../.github/workflows/registry-publish.yml)

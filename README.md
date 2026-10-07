@@ -32,6 +32,7 @@ secrets in server-side storage and use a dedicated, minimally funded wallet.
 
 ## Release state
 
-Initial version: `0.1.0`. Package names and registry ownership are provisional
-until availability and publisher access are verified. A prepared package is
-not necessarily published; status reports distinguish those states.
+Current stable version: `0.1.1`. The GitHub release and all seven SDK channels
+(PyPI, npm, Packagist, NuGet, Go module, crates.io, and RubyGems) are verified
+public. Published versions are immutable; consult the status report for exact
+workflow, checksum, provenance, and consumer-test evidence.
