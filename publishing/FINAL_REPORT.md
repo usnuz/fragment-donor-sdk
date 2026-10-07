@@ -1,4 +1,4 @@
-# Fragment Donor SDK 0.1.2 — delivery and publication report
+# Fragment Donor SDK 0.1.3 — delivery and publication report
 
 Snapshot: **2026-10-07**. Owner: `usnuz`. Independent project, not an official
 Telegram, Fragment or TON product. Preparation, tests, source publication,
@@ -7,14 +7,14 @@ registry release, platform acceptance and search indexing are separate states.
 ## Current outcome and remote gate
 
 Seven SDKs, multilingual docs, guarded contract exports and tailored publication
-materials are implemented. The stable [v0.1.2 release](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.2)
+materials are implemented. The stable [v0.1.3 release](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.3)
 was published from exact source commit
 [`4ca4ba2803c800c127909cafcc87b7db27087044`](https://github.com/usnuz/fragment-donor-sdk/commit/4ca4ba2803c800c127909cafcc87b7db27087044).
 [Release workflow 37587604623](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37587604623),
-the 14-job CI and same-commit Pages deployment succeeded. Root tag `v0.1.2`
-and `go/v0.1.2` resolve to the exact commit. All seven SDK channels are now
-independently verified public at 0.1.2: PyPI, npm, Packagist, NuGet, Go proxy,
-crates.io and RubyGems. The exact pkg.go.dev v0.1.2 page still returns HTTP 404,
+the 14-job CI and same-commit Pages deployment succeeded. Root tag `v0.1.3`
+and `go/v0.1.3` resolve to exact commit `646c698e11479735a8dc237d7e20969e1e7fdfd5`. All seven SDK channels are
+independently verified public at 0.1.3: PyPI, npm, Packagist, NuGet, Go proxy,
+crates.io and RubyGems. The exact pkg.go.dev v0.1.3 page also returns HTTP 200,
 so Go documentation indexing is not claimed.
 
 Registry runs [#12](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37588328286),
@@ -25,7 +25,7 @@ Registry runs [#12](https://github.com/usnuz/fragment-donor-sdk/actions/runs/375
 [#18](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37588588514)
 succeeded for Python, Node, .NET, Go, Rust and Ruby. Packagist refresh
 [#14](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37588397078)
-failed with HTTP 403, but Packagist independently indexed public v0.1.2 from
+failed with HTTP 403, but Packagist independently indexed public v0.1.3 from
 the exact release commit; no retry was needed. Public package README text in all
 seven ecosystems was checked against the reconciled wording rules.
 
@@ -215,21 +215,21 @@ were read-only and used the configured system proxy; no login workaround.
 
 ## Packages and conditional install commands
 
-Verified registry versions are shown below. **All seven SDK channels are public at 0.1.2.** Reviewed
-[GitHub release archives](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.2)
+Verified registry versions are shown below. **All seven SDK channels are public at 0.1.3.** Reviewed
+[GitHub release archives](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.3)
 are available now and separately consumer-tested; names are not reservations.
 
 | Runtime | Package | After verified publication |
 | --- | --- | --- |
-| Python 3.10+ | `fragment-donor-sdk` | `python -m pip install fragment-donor-sdk==0.1.2` |
-| Node 20+ / TypeScript | `fragment-donor-sdk` | `npm install fragment-donor-sdk@0.1.2` |
-| PHP 8.2+ + cURL | `fragment-donor/sdk` | `composer require fragment-donor/sdk:0.1.2` |
-| .NET 8+ | `FragmentDonor.Sdk` | `dotnet add package FragmentDonor.Sdk --version 0.1.2` |
-| Go 1.23+ | `github.com/usnuz/fragment-donor-sdk/go` | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.2` |
-| Rust 1.99+ | `fragment-donor-sdk` | `cargo add fragment-donor-sdk@0.1.2` |
-| Ruby 3.2+ | `fragment-donor-sdk` | `gem install fragment-donor-sdk -v 0.1.2` |
+| Python 3.10+ | `fragment-donor-sdk` | `python -m pip install fragment-donor-sdk==0.1.3` |
+| Node 20+ / TypeScript | `fragment-donor-sdk` | `npm install fragment-donor-sdk@0.1.3` |
+| PHP 8.2+ + cURL | `fragment-donor/sdk` | `composer require fragment-donor/sdk:0.1.3` |
+| .NET 8+ | `FragmentDonor.Sdk` | `dotnet add package FragmentDonor.Sdk --version 0.1.3` |
+| Go 1.23+ | `github.com/usnuz/fragment-donor-sdk/go` | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.3` |
+| Rust 1.99+ | `fragment-donor-sdk` | `cargo add fragment-donor-sdk@0.1.3` |
+| Ruby 3.2+ | `fragment-donor-sdk` | `gem install fragment-donor-sdk -v 0.1.3` |
 
-Go's required **`go/v0.1.2`** exists, not only a root tag, and preserves
+Go's required **`go/v0.1.3`** exists, not only a root tag, and preserves
 the historical module tags. Its proxy publication is verified; pkg.go.dev
 indexing remains pending.
 npm's publisher
