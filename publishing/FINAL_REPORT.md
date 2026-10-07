@@ -13,7 +13,7 @@ commit [`b23aa72ad1bd540ca3a22f94c14460f7caa70900`](https://github.com/usnuz/fra
 [Release workflow 37505959430](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37505959430)
 succeeded with all **16 jobs** successful. Root annotated tag `v0.1.1` peels to
 the exact commit and `go/v0.1.1` points directly to it. The Go module is
-independently public-consumer verified at v0.1.1. PyPI 0.1.1 is also independently
+independently public-consumer verified at v0.1.1. PyPI and npm 0.1.1 are also independently
 published and public-install verified; the other registry records in this report
 remain at their independently verified versions.
 
@@ -79,6 +79,21 @@ authenticated bootstrap upload, it has registry signing but no GitHub OIDC
 provenance; later versions should use the trusted publisher. Immutable 0.1.0
 must not be published again.
 
+After the v0.1.1 release gates passed, the first owner-confirmed npm workflow
+[run 37573044911](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37573044911)
+failed before publication because npm interpreted the artifact path without a
+leading `./` as a Git dependency. Commit `0fbab969d3206da9d63853ef0d2407e072fdbe03`
+fixed the workflow, CI passed, and the owner-confirmed retry
+[run 37573498614](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37573498614)
+published [npm 0.1.1](https://www.npmjs.com/package/fragment-donor-sdk/v/0.1.1)
+through the configured Trusted Publisher. Validate and Node succeeded and every
+other ecosystem job was skipped. The signed, provenance-attested seven-file
+registry tarball has SHA256
+`5a7fd96ed6718b0121542a9fe613ac3a26a46269a963873a0d2ad380c1b0abb5`, exactly
+matching the GitHub release asset and `SHA256SUMS`. A fresh scripts-disabled
+temporary install passed package metadata, zero-vulnerability audit and the
+installed mocked-HTTP smoke without a real API request or purchase.
+
 [Packagist v0.1.0](https://packagist.org/packages/fragment-donor/sdk#v0.1.0)
 was submitted from the public repository by GitHub-authenticated owner `usnuz`.
 Packagist resolved the root Composer manifest to `fragment-donor/sdk` and indexed
@@ -135,7 +150,7 @@ were read-only and used the configured system proxy; no login workaround.
 
 ## Packages and conditional install commands
 
-Verified registry versions are shown below. The **Python and Go 0.1.1 commands work now**.
+Verified registry versions are shown below. The **Python, Node and Go 0.1.1 commands work now**.
 Other ecosystems remain at their separately verified 0.1.0 versions. Reviewed
 [GitHub release archives](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.1)
 are available now and separately consumer-tested; names are not reservations.
@@ -143,7 +158,7 @@ are available now and separately consumer-tested; names are not reservations.
 | Runtime | Package | After verified publication |
 | --- | --- | --- |
 | Python 3.10+ | `fragment-donor-sdk` | `python -m pip install fragment-donor-sdk==0.1.1` |
-| Node 20+ / TypeScript | `fragment-donor-sdk` | `npm install fragment-donor-sdk@0.1.0` |
+| Node 20+ / TypeScript | `fragment-donor-sdk` | `npm install fragment-donor-sdk@0.1.1` |
 | PHP 8.2+ + cURL | `fragment-donor/sdk` | `composer require fragment-donor/sdk:0.1.0` |
 | .NET 8+ | `FragmentDonor.Sdk` | `dotnet add package FragmentDonor.Sdk --version 0.1.0` |
 | Go 1.23+ | `github.com/usnuz/fragment-donor-sdk/go` | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.1` |
