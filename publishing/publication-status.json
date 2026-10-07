@@ -506,17 +506,19 @@
     {
       "id": "producthunt",
       "name": "ProductHunt",
-      "status": "NOT_RUN",
-      "url": null,
-      "planned_url": null,
-      "version": "0.1.0",
-      "observed_at": "2026-10-06T16:29:00Z",
+      "status": "PUBLISHED",
+      "url": "https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks",
+      "planned_url": "https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks",
+      "version": "0.1.1",
+      "observed_at": "2026-10-07T05:35:00Z",
       "evidence": [
         "Product Hunt displayed https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks with the explicit banner 'This product is a draft and is not scheduled for a launch yet.'",
-        "The draft checklist showed 100% of required fields complete, with a thumbnail, five uploaded synthetic gallery frames, three launch tags and the AI-disclosed first comment."
+        "The draft checklist showed 100% of required fields complete, with a thumbnail, five uploaded synthetic gallery frames, three launch tags and the AI-disclosed first comment.",
+        "A later unauthenticated public audit on 2026-10-07 found the same URL publicly readable and labeled 'Launched in 2026'; the earlier draft-only status is superseded.",
+        "The live description still contains an outdated credential-storage claim and requires a confirmed public edit to replace it with neutral transmission wording."
       ],
-      "notes": "A private/in-progress Product Hunt product draft exists, but it is not scheduled, submitted for launch or publicly launched. Do not call it SUBMITTED or PUBLISHED.",
-      "preparation_status": "READY"
+      "notes": "Public launched listing verified. Its current public description needs wording reconciliation; no vote, promotion or real purchase claim is made.",
+      "preparation_status": "PUBLISHED"
     },
     {
       "id": "vc-ru",

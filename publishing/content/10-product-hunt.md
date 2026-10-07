@@ -1,12 +1,12 @@
 # Product Hunt launch pack
 
-Status: READY AI-generated launch text. Public documentation, CSS-only fixture
+Status: PUBLISHED launch text. Public documentation, CSS-only fixture
 demo and rendered media delivery have been verified; five synthetic gallery
 frames and the 50-second silent video remain explicitly rendered, not live
 payment evidence. One existing Uzbek-docs JPEG is reviewed baseline-only;
-its public URL returned HTTP200 with exact hash/bytes verified. **NOT_RUN** Product Hunt submission and
-approval. A verified public Pages URL does not establish a Product Hunt listing. Eligible
-publication is authorized, but account/onboarding and maker review remain.
+its public URL returned HTTP200 with exact hash/bytes verified. The public Product
+Hunt page reports **Launched in 2026**; this file records the corrected copy that
+still needs to be reconciled onto that live listing.
 No invented customer quote, vote, download or payment.
 
 ## Product fields — copy
@@ -31,10 +31,10 @@ Description:
 > timeout or 5xx. EN/RU/UZ documentation and synthetic mock tests are included.
 >
 > This is not an official Telegram, Fragment or TON product. Direct API service
-> auth is not required, but wallet operations need sensitive credentials; the
+> auth is not required, but wallet operations need sensitive credentials.
 > Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
-> the API operator. Version 0.1.0 is available as a verified GitHub release; consult publication
-> status before using any registry install command. No real purchase is shown.
+> the API operator. Version 0.1.1 is available as a verified GitHub release and
+> through all seven SDK channels. No real purchase is shown.
 
 ## Maker comment — copy after identity review
 

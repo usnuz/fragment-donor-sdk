@@ -33,7 +33,7 @@ downloaded files then passed integrity, metadata and archive-content checks.
 
 The [public Postman documentation](https://documenter.getpostman.com/view/24750404/2sBYHNYPn3)
 is published and browser verified with the four safe examples and placeholder-only
-environment. Social/community posts, Product Hunt and YouTube remain unpublished.
+environment. Product Hunt is publicly launched; social/community posts and YouTube remain unpublished.
 No backend deployment or real Stars/Premium purchase was performed.
 Later evidence/media-only main-branch changes do not move the released tags.
 
@@ -307,7 +307,7 @@ is needed; source/release publication does not prove topics were set.
 ## All 45 platform states
 
 Copied from [publication-status.json](publication-status.json) at this snapshot:
-**17 PUBLISHED, 2 SUBMITTED, 0 BLOCKED_ACCESS, 0 READY, 8 NOT_ELIGIBLE, 18 NOT_RUN**. READY materials do
+**18 PUBLISHED, 2 SUBMITTED, 0 BLOCKED_ACCESS, 0 READY, 8 NOT_ELIGIBLE, 17 NOT_RUN**. READY materials do
 not mean publication. GitHub/Pages, PyPI, npm, Packagist, NuGet, crates.io,
 RubyGems and Go module/index are verified.
 
@@ -336,7 +336,7 @@ RubyGems and Go module/index are verified.
 | 21 | LinkedIn Articles | NOT_RUN — identity-verification/passport gate; skipped by owner, no document entered |
 | 22 | YouTube | NOT_RUN — skipped by owner; no upload or channel change |
 | 23 | IndieHackers | NOT_RUN — authenticated account reports “You can't create posts yet” |
-| 24 | ProductHunt | NOT_RUN — [complete unscheduled draft](https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks), not launched |
+| 24 | ProductHunt | PUBLISHED — [public launch](https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks); credential wording reconciliation pending |
 | 25 | vc.ru | NOT_ELIGIBLE |
 | 26 | ru.stackoverflow | NOT_RUN |
 | 27 | r/SideProject | NOT_RUN |
