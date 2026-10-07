@@ -197,9 +197,9 @@
         "Owner-created SourceForge project imported only GitHub source code and release downloads; Issues and Wiki import were disabled.",
         "Public project page returned HTTP 200 with MIT, Libraries, Developers, OS Independent, Production/Stable, EN/RU/UZ and six supported programming-language categories.",
         "The immutable v0.1.0 folder remains unchanged. A new v0.1.3 folder contains the nine SHA256-verified GitHub release assets, two source archives and the current clean README.",
-        "The mutable public project description was reconciled with the approved neutral wording; the imported Git code tool still resolves main to fc33185d4eeb0e50471ee1822c29016abe8ec44e because this host has no configured SourceForge SSH key."
+        "The mutable public project description was reconciled with the approved neutral wording. SourceForge Git main was fast-forwarded to canonical commit 44a5d3d and v0.1.1 through v0.1.3 root/Go tags were added without force-pushing."
       ],
-      "notes": "Verified public v0.1.3 download mirror with 12 uploaded files. GitHub remains canonical. SourceForge limits programming-language categories to six, so Ruby remains documented in the public description rather than the category list. Code-tool refresh remains pending authenticated Git write access; no force push or historical artifact mutation was attempted.",
+      "notes": "Verified public v0.1.3 source/download mirror with 12 uploaded files and canonical Git history/tags. GitHub remains canonical. SourceForge limits programming-language categories to six, so Ruby remains documented in the public description rather than the category list. No force push or historical artifact mutation was performed.",
       "preparation_status": "PUBLISHED"
     },
     {

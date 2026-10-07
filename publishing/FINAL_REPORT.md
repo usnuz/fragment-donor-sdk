@@ -379,7 +379,7 @@ four-operation collection, masked secrets and a placeholder-only environment;
 no API request or purchase was executed. The [GitLab mirror](https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror)
 is a public verified snapshot at commit `d15e64c` with the 0.1.1 and preserved 0.1.0 tags. [Read the Docs](https://fragment-donor-sdk.readthedocs.io/en/latest/)
 is also public with a successful custom build and HTTP-200 EN/RU/UZ paths. The [SourceForge project](https://sourceforge.net/projects/fragment-donor-sdk/)
-publishes a verified v0.1.3 download mirror with 12 files and reconciled public metadata; its older Git code import remains pending authenticated refresh. [Swagger Studio](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.1)
+publishes a verified v0.1.3 source/download mirror with 12 files, reconciled public metadata, canonical Git main and v0.1.1–v0.1.3 root/Go tags. [Swagger Studio](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.1)
 publishes the public OpenAPI 0.1.1 schema as the default version with reconciled neutral credential-transmission wording. Use normal login/2FA for remaining
 [manual actions](manual-actions.md); never put secrets in chat.
 
