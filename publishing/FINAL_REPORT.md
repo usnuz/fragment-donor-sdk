@@ -1,6 +1,6 @@
 # Fragment Donor SDK 0.1.1 — delivery and publication report
 
-Snapshot: **2026-10-06**. Owner: `usnuz`. Independent project, not an official
+Snapshot: **2026-10-07**. Owner: `usnuz`. Independent project, not an official
 Telegram, Fragment or TON product. Preparation, tests, source publication,
 registry release, platform acceptance and search indexing are separate states.
 
@@ -13,8 +13,9 @@ commit [`b23aa72ad1bd540ca3a22f94c14460f7caa70900`](https://github.com/usnuz/fra
 [Release workflow 37505959430](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37505959430)
 succeeded with all **16 jobs** successful. Root annotated tag `v0.1.1` peels to
 the exact commit and `go/v0.1.1` points directly to it. The Go module is
-independently public-consumer verified at v0.1.1; the other registry records in
-this report remain at their independently verified versions.
+independently public-consumer verified at v0.1.1. PyPI 0.1.1 is also independently
+published and public-install verified; the other registry records in this report
+remain at their independently verified versions.
 
 The exact release source's [CI run 37345045005](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345045005)
 passed all **14 runtime jobs**. [Release run 37345310643](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345310643)
@@ -52,6 +53,19 @@ and sdist with Trusted Publishing provenance bound to GitHub Actions, this repos
 workflow and commit `2e364d03d3e72fcbd63518e673e7b28032a8433b`.
 A clean Python 3.12 environment installed the exact version using only public
 PyPI with cache disabled; import, metadata and installed mocked-HTTP smoke passed.
+
+After the v0.1.1 release gates passed, owner-confirmed
+[run 37572237126](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37572237126)
+published [PyPI 0.1.1](https://pypi.org/project/fragment-donor-sdk/0.1.1/).
+Validate and Python succeeded and every other ecosystem job was skipped. The
+wheel `fragment_donor_sdk-0.1.1-py3-none-any.whl` is 12,686 bytes with SHA256
+`dbc1f697b590a4b04aa13cca333449459be7e79ce5ff8b2ad72d155f6702cf06`;
+the sdist `fragment_donor_sdk-0.1.1.tar.gz` is 16,371 bytes with SHA256
+`a9918f16edef233296b31c0fb06ac42696ba816ff5c95423e0a5982d41438cd5`.
+Both match the GitHub release `SHA256SUMS`. A fresh cache-disabled temporary
+environment installed exact public 0.1.1 and passed the installed mocked-HTTP
+smoke without a real API request or purchase. Historical 0.1.0 evidence and
+failed run 37364162843 remain preserved; that failed run was not re-dispatched.
 
 [npm 0.1.0](https://www.npmjs.com/package/fragment-donor-sdk/v/0.1.0) was
 bootstrapped under owner `shohzodbek` after enabling account 2FA with a security
@@ -121,14 +135,14 @@ were read-only and used the configured system proxy; no login workaround.
 
 ## Packages and conditional install commands
 
-All versions: **0.1.0**. The **Go command works now**. The other six registry
-commands remain conditional: use them only after the exact registry version is
-published and freshly installed. Reviewed [GitHub release archives](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.0)
+Verified registry versions are shown below. The **Python and Go 0.1.1 commands work now**.
+Other ecosystems remain at their separately verified 0.1.0 versions. Reviewed
+[GitHub release archives](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.1)
 are available now and separately consumer-tested; names are not reservations.
 
 | Runtime | Package | After verified publication |
 | --- | --- | --- |
-| Python 3.10+ | `fragment-donor-sdk` | `python -m pip install fragment-donor-sdk==0.1.0` |
+| Python 3.10+ | `fragment-donor-sdk` | `python -m pip install fragment-donor-sdk==0.1.1` |
 | Node 20+ / TypeScript | `fragment-donor-sdk` | `npm install fragment-donor-sdk@0.1.0` |
 | PHP 8.2+ + cURL | `fragment-donor/sdk` | `composer require fragment-donor/sdk:0.1.0` |
 | .NET 8+ | `FragmentDonor.Sdk` | `dotnet add package FragmentDonor.Sdk --version 0.1.0` |

@@ -3,15 +3,15 @@
   "project": "Fragment Donor",
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.1",
-  "updated_on": "2026-10-06",
-  "scope": "GitHub v0.1.1 release/docs and RapidAPI OpenAPI 0.1.1 are verified public. GitLab and SourceForge mirrors, Read the Docs, Go module/index, PyPI, npm, Packagist, NuGet, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 remain verified public at their recorded versions. No registry 0.1.1 publication is claimed. No production deploy, real API request or real payment.",
+  "updated_on": "2026-10-07",
+  "scope": "GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1, Go module v0.1.1 and PyPI 0.1.1 are verified public. GitLab and SourceForge mirrors, Read the Docs, npm, Packagist, NuGet, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 remain verified public at their recorded versions. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "credential_trust_boundary": "Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. ",
   "release_preparation": {
     "version": "0.1.1",
     "status": "GITHUB_RELEASED",
-    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. Registry channel records remain historical 0.1.0 evidence until each registry version is independently verified."
+    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. Go module and PyPI are independently verified at 0.1.1; other registry channel records remain historical 0.1.0 evidence until each version is independently verified."
   },
   "test_results": {
     "python": {
@@ -205,10 +205,10 @@
       "id": "pypi",
       "name": "PyPI",
       "status": "PUBLISHED",
-      "url": "https://pypi.org/project/fragment-donor-sdk/0.1.0/",
-      "planned_url": "https://pypi.org/project/fragment-donor-sdk/0.1.0/",
-      "version": "0.1.0",
-      "observed_at": "2026-10-06T02:28:00Z",
+      "url": "https://pypi.org/project/fragment-donor-sdk/0.1.1/",
+      "planned_url": "https://pypi.org/project/fragment-donor-sdk/0.1.1/",
+      "version": "0.1.1",
+      "observed_at": "2026-10-07T04:29:00Z",
       "evidence": [
         "Authenticated PyPI account shohzodbek and existing django-open-bot project were inspected read-only; django-open-bot was not changed.",
         "The fragment-donor-sdk project and JSON endpoints returned HTTP 404 before publication.",
@@ -216,9 +216,12 @@
         "Authorized run 37364162843 used main, tag=v0.1.0, package=python and confirm=true, but validate was never acquired by a hosted runner and was cancelled after 15 minutes during GitHub Actions degraded performance; the Python publish job was skipped.",
         "After fresh owner confirmation and incident recovery, run 37404248538 completed successfully: validate and Python publication passed; all other ecosystems were skipped.",
         "PyPI exposes wheel and sdist for 0.1.0, marks both uploads as Trusted Publishing with GitHub Actions provenance for commit 2e364d03d3e72fcbd63518e673e7b28032a8433b, and reports MIT/Python >=3.10/source/docs/issues metadata.",
-        "A clean Python 3.12 virtual environment installed fragment-donor-sdk==0.1.0 using only https://pypi.org/simple with cache disabled; import, version/metadata inspection and installed mocked-HTTP smoke passed without a real purchase."
+        "A clean Python 3.12 virtual environment installed fragment-donor-sdk==0.1.0 using only https://pypi.org/simple with cache disabled; import, version/metadata inspection and installed mocked-HTTP smoke passed without a real purchase.",
+        "Owner-confirmed run 37572237126 published 0.1.1 successfully: validate and Python jobs passed, while every other ecosystem job was skipped.",
+        "PyPI 0.1.1 reports Python >=3.10 and exposes fragment_donor_sdk-0.1.1-py3-none-any.whl (12,686 bytes; SHA256 dbc1f697b590a4b04aa13cca333449459be7e79ce5ff8b2ad72d155f6702cf06) and fragment_donor_sdk-0.1.1.tar.gz (16,371 bytes; SHA256 a9918f16edef233296b31c0fb06ac42696ba816ff5c95423e0a5982d41438cd5). Both hashes match the GitHub v0.1.1 release SHA256SUMS.",
+        "A fresh temporary virtual environment installed exact public fragment-donor-sdk==0.1.1 from PyPI with cache disabled; installed mocked-HTTP smoke passed without a real API request or purchase."
       ],
-      "notes": "Verified immutable public 0.1.0 release. Do not re-dispatch this version; publish any future version only after its own release gates and owner confirmation."
+      "notes": "Verified immutable public 0.1.1 release while preserving historical 0.1.0 evidence. Failed run 37364162843 remains historical and must not be re-dispatched."
     },
     {
       "id": "npm",
