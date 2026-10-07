@@ -114,7 +114,7 @@ jobs:
       - uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841
         id: login
         with:
-          user: ${{ vars.NUGET_USER }}
+          user: shohzodbek
       - name: Push exact reviewed package with short-lived credential
         env:
           NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
