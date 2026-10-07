@@ -45,7 +45,8 @@ downloaded files then passed integrity, metadata and archive-content checks.
 
 The [public Postman 0.1.1 documentation](https://documenter.getpostman.com/view/24750404/2sBYHPz2Jn)
 is published and browser verified with the four safe examples and blank credential
-environment. Product Hunt remains a public-readable unscheduled draft; social/community posts and YouTube remain unpublished.
+environment. Product Hunt is scheduled for 2026-10-08 at 00:01 PT;
+social/community posts and YouTube remain unpublished.
 No backend deployment or real Stars/Premium purchase was performed.
 Later evidence/media-only main-branch changes do not move the released tags.
 
@@ -340,7 +341,7 @@ RubyGems and Go module/index are verified.
 | 13 | Postman API Network | PUBLISHED |
 | 14 | Swagger Studio | PUBLISHED |
 | 15 | APIs.guru | SUBMITTED ([issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556)) |
-| 16 | RapidAPI | PUBLISHED ([public API project](https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api)) — OpenAPI 0.1.1 Active and Current |
+| 16 | RapidAPI | PUBLISHED; UPDATE_BLOCKED ([public API project](https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api)) — OpenAPI 0.1.1 Active and Current; sanitized update rejected by Studio HTTP 400 |
 | 17 | TON App | NOT_RUN |
 | 18 | DEV.to | NOT_ELIGIBLE |
 | 19 | Hashnode | PUBLISHED ([public article](https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries)) |
@@ -348,7 +349,7 @@ RubyGems and Go module/index are verified.
 | 21 | LinkedIn Articles | NOT_RUN — identity-verification/passport gate; skipped by owner, no document entered |
 | 22 | YouTube | NOT_RUN — skipped by owner; no upload or channel change |
 | 23 | IndieHackers | NOT_RUN — authenticated account reports “You can't create posts yet” |
-| 24 | ProductHunt | NOT_RUN — [public-readable draft](https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks) is unscheduled; description and maker comment wording corrected |
+| 24 | ProductHunt | SCHEDULED — [public listing](https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks), 2026-10-08 00:01 PT; description and maker comment wording corrected |
 | 25 | vc.ru | NOT_ELIGIBLE |
 | 26 | ru.stackoverflow | NOT_RUN |
 | 27 | r/SideProject | NOT_RUN |
@@ -361,7 +362,7 @@ RubyGems and Go module/index are verified.
 | 34 | TON developer RU | NOT_RUN |
 | 35 | Telegram developer communities | NOT_RUN |
 | 36 | Discord developer communities | NOT_RUN |
-| 37 | Google Search Console | SUBMITTED — ownership verified; sitemap accepted but initial fetch unsuccessful |
+| 37 | Google Search Console | SUBMITTED — ownership verified; sitemap re-submitted 2026-10-07 and accepted, fetch/indexing still unverified |
 | 38 | Bing Webmaster Tools | NOT_RUN |
 | 39 | Hacker News / Show HN | NOT_ELIGIBLE |
 | 40 | Stack Overflow | NOT_ELIGIBLE |
@@ -396,10 +397,12 @@ The owner authorized CC0 distribution for that directory submission. It remains 
 until maintainers accept it and the public catalog entry is verified.
 
 [RapidAPI](https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api)
-publishes the corrected OpenAPI 0.1.1 contract for Fragment Donor API. Version
-0.1.1 is Active and Current, five endpoints are visible, and the listing records
-the project website and `https://fragment.donor.uz` base URL. No real API request
-or payment was performed during publication verification.
+publishes OpenAPI 0.1.1 for Fragment Donor API. Version 0.1.1 is Active and
+Current, five endpoints are visible, and the listing records the project website
+and `https://fragment.donor.uz` base URL. A sanitized OpenAPI re-import was
+uploaded on 2026-10-07, but Studio rejected Save with HTTP 400 and did not
+persist it; the cleanup is therefore not claimed. No real API request or payment
+was performed during publication verification.
 
 NOT_ELIGIBLE concerns the current generated/free promotional format. HN, English
 Stack Overflow, Habr, HackerNoon and restricted subreddits must not receive
@@ -409,9 +412,9 @@ account/rule/editorial gates. No fake question, private outreach, vote
 manipulation or paid plan is authorized. [Policy evidence](PLATFORM_MATRIX.md).
 
 Google Search Console URL-prefix ownership is verified by a live HTML meta tag,
-and `/sitemap.xml` was submitted. Its immediate status was “Couldn't fetch” /
-“Not fetched”, so successful retrieval and indexing remain unverified; the owner
-skipped further diagnostics. Bing and Yandex remain **NOT_RUN**. SEO submission
+and `/sitemap.xml` was re-submitted successfully on 2026-10-07. Its table still
+reported “Not fetched”, so successful retrieval and indexing remain unverified.
+Bing and Yandex remain **NOT_RUN**. SEO submission
 does not guarantee crawling, indexing or rankings.
 
 **Purchase requests transmit sensitive credentials to the API operator.** No
@@ -424,7 +427,9 @@ or transport/malformed replies may be unknown payment outcome. Preserve safe
 reconciliation details and examine wallet/recipient evidence before a new
 intentional dispatch; no backend idempotency or purchase-status endpoint exists.
 
-All seven registries are published at 0.1.3. Remaining work is limited to
-target-specific public metadata, catalog/editorial/community submissions and
-search-engine verification, each subject to its current rules and owner access.
-Google/Bing/Yandex indexing remains an independent owner task.
+All seven registries are published at 0.1.3. GitHub topics are applied and the
+Product Hunt listing is scheduled for 2026-10-08 at 00:01 PT. Remaining work is
+limited to RapidAPI's rejected definition update, APIs.guru review, eligible
+target-specific community submissions, and search-engine verification subject
+to current rules and owner access. Google/Bing/Yandex indexing remains an
+independent external process.

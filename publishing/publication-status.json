@@ -399,13 +399,14 @@
       "url": "https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api",
       "planned_url": "https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api",
       "version": "0.1.1",
-      "observed_at": "2026-10-07T06:43:47Z",
+      "observed_at": "2026-10-07T11:25:00Z",
       "evidence": [
         "RapidAPI project Fragment Donor API is public at the recorded provider URL.",
-        "Re-imported canonical contract/openapi.json version 0.1.1; the project is marked Active and Current and the generated Requests view exposes five endpoint/method entries.",
+        "The project is marked Active and Current at 0.1.1 and the generated Requests view exposes five endpoint/method entries.",
+        "On 2026-10-07 a sanitized OpenAPI 0.1.1 file was uploaded through Studio CI/CD, but Save was rejected with HTTP 400 and the upload remained unsaved; reconciliation is not claimed.",
         "Listing records website https://usnuz.github.io/fragment-donor-sdk/ and base URL https://fragment.donor.uz; no real API request or payment was performed."
       ],
-      "notes": "Public RapidAPI API project verified with the corrected OpenAPI 0.1.1 contract. Publication does not prove endpoint execution or a successful purchase.",
+      "notes": "Public RapidAPI API project verified at OpenAPI 0.1.1. The public project remains available, but the latest sanitized definition update is blocked by RapidAPI Studio HTTP 400. Publication does not prove endpoint execution or a successful purchase.",
       "preparation_status": "PUBLISHED"
     },
     {
@@ -509,19 +510,19 @@
     {
       "id": "producthunt",
       "name": "ProductHunt",
-      "status": "NOT_RUN",
-      "url": null,
+      "status": "SCHEDULED",
+      "url": "https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks",
       "planned_url": "https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks",
       "version": "0.1.1",
-      "observed_at": "2026-10-07T05:47:24Z",
+      "observed_at": "2026-10-07T11:31:00Z",
       "evidence": [
-        "Product Hunt displayed https://www.producthunt.com/products/fragment-donor-sdks?launch=fragment-donor-sdks with the explicit banner 'This product is a draft and is not scheduled for a launch yet.'",
+        "Product Hunt accepted a launch date of 2026-10-08 at 00:01 PT (12:01 GMT+5).",
         "The draft checklist showed 100% of required fields complete, with a thumbnail, five uploaded synthetic gallery frames, three launch tags and the AI-disclosed first comment.",
-        "The public-readable draft also shows generic sidebar text 'Launched in 2026', but the authenticated admin banner is authoritative for launch state and says the product is an unscheduled draft.",
+        "The schedule dialog confirmed the selected date before submission and closed after confirmation.",
         "The public-readable draft description and maker comment were updated on 2026-10-07 to neutral credential-transmission wording; the prior credential-storage claim is no longer visible."
       ],
-      "notes": "Public-readable unscheduled draft verified. Description and maker comment wording are reconciled; no launch, vote, promotion or real purchase claim is made.",
-      "preparation_status": "READY"
+      "notes": "Public-readable listing scheduled for launch. Description and maker comment wording are reconciled; no vote manipulation, paid promotion or real purchase claim is made.",
+      "preparation_status": "SCHEDULED"
     },
     {
       "id": "vc-ru",
@@ -673,13 +674,13 @@
       "url": "https://usnuz.github.io/fragment-donor-sdk/sitemap.xml",
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": "2026-10-06T17:08:07Z",
+      "observed_at": "2026-10-07T11:28:00Z",
       "evidence": [
         "Google Search Console automatically verified the URL-prefix property via the deployed HTML meta tag; the property dashboard opened successfully.",
         "The live documentation root returned HTTP 200 with the exact verification meta tag, and CI run 37498768944 plus Pages run 37498914115 completed successfully.",
-        "Search Console accepted /sitemap.xml and displayed 'Sitemap submitted', but the immediate table status was 'Couldn't fetch'/'Not fetched', type unknown and zero discovered pages."
+        "Search Console accepted a fresh /sitemap.xml submission on 2026-10-07 and displayed 'Sitemap submitted'; the table still reported 'Not fetched', type unknown and zero discovered pages."
       ],
-      "notes": "Ownership is verified and the sitemap was submitted, but successful sitemap retrieval or indexing is not verified. The owner instructed further sitemap diagnostics to be skipped; do not describe the site as indexed.",
+      "notes": "Ownership is verified and the sitemap was re-submitted successfully, but successful sitemap retrieval or indexing is not verified; do not describe the site as indexed.",
       "preparation_status": "SUBMITTED"
     },
     {
