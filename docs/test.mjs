@@ -11,7 +11,9 @@ assert(rootHtml.includes('<title>Telegram Stars API and Premium SDKs | Fragment 
 assert(rootHtml.includes('name="description"'));
 assert(rootHtml.includes('type="application/ld+json"'));
 assert(rootHtml.includes('en/guides/telegram-stars-api/'));
+assert(rootHtml.includes('en/guides/buy-telegram-stars/'));
 const intentSlugs=[
+  'guides/buy-telegram-stars',
   'guides/telegram-stars-api',
   'guides/send-telegram-stars-to-username',
   'guides/telegram-premium-gift-api',
