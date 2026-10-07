@@ -1,6 +1,6 @@
 [package]
 name = "fragment-donor-sdk"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 rust-version = "1.99"
 description = "Independent server-side no-service-auth Fragment Donor API SDK"

@@ -57,7 +57,7 @@ internal static class PackageInspector
                 var metadataElement = document.Root!.Elements().Single(e => e.Name.LocalName == "metadata");
                 var id = metadataElement.Elements().Single(e => e.Name.LocalName == "id").Value;
                 var version = metadataElement.Elements().Single(e => e.Name.LocalName == "version").Value;
-                if (id != "FragmentDonor.Sdk" || version != "0.1.1") throw new Exception("Unexpected NuGet package identity/version.");
+                if (id != "FragmentDonor.Sdk" || version != "0.1.2") throw new Exception("Unexpected NuGet package identity/version.");
             }
         }
         if (seen.Count != 8 || !Required.IsSubsetOf(seen)) throw new Exception("Missing required package member.");
@@ -87,7 +87,7 @@ internal static class PackageInspector
                 {
                     using var entry = new StreamWriter(writer.CreateEntry(name).Open(), new UTF8Encoding(false));
                     entry.Write(name == "FragmentDonor.Sdk.nuspec"
-                        ? "<package><metadata><id>FragmentDonor.Sdk</id><version>0.1.1</version></metadata></package>"
+                        ? "<package><metadata><id>FragmentDonor.Sdk</id><version>0.1.2</version></metadata></package>"
                         : "SYNTHETIC_PACKAGE_CHECK_CONTENT");
                 }
             }

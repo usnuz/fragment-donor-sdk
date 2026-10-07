@@ -56,7 +56,7 @@ key or purchase-status endpoint resolves that ambiguity. HTTP 400 with
 reference and reconcile, rather than treating it as ordinary validation rejection.
 
 The trust boundary is important: purchase requests transmit wallet mnemonic and
-Fragment session/cookie data to the API operator. Use server-side secret storage;
+Fragment session/cookie data to the API operator;
 never put seeds into frontend code or public
 collection variables.
 

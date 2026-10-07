@@ -35,4 +35,3 @@ search-engine indexing are separate states.
 Native mocked tests are the evidence for the no-duplicate-purchase rule; this
 viewer does not run those tests or invent a request counter. Purchase requests
 transmit wallet mnemonic and Fragment session/cookie data to the API operator.
-Use server-side secret storage.

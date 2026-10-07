@@ -6,5 +6,5 @@
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-  <ItemGroup><PackageReference Include="FragmentDonor.Sdk" Version="0.1.1" /></ItemGroup>
+  <ItemGroup><PackageReference Include="FragmentDonor.Sdk" Version="0.1.2" /></ItemGroup>
 </Project>

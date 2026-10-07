@@ -6,7 +6,7 @@ require "time"
 require "uri"
 
 module FragmentDonor
-  VERSION = "0.1.1"
+  VERSION = "0.1.2"
   DEFAULT_BASE_URL = "https://fragment.donor.uz"
 
   class Error < StandardError

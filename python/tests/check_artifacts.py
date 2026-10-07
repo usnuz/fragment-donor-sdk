@@ -11,7 +11,7 @@ distribution = Path(sys.argv[1] if len(sys.argv) > 1 else "dist")
 wheels = list(distribution.glob("*.whl"))
 sdists = list(distribution.glob("*.tar.gz"))
 assert len(wheels) == len(sdists) == 1, "Expected exactly one wheel and sdist"
-metadata = "fragment_donor_sdk-0.1.1.dist-info/"
+metadata = "fragment_donor_sdk-0.1.2.dist-info/"
 wheel_files = {
     "fragment_donor_sdk/__init__.py",
     "fragment_donor_sdk/client.py",
@@ -68,18 +68,18 @@ with zipfile.ZipFile(wheels[0]) as archive:
         scan(entry.filename, archive.read(entry))
     assert (
         "License-Expression: MIT"
-        in archive.read("fragment_donor_sdk-0.1.1.dist-info/METADATA").decode()
+        in archive.read("fragment_donor_sdk-0.1.2.dist-info/METADATA").decode()
     )
     assert (
         "Requires-Dist:"
-        not in archive.read("fragment_donor_sdk-0.1.1.dist-info/METADATA").decode()
+        not in archive.read("fragment_donor_sdk-0.1.2.dist-info/METADATA").decode()
     )
 with tarfile.open(sdists[0], "r:gz") as archive:
     files = []
     for entry in archive.getmembers():
         assert not entry.issym() and not entry.islnk(), "Archive links forbidden"
-        assert entry.name == "fragment_donor_sdk-0.1.1" or entry.name.startswith(
-            "fragment_donor_sdk-0.1.1/"
+        assert entry.name == "fragment_donor_sdk-0.1.2" or entry.name.startswith(
+            "fragment_donor_sdk-0.1.2/"
         ), "Wrong archive root"
         relative = entry.name.partition("/")[2]
         if entry.isdir():

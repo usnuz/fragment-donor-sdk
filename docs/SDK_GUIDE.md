@@ -101,7 +101,6 @@ and must not retry purchases or log sensitive headers.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
 the API operator. SDK redaction applies to client-side diagnostics only. Use
-server-side secret storage.
 
 All tests use synthetic fixtures and mocked/local transports. They prove SDK
 behavior, not a successful blockchain purchase or production wallet safety.

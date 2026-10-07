@@ -1,13 +1,13 @@
 # Fragment Donor Ruby SDK
 
 Independent server-side Ruby 3.2+ client. Not an official Telegram, Fragment or
-TON product. Gem `fragment-donor-sdk` version `0.1.1`.
+TON product. Gem `fragment-donor-sdk` version `0.1.2`.
 
 ## Install
 
-After publication: `gem install fragment-donor-sdk -v 0.1.1`.
+After publication: `gem install fragment-donor-sdk -v 0.1.2`.
 Before publication: `gem build fragment-donor-sdk.gemspec`, then
-`gem install --local fragment-donor-sdk-0.1.1.gem`.
+`gem install --local fragment-donor-sdk-0.1.2.gem`.
 
 ## All four operations
 
@@ -88,7 +88,7 @@ Typed `UserInfo`, `Purchase`, `WalletBalance` preserve unknown fields in `extra`
 are redacted and transport exception causes are discarded. Do not dump
 arbitrary request or response internals. Purchase requests transmit the wallet
 mnemonic and Fragment session/cookie to the API operator. SDK redaction applies
-to client-side diagnostics only. Use server-side secret storage.
+to client-side diagnostics only.
 
 ## Tests/build/release
 

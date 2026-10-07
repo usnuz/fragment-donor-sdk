@@ -1,17 +1,17 @@
 # Fragment Donor Go SDK
 
 Independent server-side SDK; not an official Telegram, Fragment or TON product.
-Go 1.23+. Module `github.com/usnuz/fragment-donor-sdk/go`, version `0.1.1`.
+Go 1.23+. Module `github.com/usnuz/fragment-donor-sdk/go`, version `0.1.2`.
 
 ## Installation
 
 After publication:
 
 ```sh
-go get github.com/usnuz/fragment-donor-sdk/go@v0.1.1
+go get github.com/usnuz/fragment-donor-sdk/go@v0.1.2
 ```
 
-The monorepo release tag must be **`go/v0.1.1`**. Go modules are indexed through
+The monorepo release tag must be **`go/v0.1.2`**. Go modules are indexed through
 the Go proxy/pkg.go.dev; there is no separate registry upload. Before publishing,
 use this directory as a local module with a `replace` directive.
 
@@ -103,7 +103,7 @@ Do not convert balance strings to float64. Config/credentials debug and JSON
 representations are redacted, but never log arbitrary request/response objects.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. Use server-side secret storage, and keep real credentials out
+the API operator. Keep real credentials out
 of examples, screenshots and CI.
 
 ## Development and release
@@ -121,7 +121,7 @@ an allowlisted source ZIP is extracted into a fresh offline consumer module,
 which exercises all four methods, unknown purchase outcomes and redaction.
 This source smoke does not verify a public Go version/tag/proxy installation.
 Inspect tracked module contents and run a secret scan before tagging. Tag
-`go/v0.1.1` only after the
+`go/v0.1.2` only after the
 clean public monorepo is released. After publishing, verify installation from
 an empty consumer module and inspect pkg.go.dev visibility separately.
 

@@ -32,7 +32,7 @@ Release note copy, **only after all declared artifacts exist and pass**:
 > Tests use synthetic fixtures/mocked transport; no wallet funds were spent.
 > Not official Telegram/Fragment/TON software. Purchase requests transmit wallet
 > mnemonic and Fragment session/cookie data to the API operator. Use server-side
-> secret storage.
+>
 > Source release, registry publication and search indexing are separate states.
 > Consult publication-status.json for each package and channel.
 
@@ -201,7 +201,7 @@ Description (copy):
 > exact balance strings, 429/Retry-After handling and EN/RU/UZ documentation.
 > Not official TON/Telegram/Fragment software and not a decentralized wallet.
 > Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
-> the API operator. Use server-side secret storage.
+> the API operator.
 > Purchases never automatically retry, and no idempotency guarantee exists.
 > Docs: https://usnuz.github.io/fragment-donor-sdk/en/.
 > Source: https://github.com/usnuz/fragment-donor-sdk.

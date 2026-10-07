@@ -22,13 +22,11 @@ publish the parent production repository or its Git history.
 
 ## Credential handling
 
-Use server-side secret storage.
 Node.js purchase code is server-only; do not expose mnemonics in browser code,
 localStorage, screenshots, examples, or logs.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
 the API operator. SDK redaction applies to client-side diagnostics only. Keep
-secrets in server-side storage.
 
 ## Release state
 

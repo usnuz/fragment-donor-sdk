@@ -11,7 +11,7 @@ use std::io::Read;
 use std::sync::Arc;
 use std::time::{Duration, SystemTime};
 
-pub const VERSION: &str = "0.1.1";
+pub const VERSION: &str = "0.1.2";
 pub const DEFAULT_BASE_URL: &str = "https://fragment.donor.uz";
 
 /// Wallet/Fragment credentials, not service authentication. Debug is redacted.

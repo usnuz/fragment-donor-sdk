@@ -26,7 +26,7 @@ vote solicitation, private outreach or invented user traction.
 - Decimal balance strings, retained unknown fields, sanitized diagnostics and
   disabled redirect forwarding. Custom transports must preserve safeguards.
 - Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
-  the API operator. Recommend server-side secret storage.
+  the API operator.
 - Separate EN/RU/UZ static docs; no indexing/ranking guarantee.
 - All payment demonstrations use synthetic mocks. No actual payment result,
   customer number, download count, uptime or independent security certification.

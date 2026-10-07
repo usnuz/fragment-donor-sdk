@@ -2,16 +2,16 @@
   "schema_version": 1,
   "project": "Fragment Donor",
   "repository": "usnuz/fragment-donor-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "updated_on": "2026-10-07",
-  "scope": "GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1 and all seven SDK channels are verified public at 0.1.1: PyPI, npm, Packagist, NuGet, Go module, crates.io and RubyGems. GitLab and SourceForge mirrors, Read the Docs, Postman documentation and Swagger Studio OpenAPI remain verified public at their recorded versions. No production deploy, real API request or real payment.",
+  "scope": "Version 0.1.2 is prepared to replace stale public package README text. Existing GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1 and all seven SDK channels remain verified public at 0.1.1 until the new release is independently published and checked. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
-  "credential_trust_boundary": "Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. ",
+  "credential_trust_boundary": "Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator.",
   "release_preparation": {
-    "version": "0.1.1",
-    "status": "GITHUB_RELEASED",
-    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. All seven SDK channels are independently verified public at 0.1.1: PyPI, npm, Packagist, NuGet, Go module, crates.io and RubyGems."
+    "version": "0.1.2",
+    "status": "LOCAL_PREPARATION",
+    "notes": "Version metadata, package assertions, install examples, changelogs and release notes are prepared locally. No v0.1.2 tag, GitHub release, workflow dispatch or registry publication is claimed; channel records below remain historical 0.1.1 evidence until independently verified."
   },
   "test_results": {
     "python": {

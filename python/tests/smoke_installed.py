@@ -33,7 +33,7 @@ assert len(requests) == 1
 assert not {"Authorization", "X-Api-Key", "Mnemonic", "Cookie"}.intersection(
     requests[0].headers
 )
-assert fragment_donor_sdk.__version__ == "0.1.1"
+assert fragment_donor_sdk.__version__ == "0.1.2"
 synthetic = WalletCredentials(
     mnemonic=" ".join(f"SYNTHETIC{i:02}" for i in range(1, 13)),
     cookie="stel_ssid=SYNTHETIC_INSTALLED_SESSION",

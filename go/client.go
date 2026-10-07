@@ -17,7 +17,7 @@ import (
 	"time"
 )
 
-const Version = "0.1.1"
+const Version = "0.1.2"
 const DefaultBaseURL = "https://fragment.donor.uz"
 
 // Credentials are purchase/wallet credentials, not service authentication.

@@ -1,6 +1,6 @@
 # Fragment Donor PHP SDK
 
-Independent PHP 8.2+ server-side client, version `0.1.1`. Requires cURL and JSON.
+Independent PHP 8.2+ server-side client, version `0.1.2`. Requires cURL and JSON.
 Not affiliated with Telegram, Fragment or TON. Package name remains provisional
 until registry availability and publisher access are verified.
 
@@ -112,8 +112,8 @@ php -d zend.exception_ignore_args=1 tests/run.php
 composer install
 composer format:check
 composer validate --strict
-composer archive --format=zip --dir=dist --file=fragment-donor-sdk-0.1.1
-php tests/check-package.php dist/fragment-donor-sdk-0.1.1.zip
+composer archive --format=zip --dir=dist --file=fragment-donor-sdk-0.1.2
+php tests/check-package.php dist/fragment-donor-sdk-0.1.2.zip
 ```
 
 Tests consume `../contract/fixtures.json`, inject deterministic transports and

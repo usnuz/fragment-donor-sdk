@@ -21,7 +21,7 @@ test("built artifact gate rejects unknown files, links, duplicate names and secr
     data: path.endsWith("package.json")
       ? JSON.stringify({
           name: "fragment-donor-sdk",
-          version: "0.1.1",
+          version: "0.1.2",
           license: "MIT",
         })
       : "",

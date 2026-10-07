@@ -53,23 +53,23 @@
     },
     {
       "file": "05-retention-evidence.svg",
-      "bytes": 3349,
-      "sha256": "bf27070483f3c84361ebda5640f768b8dfc4c2628cd9b38003bf8b1bd78293de"
+      "bytes": 3169,
+      "sha256": "4efad72a0887741db798440704b26a37321a5db086491603fb9fde0e2c14479a"
     },
     {
       "file": "05-retention-evidence.png",
-      "bytes": 162098,
-      "sha256": "eebf7df09692abbe32fa25e6e743ef8235e23cb0f04c1840ef8ec652402a772b"
+      "bytes": 151960,
+      "sha256": "4fbffa44b2fbcd9bcbc4c744ff36a6df259815d0930cb1e511d486201efb527c"
     },
     {
       "file": "walkthrough-en.srt",
-      "bytes": 564,
-      "sha256": "f78aca44f91aeddb9f7163f82a4672ac057f68e892dc7ca91bdb9854a64174b3"
+      "bytes": 532,
+      "sha256": "be7fc8853586937a8330190da899c2b25f181462088548ffce30daae06905098"
     },
     {
       "file": "walkthrough-en.mp4",
-      "bytes": 990602,
-      "sha256": "607751ce0597474c2e3aa7c91d5d69f48a765b013dad388dac7a568320a8f61c"
+      "bytes": 972987,
+      "sha256": "4f3431872135f28816afacd014156ca573af9a5e9cc1a16bf52f5c6317fac9cf"
     }
   ]
 }

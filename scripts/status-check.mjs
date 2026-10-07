@@ -1,7 +1,7 @@
 import {readFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 const report=JSON.parse(await readFile(new URL('../publishing/publication-status.json',import.meta.url),'utf8'));
-assert.equal(report.version,'0.1.1');
+assert.equal(report.version,'0.1.2');
 assert.equal(report.no_real_payments,true);
 const statuses=new Set(['PUBLISHED','SUBMITTED','READY','BLOCKED_ACCESS','NOT_ELIGIBLE','NOT_RUN']);
 const ids=new Set();

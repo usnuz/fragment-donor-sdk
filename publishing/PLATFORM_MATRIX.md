@@ -29,7 +29,7 @@ Fragment, or TON product. No service account/key is required. Wallet operations
 still need sensitive credentials; `Api-Key` is optional TonConsole provider
 configuration, not service authentication. **Purchase requests transmit wallet
 mnemonic and Fragment session/cookie data to the API operator.** SDK redaction
-applies to client-side diagnostics only. Use server-side secret storage.
+applies to client-side diagnostics only.
 There are no claimed real purchases, customers,
 downloads, uptime, security certification, or guaranteed search rankings.
 
