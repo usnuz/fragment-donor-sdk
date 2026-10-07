@@ -347,14 +347,14 @@
       "id": "postman-api-network",
       "name": "Postman API Network",
       "status": "PUBLISHED",
-      "url": "https://documenter.getpostman.com/view/24750404/2sBYHNYPn3",
+      "url": "https://documenter.getpostman.com/view/24750404/2sBYHPz2Jn",
       "planned_url": "https://www.postman.com/interstellar-comet-825816/fragment-donor-sdk/overview",
-      "version": "0.1.0",
-      "observed_at": "2026-10-06T06:52:12Z",
+      "version": "0.1.1",
+      "observed_at": "2026-10-07T06:43:47Z",
       "evidence": [
-        "Authenticated owner created the public Fragment Donor SDK workspace and imported the generated collection plus placeholder-only environment.",
-        "Postman publication settings report published, CURRENT version and Fragment Donor — placeholder-only public environment.",
-        "The public documentation reopened successfully and displays all four operations, masked secret headers, synthetic responses and the disabled-by-default purchase warnings."
+        "Authenticated owner replaced the workspace collection with canonical contract/postman.json for version 0.1.1; the placeholder-only environment remained selected as No Environment for publication.",
+        "Postman publication settings report published and CURRENT at the new public documentation URL.",
+        "The public documentation reopened successfully and displays all four operations, blank credential placeholders, synthetic responses and the disabled-by-default purchase warnings; public forbidden wording counts are zero."
       ],
       "notes": "Public Postman collection documentation verified. No request, purchase, monitor or runner was executed during import, publication or verification.",
       "preparation_status": "PUBLISHED"
@@ -363,14 +363,14 @@
       "id": "swagger-studio",
       "name": "Swagger Studio",
       "status": "PUBLISHED",
-      "url": "https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0",
+      "url": "https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.1",
       "planned_url": null,
-      "version": "0.1.0",
-      "observed_at": "2026-10-06T12:04:18Z",
+      "version": "0.1.1",
+      "observed_at": "2026-10-07T06:43:47Z",
       "evidence": [
-        "GitHub-authenticated SmartBear owner imported the public raw contract/openapi.json URL as fragment-donor-sdk.",
-        "Swagger Studio reports version 0.1.0 and confirmed that the file was successfully imported with Public visibility.",
-        "The public API URL returned HTTP 200 without an authenticated browser session."
+        "GitHub-authenticated SmartBear owner created public version 0.1.1 from the existing fragment-donor-sdk schema and selected it as the default version.",
+        "Swagger Studio 0.1.1 reports the reconciled neutral credential-transmission wording and contains no prior storage claim.",
+        "The public 0.1.1 API URL reopened successfully."
       ],
       "notes": "Public credential-free OpenAPI schema verified. No subscription upgrade, generated server, API request or purchase was used.",
       "preparation_status": "PUBLISHED"
@@ -398,10 +398,10 @@
       "url": "https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api",
       "planned_url": "https://rapidapi.com/vipfthef-Q7VTqcwTs/api/fragment-donor-api",
       "version": "0.1.1",
-      "observed_at": "2026-10-06T17:54:23Z",
+      "observed_at": "2026-10-07T06:43:47Z",
       "evidence": [
         "RapidAPI project Fragment Donor API is public at the recorded provider URL.",
-        "Imported contract/openapi.json version 0.1.1 is marked Active and Current and exposes five documented endpoints.",
+        "Re-imported canonical contract/openapi.json version 0.1.1; the project is marked Active and Current and the generated Requests view exposes five endpoint/method entries.",
         "Listing records website https://usnuz.github.io/fragment-donor-sdk/ and base URL https://fragment.donor.uz; no real API request or payment was performed."
       ],
       "notes": "Public RapidAPI API project verified with the corrected OpenAPI 0.1.1 contract. Publication does not prove endpoint execution or a successful purchase.",

@@ -31,8 +31,8 @@ returned HTTP 200 at **2026-10-05 17:20:07 UTC**. All nine release signatures
 were checked in the actual release job before publication; independently
 downloaded files then passed integrity, metadata and archive-content checks.
 
-The [public Postman documentation](https://documenter.getpostman.com/view/24750404/2sBYHNYPn3)
-is published and browser verified with the four safe examples and placeholder-only
+The [public Postman 0.1.1 documentation](https://documenter.getpostman.com/view/24750404/2sBYHPz2Jn)
+is published and browser verified with the four safe examples and blank credential
 environment. Product Hunt remains a public-readable unscheduled draft; social/community posts and YouTube remain unpublished.
 No backend deployment or real Stars/Premium purchase was performed.
 Later evidence/media-only main-branch changes do not move the released tags.
@@ -367,8 +367,8 @@ four-operation collection, masked secrets and a placeholder-only environment;
 no API request or purchase was executed. The [GitLab mirror](https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror)
 is a public verified snapshot at commit `d15e64c` with the 0.1.1 and preserved 0.1.0 tags. [Read the Docs](https://fragment-donor-sdk.readthedocs.io/en/latest/)
 is also public with a successful custom build and HTTP-200 EN/RU/UZ paths. The [SourceForge project](https://sourceforge.net/projects/fragment-donor-sdk/)
-publishes a verified source/download mirror with MIT metadata and all nine v0.1.0 assets. [Swagger Studio](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0)
-publishes the public credential-free OpenAPI 0.1.0 schema and returned HTTP 200. Use normal login/2FA for remaining
+publishes a verified source/download mirror with MIT metadata and all nine v0.1.0 assets. [Swagger Studio](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.1)
+publishes the public OpenAPI 0.1.1 schema as the default version with reconciled neutral credential-transmission wording. Use normal login/2FA for remaining
 [manual actions](manual-actions.md); never put secrets in chat.
 
 [Hashnode](https://fragment-donor-sdk.hashnode.dev/a-server-only-telegram-stars-sdk-transport-and-trust-boundaries)
