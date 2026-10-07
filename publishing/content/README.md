@@ -1,6 +1,6 @@
 # Copy-ready publication assets
 
-Prepared 2026-10-05, version 0.1.0. These are **AI-assisted/generated drafts**,
+Updated 2026-10-07 for version 0.1.3. These are **AI-assisted/generated drafts**,
 not evidence of human editorial review, publication, video recording, payment
 success, registry availability, or search indexing. All eligible publication is
 now authorized; access, editorial/policy gates and actual submission remain

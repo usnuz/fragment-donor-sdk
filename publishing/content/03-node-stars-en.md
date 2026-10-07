@@ -1,7 +1,7 @@
 # Fragment API Node.js integration: keep wallet credentials on the server
 
 Audience: Node.js/TypeScript backend engineers. Tags: `typescript`, `nodejs`,
-`api`, `security`. Status: READY draft; registry publication not assumed.
+`api`, `security`. Status: READY draft; registry publication verified.
 
 ## Article
 
@@ -14,8 +14,8 @@ wallet library. Browsers restrict `Cookie` headers, and placing a mnemonic in
 frontend configuration or localStorage exposes it to users and page scripts.
 Purchase code belongs inside a trusted server.
 
-After an actual npm release, installation is
-`npm install fragment-donor-sdk@0.1.0`. Until then, use the clean source build:
+Version 0.1.3 is public on npm. Install it with
+`npm install fragment-donor-sdk@0.1.3`, or use the clean source build:
 
 ```sh
 git clone https://github.com/usnuz/fragment-donor-sdk.git

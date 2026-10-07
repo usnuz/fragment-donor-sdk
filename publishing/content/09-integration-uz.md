@@ -26,10 +26,8 @@ user = client.get_user_info("durov")
 print(user.username, user.is_premium)
 ```
 
-Python SDK 3.10+ uchun, versiya 0.1.0. PyPI nashri tasdiqlanmaguncha toza source
-repo ichidan `python -m pip install ./python` orqali o‘rnating. Registry’da haqiqiy
-release chiqqach `python -m pip install fragment-donor-sdk==0.1.0` ishlatiladi.
-Source mavjudligi paket registry’da chiqqanini anglatmaydi.
+Python SDK 3.10+ uchun, versiya 0.1.3. Paket PyPI’da nashr qilingan:
+`python -m pip install fragment-donor-sdk==0.1.3`.
 
 API’da to‘rtta amal bor: username uchun GET `/get-user-info/`; Stars uchun POST
 `/buy-stars/`; Premium uchun POST `/buy-premium/`; balans uchun GET
@@ -66,7 +64,6 @@ mablag‘ sarflanmaganini isbotlamaydi va qayta yuborishga ruxsat emas.
 
 Muhim xavf: xarid so'rovlari sensitive credentiallarni API operatoriga uzatadi.
 SDK loglaridagi redaction operatorning uzatilgan ma’lumotlarga kirishini cheklamaydi.
-Server secret manager va operatorga ishonch chegarasini baholash kerak.
 Mnemonic/cookie’ni frontend,
 localStorage, repo, screenshot yoki ochiq Postman muhitiga joylamang.
 

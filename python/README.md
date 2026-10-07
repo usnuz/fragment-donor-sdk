@@ -26,8 +26,8 @@ user = client.get_user_info("durov")
 print(user.username, user.is_premium)
 ```
 
-Wallet/purchase code belongs on a trusted server. Set secrets through your
-deployment secret manager, never in a committed `.env` or browser configuration:
+Wallet/purchase code belongs on a trusted server. Supply required credential
+values at runtime:
 
 ```python
 import os

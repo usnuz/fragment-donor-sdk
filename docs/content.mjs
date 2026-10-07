@@ -50,19 +50,19 @@ export const pages = [
 ];
 
 export const sdkInstall = {
-  python: 'python -m pip install fragment-donor-sdk==0.1.0',
-  typescript: 'npm install fragment-donor-sdk@0.1.0',
+  python: 'python -m pip install fragment-donor-sdk==0.1.3',
+  typescript: 'npm install fragment-donor-sdk@0.1.3',
   php: 'composer require fragment-donor/sdk:^0.1',
-  dotnet: 'dotnet add package FragmentDonor.Sdk --version 0.1.0',
-  go: 'go get github.com/usnuz/fragment-donor-sdk/go@v0.1.0',
-  rust: 'cargo add fragment-donor-sdk@0.1.0',
-  ruby: 'gem install fragment-donor-sdk -v 0.1.0',
+  dotnet: 'dotnet add package FragmentDonor.Sdk --version 0.1.3',
+  go: 'go get github.com/usnuz/fragment-donor-sdk/go@v0.1.3',
+  rust: 'cargo add fragment-donor-sdk@0.1.3',
+  ruby: 'gem install fragment-donor-sdk -v 0.1.3',
 };
 const names = {python:'Python',typescript:'Node.js / TypeScript',php:'PHP',dotnet:'C# / .NET',go:'Go',rust:'Rust',ruby:'Ruby'};
 const minRuntime = {python:'Python 3.10+',typescript:'Node.js 20+',php:'PHP 8.2+',dotnet:'.NET 8+',go:'Go 1.23+',rust:'Rust 1.99+',ruby:'Ruby 3.2+'};
 for (const [id,name] of Object.entries(names)) {
   pages.push({slug:`sdk/${id}`,group:'sdks',sdk:id,sensitive:true,title:locale(`${name} SDK for Telegram Stars and Premium`,`${name} SDK для Telegram Stars и Premium`,`${name} SDK: Telegram Stars va Premium`),description:locale(`Install the independent Fragment Donor ${name} SDK, check usernames, gift Stars/Premium, and handle rate limits safely.`,`Установка независимого SDK Fragment Donor для ${name}: username, подарки Stars/Premium и rate limit.`,`Mustaqil Fragment Donor ${name} SDK’ni o‘rnatish, username, Stars/Premium va rate limit bilan ishlash.`),body:locale(
-    [`Runtime: ${minRuntime[id]}. Install the registry package only after the release is listed as PUBLISHED; until then build/install the ${id} directory from the public source repository.`,`The client exposes username lookup, Stars purchase, Premium gift, and wallet balance with native naming for ${name}. Required request bodies use form-urlencoded. Wallet balances remain decimal strings; unknown response fields are retained.`,`Configure a request timeout and wallet credentials on your backend. Read retries are opt-in and bounded; purchase calls never retry automatically. Review the package README for the exact constructor and error classes.`],
+    [`Runtime: ${minRuntime[id]}. Version 0.1.3 is published; use the exact registry command shown on this page.`,`The client exposes username lookup, Stars purchase, Premium gift, and wallet balance with native naming for ${name}. Required request bodies use form-urlencoded. Wallet balances remain decimal strings; unknown response fields are retained.`,`Configure a request timeout and wallet credentials on your backend. Read retries are opt-in and bounded; purchase calls never retry automatically. Review the package README for the exact constructor and error classes.`],
     [`Runtime: ${minRuntime[id]}. Устанавливайте пакет из реестра только после статуса PUBLISHED; до этого используйте сборку каталога ${id} из public source.`,`Клиент предлагает username, покупку Stars, подарок Premium и баланс с naming, принятым в ${name}. Запросы используют form-urlencoded. Баланс сохраняется decimal-строкой, дополнительные поля не удаляются.`,`Настройте timeout и данные кошелька на backend. Повтор чтения включается явно и ограничен; покупки никогда не повторяются автоматически. Точный constructor и типы ошибок приведены в README пакета.`],
     [`Runtime: ${minRuntime[id]}. Paket registrda PUBLISHED bo‘lgach o‘rnating; ungacha public source ichidagi ${id} katalogidan build/install qiling.`,`Klient ${name} uslubidagi naming bilan username, Stars xaridi, Premium sovg‘asi va balansni beradi. So‘rovlar form-urlencoded. Balans decimal string sifatida, qo‘shimcha maydonlar esa yo‘qolmasdan saqlanadi.`,`Backend’da timeout va hamyon credentiallarini sozlang. Read retry alohida yoqilib chegaralanadi; xaridlar hech qachon avtomatik qaytarilmaydi. Aniq constructor va xato turlari paket README’sida bor.`]),install:sdkInstall[id],packageReadme:`https://github.com/usnuz/fragment-donor-sdk/tree/main/${id}`});
 }

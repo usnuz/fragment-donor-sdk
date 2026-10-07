@@ -21,7 +21,6 @@ instructions and actual publication status are in the source repository. The
 calls below are intentionally **commented out**, not an executable payment demo:
 
 ```python
-# Trusted server; credentials from deployment secret manager.
 # result = client.buy_premium("durov", 3, payment_method="ton")
 ```
 

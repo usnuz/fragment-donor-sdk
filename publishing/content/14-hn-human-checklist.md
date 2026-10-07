@@ -15,7 +15,7 @@ vote solicitation, private outreach or invented user traction.
 - Clean SDK-only public repository:
   https://github.com/usnuz/fragment-donor-sdk. Production history is not included.
 - Seven ecosystems: Python, Node/TypeScript, PHP, .NET, Go, Rust, Ruby; version
-  0.1.0 readiness/release status must be verified separately per package.
+  Version 0.1.3 is verified public across all seven package channels.
 - Four endpoint operations; direct service has no account/service-key auth.
   Wallet credentials are still needed; optional key is TonConsole provider only.
 - Purchases never auto-retry. The backend has no idempotency-key guarantee or

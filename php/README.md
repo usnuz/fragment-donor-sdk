@@ -97,8 +97,7 @@ A false flag is not an exactly-once or no-charge guarantee; reconcile any ambigu
 response before intentionally purchasing again.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. Use a secret manager, and never put real seeds in source or
-browser code.
+the API operator.
 
 ## Tests and release
 

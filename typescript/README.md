@@ -22,7 +22,6 @@ const publicClient = new FragmentDonorClient({ timeoutMs: 30_000 });
 const user = await publicClient.getUserInfo("durov"); // no credentials needed
 console.log(user.username, user.is_premium);
 
-// Read secrets on your trusted server from a deployment secret manager.
 const credentials = new WalletCredentials({
   mnemonic: process.env.FRAGMENT_MNEMONIC!,
   cookie: process.env.FRAGMENT_COOKIE,

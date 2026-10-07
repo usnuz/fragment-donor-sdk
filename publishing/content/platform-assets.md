@@ -26,7 +26,7 @@ Website field: primary docs. README is authoritative for security limitations.
 
 Release note copy, **only after all declared artifacts exist and pass**:
 
-> Initial 0.1.0 SDK source release for four Fragment Donor endpoints. Includes
+> Stable 0.1.3 SDK source release for four Fragment Donor endpoints. Includes
 > form-urlencoded purchases, decimal balance strings, future response fields,
 > typed errors, opt-in bounded read retries and no automatic purchase retry.
 > Tests use synthetic fixtures/mocked transport; no wallet funds were spent.
@@ -38,7 +38,7 @@ Release note copy, **only after all declared artifacts exist and pass**:
 
 Use a reviewed source-only clean commit/history and independently scanned release
 artifacts, not a ZIP of the parent backend directory. No claim of security audit
-certification. Obtain actual public release URL only after publication.
+certification. Use the verified public v0.1.3 release URL.
 
 ## GitHub Pages
 
@@ -62,8 +62,8 @@ Description (copy):
 > Canonical development, issues, releases and EN/RU/UZ docs are linked from
 > https://github.com/usnuz/fragment-donor-sdk. No production backend history.
 > This is not official Telegram, Fragment or TON software. Wallet operations
-> transmit sensitive credentials to the API operator; use server-side secret
-> storage. A mirror is not a registry release.
+> transmit sensitive credentials to the API operator. A mirror is not a registry
+> release.
 
 Tags: `sdk`, `telegram`, `ton`, `api`. Create a genuine clean Git mirror and keep
 its README pointing to GitHub. Use normal owner-authorized Git push or a supported
@@ -79,7 +79,7 @@ Description (copy):
 > Canonical primary docs: https://usnuz.github.io/fragment-donor-sdk/.
 > EN/RU/UZ contract and security guides; no payment-secret collection forms.
 
-RTD import/build is NOT_RUN: this custom static build has no verified RTD config.
+Read the Docs import/build is verified public with the repository configuration.
 Before import, configure a supported build, verify current community eligibility,
 and select a secondary redirect/noindex/canonical approach rather than duplicating
 all indexed pages. Do not falsely claim an RTD URL exists. Do not subscribe to
@@ -138,7 +138,7 @@ not submitted. A generated collection/environment is not a public Network listin
 ## Swagger Studio
 
 API title: Fragment Donor API.
-Version: 0.1.0. Tags: Telegram Stars, Premium, Wallet, SDK.
+Version: 0.1.3. Tags: Telegram Stars, Premium, Wallet, SDK.
 Description (copy):
 
 > Independent four-operation API at https://fragment.donor.uz. No service login,
@@ -159,7 +159,7 @@ No paid upgrade or listing action was performed.
 Status: SUBMITTED in [APIs.guru issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556); directory acceptance pending.
 Human contributor facts, not an automatically submitted claim:
 
-- API provider domain: `fragment.donor.uz`; title Fragment Donor API; version0.1.0.
+- API provider domain: `fragment.donor.uz`; title Fragment Donor API; version 0.1.1 on this API-contract surface.
 - Schema source: generated OpenAPI; documentation and clean SDK source as above.
 - Direct no-service-auth contract, four operations, synthetic examples; sensitive
   wallet headers and credential transmission described openly.
@@ -171,7 +171,7 @@ Human contributor facts, not an automatically submitted claim:
 
 ## RapidAPI
 
-Status: NOT_RUN — gateway/security/fee review required, no active plan/listing.
+Status: PUBLISHED — version 0.1.1 is Active and Current; no real request or payment was performed.
 Technical listing title: Fragment Donor API.
 Draft description (copy **only after gateway review**):
 

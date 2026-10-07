@@ -34,7 +34,7 @@ Description:
 > This is not an official Telegram, Fragment or TON product. Direct API service
 > auth is not required, but wallet operations need sensitive credentials.
 > Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
-> the API operator. Version 0.1.1 is available as a verified GitHub release and
+> the API operator. Version 0.1.3 is available as a verified GitHub release and
 > through all seven SDK channels. No real purchase is shown.
 
 ## Maker comment — copy after identity review
@@ -62,7 +62,7 @@ maintainer. Do not ask users to upvote or privately message voters.
 | [02-wire-contract.png](../media/02-wire-contract.png) | Form-urlencoded purchase and placeholder-only headers | No real wallet/session/provider value |
 | [03-retry-errors.png](../media/03-retry-errors.png) | Synthetic 429/503, bounded read waits and no purchase replay | Not measured production telemetry |
 | [04-unknown-purchase.png](../media/04-unknown-purchase.png) | HTTP 400 `unconfirmed:true` and synthetic reconciliation fields | Not validation rejection or transaction confirmation |
-| [05-retention-evidence.png](../media/05-retention-evidence.png) | API operator credential boundary | Server-side secret-storage guidance |
+| [05-retention-evidence.png](../media/05-retention-evidence.png) | API operator credential boundary | Synthetic explanatory diagram |
 | [docs-uz-baseline.jpg](../media/docs-uz-baseline.jpg) | Existing public Uzbek-docs browser screenshot, 1265×712 | Earlier baseline, predates new demo/footer; not newly captured current UI or payment proof; public image/hash verified |
 
 The five PNGs are 1920×1080; editable SVG companions and SHA-256/size records are

@@ -1,8 +1,7 @@
 # Seven Fragment Donor SDKs: choose your backend, not a new trust model
 
 Audience: integration teams. Tags: `sdk`, `api`, `opensource`.
-Status: READY AI-assisted comparison. All proposed versions are 0.1.0; registry
-commands below apply **only after an actual registry release**. Current state is
+Status: READY AI-assisted comparison. All seven version 0.1.3 packages are public. Current state is
 [recorded here](https://github.com/usnuz/fragment-donor-sdk/blob/main/publishing/publication-status.json).
 
 ## Article
@@ -12,20 +11,19 @@ contract. This is an independent project, not an official Telegram, Fragment or
 TON product. Choosing a language does not change the service's trust boundary:
 Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator.
 
-| Runtime | Package / version | Installation after publication | Example/source |
+| Runtime | Package / version | Installation | Example/source |
 | --- | --- | --- | --- |
-| Python 3.10+ | `fragment-donor-sdk` 0.1.0 | `python -m pip install fragment-donor-sdk==0.1.0` | [Python](https://github.com/usnuz/fragment-donor-sdk/tree/main/python) |
-| Node 20+ / TypeScript | `fragment-donor-sdk` 0.1.0 | `npm install fragment-donor-sdk@0.1.0` | [Node](https://github.com/usnuz/fragment-donor-sdk/tree/main/typescript) |
-| PHP 8.2+ + cURL | `fragment-donor/sdk` 0.1.0 | `composer require fragment-donor/sdk:^0.1` | [PHP](https://github.com/usnuz/fragment-donor-sdk/tree/main/php) |
-| .NET 8+ | `FragmentDonor.Sdk` 0.1.0 | `dotnet add package FragmentDonor.Sdk --version 0.1.0` | [.NET](https://github.com/usnuz/fragment-donor-sdk/tree/main/dotnet) |
-| Go 1.23+ | `github.com/usnuz/fragment-donor-sdk/go` v0.1.0 | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.0` | [Go](https://github.com/usnuz/fragment-donor-sdk/tree/main/go) |
-| Rust 1.99+ | `fragment-donor-sdk` 0.1.0 | `cargo add fragment-donor-sdk@0.1.0` | [Rust](https://github.com/usnuz/fragment-donor-sdk/tree/main/rust) |
-| Ruby 3.2+ | `fragment-donor-sdk` 0.1.0 | `gem install fragment-donor-sdk -v 0.1.0` | [Ruby](https://github.com/usnuz/fragment-donor-sdk/tree/main/ruby) |
+| Python 3.10+ | `fragment-donor-sdk` 0.1.3 | `python -m pip install fragment-donor-sdk==0.1.3` | [Python](https://github.com/usnuz/fragment-donor-sdk/tree/main/python) |
+| Node 20+ / TypeScript | `fragment-donor-sdk` 0.1.3 | `npm install fragment-donor-sdk@0.1.3` | [Node](https://github.com/usnuz/fragment-donor-sdk/tree/main/typescript) |
+| PHP 8.2+ + cURL | `fragment-donor/sdk` 0.1.3 | `composer require fragment-donor/sdk:0.1.3` | [PHP](https://github.com/usnuz/fragment-donor-sdk/tree/main/php) |
+| .NET 8+ | `FragmentDonor.Sdk` 0.1.3 | `dotnet add package FragmentDonor.Sdk --version 0.1.3` | [.NET](https://github.com/usnuz/fragment-donor-sdk/tree/main/dotnet) |
+| Go 1.23+ | `github.com/usnuz/fragment-donor-sdk/go` v0.1.3 | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.3` | [Go](https://github.com/usnuz/fragment-donor-sdk/tree/main/go) |
+| Rust 1.99+ | `fragment-donor-sdk` 0.1.3 | `cargo add fragment-donor-sdk@0.1.3` | [Rust](https://github.com/usnuz/fragment-donor-sdk/tree/main/rust) |
+| Ruby 3.2+ | `fragment-donor-sdk` 0.1.3 | `gem install fragment-donor-sdk -v 0.1.3` | [Ruby](https://github.com/usnuz/fragment-donor-sdk/tree/main/ruby) |
 
-Before publication, build/install from these source directories or the reviewed
-local wheel, tarball, Composer archive, nupkg, crate and gem. A successful local
-artifact install is not proof that the registry has a version. Go additionally
-needs the module-subdirectory tag `go/v0.1.0`, not just a root release tag.
+Reviewed source directories and release archives remain available alongside the
+registry packages. Go uses the module-subdirectory tag `go/v0.1.3` in addition
+to the root release tag.
 
 | Operation | Python | Node | PHP | .NET | Go | Rust | Ruby |
 | --- | --- | --- | --- | --- | --- | --- | --- |

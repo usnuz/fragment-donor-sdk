@@ -26,7 +26,7 @@ Node.js purchase code is server-only; do not expose mnemonics in browser code,
 localStorage, screenshots, examples, or logs.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. SDK redaction applies to client-side diagnostics only. Keep
+the API operator. SDK redaction applies to client-side diagnostics only.
 
 ## Release state
 

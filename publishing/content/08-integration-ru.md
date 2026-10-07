@@ -26,10 +26,8 @@ user = client.get_user_info("durov")
 print(user.username, user.is_premium)
 ```
 
-Версия Python SDK — 0.1.0, Python 3.10+. Пока публикация в PyPI не подтверждена,
-используйте чистый исходный репозиторий и `python -m pip install ./python` из его
-корня. После реального релиза команда будет
-`python -m pip install fragment-donor-sdk==0.1.0`.
+Версия Python SDK — 0.1.3, Python 3.10+. Пакет опубликован в PyPI:
+`python -m pip install fragment-donor-sdk==0.1.3`.
 
 Четыре операции используют один контракт: GET `/get-user-info/` с `username`,
 POST `/buy-stars/` с формой `username`/`amount`, POST `/buy-premium/` с

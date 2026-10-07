@@ -424,8 +424,7 @@ or transport/malformed replies may be unknown payment outcome. Preserve safe
 reconciliation details and examine wallet/recipient evidence before a new
 intentional dispatch; no backend idempotency or purchase-status endpoint exists.
 
-Next gates: complete human login/2FA for the remaining registries, configure their exact
-owner/publisher environments and topic metadata, then execute accessible
-eligible registry/platform actions. Reopen every actual registry version/post
-and perform fresh registry installs before updating PUBLISHED. Google/Bing/Yandex
-ownership and indexing remain independent owner tasks.
+All seven registries are published at 0.1.3. Remaining work is limited to
+target-specific public metadata, catalog/editorial/community submissions and
+search-engine verification, each subject to its current rules and owner access.
+Google/Bing/Yandex indexing remains an independent owner task.

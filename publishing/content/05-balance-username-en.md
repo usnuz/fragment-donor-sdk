@@ -52,8 +52,7 @@ per wait; 429 supports `Retry-After` seconds/date and JSON hints. Purchases rema
 non-retrying even on a client configured for read retries.
 
 Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
-the API operator. Keep mnemonic access in a
-server secret manager and evaluate operator trust before invoking any wallet API.
+the API operator.
 
 [Balance docs](https://usnuz.github.io/fragment-donor-sdk/en/reference/wallet-balance/) ·
 [Username docs](https://usnuz.github.io/fragment-donor-sdk/en/reference/get-user-info/) ·

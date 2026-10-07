@@ -88,7 +88,7 @@ Copy:
 >
 > **Target Audience:** Backend engineers reviewing a server-side integration,
 > not browser users. The source/tests are free and MIT-licensed. Registry version
-> 0.1.0 publication must be checked separately.
+> Version 0.1.3 is published across all seven package channels.
 >
 > **Comparison:** A hand-written urllib call can send the request, but this SDK
 > additionally tests contradictory Retry-After hints, malformed JSON, redirects,
@@ -150,8 +150,7 @@ Copy:
 > Source has deterministic request-count tests:
 > https://github.com/usnuz/fragment-donor-sdk/tree/main/python. API/error docs:
 > https://usnuz.github.io/fragment-donor-sdk/en/guides/errors/. No actual Django
-> purchase was run here. Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator, so use a server
-> secret manager, not model fields containing real seeds.
+> purchase was run here. Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator.
 > Project is not official Telegram/Fragment/TON software.
 
 This is a design note, not a claim that a full Django payment application has

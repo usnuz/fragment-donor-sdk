@@ -100,8 +100,7 @@ Caller cancellation after dispatch may also require reconciliation; cancellation
 still uses the standard `OperationCanceledException` contract.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. Use a secret manager, and do not expose seeds in frontend
-code.
+the API operator.
 
 ## Build, test and release
 

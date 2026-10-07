@@ -8,7 +8,7 @@ Tags: `typescript`, `nodejs`, `api`, `security`.
 ## Copy
 
 Disclosure: AI assisted this draft for Fragment Donor, an independent project,
-not an official Telegram, Fragment or TON product. Author review is required
+not an official Telegram, Fragment or TON product. The owner reviewed the copy
 before publication. No real wallet transaction is demonstrated.
 
 A typed Node.js API client can still be dangerous in the wrong runtime. Our

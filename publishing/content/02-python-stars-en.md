@@ -1,7 +1,7 @@
 # Buy Telegram Stars API Python integration without duplicate retries
 
 Audience: Python backend engineers. Tags: `python`, `api`, `testing`, `security`.
-Format: substantive tutorial. Status: READY draft. No registry release claimed.
+Format: substantive tutorial. Status: READY draft. Registry release verified.
 
 ## Article
 
@@ -15,9 +15,8 @@ Fragment Donor's Python 3.10+ client uses standard-library HTTP, typed response
 models and decimal strings. It sends form-urlencoded purchase bodies and never
 auto-retries `buy_stars` or `buy_premium`.
 
-Version 0.1.0 is prepared; consult the publication status before using the registry
-command `python -m pip install fragment-donor-sdk==0.1.0`. Before registry release,
-install the clean source locally:
+Version 0.1.3 is public. Install it from PyPI with
+`python -m pip install fragment-donor-sdk==0.1.3`, or install the clean source locally:
 
 ```sh
 git clone https://github.com/usnuz/fragment-donor-sdk.git
@@ -34,8 +33,8 @@ user = client.get_user_info("durov")
 print(user.username, user.is_premium)
 ```
 
-The following code is purchase-gated and server-only. Obtain real credentials
-through a trusted server secret manager, never an article, repository or browser.
+The following code is purchase-gated and server-only. Placeholder values are
+used here; do not copy real credentials into public examples.
 The gate prevents accidental execution; it does not make purchasing risk-free.
 
 ```python

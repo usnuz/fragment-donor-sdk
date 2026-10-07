@@ -53,7 +53,7 @@ and actual access, neither is supplied here. No Russian promotional draft provid
 ## Common independently verifiable facts
 
 Source: https://github.com/usnuz/fragment-donor-sdk. Independent service, not
-Telegram/Fragment/TON official. Seven source packages version0.1.0; consult actual
+Telegram/Fragment/TON official. Seven source packages version 0.1.3; consult actual
 native tests and publication state. Four paths; direct API no service auth;
 wallet credentials still required; optional provider key is not login. Purchases
 never auto-retry; HTTP 400 `unconfirmed:true` is unknown outcome, not ordinary
