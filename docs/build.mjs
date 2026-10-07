@@ -64,6 +64,7 @@ await writeFile(join(out,'index.html'),`<!doctype html><html lang="en"><head><me
 const entries=[base,...languages.flatMap(lang=>pages.map(page=>urlFor(lang,page.slug)))];
 await writeFile(join(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${entries.map(url=>`<url><loc>${url}</loc></url>`).join('')}</urlset>`);
 await writeFile(join(out,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${base}sitemap.xml\n`);
+await copyFile(join(root,'docs','BingSiteAuth.xml'),join(out,'BingSiteAuth.xml'));
 await copyFile(join(root,'contract','openapi.json'),join(out,'openapi.json'));
 await copyFile(join(root,'contract','postman.json'),join(out,'postman.json'));
 await copyFile(join(root,'contract','postman.environment.json'),join(out,'postman.environment.json'));

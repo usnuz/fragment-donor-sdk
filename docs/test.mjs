@@ -55,4 +55,5 @@ for(const lang of languages) for(const page of pages){
 }
 assert.equal((sitemap.match(/<loc>/g)||[]).length,count+1);
 assert((await readFile(join(out,'robots.txt'),'utf8')).includes(`${base}sitemap.xml`));
+assert((await readFile(join(out,'BingSiteAuth.xml'),'utf8')).includes('0FC9BA2127C25CAF29E8D06CE963E168'));
 console.log(`PASS: ${count} translated pages: static content, canonical, reciprocal hreflang, sitemap, internal links.`);
