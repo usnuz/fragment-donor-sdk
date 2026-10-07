@@ -125,13 +125,13 @@ the origin-root property: project repository access alone cannot verify or edit
 
 Eligible external publication is authorized. PyPI, npm, Packagist, NuGet,
 Go module, crates.io and RubyGems 0.1.1 are verified public; scoped trusted
-publishers are configured where supported. [Postman documentation](https://documenter.getpostman.com/view/24750404/2sBYHNYPn3)
-is publicly verified with a placeholder-only environment. A public
+publishers are configured where supported. [Postman 0.1.1 documentation](https://documenter.getpostman.com/view/24750404/2sBYHPz2Jn)
+is publicly verified with blank credential placeholders. A public
 [GitLab mirror](https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror)
 is a verified public snapshot with both release tags; GitHub remains authoritative. The secondary
 [Read the Docs build](https://fragment-donor-sdk.readthedocs.io/en/latest/) is public with EN/RU/UZ paths. A
 [SourceForge source/download mirror](https://sourceforge.net/projects/fragment-donor-sdk/) exposes the reviewed release assets.
-[Swagger Studio OpenAPI 0.1.0](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0) remains the last verified version on that secondary surface; the canonical contract is 0.1.1 in this repository and on RapidAPI.
+[Swagger Studio OpenAPI 0.1.1](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.1) is the verified default version on that secondary surface; the canonical contract is also 0.1.1 in this repository and on RapidAPI.
 Prepared release workflows do not
 prove publication: [release.yml](../.github/workflows/release.yml) builds tested
 GitHub assets and the Go submodule tag; [registry-publish.yml](../.github/workflows/registry-publish.yml)

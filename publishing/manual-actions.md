@@ -87,7 +87,7 @@ optional launch metadata or extract sensitive credentials.
    [Rights/sitemap steps](PUBLISHING_RUNBOOK.md#search-submission-and-verification).
    No Google/Bing/Yandex indexing or ranking guarantee is made.
 4. **Mirrors/catalogs:** GitLab and SourceForge are complete as public imports, Read the Docs is complete as a
-   public webhook-backed custom build, and Swagger Studio exposes the verified public 0.1.0 schema. Authenticate only an eligible TON App or RapidAPI account. Catalog
+   public webhook-backed custom build, and Swagger Studio exposes the verified public 0.1.1 schema as its default version. Authenticate only an eligible TON App or RapidAPI account. Catalog
    acceptance and publication are distinct. Decline paid plans until explicitly
    authorized. Preserve a single primary canonical documentation site.
    Postman is complete: both generated artifacts were imported into a public

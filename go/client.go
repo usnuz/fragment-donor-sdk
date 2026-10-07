@@ -21,7 +21,7 @@ const Version = "0.1.1"
 const DefaultBaseURL = "https://fragment.donor.uz"
 
 // Credentials are purchase/wallet credentials, not service authentication.
-// ProviderKey is an optional TonConsole key, never an X-Api-Key.
+// ProviderKey is an optional TonConsole provider key only.
 type Credentials struct {
 	Mnemonic      string
 	Cookie        string

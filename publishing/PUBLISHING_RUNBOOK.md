@@ -176,8 +176,8 @@ Publish the GitHub source and primary static docs before linking them from
 catalogs. GitLab/SourceForge/ReadTheDocs are mirrors or clearly secondary pages. Read the Docs is published through
 the root `.readthedocs.yaml` custom Node build at `https://fragment-donor-sdk.readthedocs.io/en/latest/`;
 SourceForge is published at `https://sourceforge.net/projects/fragment-donor-sdk/` with source and reviewed v0.1.0 downloads.
-Swagger Studio publishes the credential-free OpenAPI 0.1.0 schema at
-`https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0`; the public URL returned HTTP 200.
+Swagger Studio publishes the OpenAPI 0.1.1 schema as the default version at
+`https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.1`; the public page reopened successfully.
 do not create duplicate canonical SEO sites. Run `node contract/build.mjs` then
 `node docs/build.mjs`; Postman import uses separate `site/postman.json` and
 `site/postman.environment.json`. Review collection, local/current/shared and
