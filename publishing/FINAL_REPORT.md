@@ -13,7 +13,7 @@ commit [`b23aa72ad1bd540ca3a22f94c14460f7caa70900`](https://github.com/usnuz/fra
 [Release workflow 37505959430](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37505959430)
 succeeded with all **16 jobs** successful. Root annotated tag `v0.1.1` peels to
 the exact commit and `go/v0.1.1` points directly to it. The Go module is
-independently public-consumer verified at v0.1.1. PyPI and npm 0.1.1 are also independently
+independently public-consumer verified at v0.1.1. PyPI, npm and Packagist 0.1.1 are also independently
 published and public-install verified; the other registry records in this report
 remain at their independently verified versions.
 
@@ -98,6 +98,15 @@ installed mocked-HTTP smoke without a real API request or purchase.
 was submitted from the public repository by GitHub-authenticated owner `usnuz`.
 Packagist resolved the root Composer manifest to `fragment-donor/sdk` and indexed
 the exact release commit `9e8a9f8577936a37ed750f55f6604e475a545ad9`.
+
+[Packagist v0.1.1](https://packagist.org/packages/fragment-donor/sdk#v0.1.1)
+is also public and independently verified: normalized version `0.1.1.0`, source
+and dist both point to exact release commit
+`b23aa72ad1bd540ca3a22f94c14460f7caa70900`, and the package page returns HTTP
+200. Owner-confirmed refresh
+[run 37574288789](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37574288789)
+passed validation but its Packagist API call returned HTTP 403. No retry was sent
+because v0.1.1 was already indexed; all non-PHP registry jobs were skipped.
 Its public metadata reports PHP >=8.2, required cURL/JSON extensions, MIT and the
 expected source/docs/issues links. A fresh public Composer install selected
 v0.1.0 and the installed four-operation, uncertainty, decimal and credential-
@@ -150,7 +159,7 @@ were read-only and used the configured system proxy; no login workaround.
 
 ## Packages and conditional install commands
 
-Verified registry versions are shown below. The **Python, Node and Go 0.1.1 commands work now**.
+Verified registry versions are shown below. The **Python, Node, PHP and Go 0.1.1 commands work now**.
 Other ecosystems remain at their separately verified 0.1.0 versions. Reviewed
 [GitHub release archives](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.1)
 are available now and separately consumer-tested; names are not reservations.
@@ -159,7 +168,7 @@ are available now and separately consumer-tested; names are not reservations.
 | --- | --- | --- |
 | Python 3.10+ | `fragment-donor-sdk` | `python -m pip install fragment-donor-sdk==0.1.1` |
 | Node 20+ / TypeScript | `fragment-donor-sdk` | `npm install fragment-donor-sdk@0.1.1` |
-| PHP 8.2+ + cURL | `fragment-donor/sdk` | `composer require fragment-donor/sdk:0.1.0` |
+| PHP 8.2+ + cURL | `fragment-donor/sdk` | `composer require fragment-donor/sdk:0.1.1` |
 | .NET 8+ | `FragmentDonor.Sdk` | `dotnet add package FragmentDonor.Sdk --version 0.1.0` |
 | Go 1.23+ | `github.com/usnuz/fragment-donor-sdk/go` | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.1` |
 | Rust 1.99+ | `fragment-donor-sdk` | `cargo add fragment-donor-sdk@0.1.0` |

@@ -4,14 +4,14 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.1",
   "updated_on": "2026-10-07",
-  "scope": "GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1, Go module v0.1.1, PyPI 0.1.1 and npm 0.1.1 are verified public. GitLab and SourceForge mirrors, Read the Docs, Packagist, NuGet, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 remain verified public at their recorded versions. No production deploy, real API request or real payment.",
+  "scope": "GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1, Go module v0.1.1, PyPI 0.1.1, npm 0.1.1 and Packagist v0.1.1 are verified public. GitLab and SourceForge mirrors, Read the Docs, NuGet, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 remain verified public at their recorded versions. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "credential_trust_boundary": "Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. ",
   "release_preparation": {
     "version": "0.1.1",
     "status": "GITHUB_RELEASED",
-    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. Go module, PyPI and npm are independently verified at 0.1.1; other registry channel records remain historical 0.1.0 evidence until each version is independently verified."
+    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. Go module, PyPI, npm and Packagist are independently verified at 0.1.1; other registry channel records remain historical 0.1.0 evidence until each version is independently verified."
   },
   "test_results": {
     "python": {
@@ -246,17 +246,19 @@
       "id": "packagist",
       "name": "Packagist",
       "status": "PUBLISHED",
-      "url": "https://packagist.org/packages/fragment-donor/sdk#v0.1.0",
-      "planned_url": "https://packagist.org/packages/fragment-donor/sdk#v0.1.0",
-      "version": "0.1.0",
-      "observed_at": "2026-10-06T03:23:23Z",
+      "url": "https://packagist.org/packages/fragment-donor/sdk#v0.1.1",
+      "planned_url": "https://packagist.org/packages/fragment-donor/sdk#v0.1.1",
+      "version": "0.1.1",
+      "observed_at": "2026-10-07T05:03:00Z",
       "evidence": [
         "A Packagist account named usnuz was created through the owner-authorized GitHub OAuth login.",
         "The public repository https://github.com/usnuz/fragment-donor-sdk was submitted and resolved from its root composer.json to fragment-donor/sdk.",
         "Packagist indexed v0.1.0 from exact release commit 9e8a9f8577936a37ed750f55f6604e475a545ad9 with MIT, PHP >=8.2, ext-curl/ext-json and expected source/docs/issues metadata.",
-        "A fresh Composer install from public Packagist selected fragment-donor/sdk v0.1.0 and passed the installed four-operation/uncertainty/decimal/redaction mocked smoke without network API calls or a real purchase."
+        "A fresh Composer install from public Packagist selected fragment-donor/sdk v0.1.0 and passed the installed four-operation/uncertainty/decimal/redaction mocked smoke without network API calls or a real purchase.",
+        "Public Packagist metadata and package page independently expose v0.1.1 with normalized version 0.1.1.0; source and dist both reference exact release commit b23aa72ad1bd540ca3a22f94c14460f7caa70900 and the package page returns HTTP 200.",
+        "Owner-confirmed refresh workflow run 37574288789 passed validation but the Packagist API refresh returned HTTP 403. No retry was sent because public v0.1.1 was already indexed; all non-PHP registry jobs were skipped."
       ],
-      "notes": "Verified public v0.1.0 release. Packagist currently reports that automatic GitHub updates are not configured; configure an approved update mechanism before future releases. Do not resubmit the package."
+      "notes": "Verified public package at v0.1.1 from the exact release commit. The protected workflow's stored Packagist API credential cannot currently force a refresh (HTTP 403), but this did not block the already indexed version. Historical v0.1.0 install-smoke evidence remains preserved."
     },
     {
       "id": "nuget",
