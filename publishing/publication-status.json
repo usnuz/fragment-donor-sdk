@@ -275,18 +275,19 @@
       "id": "go-pkg-go-dev",
       "name": "Go/pkg.go.dev",
       "status": "PUBLISHED",
-      "url": "https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0",
-      "planned_url": "https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0",
-      "version": "0.1.0",
-      "observed_at": "2026-10-05T17:20:07Z",
+      "url": "https://proxy.golang.org/github.com/usnuz/fragment-donor-sdk/go/@v/v0.1.1.info",
+      "planned_url": "https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.1",
+      "version": "0.1.1",
+      "observed_at": "2026-10-06T17:59:42Z",
       "evidence": [
-        "Public root v0.1.0 and go/v0.1.0 tags both resolve to exact release commit 9e8a9f8577936a37ed750f55f6604e475a545ad9.",
-        "Fresh Go 1.26.0 consumer fetched public v0.1.0 via proxy.golang.org and sum.golang.org with no replace; go mod verify and four mocked operations/security outcomes passed.",
-        "Module checksum h1:IC7mNlqI7N7I4ZLGQJW6e2TU8liwOzMpvrCW+FFKHlY= verified through standard sumdb.",
-        "Exact-version pkg.go.dev URL returned HTTP200 and displayed the package path/version; earlier transient HTTP404 no longer applies."
+        "Public go/v0.1.1 resolves directly to exact release commit b23aa72ad1bd540ca3a22f94c14460f7caa70900; the root annotated v0.1.1 tag peels to the same commit.",
+        "proxy.golang.org reports v0.1.1 from subdirectory go, ref refs/tags/go/v0.1.1 and origin hash b23aa72ad1bd540ca3a22f94c14460f7caa70900; its public version list contains v0.1.0 and v0.1.1.",
+        "A fresh isolated Go consumer fetched public v0.1.1 with no replace through proxy.golang.org and sum.golang.org; four mocked operations, exact decimal handling, uncertain purchase outcomes, no duplicate purchase retry and redaction checks passed without a real API call or purchase.",
+        "sum.golang.org verified module checksum h1:88Htu3nJrOy8pb7/tZq8aqQdvzWyPy+1vOn6tGbX/t0= and go.mod checksum h1:j3OuQkrmGONJX7BjlVi8DqzKPTVj4sTqVQfHuQIaJOM=.",
+        "Historical v0.1.0 remains available and its exact-version pkg.go.dev page remains the last independently verified indexed documentation version. The exact v0.1.1 pkg.go.dev URL returned HTTP404 at 2026-10-06T17:59:42Z, so v0.1.1 documentation indexing is not claimed."
       ],
-      "notes": "Public versioned module and package index verified. No registry account required, real API calls or wallet purchases performed.",
-      "preparation_status": "READY"
+      "notes": "Go module v0.1.1 is publicly published and consumer-verified while preserving v0.1.0 history. pkg.go.dev v0.1.1 indexing is still pending; no indexing request, registry login, real API call or wallet purchase was performed.",
+      "preparation_status": "PUBLISHED"
     },
     {
       "id": "crates-io",

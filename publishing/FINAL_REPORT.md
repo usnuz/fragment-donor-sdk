@@ -12,9 +12,9 @@ was published at **2026-10-06 17:47:20 UTC** with nine assets from exact source
 commit [`b23aa72ad1bd540ca3a22f94c14460f7caa70900`](https://github.com/usnuz/fragment-donor-sdk/commit/b23aa72ad1bd540ca3a22f94c14460f7caa70900).
 [Release workflow 37505959430](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37505959430)
 succeeded with all **16 jobs** successful. Root annotated tag `v0.1.1` peels to
-the exact commit and `go/v0.1.1` points directly to it. The registry records in
-this report remain at independently verified 0.1.0 versions; no registry 0.1.1
-publication is claimed.
+the exact commit and `go/v0.1.1` points directly to it. The Go module is
+independently public-consumer verified at v0.1.1; the other registry records in
+this report remain at their independently verified versions.
 
 The exact release source's [CI run 37345045005](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345045005)
 passed all **14 runtime jobs**. [Release run 37345310643](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345310643)
@@ -110,7 +110,7 @@ is complete.
 | Synthetic demo | [Fixture viewer](https://usnuz.github.io/fragment-donor-sdk/demo/) | Public static demo/trust boundary plus PNG/MP4 HTTP 200 verified. |
 | Actual video | [50-second MP4](https://usnuz.github.io/fragment-donor-sdk/demo/media/walkthrough-en.mp4) | Silent rendered synthetic walkthrough, not real payment footage or a YouTube upload. |
 | Actual screenshot | [Earlier UZ baseline JPEG](https://usnuz.github.io/fragment-donor-sdk/demo/media/docs-uz-baseline.jpg) | HTTP200 and exact original bytes/SHA256 verified; not newly captured current UI or payment evidence. |
-| Go index | [pkg.go.dev 0.1.0](https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0) | Version and public install verified; unrelated to Google/Bing indexing. |
+| Go module/index | [proxy v0.1.1](https://proxy.golang.org/github.com/usnuz/fragment-donor-sdk/go/@v/v0.1.1.info), [pkg.go.dev 0.1.0](https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0) | Public module v0.1.1 and sumdb checksums are verified at the exact release commit. pkg.go.dev v0.1.1 still returned HTTP 404 at 2026-10-06 17:59:42 UTC; v0.1.0 remains the last independently verified indexed documentation version. |
 | Sitemap | [sitemap.xml](https://usnuz.github.io/fragment-donor-sdk/sitemap.xml) | Hosting is not webmaster submission/indexing. |
 
 The fresh live route check at **2026-10-05 17:19 UTC** covered all 61 static
@@ -132,12 +132,13 @@ are available now and separately consumer-tested; names are not reservations.
 | Node 20+ / TypeScript | `fragment-donor-sdk` | `npm install fragment-donor-sdk@0.1.0` |
 | PHP 8.2+ + cURL | `fragment-donor/sdk` | `composer require fragment-donor/sdk:0.1.0` |
 | .NET 8+ | `FragmentDonor.Sdk` | `dotnet add package FragmentDonor.Sdk --version 0.1.0` |
-| Go 1.23+ | `github.com/usnuz/fragment-donor-sdk/go` | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.0` |
+| Go 1.23+ | `github.com/usnuz/fragment-donor-sdk/go` | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.1` |
 | Rust 1.99+ | `fragment-donor-sdk` | `cargo add fragment-donor-sdk@0.1.0` |
 | Ruby 3.2+ | `fragment-donor-sdk` | `gem install fragment-donor-sdk -v 0.1.0` |
 
-Go's required **`go/v0.1.0`** exists, not only a root tag. Its standard module
-checksum is `h1:IC7mNlqI7N7I4ZLGQJW6e2TU8liwOzMpvrCW+FFKHlY=`.
+Go's required **`go/v0.1.1`** exists, not only a root tag, and preserves
+`go/v0.1.0`. Its standard module checksum is
+`h1:88Htu3nJrOy8pb7/tZq8aqQdvzWyPy+1vOn6tGbX/t0=`.
 npm's publisher
 minimum Node 22.14/npm 11.5.1 is separate from SDK Node 20 support.
 
