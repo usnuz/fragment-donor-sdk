@@ -52,6 +52,6 @@ Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
 the API operator. Keep secrets on a trusted server. Redirect refusal and log
 redaction are client controls.
 
-[Premium endpoint](https://usnuz.github.io/fragment-donor-sdk/en/reference/buy-premium/) ·
+[Telegram Premium gift API guide](https://usnuz.github.io/fragment-donor-sdk/en/guides/telegram-premium-gift-api/) ·
 [SDK source](https://github.com/usnuz/fragment-donor-sdk) ·
 [Error handling](https://usnuz.github.io/fragment-donor-sdk/en/guides/errors/).

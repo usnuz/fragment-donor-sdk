@@ -58,6 +58,6 @@ the same topics at separate English, Russian and Uzbek URLs without promising
 search engine rankings.
 
 [SDK guide](https://github.com/usnuz/fragment-donor-sdk/blob/main/docs/SDK_GUIDE.md) ·
-[EN docs](https://usnuz.github.io/fragment-donor-sdk/en/) ·
+[EN Telegram Stars API guide](https://usnuz.github.io/fragment-donor-sdk/en/guides/telegram-stars-api/) ·
 [RU](https://usnuz.github.io/fragment-donor-sdk/ru/) ·
 [UZ](https://usnuz.github.io/fragment-donor-sdk/uz/).

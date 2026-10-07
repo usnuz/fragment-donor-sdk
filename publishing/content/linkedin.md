@@ -45,7 +45,7 @@ registry state separately before deploying a consumer.
 
 Source: https://github.com/usnuz/fragment-donor-sdk.
 Errors/reconciliation: https://usnuz.github.io/fragment-donor-sdk/en/guides/errors/.
-Documentation: https://usnuz.github.io/fragment-donor-sdk/en/.
+Fragment API automation guide: https://usnuz.github.io/fragment-donor-sdk/en/guides/fragment-api-automation/.
 
 ## Posting gates
 

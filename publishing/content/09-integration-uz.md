@@ -67,6 +67,6 @@ SDK loglaridagi redaction operatorning uzatilgan ma’lumotlarga kirishini chekl
 Mnemonic/cookie’ni frontend,
 localStorage, repo, screenshot yoki ochiq Postman muhitiga joylamang.
 
-[O‘zbekcha docs](https://usnuz.github.io/fragment-donor-sdk/uz/) ·
+[Username’ga Stars yuborish API qo‘llanmasi](https://usnuz.github.io/fragment-donor-sdk/uz/guides/telegram-stars-api/) ·
 [Source va release holati](https://github.com/usnuz/fragment-donor-sdk) ·
 [Flood wait](https://usnuz.github.io/fragment-donor-sdk/uz/guides/rate-limit-flood-wait/).
