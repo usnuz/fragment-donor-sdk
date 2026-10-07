@@ -4,14 +4,14 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.1",
   "updated_on": "2026-10-07",
-  "scope": "GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1, Go module v0.1.1, PyPI 0.1.1, npm 0.1.1, Packagist v0.1.1, NuGet 0.1.1 and crates.io 0.1.1 are verified public. GitLab and SourceForge mirrors, Read the Docs, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 remain verified public at their recorded versions. No production deploy, real API request or real payment.",
+  "scope": "GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1 and all seven SDK channels are verified public at 0.1.1: PyPI, npm, Packagist, NuGet, Go module, crates.io and RubyGems. GitLab and SourceForge mirrors, Read the Docs, Postman documentation and Swagger Studio OpenAPI remain verified public at their recorded versions. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "credential_trust_boundary": "Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. ",
   "release_preparation": {
     "version": "0.1.1",
     "status": "GITHUB_RELEASED",
-    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. Go module, PyPI, npm, Packagist, NuGet and crates.io are independently verified at 0.1.1; other registry channel records remain historical 0.1.0 evidence until each version is independently verified."
+    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. All seven SDK channels are independently verified public at 0.1.1: PyPI, npm, Packagist, NuGet, Go module, crates.io and RubyGems."
   },
   "test_results": {
     "python": {
@@ -326,18 +326,21 @@
       "id": "rubygems",
       "name": "RubyGems",
       "status": "PUBLISHED",
-      "url": "https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.0",
-      "planned_url": "https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.0",
-      "version": "0.1.0",
-      "observed_at": "2026-10-06T06:26:00Z",
+      "url": "https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.1",
+      "planned_url": "https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.1",
+      "version": "0.1.1",
+      "observed_at": "2026-10-07T05:30:00Z",
       "evidence": [
         "Authenticated owner shohzodbek created a pending GitHub Actions Trusted Publisher for usnuz/fragment-donor-sdk, registry-publish.yml, environment rubygems.",
         "Owner-confirmed registry publication run 37423695304 succeeded: validate 41s and ruby 7s.",
         "RubyGems public 0.1.0 page and download returned HTTP 200; the version is latest and not yanked.",
         "Registry download SHA256 023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea exactly matches the stable GitHub release gem.",
-        "RubyGems identifies GitHub Actions usnuz/fragment-donor-sdk registry-publish.yml environment rubygems as the publisher and reports the version published with MFA."
+        "RubyGems identifies GitHub Actions usnuz/fragment-donor-sdk registry-publish.yml environment rubygems as the publisher and reports the version published with MFA.",
+        "Owner-confirmed registry publication run 37576556536 succeeded: validate and ruby passed and every other registry job was skipped.",
+        "RubyGems public API exposes 0.1.1. API SHA, registry download SHA256 and the reviewed GitHub release gem SHA256 all exactly equal 13fcaea4693b6c12a2ed00d04a8b62f854cc214e8e7c6ac5702eef2d33f9ada5; the gem is 12,288 bytes.",
+        "A fresh 0.1.1 registry install was not rerun locally because this verification environment has no ruby or gem executable; no such result is claimed."
       ],
-      "notes": "Verified public immutable 0.1.0 release through GitHub Trusted Publishing. RubyGems requires MFA for new versions.",
+      "notes": "Verified public immutable 0.1.1 release through GitHub OIDC trusted publishing. Historical 0.1.0 install-smoke evidence remains preserved; neither immutable version should be republished.",
       "preparation_status": "PUBLISHED"
     },
     {
@@ -786,6 +789,7 @@
     "rust_crate_sha256": "e10ba80b4a983e3f7e3d233d6975c7aac8469b0b1e710e742bf14e2c429d4229",
     "rust_crate_0_1_1_registry_sha256": "c87dc01a96f48b2e42c22d37380236761d0e76c79f96f6084d5d101f042d32a7",
     "ruby_gem_sha256": "023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea",
+    "ruby_gem_0_1_1_sha256": "13fcaea4693b6c12a2ed00d04a8b62f854cc214e8e7c6ac5702eef2d33f9ada5",
     "provenance_sha256": "c47ace7f9ca721a929e66c17c86daaea9e90fbfb1b9aa8027e5ad12053ddad14",
     "checksums_sha256": "0fba42121372aba009e6fcc30461a0b795918e6baad157274379f55555eaf2b4",
     "notes": "Actual downloaded stable GitHub release bytes; all nine sizes/GitHub digests and eight SHA256SUMS records independently matched. PyPI, npm, Packagist, NuGet, crates.io and RubyGems 0.1.0 are published and public-install/download verified; the RubyGems registry gem matches the release SHA256. Postman public documentation is separately published and browser verified.",

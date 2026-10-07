@@ -13,9 +13,9 @@ commit [`b23aa72ad1bd540ca3a22f94c14460f7caa70900`](https://github.com/usnuz/fra
 [Release workflow 37505959430](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37505959430)
 succeeded with all **16 jobs** successful. Root annotated tag `v0.1.1` peels to
 the exact commit and `go/v0.1.1` points directly to it. The Go module is
-independently public-consumer verified at v0.1.1. PyPI, npm, Packagist, NuGet and crates.io 0.1.1 are also independently
-published and public-install verified; the other registry records in this report
-remain at their independently verified versions.
+independently public-consumer verified at v0.1.1. All seven SDK channels are now
+independently verified public at 0.1.1: PyPI, npm, Packagist, NuGet, Go module,
+crates.io and RubyGems.
 
 The exact release source's [CI run 37345045005](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345045005)
 passed all **14 runtime jobs**. [Release run 37345310643](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37345310643)
@@ -140,6 +140,17 @@ Extracted comparison found only Cargo's second-pass `Cargo.toml.orig`
 normalization and removal of `.cargo_vcs_info.json`; every remaining packaged
 file matched by path and SHA256. A fresh registry Cargo consumer is not claimed
 because this verification environment has no `cargo` executable.
+
+Owner-confirmed RubyGems
+[run 37576556536](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37576556536)
+published [gem 0.1.1](https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.1)
+through GitHub OIDC Trusted Publishing. Validate and Ruby succeeded and every
+other registry job was skipped. RubyGems API SHA, registry download SHA256 and
+the reviewed 12,288-byte GitHub Release gem SHA256 all exactly equal
+`13fcaea4693b6c12a2ed00d04a8b62f854cc214e8e7c6ac5702eef2d33f9ada5`.
+A fresh 0.1.1 registry install is not claimed because this verification
+environment has no `ruby` or `gem` executable; historical 0.1.0 installed-smoke
+evidence remains preserved.
 Its public metadata reports PHP >=8.2, required cURL/JSON extensions, MIT and the
 expected source/docs/issues links. A fresh public Composer install selected
 v0.1.0 and the installed four-operation, uncertainty, decimal and credential-
@@ -192,8 +203,7 @@ were read-only and used the configured system proxy; no login workaround.
 
 ## Packages and conditional install commands
 
-Verified registry versions are shown below. The **Python, Node, PHP, .NET, Go and Rust 0.1.1 versions are public now**.
-Other ecosystems remain at their separately verified 0.1.0 versions. Reviewed
+Verified registry versions are shown below. **All seven SDK channels are public at 0.1.1.** Reviewed
 [GitHub release archives](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.1)
 are available now and separately consumer-tested; names are not reservations.
 
@@ -205,7 +215,7 @@ are available now and separately consumer-tested; names are not reservations.
 | .NET 8+ | `FragmentDonor.Sdk` | `dotnet add package FragmentDonor.Sdk --version 0.1.1` |
 | Go 1.23+ | `github.com/usnuz/fragment-donor-sdk/go` | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.1` |
 | Rust 1.99+ | `fragment-donor-sdk` | `cargo add fragment-donor-sdk@0.1.1` |
-| Ruby 3.2+ | `fragment-donor-sdk` | `gem install fragment-donor-sdk -v 0.1.0` |
+| Ruby 3.2+ | `fragment-donor-sdk` | `gem install fragment-donor-sdk -v 0.1.1` |
 
 Go's required **`go/v0.1.1`** exists, not only a root tag, and preserves
 `go/v0.1.0`. Its standard module checksum is
