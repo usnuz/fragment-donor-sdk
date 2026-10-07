@@ -4,14 +4,14 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.1",
   "updated_on": "2026-10-07",
-  "scope": "GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1, Go module v0.1.1, PyPI 0.1.1, npm 0.1.1 and Packagist v0.1.1 are verified public. GitLab and SourceForge mirrors, Read the Docs, NuGet, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 remain verified public at their recorded versions. No production deploy, real API request or real payment.",
+  "scope": "GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1, Go module v0.1.1, PyPI 0.1.1, npm 0.1.1, Packagist v0.1.1 and NuGet 0.1.1 are verified public. GitLab and SourceForge mirrors, Read the Docs, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 remain verified public at their recorded versions. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "credential_trust_boundary": "Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. ",
   "release_preparation": {
     "version": "0.1.1",
     "status": "GITHUB_RELEASED",
-    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. Go module, PyPI, npm and Packagist are independently verified at 0.1.1; other registry channel records remain historical 0.1.0 evidence until each version is independently verified."
+    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. Go module, PyPI, npm, Packagist and NuGet are independently verified at 0.1.1; other registry channel records remain historical 0.1.0 evidence until each version is independently verified."
   },
   "test_results": {
     "python": {
@@ -264,18 +264,22 @@
       "id": "nuget",
       "name": "NuGet",
       "status": "PUBLISHED",
-      "url": "https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.0",
-      "planned_url": "https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.0",
-      "version": "0.1.0",
-      "observed_at": "2026-10-06T05:14:07Z",
+      "url": "https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.1",
+      "planned_url": "https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.1",
+      "version": "0.1.1",
+      "observed_at": "2026-10-07T05:20:00Z",
       "evidence": [
         "NuGet owner shohzodbek uploaded the exact reviewed FragmentDonor.Sdk.0.1.0.nupkg with SHA256 fd3ce326cb3f423852fa4aad909a6b6110021c100398822f9c2c88835752e96c.",
         "NuGet validation and indexing completed; the package page and public flat-container feed returned version 0.1.0 with HTTP 200.",
         "A fresh .NET 8 restore using only https://api.nuget.org/v3/index.json passed the installed four-operation/uncertainty/decimal/redaction mocked smoke without network API calls or a real purchase.",
         "NuGet added .signature.p7s; the downloaded registry package SHA256 is 9b664ed671629ec77db745d769320bdd77dcd1a37ba30c6354a8857111976e96.",
-        "Trusted Publishing policy Fragment Donor GitHub Actions is Active for usnuz/fragment-donor-sdk, registry-publish.yml, environment nuget, FragmentDonor.Sdk, push only new package versions."
+        "Trusted Publishing policy Fragment Donor GitHub Actions is Active for usnuz/fragment-donor-sdk, registry-publish.yml, environment nuget, FragmentDonor.Sdk, push only new package versions.",
+        "The first owner-confirmed 0.1.1 run 37575010623 passed validation but NuGet/login failed before publication because its required user input was empty; commit 652a9afe93b3cbd5590e312159a2316d4395b811 fixed the trusted-publisher username and CI run 37575164333 passed all 14 jobs.",
+        "Owner-confirmed retry run 37575453862 succeeded: validate and dotnet passed and all other registry jobs were skipped.",
+        "The public NuGet flat-container feed exposes 0.1.1. The downloaded nine-file registry package reports FragmentDonor.Sdk 0.1.1, contains NuGet .signature.p7s, and has SHA256 60f5c1c89f35b90ec34de951b639e0590576f0fbe88d17fb772323b731b38f60.",
+        "The reviewed GitHub release NUPKG SHA256 is eb267bb861deefac1b406734153f9d170a3d0533adb53371f391320a768a1aa7; the expected registry-byte difference is the NuGet-added signature. A fresh registry restore was not rerun locally because this verification environment has no dotnet executable."
       ],
-      "notes": "Verified public 0.1.0 release. The bootstrap was a direct owner upload and has no GitHub OIDC provenance; future versions use the scoped active policy. The immutable package README contains stale pre-publication audit wording, corrected by these status reports. Do not republish 0.1.0.",
+      "notes": "Verified immutable public 0.1.1 release through the scoped Trusted Publishing policy. Historical 0.1.0 install-smoke evidence and failed 0.1.1 run 37575010623 remain preserved; neither version should be republished.",
       "preparation_status": "PUBLISHED"
     },
     {
@@ -774,6 +778,7 @@
     "npm_tarball_0_1_1_sha256": "5a7fd96ed6718b0121542a9fe613ac3a26a46269a963873a0d2ad380c1b0abb5",
     "php_root_archive_sha256": "78459e174a04db2473952bd57789f3685a8ddcde23fc0d118e0d4ce7b15678d2",
     "nuget_sha256": "fd3ce326cb3f423852fa4aad909a6b6110021c100398822f9c2c88835752e96c",
+    "nuget_0_1_1_registry_sha256": "60f5c1c89f35b90ec34de951b639e0590576f0fbe88d17fb772323b731b38f60",
     "rust_crate_sha256": "e10ba80b4a983e3f7e3d233d6975c7aac8469b0b1e710e742bf14e2c429d4229",
     "ruby_gem_sha256": "023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea",
     "provenance_sha256": "c47ace7f9ca721a929e66c17c86daaea9e90fbfb1b9aa8027e5ad12053ddad14",
