@@ -1,12 +1,13 @@
 # Product Hunt launch pack
 
-Status: PUBLISHED launch text. Public documentation, CSS-only fixture
+Status: READY public-readable draft. Public documentation, CSS-only fixture
 demo and rendered media delivery have been verified; five synthetic gallery
 frames and the 50-second silent video remain explicitly rendered, not live
 payment evidence. One existing Uzbek-docs JPEG is reviewed baseline-only;
 its public URL returned HTTP200 with exact hash/bytes verified. The public Product
-Hunt page reports **Launched in 2026**; this file records the corrected copy that
-still needs to be reconciled onto that live listing.
+Hunt admin banner reports **This product is a draft and is not scheduled for a
+launch yet**. The public-readable draft description and maker comment were
+reconciled to the neutral credential-transmission wording on 2026-10-07.
 No invented customer quote, vote, download or payment.
 
 ## Product fields — copy
