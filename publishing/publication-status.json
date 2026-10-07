@@ -4,14 +4,14 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.1",
   "updated_on": "2026-10-07",
-  "scope": "GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1, Go module v0.1.1, PyPI 0.1.1, npm 0.1.1, Packagist v0.1.1 and NuGet 0.1.1 are verified public. GitLab and SourceForge mirrors, Read the Docs, crates.io, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 remain verified public at their recorded versions. No production deploy, real API request or real payment.",
+  "scope": "GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1, Go module v0.1.1, PyPI 0.1.1, npm 0.1.1, Packagist v0.1.1, NuGet 0.1.1 and crates.io 0.1.1 are verified public. GitLab and SourceForge mirrors, Read the Docs, RubyGems 0.1.0, Postman documentation and Swagger Studio OpenAPI 0.1.0 remain verified public at their recorded versions. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "credential_trust_boundary": "Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. ",
   "release_preparation": {
     "version": "0.1.1",
     "status": "GITHUB_RELEASED",
-    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. Go module, PyPI, npm, Packagist and NuGet are independently verified at 0.1.1; other registry channel records remain historical 0.1.0 evidence until each version is independently verified."
+    "notes": "GitHub v0.1.1 release and root/Go tags are independently verified at commit b23aa72ad1bd540ca3a22f94c14460f7caa70900. Go module, PyPI, npm, Packagist, NuGet and crates.io are independently verified at 0.1.1; other registry channel records remain historical 0.1.0 evidence until each version is independently verified."
   },
   "test_results": {
     "python": {
@@ -304,18 +304,22 @@
       "id": "crates-io",
       "name": "crates.io",
       "status": "PUBLISHED",
-      "url": "https://crates.io/crates/fragment-donor-sdk/0.1.0",
-      "planned_url": "https://crates.io/crates/fragment-donor-sdk/0.1.0",
-      "version": "0.1.0",
-      "observed_at": "2026-10-06T06:02:43Z",
+      "url": "https://crates.io/crates/fragment-donor-sdk/0.1.1",
+      "planned_url": "https://crates.io/crates/fragment-donor-sdk/0.1.1",
+      "version": "0.1.1",
+      "observed_at": "2026-10-07T05:24:20Z",
       "evidence": [
         "Authenticated crates.io owner usnuz published fragment-donor-sdk 0.1.0 from exact release commit 9e8a9f8577936a37ed750f55f6604e475a545ad9.",
         "cargo publish --dry-run --locked --no-verify passed before the owner-confirmed immutable publication; the live publish completed successfully.",
         "The crates.io version API and public download returned HTTP 200; the version is not yanked and registry checksum/download SHA256 both equal c5aad57e5744d26db6b501847761af0a056defb7d8de30b8b68733c0481384b3.",
         "GitHub Trusted Publishing is configured for usnuz/fragment-donor-sdk, registry-publish.yml, environment crates-io.",
-        "The seven-day publish-new bootstrap token restricted to fragment-donor-sdk was revoked after publication; the account reports no API tokens."
+        "The seven-day publish-new bootstrap token restricted to fragment-donor-sdk was revoked after publication; the account reports no API tokens.",
+        "Owner-confirmed Trusted Publishing run 37576032289 succeeded: validate and rust passed and every other registry job was skipped.",
+        "crates.io exposes immutable, non-yanked 0.1.1. Registry API checksum and downloaded crate SHA256 both equal c87dc01a96f48b2e42c22d37380236761d0e76c79f96f6084d5d101f042d32a7.",
+        "The reviewed GitHub release crate SHA256 is d0f058e684b4ab747e55f574bd31ec3397ad925609e7ce8f3953a98fb5ba71c1. Extracted comparison found only Cargo's second-pass manifest normalization in Cargo.toml.orig and removal of .cargo_vcs_info.json; the remaining packaged files match by path and SHA256.",
+        "A fresh registry cargo consumer was not rerun locally because this verification environment has no cargo executable; no such result is claimed."
       ],
-      "notes": "Verified public immutable 0.1.0 release. Windows package re-verification required --no-verify because dlltool.exe is unavailable in the current shell; the exact release artifact and Rust consumer/tests were already independently verified. Future versions use Trusted Publishing.",
+      "notes": "Verified public immutable 0.1.1 release through Trusted Publishing. Historical 0.1.0 consumer evidence remains preserved. The 0.1.1 registry checksum is authoritative for the Cargo-normalized registry crate; do not republish either immutable version.",
       "preparation_status": "PUBLISHED"
     },
     {
@@ -780,6 +784,7 @@
     "nuget_sha256": "fd3ce326cb3f423852fa4aad909a6b6110021c100398822f9c2c88835752e96c",
     "nuget_0_1_1_registry_sha256": "60f5c1c89f35b90ec34de951b639e0590576f0fbe88d17fb772323b731b38f60",
     "rust_crate_sha256": "e10ba80b4a983e3f7e3d233d6975c7aac8469b0b1e710e742bf14e2c429d4229",
+    "rust_crate_0_1_1_registry_sha256": "c87dc01a96f48b2e42c22d37380236761d0e76c79f96f6084d5d101f042d32a7",
     "ruby_gem_sha256": "023c7111728dd2abc1d8a17e56eefaa92967a3c5566e2c74b679bb636d4071ea",
     "provenance_sha256": "c47ace7f9ca721a929e66c17c86daaea9e90fbfb1b9aa8027e5ad12053ddad14",
     "checksums_sha256": "0fba42121372aba009e6fcc30461a0b795918e6baad157274379f55555eaf2b4",

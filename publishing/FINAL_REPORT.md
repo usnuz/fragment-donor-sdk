@@ -13,7 +13,7 @@ commit [`b23aa72ad1bd540ca3a22f94c14460f7caa70900`](https://github.com/usnuz/fra
 [Release workflow 37505959430](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37505959430)
 succeeded with all **16 jobs** successful. Root annotated tag `v0.1.1` peels to
 the exact commit and `go/v0.1.1` points directly to it. The Go module is
-independently public-consumer verified at v0.1.1. PyPI, npm, Packagist and NuGet 0.1.1 are also independently
+independently public-consumer verified at v0.1.1. PyPI, npm, Packagist, NuGet and crates.io 0.1.1 are also independently
 published and public-install verified; the other registry records in this report
 remain at their independently verified versions.
 
@@ -126,6 +126,20 @@ the reviewed release artifact is
 expected byte difference caused by the registry signature. A fresh registry
 restore was not rerun locally because this verification environment has no
 `dotnet` executable; no such result is claimed.
+
+Owner-confirmed crates.io
+[run 37576032289](https://github.com/usnuz/fragment-donor-sdk/actions/runs/37576032289)
+published [crate 0.1.1](https://crates.io/crates/fragment-donor-sdk/0.1.1)
+through Trusted Publishing. Validate and Rust succeeded and every other registry
+job was skipped. The version is not yanked; crates.io API checksum and downloaded
+crate SHA256 both equal
+`c87dc01a96f48b2e42c22d37380236761d0e76c79f96f6084d5d101f042d32a7`.
+The reviewed release crate SHA256 is
+`d0f058e684b4ab747e55f574bd31ec3397ad925609e7ce8f3953a98fb5ba71c1`.
+Extracted comparison found only Cargo's second-pass `Cargo.toml.orig`
+normalization and removal of `.cargo_vcs_info.json`; every remaining packaged
+file matched by path and SHA256. A fresh registry Cargo consumer is not claimed
+because this verification environment has no `cargo` executable.
 Its public metadata reports PHP >=8.2, required cURL/JSON extensions, MIT and the
 expected source/docs/issues links. A fresh public Composer install selected
 v0.1.0 and the installed four-operation, uncertainty, decimal and credential-
@@ -178,7 +192,7 @@ were read-only and used the configured system proxy; no login workaround.
 
 ## Packages and conditional install commands
 
-Verified registry versions are shown below. The **Python, Node, PHP, .NET and Go 0.1.1 versions are public now**.
+Verified registry versions are shown below. The **Python, Node, PHP, .NET, Go and Rust 0.1.1 versions are public now**.
 Other ecosystems remain at their separately verified 0.1.0 versions. Reviewed
 [GitHub release archives](https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.1)
 are available now and separately consumer-tested; names are not reservations.
@@ -190,7 +204,7 @@ are available now and separately consumer-tested; names are not reservations.
 | PHP 8.2+ + cURL | `fragment-donor/sdk` | `composer require fragment-donor/sdk:0.1.1` |
 | .NET 8+ | `FragmentDonor.Sdk` | `dotnet add package FragmentDonor.Sdk --version 0.1.1` |
 | Go 1.23+ | `github.com/usnuz/fragment-donor-sdk/go` | `go get github.com/usnuz/fragment-donor-sdk/go@v0.1.1` |
-| Rust 1.99+ | `fragment-donor-sdk` | `cargo add fragment-donor-sdk@0.1.0` |
+| Rust 1.99+ | `fragment-donor-sdk` | `cargo add fragment-donor-sdk@0.1.1` |
 | Ruby 3.2+ | `fragment-donor-sdk` | `gem install fragment-donor-sdk -v 0.1.0` |
 
 Go's required **`go/v0.1.1`** exists, not only a root tag, and preserves
