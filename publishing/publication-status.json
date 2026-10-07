@@ -4,14 +4,14 @@
   "repository": "usnuz/fragment-donor-sdk",
   "version": "0.1.2",
   "updated_on": "2026-10-07",
-  "scope": "Version 0.1.2 is prepared to replace stale public package README text. Existing GitHub v0.1.1 release/docs, RapidAPI OpenAPI 0.1.1 and all seven SDK channels remain verified public at 0.1.1 until the new release is independently published and checked. No production deploy, real API request or real payment.",
+  "scope": "Version 0.1.2 is released from exact commit 4ca4ba2803c800c127909cafcc87b7db27087044. GitHub release, CI, Pages and all seven SDK registry/module channels are independently verified public at 0.1.2. RapidAPI, Postman and Swagger remain API-contract surfaces at schema version 0.1.1. No production deploy, real API request or real payment.",
   "no_real_payments": true,
   "no_backend_deployment": true,
   "credential_trust_boundary": "Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator.",
   "release_preparation": {
     "version": "0.1.2",
-    "status": "LOCAL_PREPARATION",
-    "notes": "Version metadata, package assertions, install examples, changelogs and release notes are prepared locally. No v0.1.2 tag, GitHub release, workflow dispatch or registry publication is claimed; channel records below remain historical 0.1.1 evidence until independently verified."
+    "status": "PUBLISHED",
+    "notes": "Root v0.1.2 and go/v0.1.2 resolve to exact commit 4ca4ba2803c800c127909cafcc87b7db27087044. Release workflow 37587604623, 14-job CI and same-commit Pages succeeded. Registry runs 37588328286, 37588379278, 37588414811, 37588500312, 37588543528 and 37588588514 succeeded; Packagist refresh run 37588397078 returned HTTP 403, but Packagist independently indexed v0.1.2 from the exact commit."
   },
   "test_results": {
     "python": {
@@ -123,7 +123,7 @@
       "status": "PUBLISHED",
       "url": "https://github.com/usnuz/fragment-donor-sdk",
       "planned_url": "https://github.com/usnuz/fragment-donor-sdk",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "observed_at": "2026-10-06T17:47:20Z",
       "evidence": [
         "Git push final SDK/docs source commit 0e444c9710c907a5ee0c0b9da812d4d1e9bb3783 to owned independent public repository succeeded.",
@@ -133,7 +133,7 @@
         "Public v0.1.1 release https://github.com/usnuz/fragment-donor-sdk/releases/tag/v0.1.1 was published at 2026-10-06T17:47:20Z from exact commit b23aa72ad1bd540ca3a22f94c14460f7caa70900 with nine assets.",
         "Release workflow run 37505959430 succeeded with all 16 jobs successful; root annotated tag v0.1.1 peels to the exact release commit and go/v0.1.1 points directly to that commit."
       ],
-      "notes": "Independent SDK-only source/release published. v0.1.1 GitHub release and tags are verified; this does not claim registry 0.1.1 publication. Production history was excluded and known-pattern secret gates passed."
+      "notes": "Independent SDK-only source/release published. v0.1.2 release and both required tags are verified at exact commit 4ca4ba2803c800c127909cafcc87b7db27087044; release workflow 37587604623 succeeded. Production history was excluded and known-pattern secret gates passed."
     },
     {
       "id": "github-pages",
@@ -159,12 +159,12 @@
       "status": "PUBLISHED",
       "url": "https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror",
       "planned_url": "https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "observed_at": "2026-10-07T06:06:00Z",
       "evidence": [
         "GitLab group Fragment Donor SDK and project Fragment Donor SDK mirror are public and accessible without authentication.",
         "Repository-by-URL import from the authoritative public GitHub repository completed successfully without credentials or paid pull mirroring.",
-        "GitLab main was fast-forwarded to exact canonical commit d15e64cba2deb63c5ead5cbff0f77e7603286256; public raw README and OpenAPI returned HTTP 200 with the reconciled wording."
+        "GitLab main was fast-forwarded to exact canonical commit 4ca4ba2803c800c127909cafcc87b7db27087044; v0.1.2 and go/v0.1.2 were pushed; public raw README and OpenAPI expose the reconciled wording."
       ],
       "notes": "Verified public secondary source mirror. GitHub remains authoritative; automatic pull mirroring is disabled and no paid tier was started.",
       "preparation_status": "PUBLISHED"
@@ -205,9 +205,9 @@
       "id": "pypi",
       "name": "PyPI",
       "status": "PUBLISHED",
-      "url": "https://pypi.org/project/fragment-donor-sdk/0.1.1/",
-      "planned_url": "https://pypi.org/project/fragment-donor-sdk/0.1.1/",
-      "version": "0.1.1",
+      "url": "https://pypi.org/project/fragment-donor-sdk/0.1.2/",
+      "planned_url": "https://pypi.org/project/fragment-donor-sdk/0.1.2/",
+      "version": "0.1.2",
       "observed_at": "2026-10-07T04:29:00Z",
       "evidence": [
         "Authenticated PyPI account shohzodbek and existing django-open-bot project were inspected read-only; django-open-bot was not changed.",
@@ -221,15 +221,15 @@
         "PyPI 0.1.1 reports Python >=3.10 and exposes fragment_donor_sdk-0.1.1-py3-none-any.whl (12,686 bytes; SHA256 dbc1f697b590a4b04aa13cca333449459be7e79ce5ff8b2ad72d155f6702cf06) and fragment_donor_sdk-0.1.1.tar.gz (16,371 bytes; SHA256 a9918f16edef233296b31c0fb06ac42696ba816ff5c95423e0a5982d41438cd5). Both hashes match the GitHub v0.1.1 release SHA256SUMS.",
         "A fresh temporary virtual environment installed exact public fragment-donor-sdk==0.1.1 from PyPI with cache disabled; installed mocked-HTTP smoke passed without a real API request or purchase."
       ],
-      "notes": "Verified immutable public 0.1.1 release while preserving historical 0.1.0 evidence. Failed run 37364162843 remains historical and must not be re-dispatched."
+      "notes": "Trusted Publishing run 37588328286 succeeded. PyPI exposes immutable 0.1.2 as latest; wheel, sdist and public README were independently verified. Failed run 37364162843 remains historical and was not re-dispatched."
     },
     {
       "id": "npm",
       "name": "npm",
       "status": "PUBLISHED",
-      "url": "https://www.npmjs.com/package/fragment-donor-sdk/v/0.1.1",
-      "planned_url": "https://www.npmjs.com/package/fragment-donor-sdk/v/0.1.1",
-      "version": "0.1.1",
+      "url": "https://www.npmjs.com/package/fragment-donor-sdk/v/0.1.2",
+      "planned_url": "https://www.npmjs.com/package/fragment-donor-sdk/v/0.1.2",
+      "version": "0.1.2",
       "observed_at": "2026-10-07T04:57:00Z",
       "evidence": [
         "npm owner shohzodbek enabled account 2FA with one security key before the first publication.",
@@ -240,15 +240,15 @@
         "A fresh temporary install from the public registry tarball with scripts disabled passed metadata inspection, zero-vulnerability audit and the installed mocked-HTTP smoke without a real API request or purchase.",
         "A GitHub Actions Trusted Publisher is configured for usnuz/fragment-donor-sdk, registry-publish.yml, environment npm, with npm publish and npm stage publish allowed; npm dist-tag is not allowed."
       ],
-      "notes": "Verified immutable public 0.1.1 release through the configured GitHub Actions Trusted Publisher. Historical 0.1.0 bootstrap evidence and failed 0.1.1 run 37573044911 are preserved; neither immutable version should be republished."
+      "notes": "Trusted Publishing run 37588379278 succeeded. npm exposes immutable 0.1.2 as latest with provenance; its public tarball and README were independently verified. Historical versions remain immutable."
     },
     {
       "id": "packagist",
       "name": "Packagist",
       "status": "PUBLISHED",
-      "url": "https://packagist.org/packages/fragment-donor/sdk#v0.1.1",
-      "planned_url": "https://packagist.org/packages/fragment-donor/sdk#v0.1.1",
-      "version": "0.1.1",
+      "url": "https://packagist.org/packages/fragment-donor/sdk#v0.1.2",
+      "planned_url": "https://packagist.org/packages/fragment-donor/sdk#v0.1.2",
+      "version": "0.1.2",
       "observed_at": "2026-10-07T05:03:00Z",
       "evidence": [
         "A Packagist account named usnuz was created through the owner-authorized GitHub OAuth login.",
@@ -258,15 +258,15 @@
         "Public Packagist metadata and package page independently expose v0.1.1 with normalized version 0.1.1.0; source and dist both reference exact release commit b23aa72ad1bd540ca3a22f94c14460f7caa70900 and the package page returns HTTP 200.",
         "Owner-confirmed refresh workflow run 37574288789 passed validation but the Packagist API refresh returned HTTP 403. No retry was sent because public v0.1.1 was already indexed; all non-PHP registry jobs were skipped."
       ],
-      "notes": "Verified public package at v0.1.1 from the exact release commit. The protected workflow's stored Packagist API credential cannot currently force a refresh (HTTP 403), but this did not block the already indexed version. Historical v0.1.0 install-smoke evidence remains preserved."
+      "notes": "Packagist exposes public v0.1.2 from exact release commit 4ca4ba2803c800c127909cafcc87b7db27087044. Refresh run 37588397078 returned HTTP 403, but this did not block the independently indexed version; no retry was needed."
     },
     {
       "id": "nuget",
       "name": "NuGet",
       "status": "PUBLISHED",
-      "url": "https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.1",
-      "planned_url": "https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.1",
-      "version": "0.1.1",
+      "url": "https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.2",
+      "planned_url": "https://www.nuget.org/packages/FragmentDonor.Sdk/0.1.2",
+      "version": "0.1.2",
       "observed_at": "2026-10-07T05:20:00Z",
       "evidence": [
         "NuGet owner shohzodbek uploaded the exact reviewed FragmentDonor.Sdk.0.1.0.nupkg with SHA256 fd3ce326cb3f423852fa4aad909a6b6110021c100398822f9c2c88835752e96c.",
@@ -279,16 +279,16 @@
         "The public NuGet flat-container feed exposes 0.1.1. The downloaded nine-file registry package reports FragmentDonor.Sdk 0.1.1, contains NuGet .signature.p7s, and has SHA256 60f5c1c89f35b90ec34de951b639e0590576f0fbe88d17fb772323b731b38f60.",
         "The reviewed GitHub release NUPKG SHA256 is eb267bb861deefac1b406734153f9d170a3d0533adb53371f391320a768a1aa7; the expected registry-byte difference is the NuGet-added signature. A fresh registry restore was not rerun locally because this verification environment has no dotnet executable."
       ],
-      "notes": "Verified immutable public 0.1.1 release through the scoped Trusted Publishing policy. Historical 0.1.0 install-smoke evidence and failed 0.1.1 run 37575010623 remain preserved; neither version should be republished.",
+      "notes": "Trusted Publishing run 37588414811 succeeded. After normal indexing delay, NuGet's public flat-container feed exposes immutable 0.1.2.",
       "preparation_status": "PUBLISHED"
     },
     {
       "id": "go-pkg-go-dev",
       "name": "Go/pkg.go.dev",
       "status": "PUBLISHED",
-      "url": "https://proxy.golang.org/github.com/usnuz/fragment-donor-sdk/go/@v/v0.1.1.info",
-      "planned_url": "https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.1",
-      "version": "0.1.1",
+      "url": "https://proxy.golang.org/github.com/usnuz/fragment-donor-sdk/go/@v/v0.1.2.info",
+      "planned_url": "https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.2",
+      "version": "0.1.2",
       "observed_at": "2026-10-06T17:59:42Z",
       "evidence": [
         "Public go/v0.1.1 resolves directly to exact release commit b23aa72ad1bd540ca3a22f94c14460f7caa70900; the root annotated v0.1.1 tag peels to the same commit.",
@@ -297,16 +297,16 @@
         "sum.golang.org verified module checksum h1:88Htu3nJrOy8pb7/tZq8aqQdvzWyPy+1vOn6tGbX/t0= and go.mod checksum h1:j3OuQkrmGONJX7BjlVi8DqzKPTVj4sTqVQfHuQIaJOM=.",
         "Historical v0.1.0 remains available and its exact-version pkg.go.dev page remains the last independently verified indexed documentation version. The exact v0.1.1 pkg.go.dev URL returned HTTP404 at 2026-10-06T17:59:42Z, so v0.1.1 documentation indexing is not claimed."
       ],
-      "notes": "Go module v0.1.1 is publicly published and consumer-verified while preserving v0.1.0 history. pkg.go.dev v0.1.1 indexing is still pending; no indexing request, registry login, real API call or wallet purchase was performed.",
+      "notes": "Run 37588500312 succeeded and the Go proxy exposes v0.1.2 as latest from exact commit 4ca4ba2803c800c127909cafcc87b7db27087044. pkg.go.dev v0.1.2 indexing still returned HTTP 404; no indexing request, registry login, real API call or wallet purchase was performed.",
       "preparation_status": "PUBLISHED"
     },
     {
       "id": "crates-io",
       "name": "crates.io",
       "status": "PUBLISHED",
-      "url": "https://crates.io/crates/fragment-donor-sdk/0.1.1",
-      "planned_url": "https://crates.io/crates/fragment-donor-sdk/0.1.1",
-      "version": "0.1.1",
+      "url": "https://crates.io/crates/fragment-donor-sdk/0.1.2",
+      "planned_url": "https://crates.io/crates/fragment-donor-sdk/0.1.2",
+      "version": "0.1.2",
       "observed_at": "2026-10-07T05:24:20Z",
       "evidence": [
         "Authenticated crates.io owner usnuz published fragment-donor-sdk 0.1.0 from exact release commit 9e8a9f8577936a37ed750f55f6604e475a545ad9.",
@@ -319,16 +319,16 @@
         "The reviewed GitHub release crate SHA256 is d0f058e684b4ab747e55f574bd31ec3397ad925609e7ce8f3953a98fb5ba71c1. Extracted comparison found only Cargo's second-pass manifest normalization in Cargo.toml.orig and removal of .cargo_vcs_info.json; the remaining packaged files match by path and SHA256.",
         "A fresh registry cargo consumer was not rerun locally because this verification environment has no cargo executable; no such result is claimed."
       ],
-      "notes": "Verified public immutable 0.1.1 release through Trusted Publishing. Historical 0.1.0 consumer evidence remains preserved. The 0.1.1 registry checksum is authoritative for the Cargo-normalized registry crate; do not republish either immutable version.",
+      "notes": "Trusted Publishing run 37588543528 succeeded. crates.io exposes immutable, non-yanked 0.1.2 as latest; checksum and public README were independently verified.",
       "preparation_status": "PUBLISHED"
     },
     {
       "id": "rubygems",
       "name": "RubyGems",
       "status": "PUBLISHED",
-      "url": "https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.1",
-      "planned_url": "https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.1",
-      "version": "0.1.1",
+      "url": "https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.2",
+      "planned_url": "https://rubygems.org/gems/fragment-donor-sdk/versions/0.1.2",
+      "version": "0.1.2",
       "observed_at": "2026-10-07T05:30:00Z",
       "evidence": [
         "Authenticated owner shohzodbek created a pending GitHub Actions Trusted Publisher for usnuz/fragment-donor-sdk, registry-publish.yml, environment rubygems.",
@@ -340,7 +340,7 @@
         "RubyGems public API exposes 0.1.1. API SHA, registry download SHA256 and the reviewed GitHub release gem SHA256 all exactly equal 13fcaea4693b6c12a2ed00d04a8b62f854cc214e8e7c6ac5702eef2d33f9ada5; the gem is 12,288 bytes.",
         "A fresh 0.1.1 registry install was not rerun locally because this verification environment has no ruby or gem executable; no such result is claimed."
       ],
-      "notes": "Verified public immutable 0.1.1 release through GitHub OIDC trusted publishing. Historical 0.1.0 install-smoke evidence remains preserved; neither immutable version should be republished.",
+      "notes": "GitHub OIDC Trusted Publishing run 37588588514 succeeded. RubyGems exposes immutable 0.1.2 as latest; the 12,288-byte gem and public README were independently verified.",
       "preparation_status": "PUBLISHED"
     },
     {
