@@ -94,7 +94,7 @@ jobs:
           name: verified-release
           path: reviewed-release
       - run: npm install --global npm@11.16.0
-      - run: npm publish reviewed-release/*.tgz --access public --provenance
+      - run: npm publish ./reviewed-release/*.tgz --access public --provenance
   dotnet:
     needs: validate
     if: inputs.package == 'dotnet'
