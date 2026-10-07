@@ -1,6 +1,6 @@
 {
   "name": "fragment-donor-sdk",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Typed server-side Node.js SDK for the independent Fragment Donor API",
   "type": "module",
   "main": "./dist/index.js",

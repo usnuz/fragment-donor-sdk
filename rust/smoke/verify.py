@@ -16,7 +16,7 @@ def main():
     target = Path(os.environ.get("CARGO_TARGET_DIR", str(root / "target")))
     if not target.is_absolute():
         target = root / target
-    artifact = target / "package" / "fragment-donor-sdk-0.1.2.crate"
+    artifact = target / "package" / "fragment-donor-sdk-0.1.3.crate"
     expected = {"Cargo.toml", "Cargo.toml.orig", "Cargo.lock", "src/lib.rs", "README.md", "LICENSE", "CHANGELOG.md"}
     with tempfile.TemporaryDirectory(prefix="fragment-donor-crate-smoke-") as work:
         work = Path(work)
@@ -26,7 +26,7 @@ def main():
             files = set()
             for member in archive.getmembers():
                 path = PurePosixPath(member.name)
-                if path.is_absolute() or ".." in path.parts or path.parts[0] != "fragment-donor-sdk-0.1.2" or not member.isfile():
+                if path.is_absolute() or ".." in path.parts or path.parts[0] != "fragment-donor-sdk-0.1.3" or not member.isfile():
                     raise RuntimeError(f"Unsafe archive member: {member.name}")
                 relative = str(PurePosixPath(*path.parts[1:]))
                 files.add(relative)

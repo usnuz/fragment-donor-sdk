@@ -30,7 +30,7 @@ the API operator. SDK redaction applies to client-side diagnostics only. Keep
 
 ## Release state
 
-Current stable version: `0.1.1`. The GitHub release and all seven SDK channels
+Current stable version: `0.1.3`. The GitHub release and all seven SDK channels
 (PyPI, npm, Packagist, NuGet, Go module, crates.io, and RubyGems) are verified
 public. Published versions are immutable; consult the status report for exact
 workflow, checksum, provenance, and consumer-test evidence.

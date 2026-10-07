@@ -430,7 +430,7 @@ export class FragmentDonorClient {
     const purchase = kind === "purchase";
     const headers: Record<string, string> = {
       Accept: "application/json",
-      "User-Agent": "fragment-donor-sdk-node/0.1.2",
+      "User-Agent": "fragment-donor-sdk-node/0.1.3",
       ...credentials?.headers(purchase),
     };
     const body = form ? new URLSearchParams(form).toString() : undefined;

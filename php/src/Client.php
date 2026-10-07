@@ -92,7 +92,7 @@ final class Client
 
     private function call(string $method, string $path, array $fields = [], bool $purchase = false, bool $wallet = false): array
     {
-        $headers = ['Accept' => 'application/json', 'User-Agent' => 'fragment-donor-sdk-php/0.1.2'];
+        $headers = ['Accept' => 'application/json', 'User-Agent' => 'fragment-donor-sdk-php/0.1.3'];
         if ($purchase || $wallet) {
             if ($this->credentials === null) {
                 throw new ValidationError('Wallet credentials are required.');

@@ -1,14 +1,13 @@
 # Fragment Donor SDK for Python
 
-`fragment-donor-sdk` 0.1.2 is a dependency-free, typed, synchronous client for
+`fragment-donor-sdk` 0.1.3 is a dependency-free, typed, synchronous client for
 the independent [Fragment Donor API](https://fragment.donor.uz).
 It is not an official Telegram, Fragment, or TON product. Python 3.10+.
 
-Registry release may still be pending; see the repository publication status.
-After release:
+Install the published package:
 
 ```sh
-python -m pip install fragment-donor-sdk==0.1.2
+python -m pip install fragment-donor-sdk==0.1.3
 ```
 
 There is no service login, account, or service API key.
@@ -147,7 +146,7 @@ PYTHONPATH=src python -W error -m unittest discover -s tests -v
 python -m pip install build
 python -m build
 python tests/check_artifacts.py
-python -m pip install --no-deps dist/fragment_donor_sdk-0.1.2-py3-none-any.whl
+python -m pip install --no-deps dist/fragment_donor_sdk-0.1.3-py3-none-any.whl
 ```
 
 Tests use the shared `../contract/fixtures.json` and mocked transports; the only

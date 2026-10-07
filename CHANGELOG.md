@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+- Replaced obsolete pre-publication wording with direct, exact installation
+  instructions now that all seven SDK channels are public.
+- Refreshed package metadata and release artifacts without changing API behavior.
+
 ## 0.1.2
 
 - Removed obsolete public header names and wallet-funding recommendations from

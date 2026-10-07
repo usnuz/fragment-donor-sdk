@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 
-const target = process.argv[2] ?? "fragment-donor-sdk-0.1.2.tgz";
+const target = process.argv[2] ?? "fragment-donor-sdk-0.1.3.tgz";
 const tar = gunzipSync(readFileSync(target));
 const allowed = new Set([
   "package/CHANGELOG.md",
@@ -60,7 +60,7 @@ for (let offset = 0; offset + 512 <= tar.length; ) {
   if (path === "package/package.json") {
     const metadata = JSON.parse(text);
     assert.equal(metadata.name, "fragment-donor-sdk");
-    assert.equal(metadata.version, "0.1.2");
+    assert.equal(metadata.version, "0.1.3");
     assert.equal(metadata.license, "MIT");
     assert.deepEqual(metadata.dependencies ?? {}, {});
   }

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3
+
+- Replaced obsolete pre-publication wording with the exact published install command.
+- No runtime API behavior changed.
+
 ## 0.1.2
 
 - Removed obsolete public header names and wallet-funding recommendations from
