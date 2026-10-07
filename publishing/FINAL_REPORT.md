@@ -379,7 +379,7 @@ four-operation collection, masked secrets and a placeholder-only environment;
 no API request or purchase was executed. The [GitLab mirror](https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror)
 is a public verified snapshot at commit `d15e64c` with the 0.1.1 and preserved 0.1.0 tags. [Read the Docs](https://fragment-donor-sdk.readthedocs.io/en/latest/)
 is also public with a successful custom build and HTTP-200 EN/RU/UZ paths. The [SourceForge project](https://sourceforge.net/projects/fragment-donor-sdk/)
-publishes a verified source/download mirror with MIT metadata and all nine v0.1.0 assets. [Swagger Studio](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.1)
+publishes a verified v0.1.3 download mirror with 12 files and reconciled public metadata; its older Git code import remains pending authenticated refresh. [Swagger Studio](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.1)
 publishes the public OpenAPI 0.1.1 schema as the default version with reconciled neutral credential-transmission wording. Use normal login/2FA for remaining
 [manual actions](manual-actions.md); never put secrets in chat.
 
@@ -391,7 +391,7 @@ HTTP 200. DEV.to was not submitted because the current generated promotional art
 publishes the owner-reviewed generated article with visible disclosure and three topics, outside Partner Program/paywall.
 The public article reopened in Chrome; Medium returned HTTP 403 to unauthenticated command-line probes.
 
-APIs.guru review is pending in [issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556).
+APIs.guru review is pending in [issue #3556](https://github.com/APIs-guru/openapi-directory/issues/3556); its public body now identifies stable contract 0.1.3 and uses the reconciled neutral eligibility wording.
 The owner authorized CC0 distribution for that directory submission. It remains **SUBMITTED**, not PUBLISHED,
 until maintainers accept it and the public catalog entry is verified.
 
