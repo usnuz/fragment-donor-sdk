@@ -23,7 +23,7 @@
     },
     {
       "file": "05-retention-evidence",
-      "caption": "Purchase credentials go to the API operator. Use server-side secret storage and a dedicated, minimally funded wallet."
+      "caption": "Purchase credentials go to the API operator. Use server-side secret storage."
     }
   ]
 }

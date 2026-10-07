@@ -4,10 +4,10 @@ Owner: `usnuz`. Repository: [fragment-donor-sdk](https://github.com/usnuz/fragme
 Primary docs: [GitHub Pages](https://usnuz.github.io/fragment-donor-sdk/).
 Independent project: no affiliation with Telegram, Fragment or TON.
 
-## Authorization and access
+## Approval and access
 
 The owner authorized all **eligible** publication, not only GitHub/Pages.
-Authorization does not bypass a platform's rules, login, ownership, editorial
+Approval does not bypass a platform's rules, login, ownership, editorial
 review, or paid-plan approval. PyPI 0.1.0 is published through its verified
 trusted publisher; owner-confirmed run 37404248538 and a clean public-index
 consumer were verified. npm 0.1.0 was bootstrapped from the reviewed tarball,
@@ -41,7 +41,7 @@ permission by extracting a session cookie or credential.
    source generation as a test pass. Keep runtime and registry status separate.
 5. Re-check registry names immediately before first release. On 2026-10-06 all
    six queried package metadata endpoints returned HTTP 404. This is availability
-   evidence at that instant, not a reservation or publisher authorization.
+   evidence at that instant, not a reservation or publisher approval.
 6. Confirm publisher account ownership, 2FA, trusted-publisher settings, and
    applicable registry rules. Never put registry secrets in chat or source.
 
@@ -187,7 +187,7 @@ environment values: wallet/provider fields must stay empty and
 **unknown payment outcome**, not ordinary rejected validation; reconcile rather
 than resending. Do not execute real purchases for a listing. Swagger Studio imported the public OpenAPI without
 introducing a fake service-key scheme. APIs.guru issue
-`https://github.com/APIs-guru/openapi-directory/issues/3556` is SUBMITTED under the owner's explicit CC0 authorization;
+`https://github.com/APIs-guru/openapi-directory/issues/3556` is SUBMITTED under the owner's explicit CC0 approval;
 review is distinct from acceptance. RapidAPI is a separately chosen gateway model, not proof that
 the direct API requires authentication. Do not accept a paid plan or gateway
 contract on the user's behalf.

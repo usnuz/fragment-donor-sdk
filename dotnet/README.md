@@ -19,8 +19,8 @@ dotnet add package FragmentDonor.Sdk --version 0.1.1
 
 ## All four operations
 
-No account, login, `Authorization` or `X-Api-Key` is needed. The optional `Api-Key`
-is a TonConsole provider key. Cookie and mnemonic are sensitive wallet/session
+No account or login is needed. The optional `Api-Key` is a TonConsole provider
+key. Cookie and mnemonic are sensitive wallet/session
 credentials for your own purchases; they are not a service login.
 
 ```csharp
@@ -103,8 +103,8 @@ Caller cancellation after dispatch may also require reconciliation; cancellation
 still uses the standard `OperationCanceledException` contract.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. Use a dedicated, minimally funded wallet and secret manager,
-and do not expose seeds in frontend code.
+the API operator. Use a secret manager, and do not expose seeds in frontend
+code.
 
 ## Build, test and release
 

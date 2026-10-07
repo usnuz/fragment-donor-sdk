@@ -69,8 +69,8 @@ func main() {
 }
 ```
 
-No service account, `Authorization` or `X-Api-Key` is needed. `Api-Key` is only
-an optional TonConsole provider key. Purchase Cookie/Mnemonic are wallet and
+No service account is needed. `Api-Key` is only an optional TonConsole provider
+key. Purchase Cookie/Mnemonic are wallet and
 Fragment session credentials. Wallet balance needs only Mnemonic, not Cookie;
 the backend accepts GET and POST, and the SDK chooses GET. Requests use form
 encoding, not JSON. Stars: 50–1,000,000; Premium: 3/6/12 months;
@@ -103,8 +103,7 @@ Do not convert balance strings to float64. Config/credentials debug and JSON
 representations are redacted, but never log arbitrary request/response objects.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. Use server-side secret storage and a dedicated, minimally
-funded wallet, and keep real credentials out
+the API operator. Use server-side secret storage, and keep real credentials out
 of examples, screenshots and CI.
 
 ## Development and release

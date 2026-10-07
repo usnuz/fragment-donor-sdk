@@ -22,6 +22,6 @@ Go module: github.com/usnuz/fragment-donor-sdk/go (go/v0.1.1 tag).
 
 This is not an official Telegram, Fragment or TON product. Purchase requests
 transmit wallet mnemonic and Fragment session/cookie data to the API operator.
-Use server-side secret storage and a dedicated, minimally funded wallet. No real
+Use server-side secret storage. No real
 payment was used to test this release. Artifacts and
 source are licensed MIT; dependency licenses remain applicable.

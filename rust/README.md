@@ -55,8 +55,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-No service account, `Authorization` or `X-Api-Key` exists in this SDK. `Api-Key`
-is an optional TonConsole provider key. Cookie/Mnemonic are wallet/session
+No service account exists in this SDK. `Api-Key` is an optional TonConsole
+provider key. Cookie/Mnemonic are wallet/session
 credentials for purchases; balance only needs Mnemonic. Four endpoints share
 a normally 30/minute per-IP limit. Requests are form encoded, not JSON.
 Stars range: 50–1,000,000. Premium: 3/6/12 months. Payment methods: `usdt_ton`
@@ -92,8 +92,7 @@ Client/Config/Credentials/TransportRequest debug is redacted. Do not log
 custom transport internals. A custom `Transport` must not retry requests,
 redirect them or expose credentials. Purchase requests transmit the wallet
 mnemonic and Fragment session/cookie to the API operator. SDK redaction applies
-to client-side diagnostics only. Use server-side secret storage and a dedicated,
-minimally funded wallet.
+to client-side diagnostics only. Use server-side secret storage.
 
 ## Development and release
 

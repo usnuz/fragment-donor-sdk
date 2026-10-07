@@ -4,7 +4,7 @@ These are research/checklists, **not article drafts to paste or paraphrase with
 AI**. No editorial submission made. Verified 2026-10-05. Human authors must
 independently verify facts, write original analysis and satisfy current rules.
 Eligible publication is authorized, but these generated articles remain
-ineligible under the checked policies; authorization does not waive those rules.
+ineligible under the checked policies; approval does not waive those rules.
 This checklist itself is AI-generated; human factual/editorial review is pending.
 
 <a id="habr"></a>

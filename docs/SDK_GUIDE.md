@@ -16,9 +16,9 @@ registry-install test.
 
 ## Contract
 
-Base URL: `https://fragment.donor.uz`. There is **no service authentication**:
-never send `Authorization`, `X-Api-Key`, or invent a service token. The optional
-`Api-Key` header is a **TonConsole provider key**, not service authentication.
+Base URL: `https://fragment.donor.uz`. There is **no service authentication**.
+The optional `Api-Key` header is a **TonConsole provider key**, not service
+authentication.
 
 | Operation | Method/path | Inputs | Wallet credentials |
 | --- | --- | --- | --- |
@@ -101,7 +101,7 @@ and must not retry purchases or log sensitive headers.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
 the API operator. SDK redaction applies to client-side diagnostics only. Use
-server-side secret storage and a dedicated, minimally funded wallet.
+server-side secret storage.
 
 All tests use synthetic fixtures and mocked/local transports. They prove SDK
 behavior, not a successful blockchain purchase or production wallet safety.

@@ -36,8 +36,7 @@ doesn't mean “no wallet credential”: the direct API has no service account/k
 but balance reads use a mnemonic and purchases also use a sensitive session
 cookie; optional Api-Key configures
 TonConsole only. Second, purchase requests transmit wallet mnemonic and Fragment
-session/cookie data to the API operator. Use trusted server storage and a
-dedicated, minimally funded wallet.
+session/cookie data to the API operator. Use trusted server storage.
 
 The source includes mocked contract tests and EN/RU/UZ docs. These are evidence
 of client behavior, not proof of successful blockchain delivery, independent

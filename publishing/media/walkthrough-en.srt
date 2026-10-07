@@ -16,4 +16,4 @@ A 400 with unconfirmed:true is an unknown purchase outcome. Reconcile; never rep
 
 5
 00:00:40,000 --> 00:00:49,999
-Purchase credentials go to the API operator. Use server-side secret storage and a dedicated, minimally funded wallet.
+Purchase credentials go to the API operator. Use server-side secret storage.

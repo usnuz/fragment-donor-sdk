@@ -43,7 +43,7 @@ an SDK wrapper.
 
 Common behavior matters more than naming: form-urlencoded purchases; exact
 decimal balance strings; retained unknown response fields; no service account,
-`Authorization` or `X-Api-Key`; optional TonConsole provider key; redirect refusal;
+service login; optional TonConsole provider key; redirect refusal;
 structured errors; default zero retries; opt-in bounded read-only waits; and
 **never** automatic purchase retries. HTTP 400 `unconfirmed:true` is a payment
 outcome requiring reconciliation, not ordinary validation rejection; retain a
@@ -55,7 +55,7 @@ in a repository is not proof of a passing compiler or package publication. No
 real Stars or Premium purchase is needed for those checks.
 
 Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
-the API operator. Keep secrets server-side and use a dedicated, minimally funded wallet. The docs provide
+the API operator. Keep secrets server-side. The docs provide
 the same topics at separate English, Russian and Uzbek URLs without promising
 search engine rankings.
 

@@ -18,7 +18,7 @@ composer require fragment-donor/sdk:^0.1
 
 ## Four operations
 
-The direct API needs no account, login, `Authorization` or `X-Api-Key`.
+The direct API needs no account or login.
 `Api-Key` is an optional TonConsole provider key, not service authentication.
 Cookie and mnemonic authorize use of your own Fragment session and wallet.
 
@@ -99,8 +99,8 @@ A false flag is not an exactly-once or no-charge guarantee; reconcile any ambigu
 response before intentionally purchasing again.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. Use a dedicated, minimally funded wallet and secret manager,
-and never put real seeds in source or browser code.
+the API operator. Use a secret manager, and never put real seeds in source or
+browser code.
 
 ## Tests and release
 

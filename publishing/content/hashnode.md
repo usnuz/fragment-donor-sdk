@@ -1,7 +1,7 @@
 # Hashnode publication payload
 
-Status: READY AI-generated draft; eligible publication authorized,
-account/editorial review and actual publication NOT_RUN.
+Status: PUBLISHED AI-assisted article; owner-reviewed public copy was reconciled
+to neutral credential-transmission wording on 2026-10-07.
 Title: **A server-only Telegram Stars SDK: transport and trust boundaries**.
 Tags: `typescript`, `nodejs`, `api`, `security`.
 
@@ -29,11 +29,10 @@ console.log(user.username, user.is_premium);
 Check the repository's release state before using the npm install command. Source,
 a built tarball and a published registry version are different milestones.
 
-The direct API requires no service login, Authorization or X-Api-Key. Wallet
+The direct API requires no service login. Wallet
 operations still need a mnemonic and purchases need the Fragment cookie; optional
 providerKey maps to TonConsole Api-Key only. Purchase requests transmit wallet
-mnemonic and Fragment session/cookie data to the API operator. Use a dedicated,
-minimally funded wallet, server-side secret storage, and evaluate that access.
+mnemonic and Fragment session/cookie data to the API operator.
 
 Our transport refuses redirects and uses abort for timeouts. Redirect refusal
 prevents forwarding secret headers to a redirected host. Aborting a request does

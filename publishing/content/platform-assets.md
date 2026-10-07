@@ -31,8 +31,8 @@ Release note copy, **only after all declared artifacts exist and pass**:
 > typed errors, opt-in bounded read retries and no automatic purchase retry.
 > Tests use synthetic fixtures/mocked transport; no wallet funds were spent.
 > Not official Telegram/Fragment/TON software. Purchase requests transmit wallet
-> mnemonic and Fragment session/cookie data to the API operator. Use a dedicated,
-> minimally funded wallet and server-side secret storage.
+> mnemonic and Fragment session/cookie data to the API operator. Use server-side
+> secret storage.
 > Source release, registry publication and search indexing are separate states.
 > Consult publication-status.json for each package and channel.
 
@@ -63,7 +63,7 @@ Description (copy):
 > https://github.com/usnuz/fragment-donor-sdk. No production backend history.
 > This is not official Telegram, Fragment or TON software. Wallet operations
 > transmit sensitive credentials to the API operator; use server-side secret
-> storage and a dedicated, minimally funded wallet. A mirror is not a registry release.
+> storage. A mirror is not a registry release.
 
 Tags: `sdk`, `telegram`, `ton`, `api`. Create a genuine clean Git mirror and keep
 its README pointing to GitHub. Use normal owner-authorized Git push or a supported
@@ -83,7 +83,7 @@ RTD import/build is NOT_RUN: this custom static build has no verified RTD config
 Before import, configure a supported build, verify current community eligibility,
 and select a secondary redirect/noindex/canonical approach rather than duplicating
 all indexed pages. Do not falsely claim an RTD URL exists. Do not subscribe to
-commercial hosting or remove free-hosting attribution/ads without authorization.
+commercial hosting or remove free-hosting attribution/ads without explicit approval.
 
 ## SourceForge
 
@@ -131,7 +131,7 @@ unknown payment outcome, not ordinary rejected validation; preserve the safe
 reference and reconcile rather than retry. Keep wallet/provider values empty
 and `allow_real_purchases=false`; inspect collection/local/current/shared values,
 select `No Auth`, publish an authorized public workspace and reopen it logged out.
-Do not supply `Authorization`/`X-Api-Key` or enter real mnemonic/cookie values.
+Do not enter real mnemonic/cookie values.
 Public collection publication is BLOCKED_ACCESS by saved browser permission,
 not submitted. A generated collection/environment is not a public Network listing.
 
@@ -201,7 +201,7 @@ Description (copy):
 > exact balance strings, 429/Retry-After handling and EN/RU/UZ documentation.
 > Not official TON/Telegram/Fragment software and not a decentralized wallet.
 > Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
-> the API operator. Use a dedicated, minimally funded wallet and server-side secret storage.
+> the API operator. Use server-side secret storage.
 > Purchases never automatically retry, and no idempotency guarantee exists.
 > Docs: https://usnuz.github.io/fragment-donor-sdk/en/.
 > Source: https://github.com/usnuz/fragment-donor-sdk.

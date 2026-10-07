@@ -42,8 +42,8 @@ if ENV["FRAGMENT_ALLOW_PURCHASES"] == "yes"
 end
 ```
 
-No service account, login, `Authorization` or `X-Api-Key` is needed. Cookie and
-Mnemonic are purchase credentials; balance needs only Mnemonic. `Api-Key` is
+No service account or login is needed. Cookie and Mnemonic are purchase
+credentials; balance needs only Mnemonic. `Api-Key` is
 an optional TonConsole provider key. Stars: integer 50–1,000,000. Premium:
 3/6/12 months. Payment: `usdt_ton` (backend default when omitted) or `ton`.
 Wallet versions: `auto`, `v5r1`, `v4r2`, `v3r2`. Wallet address, Fragment Proxy
@@ -88,8 +88,7 @@ Typed `UserInfo`, `Purchase`, `WalletBalance` preserve unknown fields in `extra`
 are redacted and transport exception causes are discarded. Do not dump
 arbitrary request or response internals. Purchase requests transmit the wallet
 mnemonic and Fragment session/cookie to the API operator. SDK redaction applies
-to client-side diagnostics only. Use server-side secret storage and a dedicated,
-minimally funded wallet.
+to client-side diagnostics only. Use server-side secret storage.
 
 ## Tests/build/release
 

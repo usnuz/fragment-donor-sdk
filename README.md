@@ -4,9 +4,9 @@ Independent client libraries for `https://fragment.donor.uz`, a service for
 Telegram Stars and Premium integrations. Not an official Telegram, Fragment,
 or TON product.
 
-The direct API requires no account, service API key, `Authorization`, or
-`X-Api-Key`. Purchase operations use your own Fragment cookie and wallet
-mnemonic. The optional `Api-Key` header is a TonConsole provider key only.
+The direct API requires no account or service API key. Purchase operations use
+your own Fragment cookie and wallet mnemonic. The optional `Api-Key` header is
+a TonConsole provider key only.
 
 All four endpoints share one per-IP minute window, normally 30 requests/minute.
 Respect HTTP 429 `FLOOD_WAIT` / `Retry-After` and HTTP 503 retry hints.
@@ -22,13 +22,13 @@ publish the parent production repository or its Git history.
 
 ## Credential handling
 
-Use a dedicated, minimally funded wallet and server-side secret storage.
+Use server-side secret storage.
 Node.js purchase code is server-only; do not expose mnemonics in browser code,
 localStorage, screenshots, examples, or logs.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
 the API operator. SDK redaction applies to client-side diagnostics only. Keep
-secrets in server-side storage and use a dedicated, minimally funded wallet.
+secrets in server-side storage.
 
 ## Release state
 

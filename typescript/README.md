@@ -11,7 +11,7 @@ After release:
 npm install fragment-donor-sdk@0.1.1
 ```
 
-No service account/login, `Authorization`, or `X-Api-Key` is required.
+No service account or login is required.
 `providerKey` supplies optional TonConsole `Api-Key` only. It is not a service key.
 
 ## Quick start and four methods
@@ -121,7 +121,7 @@ Do not bundle purchase code into browsers: browser Cookie header restrictions
 make that flow unsuitable, and wallet mnemonics must never reach frontend code,
 localStorage, public environment variables, analytics, or screenshots.
 Runtime constructor rejects browser execution. Keep credentials inside a
-trusted Node.js service and use a dedicated minimally funded wallet.
+trusted Node.js service.
 
 Credential objects use private fields and redacted inspect/JSON output.
 Known credential echoes and sensitive server keys are redacted before SDK errors
@@ -131,8 +131,7 @@ explicitly printing its return value exposes secrets.
 Redirects are always `manual`; HTTPS is required except local test servers.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. Keep secrets server-side and use a dedicated, minimally
-funded wallet.
+the API operator. Keep secrets server-side.
 
 ## Development and release
 

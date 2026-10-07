@@ -1,7 +1,7 @@
 # Medium publication payload
 
-Status: AI-generated draft; human editorial review pending; not posted.
-Eligible publication is authorized; account/editorial gates remain. Format: public **non-paywalled**
+Status: PUBLISHED AI-assisted article; owner-reviewed public copy was reconciled
+to neutral credential-transmission wording on 2026-10-07. Format: public **non-paywalled**
 engineering article. Title: **No service auth is not no wallet risk**.
 Topics: Software Engineering, APIs, Security.
 
@@ -16,14 +16,12 @@ This is a mock/source walkthrough, not a customer testimonial or real purchase.
 account, but it says nothing about what secrets an operation needs or where they
 are transmitted. In this API, a username lookup requires no credential,
 while a Stars/Premium purchase uses a wallet mnemonic and Fragment session cookie.
-An optional key configures TonConsole, not the service's authorization layer.
+An optional `Api-Key` is a TonConsole provider key only.
 
 The SDK boundary and server boundary are separate. A client can use redacted
 diagnostics, disable redirect forwarding and avoid leaking transport causes.
 Purchase requests still transmit wallet mnemonic and Fragment session/cookie data
-to the API operator. SDK redaction applies to client-side diagnostics only. A
-dedicated, minimally funded wallet and trusted
-server-side secret storage help limit exposure, but do not eliminate trust.
+to the API operator. SDK redaction applies to client-side diagnostics only.
 
 Payment retry is another boundary. A timeout can occur after remote payment
 completion. Without a backend idempotency guarantee or purchase-status endpoint,

@@ -12,7 +12,7 @@ Fragment, or TON product. No actual payment is demonstrated here.
 
 The first distinction in a Telegram Stars API integration is between service
 authentication and wallet access. `https://fragment.donor.uz` does not require a
-service account, login, `Authorization`, or `X-Api-Key`. That does **not** mean a
+service account or login. That does **not** mean a
 purchase needs no credentials: purchases use your Fragment session cookie and
 wallet mnemonic. Optional `Api-Key` configures a TonConsole provider, not access
 to this service.
@@ -56,8 +56,8 @@ key or purchase-status endpoint resolves that ambiguity. HTTP 400 with
 reference and reconcile, rather than treating it as ordinary validation rejection.
 
 The trust boundary is important: purchase requests transmit wallet mnemonic and
-Fragment session/cookie data to the API operator. Use server-side secret storage
-and a dedicated, minimally funded wallet; never put seeds into frontend code or public
+Fragment session/cookie data to the API operator. Use server-side secret storage;
+never put seeds into frontend code or public
 collection variables.
 
 [Four-operation docs](https://usnuz.github.io/fragment-donor-sdk/en/) ·

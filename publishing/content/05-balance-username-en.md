@@ -41,9 +41,9 @@ when the server adds data. Avoid dumping the entire raw response into telemetry:
 future fields can be sensitive, and log redaction is not proof that every possible
 server string is harmless.
 
-No service account or `Authorization`/`X-Api-Key` is required. Provider `Api-Key`
+No service account is required. Provider `Api-Key`
 is optional TonConsole configuration. A valid username response is not a price
-quote or payment guarantee; a balance is not an authorization to spend it.
+quote or payment guarantee; a balance does not permit spending.
 
 The shared default quota is 30 requests/IP/minute across all four operations.
 Do not poll balance in a loop for every frontend keystroke. If automatic read-only

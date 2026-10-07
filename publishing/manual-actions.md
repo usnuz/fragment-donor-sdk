@@ -103,7 +103,7 @@ optional launch metadata or extract sensitive credentials.
    Prepared text, demo plans and upload workflow files do not prove publication.
 6. **Credential trust boundary:** purchase requests transmit wallet mnemonic and
    Fragment session/cookie data to the API operator. Recommend server-side secret
-   storage and a dedicated, minimally funded wallet. Publishing client SDKs does
+   storage. Publishing client SDKs does
    not change production behavior.
 
 Exact per-channel state and evidence: publication-status.json and PLATFORM_MATRIX.md.

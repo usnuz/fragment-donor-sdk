@@ -49,7 +49,7 @@ Conditional note (only if permitted and relevant to current technical discussion
 
 Avoid posting if this is an unsolicited product announcement rather than a
 genuine TON developer discussion. Do not message moderators privately without
-separate user authorization; if current rules are unclear, do not post.
+separate user approval; if current rules are unclear, do not post.
 
 ## Discord
 

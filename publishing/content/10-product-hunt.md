@@ -62,7 +62,7 @@ maintainer. Do not ask users to upvote or privately message voters.
 | [02-wire-contract.png](../media/02-wire-contract.png) | Form-urlencoded purchase and placeholder-only headers | No real wallet/session/provider value |
 | [03-retry-errors.png](../media/03-retry-errors.png) | Synthetic 429/503, bounded read waits and no purchase replay | Not measured production telemetry |
 | [04-unknown-purchase.png](../media/04-unknown-purchase.png) | HTTP 400 `unconfirmed:true` and synthetic reconciliation fields | Not validation rejection or transaction confirmation |
-| [05-retention-evidence.png](../media/05-retention-evidence.png) | API operator credential boundary | Dedicated wallet and server-side secret-storage guidance |
+| [05-retention-evidence.png](../media/05-retention-evidence.png) | API operator credential boundary | Server-side secret-storage guidance |
 | [docs-uz-baseline.jpg](../media/docs-uz-baseline.jpg) | Existing public Uzbek-docs browser screenshot, 1265×712 | Earlier baseline, predates new demo/footer; not newly captured current UI or payment proof; public image/hash verified |
 
 The five PNGs are 1920×1080; editable SVG companions and SHA-256/size records are

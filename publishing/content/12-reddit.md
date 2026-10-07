@@ -69,8 +69,7 @@ Copy:
 > The source models TON/USDT balances as decimal strings and tests that a timeout
 > results in one purchase POST, not a hidden retry. These are synthetic tests,
 > not proof of blockchain delivery or wallet safety. Anyone evaluating this
-> integration should use a dedicated minimally funded wallet and inspect the
-> operator boundary first. Technical source:
+> integration should inspect the operator boundary first. Technical source:
 > https://github.com/usnuz/fragment-donor-sdk. Security guide:
 > https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/.
 
@@ -152,7 +151,7 @@ Copy:
 > https://github.com/usnuz/fragment-donor-sdk/tree/main/python. API/error docs:
 > https://usnuz.github.io/fragment-donor-sdk/en/guides/errors/. No actual Django
 > purchase was run here. Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator, so use a server
-> secret manager and dedicated wallet, not model fields containing real seeds.
+> secret manager, not model fields containing real seeds.
 > Project is not official Telegram/Fragment/TON software.
 
 This is a design note, not a claim that a full Django payment application has

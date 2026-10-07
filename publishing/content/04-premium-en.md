@@ -13,7 +13,7 @@ months, not a date, days count or string plan identifier. Payment is `usdt_ton`
 
 The direct service requires no login or service API key, but this spending
 operation requires a Fragment `Cookie` and wallet `Mnemonic`. Optional `Api-Key`
-is TonConsole provider configuration. Do not invent `Authorization` or an
+is TonConsole provider configuration. Do not invent an
 `Idempotency-Key` header and claim it changes the backend's guarantees.
 
 Python and Node clients expose the same operation idiomatically. Installation
@@ -50,8 +50,8 @@ retry them. A delivery claim in an article should be supported by an actual
 deliberate authorized payment, and none is made here.
 
 Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
-the API operator. Keep secrets on a trusted server and use a dedicated,
-minimally funded wallet. Redirect refusal and log redaction are client controls.
+the API operator. Keep secrets on a trusted server. Redirect refusal and log
+redaction are client controls.
 
 [Premium endpoint](https://usnuz.github.io/fragment-donor-sdk/en/reference/buy-premium/) ·
 [SDK source](https://github.com/usnuz/fragment-donor-sdk) ·

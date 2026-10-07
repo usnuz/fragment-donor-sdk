@@ -48,4 +48,4 @@ docs, not promotional upvotes or private outreach.
 
 Only use first-person affiliation if true for the posting account. Read current
 official rules, account gates and paid options before any posting; no cost or
-DM authorization is inferred. If the platform disallows the draft, don't force it.
+DM approval is inferred. If the platform disallows the draft, don't force it.

@@ -405,7 +405,7 @@ does not guarantee crawling, indexing or rankings.
 **Purchase requests transmit sensitive credentials to the API operator.** No
 service auth does not mean no wallet risk: purchases use Mnemonic + Fragment
 Cookie, balance uses Mnemonic, optional `Api-Key` configures TonConsole. SDK
-use a dedicated, minimally funded wallet.
+credentials remain a sensitive operator trust boundary.
 
 Purchases never auto-retry. HTTP 400 `unconfirmed:true`/`tx_hash`, timeouts
 or transport/malformed replies may be unknown payment outcome. Preserve safe

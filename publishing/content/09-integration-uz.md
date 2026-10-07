@@ -11,7 +11,7 @@ rasmiy mahsuloti emas. Bu qo‘llanmada haqiqiy Stars/Premium xaridi bajarilmayd
 hamyon xavfsizligi yoki Google’da chiqish kafolatlanmaydi.
 
 `https://fragment.donor.uz` to‘g‘ridan-to‘g‘ri API’si servis loginini, account,
-`Authorization`, `X-Api-Key` yoki service API key talab qilmaydi. Ammo xarid uchun
+service API key talab qilmaydi. Ammo xarid uchun
 o‘zingizning Fragment sessiya `Cookie`’si va hamyon `Mnemonic`’i kerak. Ixtiyoriy
 `Api-Key` TonConsole provayder kaliti, servisga kirish kaliti emas. “Service auth
 yo‘q” degani “hamyon credentiallari kerak emas” degani emas.
@@ -66,8 +66,8 @@ mablag‘ sarflanmaganini isbotlamaydi va qayta yuborishga ruxsat emas.
 
 Muhim xavf: xarid so'rovlari sensitive credentiallarni API operatoriga uzatadi.
 SDK loglaridagi redaction operatorning uzatilgan ma’lumotlarga kirishini cheklamaydi.
-Alohida, minimal mablag‘li hamyon, server secret manager
-va operatorga ishonch chegarasini baholash kerak. Mnemonic/cookie’ni frontend,
+Server secret manager va operatorga ishonch chegarasini baholash kerak.
+Mnemonic/cookie’ni frontend,
 localStorage, repo, screenshot yoki ochiq Postman muhitiga joylamang.
 
 [O‘zbekcha docs](https://usnuz.github.io/fragment-donor-sdk/uz/) ·

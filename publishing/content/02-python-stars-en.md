@@ -75,8 +75,7 @@ wait apply across all four endpoints. A 429/503 is surfaced for the caller;
 purchase methods still do not retry automatically.
 
 Finally, purchase requests transmit wallet mnemonic and Fragment session/cookie
-data to the API operator. Treat that operator boundary explicitly,
-and keep a dedicated minimally funded wallet rather than a primary savings seed.
+data to the API operator. Treat that operator boundary explicitly.
 
 [Python source/tests/examples](https://github.com/usnuz/fragment-donor-sdk/tree/main/python) ·
 [Python documentation](https://usnuz.github.io/fragment-donor-sdk/en/sdk/python/) ·

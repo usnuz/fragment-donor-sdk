@@ -59,7 +59,7 @@ try {
 ```
 
 Do not copy secrets into the code. `providerKey` maps to optional TonConsole
-`Api-Key`; there is no service `Authorization` or `X-Api-Key`. A purchase requires
+`Api-Key`; there is no service login. A purchase requires
 both mnemonic and Fragment cookie, and uses form-urlencoded `username`, `amount`
 and `payment_method`. Stars amount is 50–1,000,000, payment is `usdt_ton` or `ton`.
 
@@ -76,7 +76,7 @@ history and recipient state before intentionally submitting another purchase.
 
 Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
 the API operator. SDK redaction applies to client-side diagnostics only. Keep the
-entire flow server-side and use a dedicated, minimally funded wallet.
+entire flow server-side.
 
 [Node source/tests](https://github.com/usnuz/fragment-donor-sdk/tree/main/typescript) ·
 [Node documentation](https://usnuz.github.io/fragment-donor-sdk/en/sdk/typescript/) ·

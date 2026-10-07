@@ -24,12 +24,12 @@
     {
       "file": "02-wire-contract.svg",
       "bytes": 3575,
-      "sha256": "d5905f01dc8733795f9b78512e016eb4fb54c9df57cb75ae4fc9b581161d4e0c"
+      "sha256": "578a36c9c370c7e29d4877f16f5d67d56b8abe8b9055795cea4ecddcba2bd6fd"
     },
     {
       "file": "02-wire-contract.png",
-      "bytes": 163084,
-      "sha256": "5cd8ea59987e1771a4368c2d4297173873450bfb00af65efa1eeaf2377837816"
+      "bytes": 162667,
+      "sha256": "c485e608830f913eaf66f2d63e43184546255f3e8513ec818d5781c6cda0a51c"
     },
     {
       "file": "03-retry-errors.svg",
@@ -53,23 +53,23 @@
     },
     {
       "file": "05-retention-evidence.svg",
-      "bytes": 3341,
-      "sha256": "86a677aeeccd98bff997a2d8fca90fd02f00664e8d978a4fbd22b5763d5417a9"
+      "bytes": 3349,
+      "sha256": "bf27070483f3c84361ebda5640f768b8dfc4c2628cd9b38003bf8b1bd78293de"
     },
     {
       "file": "05-retention-evidence.png",
-      "bytes": 160505,
-      "sha256": "2a0747711c2f688a214604176f0a4017c6e16177df8b094b22b801fcc28b2f83"
+      "bytes": 162098,
+      "sha256": "eebf7df09692abbe32fa25e6e743ef8235e23cb0f04c1840ef8ec652402a772b"
     },
     {
       "file": "walkthrough-en.srt",
-      "bytes": 605,
-      "sha256": "5f46ba2bff807075c25542334fca945b71fa76bb69c55b318cc6fd5e5b38e3dd"
+      "bytes": 564,
+      "sha256": "f78aca44f91aeddb9f7163f82a4672ac057f68e892dc7ca91bdb9854a64174b3"
     },
     {
       "file": "walkthrough-en.mp4",
-      "bytes": 988053,
-      "sha256": "b4d1acc7625cf23c76a5d4e23b78d1b0df4636624ff9daf999928f9f48e4ea5b"
+      "bytes": 990602,
+      "sha256": "607751ce0597474c2e3aa7c91d5d69f48a765b013dad388dac7a568320a8f61c"
     }
   ]
 }

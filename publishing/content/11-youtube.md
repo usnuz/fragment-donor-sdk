@@ -84,8 +84,8 @@ Avoid tags implying official affiliation, guaranteed earnings or successful gift
 1. **Opening, docs page.** “This is Fragment Donor, an independent SDK project.
    We will inspect source and mocked requests; no real purchase happens today.
    The clients are tools, not a guarantee that a wallet operation is risk-free.”
-2. **Contract table.** “Service auth is absent: no account, Authorization or
-   X-Api-Key. But purchase headers still include your Fragment Cookie and wallet
+2. **Contract table.** “Service auth is absent: no account or service login. But
+   purchase headers still include your Fragment Cookie and wallet
    Mnemonic. Api-Key, when present, configures TonConsole, not service login.”
 3. **Source request model.** “Username goes in the lookup query. Stars amount and
    Premium duration go in a form-urlencoded POST, not JSON. Stars accept 50 to
@@ -109,8 +109,8 @@ Avoid tags implying official affiliation, guaranteed earnings or successful gift
    rejection or proof that no funds were spent.”
 8. **Security guide.** “Client redaction and redirect refusal reduce accidental
    leakage. Purchase requests transmit sensitive credentials to the API operator.
-   Use a dedicated minimally funded wallet and evaluate
-   operator access. Do not put seeds in public Postman variables or screenshots.”
+   Evaluate operator access. Do not put seeds in public Postman variables or
+   screenshots.”
 9. **Closing, status JSON.** “Seven source packages and three documentation
    languages are available in the project. A local build is not a registry
    release; check the actual state before copying an install command. The source

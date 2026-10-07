@@ -361,7 +361,7 @@
             "type": "text/javascript",
             "exec": [
               "if (pm.variables.get('allow_real_purchases') !== 'I_UNDERSTAND_REAL_FUNDS') {",
-              "  throw new Error('Purchase disabled: set allow_real_purchases explicitly only on a trusted backend with a funded dedicated wallet.');",
+              "  throw new Error('Purchase disabled: set allow_real_purchases explicitly only on a trusted backend.');",
               "}"
             ]
           }
@@ -818,7 +818,7 @@
             "type": "text/javascript",
             "exec": [
               "if (pm.variables.get('allow_real_purchases') !== 'I_UNDERSTAND_REAL_FUNDS') {",
-              "  throw new Error('Purchase disabled: set allow_real_purchases explicitly only on a trusted backend with a funded dedicated wallet.');",
+              "  throw new Error('Purchase disabled: set allow_real_purchases explicitly only on a trusted backend.');",
               "}"
             ]
           }

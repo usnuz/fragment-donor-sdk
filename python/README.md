@@ -11,7 +11,7 @@ After release:
 python -m pip install fragment-donor-sdk==0.1.1
 ```
 
-There is no service login, account, API key, `Authorization`, or `X-Api-Key`.
+There is no service login, account, or service API key.
 Wallet operations need your own credentials. `provider_key` maps only to the
 optional TonConsole `Api-Key`, not service authentication.
 
@@ -136,8 +136,7 @@ HTTP redirects are disabled so headers cannot be forwarded to another site.
 HTTPS is required except localhost for deterministic integration tests.
 
 Purchase requests transmit the wallet mnemonic and Fragment session/cookie to
-the API operator. Use server-side secret storage and a dedicated, minimally
-funded wallet.
+the API operator. Use server-side secret storage.
 
 ## Development and release
 
