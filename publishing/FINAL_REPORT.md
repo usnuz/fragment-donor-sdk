@@ -365,7 +365,7 @@ PyPI, npm, Packagist, NuGet, crates.io and RubyGems are **PUBLISHED** and
 public-install or download verified. Postman is **PUBLISHED** with a public
 four-operation collection, masked secrets and a placeholder-only environment;
 no API request or purchase was executed. The [GitLab mirror](https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror)
-is a public verified snapshot at commit `d5278d0` with both tags. [Read the Docs](https://fragment-donor-sdk.readthedocs.io/en/latest/)
+is a public verified snapshot at commit `d15e64c` with the 0.1.1 and preserved 0.1.0 tags. [Read the Docs](https://fragment-donor-sdk.readthedocs.io/en/latest/)
 is also public with a successful custom build and HTTP-200 EN/RU/UZ paths. The [SourceForge project](https://sourceforge.net/projects/fragment-donor-sdk/)
 publishes a verified source/download mirror with MIT metadata and all nine v0.1.0 assets. [Swagger Studio](https://app.swaggerhub.com/apis/independent-7a3/fragment-donor-sdk/0.1.0)
 publishes the public credential-free OpenAPI 0.1.0 schema and returned HTTP 200. Use normal login/2FA for remaining

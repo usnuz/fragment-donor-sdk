@@ -159,12 +159,12 @@
       "status": "PUBLISHED",
       "url": "https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror",
       "planned_url": "https://gitlab.com/fragment-donor-sdk/fragment-donor-sdk-mirror",
-      "version": "0.1.0",
-      "observed_at": "2026-10-06T07:33:44Z",
+      "version": "0.1.1",
+      "observed_at": "2026-10-07T06:06:00Z",
       "evidence": [
         "GitLab group Fragment Donor SDK and project Fragment Donor SDK mirror are public and accessible without authentication.",
         "Repository-by-URL import from the authoritative public GitHub repository completed successfully without credentials or paid pull mirroring.",
-        "GitLab shows main at exact source commit d5278d0fa7e12bb8e0f72f10cb162e4651134c1b, 20 commits, one branch and two tags."
+        "GitLab main was fast-forwarded to exact canonical commit d15e64cba2deb63c5ead5cbff0f77e7603286256; public raw README and OpenAPI returned HTTP 200 with the reconciled wording."
       ],
       "notes": "Verified public secondary source mirror. GitHub remains authoritative; automatic pull mirroring is disabled and no paid tier was started.",
       "preparation_status": "PUBLISHED"
