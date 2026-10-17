@@ -1,4 +1,4 @@
-import {mkdir, writeFile, copyFile, readFile, cp} from 'node:fs/promises';
+import {mkdir, writeFile, copyFile, readFile, cp, readdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {resolve, dirname, join} from 'node:path';
 import {languages, ui, pages} from './content.mjs';
@@ -6,6 +6,7 @@ import {languages, ui, pages} from './content.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const out = join(root, 'site');
 const base = (process.env.DOCS_BASE_URL || 'https://usnuz.github.io/fragment-donor-sdk/').replace(/\/?$/, '/');
+const noIndex = process.env.DOCS_NOINDEX === '1';
 const repo = 'https://github.com/usnuz/fragment-donor-sdk';
 const googleSiteVerification = '<meta name="google-site-verification" content="5zNQNXfDsgJQJgg0fCu4QQ3DnonwKN-YZnMAFn6GBqE">';
 // Reuse the tested package examples rather than maintaining divergent snippets.
@@ -71,4 +72,19 @@ await copyFile(join(root,'contract','postman.json'),join(out,'postman.json'));
 await copyFile(join(root,'contract','postman.environment.json'),join(out,'postman.environment.json'));
 await import('../demo/build.mjs');
 await cp(join(root,'publishing','media'),join(out,'demo','media'),{recursive:true});
+if(noIndex){
+  const addNoIndex=async directory=>{
+    for(const entry of await readdir(directory,{withFileTypes:true})){
+      const target=join(directory,entry.name);
+      if(entry.isDirectory())await addNoIndex(target);
+      else if(entry.isFile()&&entry.name.endsWith('.html')){
+        const html=await readFile(target,'utf8');
+        if(!/<meta[^>]+name=["']robots["']/i.test(html)){
+          await writeFile(target,html.replace('<head>','<head><meta name="robots" content="noindex,follow">'));
+        }
+      }
+    }
+  };
+  await addNoIndex(out);
+}
 console.log(`Built ${entries.length} static multilingual pages; no JavaScript required for content.`);

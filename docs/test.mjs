@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import {languages,pages} from './content.mjs';
 const out=resolve(dirname(fileURLToPath(import.meta.url)),'../site');
 const base=(process.env.DOCS_BASE_URL||'https://usnuz.github.io/fragment-donor-sdk/').replace(/\/?$/,'/');
+const noIndex=process.env.DOCS_NOINDEX==='1';
 const sitemap=await readFile(join(out,'sitemap.xml'),'utf8');
 const rootHtml=await readFile(join(out,'index.html'),'utf8');
 assert(rootHtml.includes('<title>Telegram Stars API and Premium SDKs | Fragment Donor</title>'));
@@ -12,6 +13,7 @@ assert(rootHtml.includes('name="description"'));
 assert(rootHtml.includes('type="application/ld+json"'));
 assert(rootHtml.includes('en/guides/telegram-stars-api/'));
 assert(rootHtml.includes('en/guides/buy-telegram-stars/'));
+assert.equal(/<meta[^>]*name="robots"[^>]*content="noindex,follow"/i.test(rootHtml),noIndex);
 const intentSlugs=[
   'guides/buy-telegram-stars',
   'guides/telegram-stars-api',
@@ -36,7 +38,7 @@ for(const lang of languages) for(const page of pages){
   assert(html.includes(`<html lang="${lang}">`));
   assert(html.includes(`<link rel="canonical" href="${base}${path}">`));
   assert(html.includes('<h1>')&&html.includes('<main id="content">'));
-  assert(!/<meta[^>]*noindex/i.test(html));
+  assert.equal(/<meta[^>]*name="robots"[^>]*content="noindex,follow"/i.test(html),noIndex);
   assert(!/<script(?![^>]*type="application\/ld\+json")/i.test(html),'Documentation cannot depend on executable JS');
   for(const alt of [...languages,'x-default']){
     const expected=`${alt==='x-default'?'en':alt}/${page.slug?`${page.slug}/`:''}`;
@@ -57,5 +59,7 @@ for(const lang of languages) for(const page of pages){
 }
 assert.equal((sitemap.match(/<loc>/g)||[]).length,count+1);
 assert((await readFile(join(out,'robots.txt'),'utf8')).includes(`${base}sitemap.xml`));
+const demoHtml=await readFile(join(out,'demo','index.html'),'utf8');
+assert.equal(/<meta[^>]*name="robots"[^>]*content="noindex,follow"/i.test(demoHtml),noIndex);
 assert((await readFile(join(out,'BingSiteAuth.xml'),'utf8')).includes('0FC9BA2127C25CAF29E8D06CE963E168'));
 console.log(`PASS: ${count} translated pages: static content, canonical, reciprocal hreflang, sitemap, internal links.`);
