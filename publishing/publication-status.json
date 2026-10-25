@@ -679,9 +679,11 @@
       "evidence": [
         "Google Search Console automatically verified the URL-prefix property via the deployed HTML meta tag; the property dashboard opened successfully.",
         "The live documentation root returned HTTP 200 with the exact verification meta tag, and CI run 37498768944 plus Pages run 37498914115 completed successfully.",
-        "Search Console accepted a fresh /sitemap.xml submission on 2026-10-07 and displayed 'Sitemap submitted'; the table still reported 'Not fetched', type unknown and zero discovered pages."
+        "Search Console accepted a fresh /sitemap.xml submission on 2026-10-07 and displayed 'Sitemap submitted'; the table still reported 'Not fetched', type unknown and zero discovered pages.",
+        "On 2026-10-25 the https://sdk.donor.uz/ URL-prefix property was verified using its deployed HTML meta tag and /sitemap-index.xml was submitted.",
+        "Live URL Inspection for https://sdk.donor.uz/sitemap-index.xml reported that the URL is available to Google and can be indexed; the sitemap report still initially showed 'Not fetched' while processing."
       ],
-      "notes": "Ownership is verified and the sitemap was re-submitted successfully, but successful sitemap retrieval or indexing is not verified; do not describe the site as indexed.",
+      "notes": "Custom-domain ownership and a Google live fetch are verified. Sitemap report processing and actual page indexing remain pending; do not describe the site as indexed yet.",
       "preparation_status": "SUBMITTED"
     },
     {
