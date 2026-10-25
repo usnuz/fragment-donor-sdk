@@ -77,6 +77,7 @@ await writeFile(join(out,'sitemap-index.xml'),`<?xml version="1.0" encoding="UTF
 await writeFile(join(out,'sitemap.xml'),urlset(entries));
 await writeFile(join(out,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${base}sitemap-index.xml\n`);
 await copyFile(join(root,'docs','BingSiteAuth.xml'),join(out,'BingSiteAuth.xml'));
+await copyFile(join(root,'docs','yandex_0861539b0dec0237.html'),join(out,'yandex_0861539b0dec0237.html'));
 await copyFile(join(root,'contract','openapi.json'),join(out,'openapi.json'));
 await copyFile(join(root,'contract','postman.json'),join(out,'postman.json'));
 await copyFile(join(root,'contract','postman.environment.json'),join(out,'postman.environment.json'));

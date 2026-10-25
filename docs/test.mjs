@@ -76,4 +76,5 @@ assert((await readFile(join(out,'robots.txt'),'utf8')).includes(`${base}sitemap-
 const demoHtml=await readFile(join(out,'demo','index.html'),'utf8');
 assert.equal(/<meta[^>]*name="robots"[^>]*content="noindex,follow"/i.test(demoHtml),noIndex);
 assert((await readFile(join(out,'BingSiteAuth.xml'),'utf8')).includes('0FC9BA2127C25CAF29E8D06CE963E168'));
+assert((await readFile(join(out,'yandex_0861539b0dec0237.html'),'utf8')).includes('Verification: 0861539b0dec0237'));
 console.log(`PASS: ${count} translated pages: static content, canonical, reciprocal hreflang, sitemap, internal links.`);
