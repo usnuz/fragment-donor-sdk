@@ -27,11 +27,21 @@ async function check(target){
 await Promise.all(Array.from({length:4},async()=>{
   while(next<targets.length){const target=targets[next++];await check(target);}
 }));
-for(const path of ['sitemap.xml','robots.txt','openapi.json','postman.json','postman.environment.json']){
+for(const path of ['sitemap.xml','sitemap-index.xml','sitemap-en.xml','sitemap-ru.xml','sitemap-uz.xml','robots.txt','openapi.json','postman.json','postman.environment.json']){
   const response=await fetch(base+path,{redirect:'manual',signal:AbortSignal.timeout(15000)});
   assert.equal(response.status,200,path);
   const body=await response.text();
   if(path==='sitemap.xml')assert.equal((body.match(/<loc>/g)||[]).length,targets.length);
+  if(path==='sitemap-index.xml'){
+    assert.equal((body.match(/<sitemap>/g)||[]).length,languages.length);
+    for(const lang of languages)assert(body.includes(`<loc>${base}sitemap-${lang}.xml</loc>`));
+  }
+  if(path.startsWith('sitemap-')&&path!=='sitemap-index.xml'){
+    const lang=path.match(/^sitemap-([a-z]+)\.xml$/)?.[1];
+    const expected=pages.length+(lang==='en'?1:0);
+    assert.equal((body.match(/<loc>/g)||[]).length,expected,path);
+  }
+  if(path==='robots.txt')assert(body.includes(`Sitemap: ${base}sitemap-index.xml`));
   if(path==='openapi.json'){const spec=JSON.parse(body);assert.deepEqual(spec.security,[]);assert.equal(Object.keys(spec.paths).length,4);}
   if(path==='postman.json'){const spec=JSON.parse(body);assert.equal(spec.auth.type,'noauth');assert.equal(spec.variable.find(v=>v.key==='allow_real_purchases').value,'false');}
   if(path==='postman.environment.json'){const env=JSON.parse(body);for(const key of ['mnemonic','fragment_cookie','tonconsole_key'])assert.equal(env.values.find(v=>v.key===key).value,'');}

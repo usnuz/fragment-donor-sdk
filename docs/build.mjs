@@ -63,9 +63,19 @@ for (const lang of languages) for (const page of pages) {
 const rootAlternates=languages.map(l=>`<link rel="alternate" hreflang="${l}" href="${base}${l}/">`).join('');
 const rootStructured=JSON.stringify({'@context':'https://schema.org','@type':'WebSite',name:'Fragment Donor SDK',url:base,description:'Server-side SDKs for sending Telegram Stars and Premium gifts to a username.'}).replace(/</g,'\\u003c');
 await writeFile(join(out,'index.html'),`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${googleSiteVerification}<title>Telegram Stars API and Premium SDKs | Fragment Donor</title><meta name="description" content="Send Telegram Stars or Premium to a username with server-side SDKs for Python, Node.js, PHP, .NET, Go, Rust, and Ruby."><link rel="canonical" href="${base}">${rootAlternates}<link rel="alternate" hreflang="x-default" href="${base}"><link rel="stylesheet" href="style.css"><script type="application/ld+json">${rootStructured}</script></head><body><main class="chooser"><h1>Telegram Stars API and Premium SDKs</h1><p>Validate a Telegram username, send Stars or Premium from a server backend, and handle payment timeouts without duplicate purchase retries.</p><p><a href="en/guides/buy-telegram-stars/">Buy Telegram Stars with an API</a><a href="en/guides/telegram-stars-api/">Telegram Stars API guide</a><a href="en/guides/telegram-premium-gift-api/">Telegram Premium Gift API</a><a href="en/guides/telegram-stars-api-vs-bot-api/">Stars API vs Bot Payments API</a></p><h2>Documentation languages</h2>${languages.map(l=>`<a href="${l}/" hreflang="${l}" lang="${l}">${escape(ui[l].name)}</a>`).join('')}<p>Independent project. Not an official Telegram, Fragment, or TON product.</p></main></body></html>`);
-const entries=[base,...languages.flatMap(lang=>pages.map(page=>urlFor(lang,page.slug)))];
-await writeFile(join(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${entries.map(url=>`<url><loc>${url}</loc></url>`).join('')}</urlset>`);
-await writeFile(join(out,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${base}sitemap.xml\n`);
+const languageEntries=Object.fromEntries(languages.map(lang=>[
+  lang,
+  [...(lang==='en'?[base]:[]),...pages.map(page=>urlFor(lang,page.slug))],
+]));
+const entries=languages.flatMap(lang=>languageEntries[lang]);
+const urlset=urls=>`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url=>`  <url><loc>${url}</loc></url>`).join('\n')}\n</urlset>\n`;
+for(const lang of languages)await writeFile(join(out,`sitemap-${lang}.xml`),urlset(languageEntries[lang]));
+const sitemapLocations=languages.map(lang=>`${base}sitemap-${lang}.xml`);
+await writeFile(join(out,'sitemap-index.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapLocations.map(url=>`  <sitemap><loc>${url}</loc></sitemap>`).join('\n')}\n</sitemapindex>\n`);
+// Preserve the original endpoint for existing integrations while Search Console
+// transitions to the language-specific sitemap index.
+await writeFile(join(out,'sitemap.xml'),urlset(entries));
+await writeFile(join(out,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${base}sitemap-index.xml\n`);
 await copyFile(join(root,'docs','BingSiteAuth.xml'),join(out,'BingSiteAuth.xml'));
 await copyFile(join(root,'contract','openapi.json'),join(out,'openapi.json'));
 await copyFile(join(root,'contract','postman.json'),join(out,'postman.json'));

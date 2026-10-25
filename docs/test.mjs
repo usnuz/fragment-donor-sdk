@@ -7,6 +7,7 @@ const out=resolve(dirname(fileURLToPath(import.meta.url)),'../site');
 const base=(process.env.DOCS_BASE_URL||'https://usnuz.github.io/fragment-donor-sdk/').replace(/\/?$/,'/');
 const noIndex=process.env.DOCS_NOINDEX==='1';
 const sitemap=await readFile(join(out,'sitemap.xml'),'utf8');
+const sitemapIndex=await readFile(join(out,'sitemap-index.xml'),'utf8');
 const rootHtml=await readFile(join(out,'index.html'),'utf8');
 assert(rootHtml.includes('<title>Telegram Stars API and Premium SDKs | Fragment Donor</title>'));
 assert(rootHtml.includes('name="description"'));
@@ -58,7 +59,20 @@ for(const lang of languages) for(const page of pages){
   count++;
 }
 assert.equal((sitemap.match(/<loc>/g)||[]).length,count+1);
-assert((await readFile(join(out,'robots.txt'),'utf8')).includes(`${base}sitemap.xml`));
+assert(sitemapIndex.includes('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'));
+assert.equal((sitemapIndex.match(/<sitemap>/g)||[]).length,languages.length);
+let splitCount=0;
+for(const lang of languages){
+  const languageSitemap=await readFile(join(out,`sitemap-${lang}.xml`),'utf8');
+  assert(sitemapIndex.includes(`<loc>${base}sitemap-${lang}.xml</loc>`));
+  assert(languageSitemap.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'));
+  const urls=[...languageSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match=>match[1]);
+  assert.equal(urls.length,pages.length+(lang==='en'?1:0));
+  assert(urls.every(url=>url===base||url.startsWith(`${base}${lang}/`)));
+  splitCount+=urls.length;
+}
+assert.equal(splitCount,count+1);
+assert((await readFile(join(out,'robots.txt'),'utf8')).includes(`${base}sitemap-index.xml`));
 const demoHtml=await readFile(join(out,'demo','index.html'),'utf8');
 assert.equal(/<meta[^>]*name="robots"[^>]*content="noindex,follow"/i.test(demoHtml),noIndex);
 assert((await readFile(join(out,'BingSiteAuth.xml'),'utf8')).includes('0FC9BA2127C25CAF29E8D06CE963E168'));
