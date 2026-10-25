@@ -362,15 +362,15 @@ RubyGems and Go module/index are verified.
 | 34 | TON developer RU | NOT_RUN |
 | 35 | Telegram developer communities | NOT_RUN |
 | 36 | Discord developer communities | NOT_RUN |
-| 37 | Google Search Console | SUBMITTED — ownership verified; sitemap re-submitted 2026-10-07 and accepted, fetch/indexing still unverified |
-| 38 | Bing Webmaster Tools | NOT_RUN |
+| 37 | Google Search Console | SUBMITTED — custom-domain ownership/live fetch verified; sitemap and five priority URL crawl requests submitted 2026-10-25; indexing pending |
+| 38 | Bing Webmaster Tools | SUBMITTED — custom-domain property verified; sitemap accepted and processing 2026-10-25 |
 | 39 | Hacker News / Show HN | NOT_ELIGIBLE |
 | 40 | Stack Overflow | NOT_ELIGIBLE |
 | 41 | Habr | NOT_ELIGIBLE |
 | 42 | HackerNoon | NOT_ELIGIBLE |
 | 43 | r/SaaS | NOT_ELIGIBLE |
 | 44 | r/webdev | NOT_ELIGIBLE |
-| 45 | Yandex Webmaster | NOT_RUN |
+| 45 | Yandex Webmaster | BLOCKED — Yandex ID owner confirmation required before property creation |
 
 ## Remaining work and non-negotiable boundaries
 
@@ -412,11 +412,13 @@ promotional route remains ineligible. Other destinations still require genuine
 account/rule/editorial gates. No fake question, private outreach, vote
 manipulation or paid plan is authorized. [Policy evidence](PLATFORM_MATRIX.md).
 
-Google Search Console URL-prefix ownership is verified by a live HTML meta tag,
-and `/sitemap.xml` was re-submitted successfully on 2026-10-07. Its table still
-reported “Not fetched”, so successful retrieval and indexing remain unverified.
-Bing and Yandex remain **NOT_RUN**. SEO submission
-does not guarantee crawling, indexing or rankings.
+Google Search Console URL-prefix ownership is verified by a live HTML meta tag.
+The custom-domain sitemap index and five priority URLs were submitted on
+2026-10-25; inspected guide reports named that sitemap as their discovery source,
+while indexing remains pending. Bing also verified the custom-domain property and
+accepted the same sitemap index with `Processing` status. Yandex remains blocked
+only on the owner's Yandex ID confirmation. SEO submission does not guarantee
+crawling, indexing or rankings.
 
 **Purchase requests transmit sensitive credentials to the API operator.** No
 service auth does not mean no wallet risk: purchases use Mnemonic + Fragment

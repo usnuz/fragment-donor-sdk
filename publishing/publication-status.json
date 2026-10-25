@@ -383,11 +383,12 @@
       "url": "https://github.com/APIs-guru/openapi-directory/issues/3556",
       "planned_url": null,
       "version": "0.1.3",
-      "observed_at": "2026-10-07T08:45:00Z",
+      "observed_at": "2026-10-25T12:52:01Z",
       "evidence": [
         "Owner explicitly authorized APIs.guru to include and distribute the contributed API definition under the directory's CC0 1.0 terms.",
-        "Official APIs.guru Add API form generated GitHub issue 3556 with the stable GitHub Pages OpenAPI URL, official-owner flag and payments category.",
-        "The open issue records the Public, Persistent and Useful eligibility rationale plus the independent-service disclaimer. Its mutable body now identifies the stable 0.1.3 contract and contains no service-authentication or credential-handling claim."
+        "Official APIs.guru Add API form generated GitHub issue 3556 with the official-owner flag and payments category.",
+        "On 2026-10-25 the issue's mutable OpenAPI URL was migrated from the legacy GitHub Pages path to https://sdk.donor.uz/openapi.json.",
+        "The open issue records the Public, Persistent and Useful eligibility rationale plus the independent-service disclaimer. Its mutable body identifies the stable 0.1.3 contract and contains no service-authentication or credential-handling claim."
       ],
       "notes": "Submission is open for directory review. SUBMITTED is not acceptance or catalog publication; do not mark PUBLISHED until the API appears in the directory and its public record is verified.",
       "preparation_status": "SUBMITTED"
@@ -405,7 +406,7 @@
         "The project is marked Active and Current at 0.1.1 and the generated Requests view exposes five endpoint/method entries.",
         "On 2026-10-07 a sanitized OpenAPI 0.1.1 file was uploaded through Studio CI/CD after info.title was matched to the immutable project name; Studio reported 'The spec was saved successfully'.",
         "The refreshed public page contained none of the prohibited storage, secret-storage, dedicated-wallet, Authorization or X-Api-Key phrases.",
-        "Listing records website https://usnuz.github.io/fragment-donor-sdk/ and base URL https://fragment.donor.uz; no real API request or payment was performed."
+        "On 2026-10-25 the listing website was migrated to https://sdk.donor.uz/; the API base URL remains https://fragment.donor.uz and no real API request or payment was performed."
       ],
       "notes": "Public RapidAPI API project and sanitized OpenAPI 0.1.1 update verified. Publication does not prove endpoint execution or a successful purchase.",
       "preparation_status": "PUBLISHED"
@@ -675,13 +676,15 @@
       "url": "https://sdk.donor.uz/sitemap-index.xml",
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": "2026-10-07T11:28:00Z",
+      "observed_at": "2026-10-25T12:52:01Z",
       "evidence": [
         "Google Search Console automatically verified the URL-prefix property via the deployed HTML meta tag; the property dashboard opened successfully.",
         "The live documentation root returned HTTP 200 with the exact verification meta tag, and CI run 37498768944 plus Pages run 37498914115 completed successfully.",
         "Search Console accepted a fresh /sitemap.xml submission on 2026-10-07 and displayed 'Sitemap submitted'; the table still reported 'Not fetched', type unknown and zero discovered pages.",
         "On 2026-10-25 the https://sdk.donor.uz/ URL-prefix property was verified using its deployed HTML meta tag and /sitemap-index.xml was submitted.",
-        "Live URL Inspection for https://sdk.donor.uz/sitemap-index.xml reported that the URL is available to Google and can be indexed; the sitemap report still initially showed 'Not fetched' while processing."
+        "Live URL Inspection for https://sdk.donor.uz/sitemap-index.xml reported that the URL is available to Google and can be indexed; the sitemap report still initially showed 'Not fetched' while processing.",
+        "The homepage plus EN, RU and UZ Telegram Stars guide URLs and the EN Telegram Premium guide URL were submitted to Google's priority crawl queue on 2026-10-25.",
+        "URL Inspection for inspected guide pages identified https://sdk.donor.uz/sitemap-index.xml as the discovery sitemap, confirming that Google had associated the submitted index even while the summary table remained pending."
       ],
       "notes": "Custom-domain ownership and a Google live fetch are verified. Sitemap report processing and actual page indexing remain pending; do not describe the site as indexed yet.",
       "preparation_status": "SUBMITTED"
@@ -689,14 +692,17 @@
     {
       "id": "bing-webmaster-tools",
       "name": "Bing Webmaster Tools",
-      "status": "NOT_RUN",
-      "url": null,
+      "status": "SUBMITTED",
+      "url": "https://sdk.donor.uz/sitemap-index.xml",
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
-      "notes": "All-eligible publication now authorized; tailored material/runbook prepared. Actual login/submission/publication has not run; eligibility must be rechecked at submission.",
-      "preparation_status": "READY"
+      "observed_at": "2026-10-25T12:52:01Z",
+      "evidence": [
+        "Bing Webmaster Tools listed sdk.donor.uz as a verified property after validating the deployed BingSiteAuth.xml file.",
+        "The sitemap table accepted https://sdk.donor.uz/sitemap-index.xml and displayed Submitted on 2026-10-25 with Processing status, zero errors and zero warnings."
+      ],
+      "notes": "Property verification and sitemap submission are complete. Crawl completion and indexed URL counts remain pending and must not be presented as indexing success.",
+      "preparation_status": "SUBMITTED"
     },
     {
       "id": "hacker-news-show-hn",
@@ -767,14 +773,16 @@
     {
       "id": "yandex-webmaster",
       "name": "Yandex Webmaster",
-      "status": "NOT_RUN",
+      "status": "BLOCKED_ACCESS",
       "url": null,
       "planned_url": null,
       "version": "0.1.0",
-      "observed_at": null,
-      "evidence": [],
+      "observed_at": "2026-10-25T12:52:01Z",
+      "evidence": [
+        "The Yandex Webmaster add-site flow reached Yandex ID authentication, which requested an owner confirmation code from Yandex Navigator."
+      ],
       "preparation_status": "READY",
-      "notes": "Official ownership verification/sitemap instructions prepared. Owner verification/submission/indexing not run; project path cannot grant github.io origin-root/DNS ownership."
+      "notes": "Owner must complete Yandex ID confirmation before the custom-domain property can be added. No property, sitemap submission or indexing is claimed yet."
     }
   ],
   "live_api_probe": {
