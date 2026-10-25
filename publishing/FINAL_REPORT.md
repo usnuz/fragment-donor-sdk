@@ -370,7 +370,7 @@ RubyGems and Go module/index are verified.
 | 42 | HackerNoon | NOT_ELIGIBLE |
 | 43 | r/SaaS | NOT_ELIGIBLE |
 | 44 | r/webdev | NOT_ELIGIBLE |
-| 45 | Yandex Webmaster | BLOCKED — Yandex ID owner confirmation required before property creation |
+| 45 | Yandex Webmaster | BLOCKED_ACCESS — property ownership verified; Yandex Sitemap tool is temporarily read-only |
 
 ## Remaining work and non-negotiable boundaries
 
@@ -416,9 +416,10 @@ Google Search Console URL-prefix ownership is verified by a live HTML meta tag.
 The custom-domain sitemap index and five priority URLs were submitted on
 2026-10-25; inspected guide reports named that sitemap as their discovery source,
 while indexing remains pending. Bing also verified the custom-domain property and
-accepted the same sitemap index with `Processing` status. Yandex remains blocked
-only on the owner's Yandex ID confirmation. SEO submission does not guarantee
-crawling, indexing or rankings.
+accepted the same sitemap index with `Processing` status. Yandex verified the
+custom-domain property, but its Sitemap tool displayed a service-wide read-only
+incident and disabled submissions. SEO submission does not guarantee crawling,
+indexing or rankings.
 
 **Purchase requests transmit sensitive credentials to the API operator.** No
 service auth does not mean no wallet risk: purchases use Mnemonic + Fragment

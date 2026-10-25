@@ -779,10 +779,11 @@
       "version": "0.1.0",
       "observed_at": "2026-10-25T12:52:01Z",
       "evidence": [
-        "The Yandex Webmaster add-site flow reached Yandex ID authentication, which requested an owner confirmation code from Yandex Navigator."
+        "Yandex Webmaster accepted https://sdk.donor.uz as a property and verified owner shokhzodbek.usmonov on 2026-10-25 using the deployed root file yandex_0861539b0dec0237.html.",
+        "Immediately afterward the Sitemap tool reported a service-wide read-only incident: sitemap files could not be added or resubmitted and the Add control was disabled."
       ],
       "preparation_status": "READY",
-      "notes": "Owner must complete Yandex ID confirmation before the custom-domain property can be added. No property, sitemap submission or indexing is claimed yet."
+      "notes": "Ownership is complete. Sitemap submission remains blocked by Yandex's own read-only incident; no sitemap submission or indexing is claimed yet."
     }
   ],
   "live_api_probe": {
