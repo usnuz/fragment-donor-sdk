@@ -120,6 +120,6 @@ crates.io ownership/access and MFA/trusted publishing before `cargo publish`;
 building a crate does not prove registry publication. Verify that a fresh
 consumer can install/build exact version `0.1.3` from the registry.
 
-[Docs](https://usnuz.github.io/fragment-donor-sdk/)
+[Docs](https://sdk.donor.uz/)
 · [Source](https://github.com/usnuz/fragment-donor-sdk/tree/main/rust)
 · [Changelog](CHANGELOG.md) · [MIT license](LICENSE)

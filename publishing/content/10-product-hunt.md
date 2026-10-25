@@ -18,7 +18,7 @@ Tagline: **Seven server SDKs for Telegram Stars and Premium integrations**
 
 Product URL: https://github.com/usnuz/fragment-donor-sdk
 
-Documentation: https://usnuz.github.io/fragment-donor-sdk/en/
+Documentation: https://sdk.donor.uz/en/
 
 Topics to select if available: Developer Tools, Open Source, API.
 
@@ -78,13 +78,13 @@ and [probe/hash verification](../media/docs-uz-baseline.verification.json) bind
 the original 117,338 bytes. Exact capture time is unknown: the recorded
 2026-10-05T11:51:37Z value is only source-file modification time. Preserve its
 **earlier baseline — not current UI** caption when using it in a gallery.
-Public image: [verified baseline JPEG](https://usnuz.github.io/fragment-donor-sdk/demo/media/docs-uz-baseline.jpg).
+Public image: [verified baseline JPEG](https://sdk.donor.uz/demo/media/docs-uz-baseline.jpg).
 HTTP200 and exact original bytes/hash checked on 2026-10-05 at 17:35 UTC.
 
 The local fixture viewer `site/demo/index.html` ([generator](../../demo/build.mjs)) switches pre-rendered
 responses for four operations using CSS/radio controls: no executable JavaScript,
 API request, secret input or invented dispatch counter. Verified public demo:
-`https://usnuz.github.io/fragment-donor-sdk/demo/`; recheck it before submitting.
+`https://sdk.donor.uz/demo/`; recheck it before submitting.
 Source tests, not this viewer, establish request
 counts. This is a mock-only product preview, not completed platform launch.
 

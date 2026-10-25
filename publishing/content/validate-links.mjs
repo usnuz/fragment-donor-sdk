@@ -9,9 +9,9 @@ const root = resolve(here, "../..");
 const siteRoot = join(root, "site");
 function siteTarget(text) {
   const url = new URL(text.replace(/[.,;]+$/, ""));
-  assert.equal(url.origin, "https://usnuz.github.io");
+  assert.equal(url.origin, "https://sdk.donor.uz");
   assert.equal(url.username + url.password, "");
-  const prefix = "/fragment-donor-sdk/";
+  const prefix = "/";
   assert(url.pathname.startsWith(prefix), "Unexpected public docs prefix");
   const path = decodeURIComponent(url.pathname.slice(prefix.length));
   const target = resolve(siteRoot, path, ...(path.endsWith("/") || !path ? ["index.html"] : []));
@@ -19,12 +19,12 @@ function siteTarget(text) {
   return target;
 }
 // Directory pages and literal static files must not be confused.
-assert.equal(siteTarget("https://usnuz.github.io/fragment-donor-sdk/en/"), join(siteRoot, "en", "index.html"));
-assert.equal(siteTarget("https://usnuz.github.io/fragment-donor-sdk/demo/media/docs-uz-baseline.jpg"), join(siteRoot, "demo", "media", "docs-uz-baseline.jpg"));
-assert.equal(siteTarget("https://usnuz.github.io/fragment-donor-sdk/openapi.json"), join(siteRoot, "openapi.json"));
-assert.throws(() => siteTarget("https://usnuz.github.io/other/"));
+assert.equal(siteTarget("https://sdk.donor.uz/en/"), join(siteRoot, "en", "index.html"));
+assert.equal(siteTarget("https://sdk.donor.uz/demo/media/docs-uz-baseline.jpg"), join(siteRoot, "demo", "media", "docs-uz-baseline.jpg"));
+assert.equal(siteTarget("https://sdk.donor.uz/openapi.json"), join(siteRoot, "openapi.json"));
+assert.throws(() => siteTarget("https://usnuz.github.io/fragment-donor-sdk/en/"));
 assert.throws(() => siteTarget("https://example.com/fragment-donor-sdk/en/"));
-assert.throws(() => siteTarget("https://usnuz.github.io/fragment-donor-sdk/%2f..%2foutside"));
+assert.throws(() => siteTarget("https://sdk.donor.uz/%2f..%2foutside"));
 const files = (await readdir(here)).filter((name) => name.endsWith(".md"));
 files.push("../PLATFORM_MATRIX.md");
 let references = 0;
@@ -37,7 +37,7 @@ for (const name of files) {
     await access(resolve(dirname(file), decodeURIComponent(target.split("#")[0])));
     references++;
   }
-  for (const match of content.matchAll(/https:\/\/usnuz\.github\.io\/fragment-donor-sdk\/[^\s)>"`\]]*/g)) {
+  for (const match of content.matchAll(/https:\/\/sdk\.donor\.uz\/[^\s)>"`\]]*/g)) {
     await access(siteTarget(match[0]));
     references++;
   }

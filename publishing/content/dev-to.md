@@ -53,7 +53,7 @@ there is no backend purchase-status endpoint or idempotency-key guarantee here.
 Inspect custom transports, reverse proxies and queues for hidden POST retries.
 
 Source/tests: https://github.com/usnuz/fragment-donor-sdk.
-Full wait guide: https://usnuz.github.io/fragment-donor-sdk/en/guides/rate-limit-flood-wait/.
+Full wait guide: https://sdk.donor.uz/en/guides/rate-limit-flood-wait/.
 Seven package builds exist independently of registry publication; check actual
 status before installing a claimed release.
 

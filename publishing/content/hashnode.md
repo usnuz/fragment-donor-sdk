@@ -49,8 +49,8 @@ echoes and require exactly one selected gift in the executable example. Custom
 fetch implementations must not undo redirect/retry/logging protections.
 
 Source/tests: https://github.com/usnuz/fragment-donor-sdk/tree/main/typescript.
-Node docs: https://usnuz.github.io/fragment-donor-sdk/en/sdk/typescript/.
-Credential guide: https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/.
+Node docs: https://sdk.donor.uz/en/sdk/typescript/.
+Credential guide: https://sdk.donor.uz/en/guides/credentials/.
 
 ## Author actions
 

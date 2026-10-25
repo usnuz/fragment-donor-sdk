@@ -67,6 +67,6 @@ idempotency-key или endpoint статуса покупки. Сохранит�
 оператора. Не помещайте
 mnemonic в frontend, localStorage, Git, скриншоты или переменные публичного Postman.
 
-[API Telegram Stars по username](https://usnuz.github.io/fragment-donor-sdk/ru/guides/telegram-stars-api/) ·
+[API Telegram Stars по username](https://sdk.donor.uz/ru/guides/telegram-stars-api/) ·
 [Исходный код и статус релизов](https://github.com/usnuz/fragment-donor-sdk) ·
-[429 и ожидание](https://usnuz.github.io/fragment-donor-sdk/ru/guides/rate-limit-flood-wait/).
+[429 и ожидание](https://sdk.donor.uz/ru/guides/rate-limit-flood-wait/).

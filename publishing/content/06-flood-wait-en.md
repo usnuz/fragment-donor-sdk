@@ -77,6 +77,6 @@ No service auth is needed; wallet Cookie/Mnemonic still are. The optional provid
 key is not service login. Purchase requests transmit wallet mnemonic and Fragment
 session/cookie data to the API operator; retry logic and log redaction do not restrict that access.
 
-[Rate-limit guide](https://usnuz.github.io/fragment-donor-sdk/en/guides/rate-limit-flood-wait/) ·
+[Rate-limit guide](https://sdk.donor.uz/en/guides/rate-limit-flood-wait/) ·
 [Python request-count tests](https://github.com/usnuz/fragment-donor-sdk/blob/main/python/tests/test_client.py) ·
 [Node tests](https://github.com/usnuz/fragment-donor-sdk/blob/main/typescript/test/client.test.mjs).

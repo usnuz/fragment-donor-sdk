@@ -1,7 +1,7 @@
 # Publishing runbook — Fragment Donor 0.1.0
 
 Owner: `usnuz`. Repository: [fragment-donor-sdk](https://github.com/usnuz/fragment-donor-sdk).
-Primary docs: [GitHub Pages](https://usnuz.github.io/fragment-donor-sdk/).
+Primary docs: [GitHub Pages](https://sdk.donor.uz/).
 Independent project: no affiliation with Telegram, Fragment or TON.
 
 ## Approval and access
@@ -212,34 +212,29 @@ Never mark an editorially reviewed submission PUBLISHED before acceptance.
 
 ## Search submission and verification
 
-Submit `https://usnuz.github.io/fragment-donor-sdk/sitemap.xml` only after the live
+Submit `https://sdk.donor.uz/sitemap-index.xml` only after the live
 site returns HTTP 200. These are three separate owner-access tasks; none has a
 verified search submission merely because the sitemap is hosted:
 
 1. **Google Search Console:** add URL-prefix
-   `https://usnuz.github.io/fragment-donor-sdk/`, not a `github.io` domain property.
+   `https://sdk.donor.uz/`, not a `github.io` domain property.
    Use the account-issued verification method; a meta tag belongs in the project
-   homepage `<head>` through a reviewed build change. Then submit the live sitemap.
+   homepage `<head>` through a reviewed build change. Then submit the live sitemap index.
    [Official ownership verification](https://support.google.com/webmasters/answer/9008080).
 2. **Bing Webmaster Tools:** sign in, import a genuinely verified property or use
    the verification method issued for the accepted site property, then submit the
-   same sitemap. Do not fabricate or reuse somebody else's verification token.
+   same sitemap index. Do not fabricate or reuse somebody else's verification token.
    [Official ownership help](https://www.bing.com/webmasters/help/verifying-ownership-of-your-site-afcfefc6).
 3. **Yandex Webmaster:** add the site property the current UI actually accepts,
    then use its issued HTML-file or `yandex-verification` meta-tag method and
-   retain that verification. If it requires the origin `https://usnuz.github.io/`
-   rather than the project path, this repository alone cannot publish the origin
-   verification file/homepage tag. The owner must separately control that origin
-   site, or record the rights/access blocker. Owning this project does **not**
-   grant DNS control of `github.io`. In the verified property's **Indexing →
-   Sitemap files**, add the live project sitemap above; observe processing and
+   retain that verification. In the verified property's **Indexing → Sitemap
+   files**, add the custom-domain sitemap index above; observe processing and
    indexed URLs separately. [Official rights verification](https://yandex.com/support/webmaster/en/service/rights.html),
    [sitemap instructions](https://yandex.com/support/webmaster/en/indexing-options/sitemap).
 
-Project-path robots.txt is downloadable, but crawlers discover robots.txt at the
-origin root `https://usnuz.github.io/robots.txt`, not under the project path. Do not
-claim control of that root from this repository. Sitemap submission and ordinary
-links remain useful. Never apply another user's verification token.
+The custom domain serves `robots.txt` from its origin root, so its sitemap-index
+directive applies to the full documentation site. Never apply another user's
+verification token.
 
 Cross-posted blog articles should reference the exact primary topic as canonical
 where the platform supports it. Translated primary pages self-canonicalize; don't

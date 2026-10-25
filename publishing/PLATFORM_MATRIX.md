@@ -15,9 +15,9 @@ exists, not a live post, registry release, approved listing, or search indexing.
 All later submissions must recheck rules in the actual signed-in editor.
 
 Source: [usnuz/fragment-donor-sdk](https://github.com/usnuz/fragment-donor-sdk).
-Primary docs: [EN](https://usnuz.github.io/fragment-donor-sdk/en/),
-[RU](https://usnuz.github.io/fragment-donor-sdk/ru/),
-[UZ](https://usnuz.github.io/fragment-donor-sdk/uz/). Release version: `0.1.3`;
+Primary docs: [EN](https://sdk.donor.uz/en/),
+[RU](https://sdk.donor.uz/ru/),
+[UZ](https://sdk.donor.uz/uz/). Release version: `0.1.3`;
 each registry row records its independently verified version.
 
 Every payload identifies an independent service, not an official Telegram,
@@ -105,9 +105,9 @@ source and built local artifacts; no fictitious live registry URLs are supplied.
 
 | Platform / audience | Property and payload | Owner action / trust boundary | Official evidence | Current search state |
 | --- | --- | --- | --- | --- |
-| Google Search Console / EN/RU/UZ discovery | URL-prefix `https://usnuz.github.io/fragment-donor-sdk/`; live project sitemap | URL-prefix ownership was automatically verified through the deployed HTML meta tag. Search Console accepted a fresh `/sitemap.xml` submission on 2026-10-07 and showed “Sitemap submitted”; the table still reported “Not fetched”, type unknown and zero discovered pages. No `github.io` DNS domain claim. | [Ownership verification](https://support.google.com/webmasters/answer/9008080) | SUBMITTED: ownership verified and sitemap re-submitted; successful fetch/indexing not verified |
+| Google Search Console / EN/RU/UZ discovery | Canonical URL-prefix `https://sdk.donor.uz/`; legacy property `https://usnuz.github.io/fragment-donor-sdk/` | The legacy property was verified and accepted sitemap submissions, but reported “Not fetched”. On 2026-10-25 the GitHub Pages custom domain and HTTPS were enabled; add and verify the new URL-prefix property, then submit `/sitemap-index.xml`. | [Ownership verification](https://support.google.com/webmasters/answer/9008080) | MIGRATING: custom domain configured; new property submission/indexing not yet verified |
 | Bing Webmaster Tools / search discovery | Accepted verified property; same live sitemap | Import a genuinely verified property or use the method issued by Bing; separately observe submission and indexed URLs. | [Ownership help](https://www.bing.com/webmasters/help/verifying-ownership-of-your-site-afcfefc6) | NOT_RUN: owner verification/submission; indexing not verified |
-| Yandex Webmaster / Russian-language discovery | Site property actually accepted by its UI; project sitemap `https://usnuz.github.io/fragment-donor-sdk/sitemap.xml` | Issued HTML-file/meta verification only. If origin `https://usnuz.github.io/` is required, owner needs separate origin-root control; this project repo cannot create root verification or control `github.io` DNS. Add sitemap in Indexing → Sitemap files after ownership verification. | [Rights](https://yandex.com/support/webmaster/en/service/rights.html), [sitemaps](https://yandex.com/support/webmaster/en/indexing-options/sitemap) | NOT_RUN: accepted property/owner rights/submission; indexing not verified |
+| Yandex Webmaster / Russian-language discovery | Canonical property `https://sdk.donor.uz/`; project sitemap `https://sdk.donor.uz/sitemap-index.xml` | Add the custom-domain property, complete the issued verification method, then submit the sitemap index. The previous GitHub project-path limitation no longer applies to the canonical host. | [Rights](https://yandex.com/support/webmaster/en/service/rights.html), [sitemaps](https://yandex.com/support/webmaster/en/indexing-options/sitemap) | NOT_RUN: custom-domain ownership/submission/indexing not verified |
 
 Technical canonical/hreflang/sitemap checks do not guarantee crawling, indexing,
 rankings or search appearance in any language. Project-path robots.txt does not

@@ -60,6 +60,6 @@ Fragment session/cookie data to the API operator;
 never put seeds into frontend code or public
 collection variables.
 
-[Telegram Stars API guide](https://usnuz.github.io/fragment-donor-sdk/en/guides/telegram-stars-api/) ·
+[Telegram Stars API guide](https://sdk.donor.uz/en/guides/telegram-stars-api/) ·
 [Source and release status](https://github.com/usnuz/fragment-donor-sdk) ·
-[Credential guide](https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/).
+[Credential guide](https://sdk.donor.uz/en/guides/credentials/).

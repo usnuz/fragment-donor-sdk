@@ -7,7 +7,7 @@ build:
   jobs:
     build:
       html:
-        - DOCS_BASE_URL="https://usnuz.github.io/fragment-donor-sdk/" DOCS_NOINDEX=1 node docs/build.mjs
-        - DOCS_BASE_URL="https://usnuz.github.io/fragment-donor-sdk/" DOCS_NOINDEX=1 node docs/test.mjs
+        - DOCS_BASE_URL="https://sdk.donor.uz/" DOCS_NOINDEX=1 node docs/build.mjs
+        - DOCS_BASE_URL="https://sdk.donor.uz/" DOCS_NOINDEX=1 node docs/test.mjs
         - mkdir -p "$READTHEDOCS_OUTPUT/html"
         - cp -R site/. "$READTHEDOCS_OUTPUT/html/"

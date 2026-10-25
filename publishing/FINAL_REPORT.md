@@ -198,15 +198,15 @@ is complete.
 | Resource | Public location | Evidence boundary |
 | --- | --- | --- |
 | SDK-only source | [GitHub](https://github.com/usnuz/fragment-donor-sdk) | Source/release published; exact source linked above. No parent production history. |
-| Docs | [Root](https://usnuz.github.io/fragment-donor-sdk/), [EN](https://usnuz.github.io/fragment-donor-sdk/en/), [RU](https://usnuz.github.io/fragment-donor-sdk/ru/), [UZ](https://usnuz.github.io/fragment-donor-sdk/uz/) | Pages run 37345175590 success at release commit; all 61 live pages independently verified again. |
-| OpenAPI | [openapi.json](https://usnuz.github.io/fragment-donor-sdk/openapi.json) | Updated HTTP 200, four paths and explicit service no-auth verified. |
-| Postman collection | [postman.json](https://usnuz.github.io/fragment-donor-sdk/postman.json) | Updated guarded collection verified; not a Postman API Network listing. |
-| Postman environment | [Empty-secret environment](https://usnuz.github.io/fragment-donor-sdk/postman.environment.json) | Public HTTP 200 and blank sensitive values independently verified. |
-| Synthetic demo | [Fixture viewer](https://usnuz.github.io/fragment-donor-sdk/demo/) | Public static demo/trust boundary plus PNG/MP4 HTTP 200 verified. |
-| Actual video | [50-second MP4](https://usnuz.github.io/fragment-donor-sdk/demo/media/walkthrough-en.mp4) | Silent rendered synthetic walkthrough, not real payment footage or a YouTube upload. |
-| Actual screenshot | [Earlier UZ baseline JPEG](https://usnuz.github.io/fragment-donor-sdk/demo/media/docs-uz-baseline.jpg) | HTTP200 and exact original bytes/SHA256 verified; not newly captured current UI or payment evidence. |
+| Docs | [Root](https://sdk.donor.uz/), [EN](https://sdk.donor.uz/en/), [RU](https://sdk.donor.uz/ru/), [UZ](https://sdk.donor.uz/uz/) | Pages run 37345175590 success at release commit; all 61 live pages independently verified again. |
+| OpenAPI | [openapi.json](https://sdk.donor.uz/openapi.json) | Updated HTTP 200, four paths and explicit service no-auth verified. |
+| Postman collection | [postman.json](https://sdk.donor.uz/postman.json) | Updated guarded collection verified; not a Postman API Network listing. |
+| Postman environment | [Empty-secret environment](https://sdk.donor.uz/postman.environment.json) | Public HTTP 200 and blank sensitive values independently verified. |
+| Synthetic demo | [Fixture viewer](https://sdk.donor.uz/demo/) | Public static demo/trust boundary plus PNG/MP4 HTTP 200 verified. |
+| Actual video | [50-second MP4](https://sdk.donor.uz/demo/media/walkthrough-en.mp4) | Silent rendered synthetic walkthrough, not real payment footage or a YouTube upload. |
+| Actual screenshot | [Earlier UZ baseline JPEG](https://sdk.donor.uz/demo/media/docs-uz-baseline.jpg) | HTTP200 and exact original bytes/SHA256 verified; not newly captured current UI or payment evidence. |
 | Go module/index | [proxy v0.1.1](https://proxy.golang.org/github.com/usnuz/fragment-donor-sdk/go/@v/v0.1.1.info), [pkg.go.dev 0.1.0](https://pkg.go.dev/github.com/usnuz/fragment-donor-sdk/go@v0.1.0) | Public module v0.1.1 and sumdb checksums are verified at the exact release commit. pkg.go.dev v0.1.1 still returned HTTP 404 at 2026-10-06 17:59:42 UTC; v0.1.0 remains the last independently verified indexed documentation version. |
-| Sitemap | [sitemap.xml](https://usnuz.github.io/fragment-donor-sdk/sitemap.xml) | Hosting is not webmaster submission/indexing. |
+| Sitemap | [sitemap.xml](https://sdk.donor.uz/sitemap.xml) | Hosting is not webmaster submission/indexing. |
 
 The fresh live route check at **2026-10-05 17:19 UTC** covered all 61 static
 pages and the guarded environment/demo/media, contract exports, sitemap/robots,

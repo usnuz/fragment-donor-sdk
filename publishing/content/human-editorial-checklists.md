@@ -60,5 +60,5 @@ never auto-retry; HTTP 400 `unconfirmed:true` is unknown outcome, not ordinary
 validation rejection; no backend idempotency or status endpoint. All demonstrations
 mocked, no real funds spent. Purchase requests transmit wallet mnemonic and Fragment
 session/cookie data to the API operator; SDK error redaction does not restrict that access.
-EN credential facts: https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/.
-EN error semantics: https://usnuz.github.io/fragment-donor-sdk/en/guides/errors/.
+EN credential facts: https://sdk.donor.uz/en/guides/credentials/.
+EN error semantics: https://sdk.donor.uz/en/guides/errors/.

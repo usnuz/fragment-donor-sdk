@@ -79,5 +79,5 @@ the API operator. SDK redaction applies to client-side diagnostics only. Keep th
 entire flow server-side.
 
 [Node source/tests](https://github.com/usnuz/fragment-donor-sdk/tree/main/typescript) ·
-[Node documentation](https://usnuz.github.io/fragment-donor-sdk/en/sdk/typescript/) ·
-[Credential handling](https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/).
+[Node documentation](https://sdk.donor.uz/en/sdk/typescript/) ·
+[Credential handling](https://sdk.donor.uz/en/guides/credentials/).

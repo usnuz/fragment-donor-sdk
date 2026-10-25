@@ -22,7 +22,7 @@ Conditional technical note, only if current rules permit this AI-assisted messag
 > Our mock tests also require a single spending POST after timeout, because no
 > idempotency guarantee exists. No real wallet funds were spent in the tests.
 > Source/tests: https://github.com/usnuz/fragment-donor-sdk.
-> Credential docs: https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/.
+> Credential docs: https://sdk.donor.uz/en/guides/credentials/.
 > This is not official TON/Telegram/Fragment software and is not a price/promotion
 > offer. Direct service auth is absent; wallet credentials still are required.
 
@@ -42,7 +42,7 @@ Conditional note (only if permitted and relevant to current technical discussion
 > В mock-тестах также проверяем ровно один POST покупки после таймаута: гарантии
 > idempotency и endpoint статуса покупки нет. Реальные средства в тестах не
 > использовались. Исходники: https://github.com/usnuz/fragment-donor-sdk.
-> Граница хранения: https://usnuz.github.io/fragment-donor-sdk/ru/guides/credentials/.
+> Граница хранения: https://sdk.donor.uz/ru/guides/credentials/.
 > Это не официальный продукт TON/Telegram/Fragment, не торговое предложение и
 > не обещание безопасности кошелька. Нет сервисной авторизации, но credentials
 > кошелька для соответствующих операций нужны.

@@ -44,8 +44,8 @@ Postman environment. Native build success, registry publication and blockchain
 payment success are separate facts; this article doesn't merge them.
 
 Source: https://github.com/usnuz/fragment-donor-sdk.
-Telegram Stars API guide: https://usnuz.github.io/fragment-donor-sdk/en/guides/telegram-stars-api/.
-Security boundary: https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/.
+Telegram Stars API guide: https://sdk.donor.uz/en/guides/telegram-stars-api/.
+Security boundary: https://sdk.donor.uz/en/guides/credentials/.
 
 ## Publication gates
 

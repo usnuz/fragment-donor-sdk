@@ -155,6 +155,6 @@ duplicates, validates UTF-8 and scans known credential patterns. This is an
 additional control, not a guarantee that every possible secret is recognized.
 Inspect contents privately and publish only through an authorized release.
 
-[Documentation](https://usnuz.github.io/fragment-donor-sdk/en/)
+[Documentation](https://sdk.donor.uz/en/)
 · [Source](https://github.com/usnuz/fragment-donor-sdk/tree/main/typescript)
 · [Issues](https://github.com/usnuz/fragment-donor-sdk/issues)

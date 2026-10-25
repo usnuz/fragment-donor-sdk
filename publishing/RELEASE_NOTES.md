@@ -14,7 +14,7 @@ README files while retaining the reconciled credential-transmission text.
 - Native mocked tests, package-content/security gates and consumer smoke tests.
 - Static English, Russian and Uzbek documentation and guarded Postman examples.
 
-Docs: https://usnuz.github.io/fragment-donor-sdk/
+Docs: https://sdk.donor.uz/
 Source: https://github.com/usnuz/fragment-donor-sdk
 Go module: github.com/usnuz/fragment-donor-sdk/go (go/v0.1.3 tag).
 

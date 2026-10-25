@@ -125,6 +125,6 @@ Inspect tracked module contents and run a secret scan before tagging. Tag
 clean public monorepo is released. After publishing, verify installation from
 an empty consumer module and inspect pkg.go.dev visibility separately.
 
-[Documentation](https://usnuz.github.io/fragment-donor-sdk/)
+[Documentation](https://sdk.donor.uz/)
 · [Source](https://github.com/usnuz/fragment-donor-sdk/tree/main/go)
 · [Changelog](CHANGELOG.md) · [MIT license](LICENSE)

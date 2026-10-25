@@ -10,9 +10,9 @@ composer require fragment-donor/sdk:0.1.3
 ```
 
 [Source](https://github.com/usnuz/fragment-donor-sdk) ·
-[English docs](https://usnuz.github.io/fragment-donor-sdk/en/) ·
-[Русский](https://usnuz.github.io/fragment-donor-sdk/ru/) ·
-[O‘zbekcha](https://usnuz.github.io/fragment-donor-sdk/uz/)
+[English docs](https://sdk.donor.uz/en/) ·
+[Русский](https://sdk.donor.uz/ru/) ·
+[O‘zbekcha](https://sdk.donor.uz/uz/)
 
 ## Four operations
 

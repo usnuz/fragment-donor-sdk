@@ -54,6 +54,6 @@ non-retrying even on a client configured for read retries.
 Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
 the API operator.
 
-[Balance docs](https://usnuz.github.io/fragment-donor-sdk/en/reference/wallet-balance/) ·
-[Username docs](https://usnuz.github.io/fragment-donor-sdk/en/reference/get-user-info/) ·
+[Balance docs](https://sdk.donor.uz/en/reference/wallet-balance/) ·
+[Username docs](https://sdk.donor.uz/en/reference/get-user-info/) ·
 [Source](https://github.com/usnuz/fragment-donor-sdk).

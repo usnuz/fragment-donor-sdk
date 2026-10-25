@@ -5,7 +5,7 @@ import {languages, ui, pages} from './content.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const out = join(root, 'site');
-const base = (process.env.DOCS_BASE_URL || 'https://usnuz.github.io/fragment-donor-sdk/').replace(/\/?$/, '/');
+const base = (process.env.DOCS_BASE_URL || 'https://sdk.donor.uz/').replace(/\/?$/, '/');
 const noIndex = process.env.DOCS_NOINDEX === '1';
 const repo = 'https://github.com/usnuz/fragment-donor-sdk';
 const googleSiteVerification = '<meta name="google-site-verification" content="5zNQNXfDsgJQJgg0fCu4QQ3DnonwKN-YZnMAFn6GBqE">';

@@ -14,7 +14,7 @@
   },
   "support": {
     "source": "https://github.com/usnuz/fragment-donor-sdk",
-    "docs": "https://usnuz.github.io/fragment-donor-sdk/en/"
+    "docs": "https://sdk.donor.uz/en/"
   },
   "keywords": ["telegram", "stars", "premium", "fragment-donor", "sdk"],
   "archive": {"exclude": ["/tests", "/dist", "/vendor", "/.tools", "/.github", "/.gitignore", "/.php-cs-fixer.dist.php", "/composer.lock"]}

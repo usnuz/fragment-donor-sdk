@@ -11,7 +11,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/usnuz/fragment-donor-sdk</RepositoryUrl>
-    <PackageProjectUrl>https://usnuz.github.io/fragment-donor-sdk/en/</PackageProjectUrl>
+    <PackageProjectUrl>https://sdk.donor.uz/en/</PackageProjectUrl>
     <PackageTags>telegram;stars;premium;fragment-donor;sdk</PackageTags>
     <RepositoryType>git</RepositoryType>
     <Deterministic>true</Deterministic>

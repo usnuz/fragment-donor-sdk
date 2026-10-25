@@ -12,10 +12,10 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 3.2"
   spec.files = Dir["lib/**/*.rb"] + %w[README.md LICENSE CHANGELOG.md]
   spec.require_paths = ["lib"]
-  spec.homepage = "https://usnuz.github.io/fragment-donor-sdk/"
+  spec.homepage = "https://sdk.donor.uz/"
   spec.metadata = {
     "source_code_uri" => "https://github.com/usnuz/fragment-donor-sdk/tree/main/ruby",
-    "documentation_uri" => "https://usnuz.github.io/fragment-donor-sdk/",
+    "documentation_uri" => "https://sdk.donor.uz/",
     "changelog_uri" => "https://github.com/usnuz/fragment-donor-sdk/blob/main/ruby/CHANGELOG.md",
     "rubygems_mfa_required" => "true"
   }

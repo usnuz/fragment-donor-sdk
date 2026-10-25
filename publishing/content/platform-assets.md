@@ -8,7 +8,7 @@ on them is verified. Other unvisited channels remain NOT_RUN.
 Use the [matrix](../PLATFORM_MATRIX.md) and [runbook](../PUBLISHING_RUNBOOK.md).
 
 Shared links: source https://github.com/usnuz/fragment-donor-sdk;
-docs https://usnuz.github.io/fragment-donor-sdk/en/ (also `/ru/`, `/uz/`).
+docs https://sdk.donor.uz/en/ (also `/ru/`, `/uz/`).
 Every platform must retain independent-project and credential-transmission disclosures.
 No invented exact listing URL or reviewer acceptance is supplied.
 
@@ -76,7 +76,7 @@ Project title: Fragment Donor SDK documentation.
 Description (copy):
 
 > Open-source SDK reference for an independent Telegram Stars/Premium API.
-> Canonical primary docs: https://usnuz.github.io/fragment-donor-sdk/.
+> Canonical primary docs: https://sdk.donor.uz/.
 > EN/RU/UZ contract and security guides; no payment-secret collection forms.
 
 Read the Docs import/build is verified public with the repository configuration.
@@ -120,7 +120,7 @@ Description (copy):
 > and Fragment Cookie, and Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. This public
 > collection contains placeholder-only variables and synthetic responses; do
 > not run a purchase or share real secrets. Purchases are non-retrying and have
-> no idempotency guarantee. Docs: https://usnuz.github.io/fragment-donor-sdk/en/.
+> no idempotency guarantee. Docs: https://sdk.donor.uz/en/.
 
 Tags: `telegram-stars`, `telegram-premium`, `ton`, `sdk`, `api`.
 Run `node contract/build.mjs` then `node docs/build.mjs`. Import the separate
@@ -203,7 +203,7 @@ Description (copy):
 > Purchase requests transmit wallet mnemonic and Fragment session/cookie data to
 > the API operator.
 > Purchases never automatically retry, and no idempotency guarantee exists.
-> Docs: https://usnuz.github.io/fragment-donor-sdk/en/.
+> Docs: https://sdk.donor.uz/en/.
 > Source: https://github.com/usnuz/fragment-donor-sdk.
 
 Check actual submit form and catalog eligibility before choosing a category;

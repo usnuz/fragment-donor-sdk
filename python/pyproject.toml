@@ -15,7 +15,7 @@ classifiers = ["Programming Language :: Python :: 3", "Typing :: Typed"]
 dependencies = []
 
 [project.urls]
-Documentation = "https://usnuz.github.io/fragment-donor-sdk/en/"
+Documentation = "https://sdk.donor.uz/en/"
 Source = "https://github.com/usnuz/fragment-donor-sdk/tree/main/python"
 Issues = "https://github.com/usnuz/fragment-donor-sdk/issues"
 

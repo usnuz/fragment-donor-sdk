@@ -36,7 +36,7 @@ human-only factual checklists instead, not forbidden post templates.
 | Exact TON Telegram / Discord verification | [Community pack](21-ton-communities.md) |
 
 Source: https://github.com/usnuz/fragment-donor-sdk. Primary documentation:
-https://usnuz.github.io/fragment-donor-sdk/en/, `/ru/`, `/uz/`.
+https://sdk.donor.uz/en/, `/ru/`, `/uz/`.
 Actual release/publication state: [status JSON](../publication-status.json).
 
 ## Crosspost canonical rule

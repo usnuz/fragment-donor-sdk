@@ -77,5 +77,5 @@ Finally, purchase requests transmit wallet mnemonic and Fragment session/cookie
 data to the API operator. Treat that operator boundary explicitly.
 
 [Python source/tests/examples](https://github.com/usnuz/fragment-donor-sdk/tree/main/python) ·
-[Python documentation](https://usnuz.github.io/fragment-donor-sdk/en/sdk/python/) ·
-[Flood-wait guide](https://usnuz.github.io/fragment-donor-sdk/en/guides/rate-limit-flood-wait/).
+[Python documentation](https://sdk.donor.uz/en/sdk/python/) ·
+[Flood-wait guide](https://sdk.donor.uz/en/guides/rate-limit-flood-wait/).

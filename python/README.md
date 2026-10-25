@@ -164,6 +164,6 @@ and duplicates, validates UTF-8, and scans packaged files for known credential
 patterns. Pattern scans are an additional gate, not proof that every possible
 secret format is detected; review artifacts privately before publishing.
 
-[Documentation](https://usnuz.github.io/fragment-donor-sdk/en/)
+[Documentation](https://sdk.donor.uz/en/)
 · [Source](https://github.com/usnuz/fragment-donor-sdk/tree/main/python)
 · [Issues](https://github.com/usnuz/fragment-donor-sdk/issues)

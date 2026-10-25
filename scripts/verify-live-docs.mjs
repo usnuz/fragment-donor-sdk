@@ -1,7 +1,7 @@
 // Read-only public documentation checks. Never touches the payment API.
 import assert from 'node:assert/strict';
 import {languages,pages} from '../docs/content.mjs';
-const base='https://usnuz.github.io/fragment-donor-sdk/';
+const base='https://sdk.donor.uz/';
 const targets=[{path:'',lang:'en'},...languages.flatMap(lang=>pages.map(page=>({lang,page,path:`${lang}/${page.slug?`${page.slug}/`:''}`})))];
 let next=0,passed=0;
 async function check(target){

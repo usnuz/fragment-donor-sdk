@@ -110,6 +110,6 @@ before releasing. Publish only with verified RubyGems ownership/MFA or trusted
 publishing. `gem push` is a separate authorized release action; a local gem
 build is not a publication. Verify installation from RubyGems after publishing.
 
-[Docs](https://usnuz.github.io/fragment-donor-sdk/)
+[Docs](https://sdk.donor.uz/)
 · [Source](https://github.com/usnuz/fragment-donor-sdk/tree/main/ruby)
 · [Changelog](CHANGELOG.md) · [MIT license](LICENSE)

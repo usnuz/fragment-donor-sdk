@@ -107,7 +107,7 @@ No real payment is needed for tests, packaging, documentation, or publication.
 
 ## Multilingual documentation
 
-Primary site: `https://usnuz.github.io/fragment-donor-sdk/`, separate `/en/`,
+Primary site: `https://sdk.donor.uz/`, separate `/en/`,
 `/ru/`, `/uz/` paths. Every topic is statically rendered with a self-canonical,
 reciprocal same-topic hreflang links and a sitemap entry. x-default points to the
 root language chooser for homepages and to the English version for topic pages.

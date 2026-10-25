@@ -41,8 +41,8 @@ cookie. SDK redaction does not restrict operator access. The evaluation
 path is mocked source tests, not asking visitors to fund a wallet or enter a seed.
 
 Source: https://github.com/usnuz/fragment-donor-sdk.
-Docs: https://usnuz.github.io/fragment-donor-sdk/en/.
-Credential boundary: https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/.
+Docs: https://sdk.donor.uz/en/.
+Credential boundary: https://sdk.donor.uz/en/guides/credentials/.
 Useful discussion topics include consistent failure UX and multilingual technical
 docs, not promotional upvotes or private outreach.
 

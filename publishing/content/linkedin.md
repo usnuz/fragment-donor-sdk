@@ -44,8 +44,8 @@ security certification or zero operational risk. Verify actual runtime/build and
 registry state separately before deploying a consumer.
 
 Source: https://github.com/usnuz/fragment-donor-sdk.
-Errors/reconciliation: https://usnuz.github.io/fragment-donor-sdk/en/guides/errors/.
-Fragment API automation guide: https://usnuz.github.io/fragment-donor-sdk/en/guides/fragment-api-automation/.
+Errors/reconciliation: https://sdk.donor.uz/en/guides/errors/.
+Fragment API automation guide: https://sdk.donor.uz/en/guides/fragment-api-automation/.
 
 ## Posting gates
 

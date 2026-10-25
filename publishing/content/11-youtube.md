@@ -20,7 +20,7 @@ An existing [Uzbek-docs baseline JPEG](../media/docs-uz-baseline.jpg) is availab
 as a separate reviewed still, with [its own metadata](../media/docs-uz-baseline.json).
 It predates the current demo/footer and is **not a new current-UI capture**,
 screen recording or payment proof. Exact capture time is unknown; its timestamp
-is only source-file modification time. The [public JPEG](https://usnuz.github.io/fragment-donor-sdk/demo/media/docs-uz-baseline.jpg)
+is only source-file modification time. The [public JPEG](https://sdk.donor.uz/demo/media/docs-uz-baseline.jpg)
 returned HTTP200 with exact original bytes/hash verified at 2026-10-05 17:35 UTC;
 that does not establish a YouTube upload or newly captured current UI.
 
@@ -58,7 +58,7 @@ Description:
 > review actual narration, visuals and synthetic-media disclosures.
 >
 > Source: https://github.com/usnuz/fragment-donor-sdk
-> Docs: https://usnuz.github.io/fragment-donor-sdk/en/
+> Docs: https://sdk.donor.uz/en/
 > Release state: https://github.com/usnuz/fragment-donor-sdk/blob/main/publishing/publication-status.json
 
 Long-form planned chapters (**not** timestamps for the existing 50-second file;

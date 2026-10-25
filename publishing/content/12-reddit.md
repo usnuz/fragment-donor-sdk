@@ -27,7 +27,7 @@ Copy:
 > wallet calls need credentials. Important limitation: purchase requests transmit
 > those credentials to the API operator. No real payment
 > is used in the demo. Source: https://github.com/usnuz/fragment-donor-sdk
-> Docs: https://usnuz.github.io/fragment-donor-sdk/en/
+> Docs: https://sdk.donor.uz/en/
 
 ## r/TelegramBots
 
@@ -49,7 +49,7 @@ Copy only if current rules allow it:
 > transmitted to the API operator. Keep them out of bot messages/frontend/config logs. The
 > source includes synthetic timeout/429 tests and no real transfer demo:
 > https://github.com/usnuz/fragment-donor-sdk. Contract/docs:
-> https://usnuz.github.io/fragment-donor-sdk/en/. This does not create remote
+> https://sdk.donor.uz/en/. This does not create remote
 > exactly-once delivery or replace Telegram's bot payment rules.
 
 ## r/TONcoin
@@ -71,7 +71,7 @@ Copy:
 > not proof of blockchain delivery or wallet safety. Anyone evaluating this
 > integration should inspect the operator boundary first. Technical source:
 > https://github.com/usnuz/fragment-donor-sdk. Security guide:
-> https://usnuz.github.io/fragment-donor-sdk/en/guides/credentials/.
+> https://sdk.donor.uz/en/guides/credentials/.
 
 ## r/Python
 
@@ -99,7 +99,7 @@ Copy:
 > requests transmit sensitive credentials to the API operator. No real
 > purchase is used in tests. Source:
 > https://github.com/usnuz/fragment-donor-sdk/tree/main/python. Docs:
-> https://usnuz.github.io/fragment-donor-sdk/en/sdk/python/.
+> https://sdk.donor.uz/en/sdk/python/.
 
 Do not title a standalone wrapper showcase to bypass the designated thread rule.
 
@@ -124,7 +124,7 @@ Copy:
 > Fragment/TON product; Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator. Unknown JSON fields
 > are retained and balances stay strings. Source/tests:
 > https://github.com/usnuz/fragment-donor-sdk/tree/main/typescript. Docs:
-> https://usnuz.github.io/fragment-donor-sdk/en/sdk/typescript/.
+> https://sdk.donor.uz/en/sdk/typescript/.
 
 ## r/django
 
@@ -149,7 +149,7 @@ Copy:
 >
 > Source has deterministic request-count tests:
 > https://github.com/usnuz/fragment-donor-sdk/tree/main/python. API/error docs:
-> https://usnuz.github.io/fragment-donor-sdk/en/guides/errors/. No actual Django
+> https://sdk.donor.uz/en/guides/errors/. No actual Django
 > purchase was run here. Purchase requests transmit wallet mnemonic and Fragment session/cookie data to the API operator.
 > Project is not official Telegram/Fragment/TON software.
 
