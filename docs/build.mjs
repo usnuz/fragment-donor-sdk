@@ -8,7 +8,7 @@ const out = join(root, 'site');
 const base = (process.env.DOCS_BASE_URL || 'https://sdk.donor.uz/').replace(/\/?$/, '/');
 const noIndex = process.env.DOCS_NOINDEX === '1';
 const repo = 'https://github.com/usnuz/fragment-donor-sdk';
-const googleSiteVerification = '<meta name="google-site-verification" content="5zNQNXfDsgJQJgg0fCu4QQ3DnonwKN-YZnMAFn6GBqE">';
+const googleSiteVerification = '<meta name="google-site-verification" content="pIUXv7ZVfU1jMdCEQb3nARu2kkY9bQaKcQ3whWakNn8">';
 // Reuse the tested package examples rather than maintaining divergent snippets.
 for(const [id,file] of Object.entries({python:'python/examples/all_endpoints.py',typescript:'typescript/examples/all-endpoints.mjs',php:'php/examples/quickstart.php',dotnet:'dotnet/examples/QuickStart/Program.cs'})) {
   const example=await readFile(join(root,file),'utf8');
